@@ -1,2 +1,2 @@
-http://dezeem.github,io/2022/10/17/hello-world/
-http://dezeem.github,io/
+http://dezeem.github.io/2022/10/17/hello-world/
+http://dezeem.github.io/

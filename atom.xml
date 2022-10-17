@@ -6,7 +6,7 @@
   <link href="http://dezeem.github.io/atom.xml" rel="self"/>
   
   <link href="http://dezeem.github.io/"/>
-  <updated>2022-10-17T11:13:52.687Z</updated>
+  <updated>2022-10-17T12:40:42.062Z</updated>
   <id>http://dezeem.github.io/</id>
   
   <author>
@@ -15,6 +15,26 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Hello World</title>
+    <link href="http://dezeem.github.io/2022/10/17/hello-world/"/>
+    <id>http://dezeem.github.io/2022/10/17/hello-world/</id>
+    <published>2022-10-17T12:40:42.062Z</published>
+    <updated>2022-10-17T12:40:42.062Z</updated>
+    
+    <content type="html"><![CDATA[<p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p><h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/writing.html">Writing</a></p><h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/server.html">Server</a></p><h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/generating.html">Generating</a></p><h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;p&gt;Welcome to &lt;a href=&quot;https://hexo.io/&quot;&gt;Hexo&lt;/a&gt;! This is your very first post. Check &lt;a href=&quot;https://hexo.io/docs/&quot;&gt;documentation&lt;/a&gt; for</summary>
+      
+    
+    
+    
+    
+  </entry>
   
   <entry>
     <title>刷题笔记</title>
@@ -435,28 +455,6 @@
       
       
     <summary type="html">&lt;h1 id=&quot;实验三&quot;&gt;&lt;a href=&quot;#实验三&quot; class=&quot;headerlink&quot; title=&quot;实验三&quot;&gt;&lt;/a&gt;实验三&lt;/h1&gt;&lt;h2 id=&quot;什么DNS？&quot;&gt;&lt;a href=&quot;#什么DNS？&quot; class=&quot;headerlink&quot; title=&quot;什么DNS？&quot;&gt;&lt;</summary>
-      
-    
-    
-    
-    <category term="Wireshark" scheme="http://dezeem.github.io/categories/Wireshark/"/>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>HTTP</title>
-    <link href="http://dezeem.github.io/2021/10/22/2021-10-22-2/"/>
-    <id>http://dezeem.github.io/2021/10/22/2021-10-22-2/</id>
-    <published>2021-10-22T11:14:13.000Z</published>
-    <updated>2022-01-23T12:36:58.637Z</updated>
-    
-    <content type="html"><![CDATA[<h1 id="实验二"><a href="#实验二" class="headerlink" title="实验二"></a>实验二</h1><h2 id="基于HTTP获取-x2F-响应交互"><a href="#基于HTTP获取-x2F-响应交互" class="headerlink" title="基于HTTP获取&#x2F;响应交互"></a>基于HTTP获取&#x2F;响应交互</h2><p>​1.启动浏览器，启动资源包嗅探器（尚未开始捕获），显示过滤http，等待一分多钟。</p><p>​2.访问指定网站<a href="http://gaia.cs.umass.edu/wireshark-labs/HTTP-wireshark-file1.html">http://gaia.cs.umass.edu/wireshark-labs/HTTP-wireshark-file1.html</a>，</p><p>​显示如图：</p><p><img src="https://i.loli.net/2021/10/22/GpuWCe1J8nR4Kkf.jpg" alt="屏幕截图 2021-10-22 111915.jpg"></p><p>​3.停止嗅探，查看内容：</p><p><img src="https://i.loli.net/2021/10/22/ZTKrRjkzo5WLcEu.png" alt="image.png"></p><p>​       <img src="https://i.loli.net/2021/10/22/O68jYQUAoX4gasu.png" alt="image.png"></p><p>​浏览器提交GET请求。</p><p>​<strong>浏览器和服务器的HTTP版本均为1.1</strong></p><p>​<strong>浏览器的可接受服务器使用的语言</strong>如图所示：</p><p><img src="https://i.loli.net/2021/10/22/Qox81PSja5XGOz3.png" alt="image.png"></p><p>​我的<strong>本地IP地址</strong>为：192.168.215.71</p><p>​<strong>服务器IP地址</strong>为：128.119.245.12</p><p>​<strong>服务器返回状态代码为200 OK</strong>表示请求成功。</p><p>​<img src="https://i.loli.net/2021/10/22/th27lHP8kMmZzfa.png" alt="image.png"></p><p>​可以看见Last-Modified行：<strong>Last-Modified: Fri, 22 Oct 2021 05:59:01 GMT\r\n</strong>，可以知道服务器检索上次修改的 HTML 文件的时间。</p><p>​以及<strong>Content-Length: 128\r\n</strong>，可以知道有多少字节的内容被退回到的浏览器。</p><h2 id="GET-x2F-response交互"><a href="#GET-x2F-response交互" class="headerlink" title="GET&#x2F;response交互"></a>GET&#x2F;response交互</h2><p>​1.清空缓存，启动嗅探器，启动浏览器，访问指定网址，再刷新一次，显示如图。</p><p>​<img src="https://i.loli.net/2021/10/22/UNxuZQBFKra71p2.png" alt="image.png"></p><p>​2.检查第一个从浏览器到服务器的GET请求，没有If-Modified-Since行</p><p>​<img src="https://i.loli.net/2021/10/22/kShfjyKxwRoCbQg.png" alt="image.png"></p><p>​3.查看服务器返回内容：</p><p><img src="https://i.loli.net/2021/10/22/PnArEUyjzMbGS8m.png" alt="image.png"></p><p>​返回了一段HTML代码</p><p>​4.检查第二个HTTP GET请求内容：</p><p><img src="https://i.loli.net/2021/10/22/7hTxSasC5PblpfN.png" alt="image.png"></p><p>可见<strong>If-Modified-Since: Fri, 22 Oct 2021 05:59:01 GMT\r\n</strong><br>        5.第二次HTTP返回的状态代码是304 Not Modified，没有明确返回文件内容，因为该网页内容在上次访问之后未被修改过，且本地中有上次访问的缓存。</p><p>​<img src="https://i.loli.net/2021/10/22/ep1PqucU6FCYsmQ.png" alt="image.png"></p><h2 id="检索长文件"><a href="#检索长文件" class="headerlink" title="检索长文件"></a>检索长文件</h2><p>​1.操作同上。</p><p>​2.开始数据嗅探，访问指定网站后停止。</p><p><img src="https://i.loli.net/2021/10/22/3OKVZ1AMa2YR4Qm.png" alt="image.png"></p><p>​3.浏览器发送了一个GET请求消息，传输这一个HTTP响应需要4个TCP数据段。</p><p><img src="https://i.loli.net/2021/10/22/8biSHfZ7qLvhXPm.png" alt="image.png"></p><p>​4.响应HTTP GET请求的相关的状态码200和短语是OK。</p><h2 id="HTML-带有嵌入对象的文件"><a href="#HTML-带有嵌入对象的文件" class="headerlink" title="HTML 带有嵌入对象的文件"></a>HTML 带有嵌入对象的文件</h2><p>​1.清除缓存，开始捕获，访问网站<a href="http://gaia.cs.umass.edu/wireshark-labs/HTTP-wireshark-file4.html">http://gaia.cs.umass.edu/wireshark-labs/HTTP-wireshark-file4.html</a></p><p>​2.停止捕获，查看内容。</p><p><img src="https://i.loli.net/2021/10/22/EzqUwirVXOpcj9h.png" alt="image.png">浏览器发送了3个HTTP GET 请求，浏览器并不是同时下载这两张图片，有先后顺序。GET请求有两个发送给了 128.119.245.12，一个发送到了178.79.137.164。</p><h2 id="HTTP认证"><a href="#HTTP认证" class="headerlink" title="HTTP认证"></a>HTTP认证</h2><p>​1.清楚缓存，开始捕获，访问网站并登录。</p><p><img src="https://i.loli.net/2021/10/22/otQm4jUBS2GJsLY.png" alt="image.png"></p><p><img src="https://i.loli.net/2021/10/22/GDq3X6M1ZgzYstW.png" alt="image.png"></p><p>未登录时服务器返回401 Unauthorized，登录成功返回200 OK。</p><p>当浏览器第二次发送 HTTP GET 消息时，HTTP GET 消息中包含Authorization，</p><p>响应消息出现了ETag字段。</p><p>​输入的用户名和密码在客户端的 HTTP GET 消息中虽然可能看起来是加密的，但它们只是以称为 Base64 格式的格式进行编码。用户名和密码未加密！</p>]]></content>
-    
-    
-      
-      
-    <summary type="html">&lt;h1 id=&quot;实验二&quot;&gt;&lt;a href=&quot;#实验二&quot; class=&quot;headerlink&quot; title=&quot;实验二&quot;&gt;&lt;/a&gt;实验二&lt;/h1&gt;&lt;h2 id=&quot;基于HTTP获取-x2F-响应交互&quot;&gt;&lt;a href=&quot;#基于HTTP获取-x2F-响应交互&quot; class=&quot;header</summary>
       
     
     

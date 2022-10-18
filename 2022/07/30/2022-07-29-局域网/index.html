@@ -97,7 +97,7 @@
       </button>
     </div>
     <nav id="main-navbar" class="collapse navbar-collapse" itemscope itemtype="http://schema.org/SiteNavigationElement" role="navigation">
-      <ul class="nav navbar-nav main-nav ">
+      <ul class="nav navbar-nav main-nav menu-highlight">
         
         
         <li class="menu-item menu-item-home">
@@ -319,7 +319,7 @@
   <div class="slimContent">
     <nav id="toc" class="article-toc">
       <h3 class="toc-title">文章目录</h3>
-      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link"><span class="toc-number">1.</span> <span class="toc-text">ARP协议</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link"><span class="toc-number">1.1.</span> <span class="toc-text">MAC地址</span></a></li><li class="toc-item toc-level-2"><a class="toc-link"><span class="toc-number">1.2.</span> <span class="toc-text">ARP协议</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link"><span class="toc-number">2.</span> <span class="toc-text">以太网</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link"><span class="toc-number">2.1.</span> <span class="toc-text">交换机</span></a></li><li class="toc-item toc-level-2"><a class="toc-link"><span class="toc-number">2.2.</span> <span class="toc-text">虚拟局域网</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link"><span class="toc-number">3.</span> <span class="toc-text">PPP协议</span></a></li><li class="toc-item toc-level-1"><a class="toc-link"><span class="toc-number">4.</span> <span class="toc-text">802.11无线局域网</span></a></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#arp%E5%8D%8F%E8%AE%AE"><span class="toc-number">1.</span> <span class="toc-text">ARP协议</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#mac%E5%9C%B0%E5%9D%80"><span class="toc-number">1.1.</span> <span class="toc-text">MAC地址</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#arp%E5%8D%8F%E8%AE%AE"><span class="toc-number">1.2.</span> <span class="toc-text">ARP协议</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%BB%A5%E5%A4%AA%E7%BD%91"><span class="toc-number">2.</span> <span class="toc-text">以太网</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%A4%E6%8D%A2%E6%9C%BA"><span class="toc-number">2.1.</span> <span class="toc-text">交换机</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%99%9A%E6%8B%9F%E5%B1%80%E5%9F%9F%E7%BD%91"><span class="toc-number">2.2.</span> <span class="toc-text">虚拟局域网</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#ppp%E5%8D%8F%E8%AE%AE"><span class="toc-number">3.</span> <span class="toc-text">PPP协议</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#80211%E6%97%A0%E7%BA%BF%E5%B1%80%E5%9F%9F%E7%BD%91"><span class="toc-number">4.</span> <span class="toc-text">802.11无线局域网</span></a></li></ol>
     </nav>
   </div>
 </aside>
@@ -375,20 +375,20 @@
     </div>
     <div class="article-entry marked-body" itemprop="articleBody">
       
-        <h1><span id="arp协议">ARP协议</span></h1><h2><span id="mac地址">MAC地址</span></h2><p>MAC（或称LAN地址，物理地址，以太网地址）</p>
+        <h1 id="arp协议"><a href="#ARP协议" class="headerlink" title="ARP协议"></a>ARP协议</h1><h2 id="mac地址"><a href="#MAC地址" class="headerlink" title="MAC地址"></a>MAC地址</h2><p>MAC（或称LAN地址，物理地址，以太网地址）</p>
 <ul>
 <li>作用：用于局域网内标识一个帧从哪个接口出发，到达哪个物理相连的其他接口</li>
 <li>48为MAC地址（用于大部分LANs）,固化在网卡的ROM中，有时也可以软件设置</li>
 <li>例子：1A-2F-BB-76-09-AD（16进制）</li>
 </ul>
-<h2><span id="arp协议">ARP协议</span></h2><p><strong>地址解析协议</strong></p>
+<h2 id="arp协议"><a href="#ARP协议-1" class="headerlink" title="ARP协议"></a>ARP协议</h2><p><strong>地址解析协议</strong></p>
 <p><strong>ARP表</strong>：LAN中的每个IP结点（主机&#x2F;路由器）维护一个表</p>
 <ul>
 <li>存储某些LAN结点的IP&#x2F;MAC地址映射关系 &lt;IP地址；MAC地址；TTL&gt;</li>
 <li>TTL（Time To Live）经过这个时间以后该映射关系会被遗弃</li>
 </ul>
 <p><strong>ARP是“即插即用”协议：结点自主创建ARP表，无需干预</strong></p>
-<h1><span id="以太网">以太网</span></h1><p>“统治地位”的有线LAN技术：</p>
+<h1 id="以太网"><a href="#以太网" class="headerlink" title="以太网"></a>以太网</h1><p>“统治地位”的有线LAN技术：</p>
 <ul>
 <li>造价低廉</li>
 <li>应用最广泛的LAN技术</li>
@@ -396,11 +396,11 @@
 <li>满足网络速率需求：10 Mbps~10 Gbps</li>
 </ul>
 <p>……</p>
-<h2><span id="交换机">交换机</span></h2><p>网络设备对比</p>
+<h2 id="交换机"><a href="#交换机" class="headerlink" title="交换机"></a>交换机</h2><p>网络设备对比</p>
 <p><img src="https://raw.githubusercontent.com/Dezeem/Note-img/main/img/202207291729233.png" alt="image-20220729172900992"></p>
 <p>……</p>
-<h2><span id="虚拟局域网">虚拟局域网</span></h2><p>……</p>
-<h1><span id="ppp协议">PPP协议</span></h1><h1><span id="80211无线局域网">802.11无线局域网</span></h1><p>802.11b</p>
+<h2 id="虚拟局域网"><a href="#虚拟局域网" class="headerlink" title="虚拟局域网"></a>虚拟局域网</h2><p>……</p>
+<h1 id="ppp协议"><a href="#PPP协议" class="headerlink" title="PPP协议"></a>PPP协议</h1><h1 id="80211无线局域网"><a href="#802-11无线局域网" class="headerlink" title="802.11无线局域网"></a>802.11无线局域网</h1><p>802.11b</p>
 <ul>
 <li>2.4-2.5GHz频段</li>
 <li>最高速率：11 Mbps</li>

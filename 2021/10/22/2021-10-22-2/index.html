@@ -111,7 +111,7 @@
       </button>
     </div>
     <nav id="main-navbar" class="collapse navbar-collapse" itemscope itemtype="http://schema.org/SiteNavigationElement" role="navigation">
-      <ul class="nav navbar-nav main-nav ">
+      <ul class="nav navbar-nav main-nav menu-highlight">
         
         
         <li class="menu-item menu-item-home">
@@ -333,7 +333,7 @@
   <div class="slimContent">
     <nav id="toc" class="article-toc">
       <h3 class="toc-title">文章目录</h3>
-      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link"><span class="toc-number">1.</span> <span class="toc-text">实验二</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link"><span class="toc-number">1.1.</span> <span class="toc-text">基于HTTP获取&#x2F;响应交互</span></a></li><li class="toc-item toc-level-2"><a class="toc-link"><span class="toc-number">1.2.</span> <span class="toc-text">GET&#x2F;response交互</span></a></li><li class="toc-item toc-level-2"><a class="toc-link"><span class="toc-number">1.3.</span> <span class="toc-text">检索长文件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link"><span class="toc-number">1.4.</span> <span class="toc-text">HTML 带有嵌入对象的文件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link"><span class="toc-number">1.5.</span> <span class="toc-text">HTTP认证</span></a></li></ol></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%AE%9E%E9%AA%8C%E4%BA%8C"><span class="toc-number">1.</span> <span class="toc-text">实验二</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9F%BA%E4%BA%8Ehttp%E8%8E%B7%E5%8F%96x2f%E5%93%8D%E5%BA%94%E4%BA%A4%E4%BA%92"><span class="toc-number">1.1.</span> <span class="toc-text">基于HTTP获取&#x2F;响应交互</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#getx2fresponse%E4%BA%A4%E4%BA%92"><span class="toc-number">1.2.</span> <span class="toc-text">GET&#x2F;response交互</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%A3%80%E7%B4%A2%E9%95%BF%E6%96%87%E4%BB%B6"><span class="toc-number">1.3.</span> <span class="toc-text">检索长文件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#html-%E5%B8%A6%E6%9C%89%E5%B5%8C%E5%85%A5%E5%AF%B9%E8%B1%A1%E7%9A%84%E6%96%87%E4%BB%B6"><span class="toc-number">1.4.</span> <span class="toc-text">HTML 带有嵌入对象的文件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#http%E8%AE%A4%E8%AF%81"><span class="toc-number">1.5.</span> <span class="toc-text">HTTP认证</span></a></li></ol></li></ol>
     </nav>
   </div>
 </aside>
@@ -389,7 +389,7 @@
     </div>
     <div class="article-entry marked-body" itemprop="articleBody">
       
-        <h1><span id="实验二">实验二</span></h1><h2><span id="基于http获取x2f响应交互">基于HTTP获取&#x2F;响应交互</span></h2><p>​		1.启动浏览器，启动资源包嗅探器（尚未开始捕获），显示过滤http，等待一分多钟。</p>
+        <h1 id="实验二"><a href="#实验二" class="headerlink" title="实验二"></a>实验二</h1><h2 id="基于http获取x2f响应交互"><a href="#基于HTTP获取-x2F-响应交互" class="headerlink" title="基于HTTP获取&#x2F;响应交互"></a>基于HTTP获取&#x2F;响应交互</h2><p>​		1.启动浏览器，启动资源包嗅探器（尚未开始捕获），显示过滤http，等待一分多钟。</p>
 <p>​		2.访问指定网站<a target="_blank" rel="noopener" href="http://gaia.cs.umass.edu/wireshark-labs/HTTP-wireshark-file1.html">http://gaia.cs.umass.edu/wireshark-labs/HTTP-wireshark-file1.html</a>，</p>
 <p>​		显示如图：</p>
 <p><img src="https://i.loli.net/2021/10/22/GpuWCe1J8nR4Kkf.jpg" alt="屏幕截图 2021-10-22 111915.jpg"></p>
@@ -406,7 +406,7 @@
 <p>​		<img src="https://i.loli.net/2021/10/22/th27lHP8kMmZzfa.png" alt="image.png"></p>
 <p>​		可以看见Last-Modified行：<strong>Last-Modified: Fri, 22 Oct 2021 05:59:01 GMT\r\n</strong>，可以知道服务器检索上次修改的 HTML 文件的时间。</p>
 <p>​		以及<strong>Content-Length: 128\r\n</strong>，可以知道有多少字节的内容被退回到的浏览器。</p>
-<h2><span id="getx2fresponse交互">GET&#x2F;response交互</span></h2><p>​		1.清空缓存，启动嗅探器，启动浏览器，访问指定网址，再刷新一次，显示如图。</p>
+<h2 id="getx2fresponse交互"><a href="#GET-x2F-response交互" class="headerlink" title="GET&#x2F;response交互"></a>GET&#x2F;response交互</h2><p>​		1.清空缓存，启动嗅探器，启动浏览器，访问指定网址，再刷新一次，显示如图。</p>
 <p>​		<img src="https://i.loli.net/2021/10/22/UNxuZQBFKra71p2.png" alt="image.png"></p>
 <p>​		2.检查第一个从浏览器到服务器的GET请求，没有If-Modified-Since行</p>
 <p>​		<img src="https://i.loli.net/2021/10/22/kShfjyKxwRoCbQg.png" alt="image.png"></p>
@@ -417,16 +417,16 @@
 <p><img src="https://i.loli.net/2021/10/22/7hTxSasC5PblpfN.png" alt="image.png"></p>
 <p>可见<strong>If-Modified-Since: Fri, 22 Oct 2021 05:59:01 GMT\r\n</strong><br>        5.第二次HTTP返回的状态代码是304 Not Modified，没有明确返回文件内容，因为该网页内容在上次访问之后未被修改过，且本地中有上次访问的缓存。</p>
 <p>​		<img src="https://i.loli.net/2021/10/22/ep1PqucU6FCYsmQ.png" alt="image.png"></p>
-<h2><span id="检索长文件">检索长文件</span></h2><p>​		1.操作同上。</p>
+<h2 id="检索长文件"><a href="#检索长文件" class="headerlink" title="检索长文件"></a>检索长文件</h2><p>​		1.操作同上。</p>
 <p>​		2.开始数据嗅探，访问指定网站后停止。</p>
 <p><img src="https://i.loli.net/2021/10/22/3OKVZ1AMa2YR4Qm.png" alt="image.png"></p>
 <p>​		3.浏览器发送了一个GET请求消息，传输这一个HTTP响应需要4个TCP数据段。</p>
 <p><img src="https://i.loli.net/2021/10/22/8biSHfZ7qLvhXPm.png" alt="image.png"></p>
 <p>​		4.响应HTTP GET请求的相关的状态码200和短语是OK。</p>
-<h2><span id="html-带有嵌入对象的文件">HTML 带有嵌入对象的文件</span></h2><p>​		1.清除缓存，开始捕获，访问网站<a target="_blank" rel="noopener" href="http://gaia.cs.umass.edu/wireshark-labs/HTTP-wireshark-file4.html">http://gaia.cs.umass.edu/wireshark-labs/HTTP-wireshark-file4.html</a></p>
+<h2 id="html-带有嵌入对象的文件"><a href="#HTML-带有嵌入对象的文件" class="headerlink" title="HTML 带有嵌入对象的文件"></a>HTML 带有嵌入对象的文件</h2><p>​		1.清除缓存，开始捕获，访问网站<a target="_blank" rel="noopener" href="http://gaia.cs.umass.edu/wireshark-labs/HTTP-wireshark-file4.html">http://gaia.cs.umass.edu/wireshark-labs/HTTP-wireshark-file4.html</a></p>
 <p>​		2.停止捕获，查看内容。</p>
 <p><img src="https://i.loli.net/2021/10/22/EzqUwirVXOpcj9h.png" alt="image.png">		浏览器发送了3个HTTP GET 请求，浏览器并不是同时下载这两张图片，有先后顺序。GET请求有两个发送给了 128.119.245.12，一个发送到了178.79.137.164。</p>
-<h2><span id="http认证">HTTP认证</span></h2><p>​		1.清楚缓存，开始捕获，访问网站并登录。</p>
+<h2 id="http认证"><a href="#HTTP认证" class="headerlink" title="HTTP认证"></a>HTTP认证</h2><p>​		1.清楚缓存，开始捕获，访问网站并登录。</p>
 <p><img src="https://i.loli.net/2021/10/22/otQm4jUBS2GJsLY.png" alt="image.png"></p>
 <p><img src="https://i.loli.net/2021/10/22/GDq3X6M1ZgzYstW.png" alt="image.png"></p>
 <p>未登录时服务器返回401 Unauthorized，登录成功返回200 OK。</p>

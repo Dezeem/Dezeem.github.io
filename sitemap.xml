@@ -2,6 +2,15 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://dezeem.github.io/about/index.html</loc>
+    
+    <lastmod>2022-10-18</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>http://dezeem.github.io/categories/index.html</loc>
     
     <lastmod>2022-10-18</lastmod>
@@ -21,15 +30,6 @@
   
   <url>
     <loc>http://dezeem.github.io/2021/10/22/2021-10-22-2/</loc>
-    
-    <lastmod>2022-10-18</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>http://dezeem.github.io/about/index.html</loc>
     
     <lastmod>2022-10-18</lastmod>
     

@@ -1,3 +1,4 @@
+http://dezeem.github.io/books/index.html
 http://dezeem.github.io/categories/index.html
 http://dezeem.github.io/tags/index.html
 http://dezeem.github.io/2021/10/22/2021-10-22-2/

@@ -1,6 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>http://Dezeem.github.io/2023/06/06/2023-06-06-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/</loc>
+    <lastmod>2023-06-06</lastmod>
+  </url>
+  <url>
+    <loc>http://Dezeem.github.io/2021/10/22/2021-10-21-1/</loc>
+    <lastmod>2022-10-28</lastmod>
+  </url>
+  <url>
     <loc>http://Dezeem.github.io/2021/10/22/2021-10-22-2/</loc>
     <lastmod>2022-10-18</lastmod>
   </url>
@@ -78,10 +86,6 @@
   </url>
   <url>
     <loc>http://Dezeem.github.io/2021/10/26/2021-10-21-5/</loc>
-    <lastmod>2022-10-18</lastmod>
-  </url>
-  <url>
-    <loc>http://Dezeem.github.io/2021/10/22/2021-10-21-1/</loc>
     <lastmod>2022-10-18</lastmod>
   </url>
 </urlset> 

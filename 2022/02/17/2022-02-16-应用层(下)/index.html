@@ -1,165 +1,395 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
-    <head prefix="og: https://ogp.me/ns#">
+<html lang=zh>
+<head>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="color-scheme" content="light dark">
   
-  <title>应用层(下) - Dezeem&#39;log</title>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+  <meta name="renderer" content="webkit">
+  <meta http-equiv="Cache-Control" content="no-transform" />
+  <meta http-equiv="Cache-Control" content="no-siteapp" />
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="format-detection" content="telephone=no,email=no,adress=no">
+  <!-- Color theme for statusbar -->
+  <meta name="theme-color" content="#000000" />
+  <!-- 强制页面在当前窗口以独立页面显示,防止别人在框架里调用页面 -->
+  <meta http-equiv="window-target" content="_top" />
   
-    <link rel="shortcut icon" href="/favicon.png">
+  
+  <title>应用层(下) | Dezeem&#39;blog</title>
+  <meta name="description" content="应用层P2P应用架构 文件分发：客户机&#x2F;服务器 vs P2P    实例：BitTorrent 索引技术P2P系统的索引：信息到节点位置（IP+端口号）的映射 文件共享（电驴）  利用索引动态跟踪节点所共享的文件的位置 节点需要告诉索引它拥有哪些文件 节点搜索索引，从而获知能够得到哪些文件  即时消息（QQ）  索引负责将用户名映射到位置 当用户开启IM应用时，需要通知索引它的位置 节点">
+<meta property="og:type" content="article">
+<meta property="og:title" content="应用层(下)">
+<meta property="og:url" content="http://dezeem.github.io/2022/02/17/2022-02-16-%E5%BA%94%E7%94%A8%E5%B1%82(%E4%B8%8B)/index.html">
+<meta property="og:site_name" content="Dezeem&#39;log">
+<meta property="og:description" content="应用层P2P应用架构 文件分发：客户机&#x2F;服务器 vs P2P    实例：BitTorrent 索引技术P2P系统的索引：信息到节点位置（IP+端口号）的映射 文件共享（电驴）  利用索引动态跟踪节点所共享的文件的位置 节点需要告诉索引它拥有哪些文件 节点搜索索引，从而获知能够得到哪些文件  即时消息（QQ）  索引负责将用户名映射到位置 当用户开启IM应用时，需要通知索引它的位置 节点">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://s2.loli.net/2022/01/31/XuTgCmhrvA3Ptak.png">
+<meta property="og:image" content="https://s2.loli.net/2022/01/31/WNbS5CPonFzODgL.png">
+<meta property="og:image" content="https://s2.loli.net/2022/01/31/k1rgw4aKE9pVjTX.png">
+<meta property="og:image" content="https://s2.loli.net/2022/01/31/2ErN4Wm6npdHUPG.png">
+<meta property="og:image" content="https://s2.loli.net/2022/01/31/9CdcwzJ8KvVGqIL.png">
+<meta property="og:image" content="https://s2.loli.net/2022/01/31/IsmMqCRzAgG6EBr.png">
+<meta property="og:image" content="https://s2.loli.net/2022/01/31/ql6QWuINcPm2nYZ.png">
+<meta property="og:image" content="https://s2.loli.net/2022/01/31/yg7UorWSwjcxaVG.png">
+<meta property="og:image" content="https://s2.loli.net/2022/02/16/LmQ24FG3tPjgdif.png">
+<meta property="og:image" content="https://s2.loli.net/2022/02/16/T14ctMDIPnJxSRX.png">
+<meta property="og:image" content="https://s2.loli.net/2022/02/16/wsgXQSbBCG1UD9f.png">
+<meta property="og:image" content="https://s2.loli.net/2022/02/16/J8CHFkj6hYGgDWQ.png">
+<meta property="og:image" content="https://s2.loli.net/2022/02/16/2c9AbD65zSYdwjk.png">
+<meta property="og:image" content="c:\Users\28190\AppData\Roaming\Typora\typora-user-images\image-20220216200318662.png">
+<meta property="og:image" content="https://s2.loli.net/2022/02/16/Cesgkrp5yHAKnqc.png">
+<meta property="og:image" content="https://s2.loli.net/2022/02/16/JhX1WfjrmpezN5B.png">
+<meta property="og:image" content="https://s2.loli.net/2022/02/16/psfteZQ26kWiuMN.png">
+<meta property="og:image" content="https://s2.loli.net/2022/02/16/sfBDhm4gtqHv5zW.png">
+<meta property="og:image" content="https://s2.loli.net/2022/02/16/8XRWBe7kyziAd3r.png">
+<meta property="og:image" content="https://s2.loli.net/2022/02/16/q9tTDZNezPmgjw7.png">
+<meta property="article:published_time" content="2022-02-16T21:50:00.000Z">
+<meta property="article:modified_time" content="2022-10-18T01:23:29.969Z">
+<meta property="article:author" content="Dezeem">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://s2.loli.net/2022/01/31/XuTgCmhrvA3Ptak.png">
+  <!-- Canonical links -->
+  <link rel="canonical" href="http://dezeem.github.io/2022/02/17/2022-02-16-%E5%BA%94%E7%94%A8%E5%B1%82(%E4%B8%8B)/index.html">
+  
+    <link rel="alternate" href="/atom.xml" title="Dezeem&#39;log" type="application/atom+xml">
   
   
-    <link rel='manifest' href='/manifest.json'>
+    <link rel="icon" href="/favicon.png" type="image/x-icon">
   
+  
+<link rel="stylesheet" href="/css/style.css">
 
   
   
   
-  <meta property="og:title" content="应用层(下) - Dezeem&#39;log" />
-  
-  <meta property="og:type" content="article" />
-  
-  <meta property="og:url" content="http://dezeem.github.io/2022/02/17/2022-02-16-%E5%BA%94%E7%94%A8%E5%B1%82(%E4%B8%8B)/index.html" />
-  
-  <meta property="og:image" content="/favicon.png" />
-  
-  <meta property="og:article:published_time" content="2022-02-16T21:50:00.000Z" />
-  
-  <meta property="og:article:author" content="Dezeem" />
-  
-  
-
-  
-<link rel="stylesheet" href="/css/var.css">
-
-  
-<link rel="stylesheet" href="/css/main.css">
-
-  
-<link rel="stylesheet" href="/css/typography.css">
-
-  
-<link rel="stylesheet" href="/css/code-highlighting.css">
-
-  
-<link rel="stylesheet" href="/css/components.css">
-
-  
-<link rel="stylesheet" href="/css/nav.css">
-
-  
-<link rel="stylesheet" href="/css/paginator.css">
-
-  
-<link rel="stylesheet" href="/css/footer.css">
-
-  
-<link rel="stylesheet" href="/css/post-list.css">
-
-  
-  
-<link rel="stylesheet" href="/css/rainbow-banner.css">
-
-  
-  
-  
-<link rel="stylesheet" href="/css/toc.css">
-
-  
-  
-  
-  
-  
-<link rel="stylesheet" href="/css/post.css">
-
-  
-  
-  
-  
-  
-
   
 <meta name="generator" content="Hexo 6.3.0"></head>
-    <body
-        data-color-scheme="auto"
-        data-uppercase-categories="true"
+
+
+<body class="main-center" itemscope itemtype="http://schema.org/WebPage">
+  <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+  <div class="slimContent">
+    <div class="navbar-header">
+      
+      
+      <div class="profile-block text-center">
+        <a id="avatar" href="https://github.com/Dezeem" target="_blank">
+          <img class="img-circle img-rotate" src="/images/avatar.jpg" width="200" height="200">
+        </a>
+        <h2 id="name" class="hidden-xs hidden-sm">少先队长</h2>
+        <h3 id="title" class="hidden-xs hidden-sm hidden-md">Software Engineer</h3>
+        <small id="location" class="text-muted hidden-xs hidden-sm"><i class="icon icon-map-marker"></i> Shanghai, China</small>
+      </div>
+      
+      <div class="search" id="search-form-wrap">
+
+    <form class="search-form sidebar-form">
+        <div class="input-group">
+            <input type="text" class="search-form-input form-control" placeholder="搜索" />
+            <span class="input-group-btn">
+                <button type="submit" class="search-form-submit btn btn-flat" onclick="return false;"><i class="icon icon-search"></i></button>
+            </span>
+        </div>
+    </form>
+    <div class="ins-search">
+  <div class="ins-search-mask"></div>
+  <div class="ins-search-container">
+    <div class="ins-input-wrapper">
+      <input type="text" class="ins-search-input" placeholder="想要查找什么..." x-webkit-speech />
+      <button type="button" class="close ins-close ins-selectable" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+    </div>
+    <div class="ins-section-wrapper">
+      <div class="ins-section-container"></div>
+    </div>
+  </div>
+</div>
+
+
+</div>
+      <button class="navbar-toggle collapsed" type="button" data-toggle="collapse" data-target="#main-navbar" aria-controls="main-navbar" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+    </div>
+    <nav id="main-navbar" class="collapse navbar-collapse" itemscope itemtype="http://schema.org/SiteNavigationElement" role="navigation">
+      <ul class="nav navbar-nav main-nav menu-highlight">
         
-        data-rainbow-banner="true"
-        data-rainbow-banner-shown="auto"
-        data-rainbow-banner-month="6"
-        data-rainbow-banner-colors="#e50000,#ff8d00,#ffee00,#008121,#004cff,#760188"
         
-        data-config-root="/"
+        <li class="menu-item menu-item-home">
+          <a href="/.">
+            
+            <i class="icon icon-home-fill"></i>
+            
+            <span class="menu-title">首页</span>
+          </a>
+        </li>
         
-        data-toc="true"
-        data-toc-max-depth="2"
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives">
+            
+            <i class="icon icon-archives-fill"></i>
+            
+            <span class="menu-title">归档</span>
+          </a>
+        </li>
         
         
-    >
-        <nav id="theme-nav">
-    <div class="inner">
-        <a class="title" href="/">Dezeem</a>
-        <div class="nav-arrow"></div>
-        <div class="nav-items">
-            <a class="nav-item nav-item-home" href="/">Home</a>
+        <li class="menu-item menu-item-categories">
+          <a href="/categories">
             
+            <i class="icon icon-folder"></i>
             
-            <a class="nav-item" href="/archives">Archives</a>
+            <span class="menu-title">分类</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags">
             
+            <i class="icon icon-tags"></i>
             
+            <span class="menu-title">标签</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about">
             
-            <a class="nav-item" href="/tags">Tags</a>
+            <i class="icon icon-cup-fill"></i>
             
-            
-            
-            <a class="nav-item" href="/categories">Categories</a>
-            
-            
-            
-            <a class="nav-item" href="/projects">Projects</a>
-            
-            
-            
-            <a class="nav-item" href="/about">About</a>
-            
-            
-            
-            <a class="nav-item nav-item-github nav-item-icon" href="https://github.com/MrWillCom" target="_blank" aria-label="GitHub">&nbsp;</a>
-            
-            
-            
-            <a class="nav-item nav-item-search nav-item-icon" href="/search" target="_blank" aria-label="Search">&nbsp;</a>
-            
-            
+            <span class="menu-title">关于</span>
+          </a>
+        </li>
+        
+      </ul>
+      
+	
+    <ul class="social-links">
+    	
+        <li><a href="https://github.com/Dezeem" target="_blank" title="Github" data-toggle=tooltip data-placement=top><i class="icon icon-github"></i></a></li>
+        
+        <li><a href="/atom.xml" target="_blank" title="Rss" data-toggle=tooltip data-placement=top><i class="icon icon-rss"></i></a></li>
+        
+    </ul>
+
+    </nav>
+  </div>
+</header>
+
+  
+    <aside class="sidebar" itemscope itemtype="http://schema.org/WPSideBar">
+  <div class="slimContent">
+    
+      <div class="widget">
+    <h3 class="widget-title">公告</h3>
+    <div class="widget-body">
+        <div id="board">
+            <div class="content">
+                <h3>Learn and live.</h3>
+            </div>
         </div>
     </div>
-</nav>
-        
-<article class="post">
-    <div class="meta">
-        
-        <div class="categories text-uppercase">
-        
-            <a href="/categories/计网/">计网</a>
-        
-        </div>
-        
+</div>
 
-        
-        <div class="date" id="date">
-            <span>February</span>
-            <span>17,</span>
-            <span>2022</span>
-        </div>
-        
-
-        <h1 class="title">应用层(下)</h1>
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">分类</h3>
+    <div class="widget-body">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/C/">C++</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Wireshark/">Wireshark</a><span class="category-list-count">11</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F/">微信小程序</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%AE%97%E6%B3%95/">算法</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AE%A1%E7%BD%91/">计网</a><span class="category-list-count">7</span></li></ul>
     </div>
+  </div>
 
-    <div class="divider"></div>
 
-    <div class="content">
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">标签</h3>
+    <div class="widget-body">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%89%8B%E5%86%8C/" rel="tag">手册</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%AE%A1%E7%BD%91/" rel="tag">计网</a><span class="tag-list-count">11</span></li></ul>
+    </div>
+  </div>
+
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">标签云</h3>
+    <div class="widget-body tagcloud">
+      <a href="/tags/%E6%89%8B%E5%86%8C/" style="font-size: 13px;">手册</a> <a href="/tags/%E8%AE%A1%E7%BD%91/" style="font-size: 14px;">计网</a>
+    </div>
+  </div>
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget-body">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/01/">一月 2024</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/06/">六月 2023</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/10/">十月 2022</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/07/">七月 2022</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/02/">二月 2022</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/01/">一月 2022</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/10/">十月 2021</a><span class="archive-list-count">11</span></li></ul>
+    </div>
+  </div>
+
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget-body">
+      <ul class="recent-post-list list-unstyled no-thumbnail">
+        
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                <a class="category-link" href="/categories/C/">C++</a>
+              </p>
+              <p class="item-title">
+                <a href="/2024/01/16/2024-01-15-C++%E8%BF%9B%E9%98%B6/" class="title">Effectivate C++</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2024-01-15T20:30:00.000Z" itemprop="datePublished">2024-01-16</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                <a class="category-link" href="/categories/%E7%AE%97%E6%B3%95/">算法</a>
+              </p>
+              <p class="item-title">
+                <a href="/2023/06/06/2023-06-06-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" class="title">数据结构</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2023-06-06T09:14:13.000Z" itemprop="datePublished">2023-06-06</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                <a class="category-link" href="/categories/%E7%AE%97%E6%B3%95/">算法</a>
+              </p>
+              <p class="item-title">
+                <a href="/2022/10/05/2022-10-04-%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/" class="title">刷题笔记</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2022-10-04T20:24:00.000Z" itemprop="datePublished">2022-10-05</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                <a class="category-link" href="/categories/%E8%AE%A1%E7%BD%91/">计网</a>
+              </p>
+              <p class="item-title">
+                <a href="/2022/07/30/2022-07-29-%E5%B1%80%E5%9F%9F%E7%BD%91/" class="title">局域网</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2022-07-29T16:10:00.000Z" itemprop="datePublished">2022-07-30</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                <a class="category-link" href="/categories/%E8%AE%A1%E7%BD%91/">计网</a>
+              </p>
+              <p class="item-title">
+                <a href="/2022/07/29/2022-07-29-%E6%95%B0%E6%8D%AE%E9%93%BE%E8%B7%AF%E5%B1%82/" class="title">数据链路层</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2022-07-29T10:25:00.000Z" itemprop="datePublished">2022-07-29</time>
+              </p>
+            </div>
+          </li>
+          
+      </ul>
+    </div>
+  </div>
+  
+
+    
+  </div>
+</aside>
+
+  
+  
+  <aside class="sidebar sidebar-toc collapse " id="collapseToc" itemscope itemtype="http://schema.org/WPSideBar">
+  <div class="slimContent">
+    <nav id="toc" class="article-toc">
+      <h3 class="toc-title">文章目录</h3>
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%BA%94%E7%94%A8%E5%B1%82"><span class="toc-number">1.</span> <span class="toc-text">应用层</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#p2p%E5%BA%94%E7%94%A8"><span class="toc-number">1.0.1.</span> <span class="toc-text">P2P应用</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%9E%B6%E6%9E%84"><span class="toc-number">1.0.1.1.</span> <span class="toc-text">架构</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%96%87%E4%BB%B6%E5%88%86%E5%8F%91%E5%AE%A2%E6%88%B7%E6%9C%BAx2f%E6%9C%8D%E5%8A%A1%E5%99%A8-vs-p2p"><span class="toc-number">1.0.1.2.</span> <span class="toc-text">文件分发：客户机&#x2F;服务器 vs P2P</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%B4%A2%E5%BC%95%E6%8A%80%E6%9C%AF"><span class="toc-number">1.0.1.3.</span> <span class="toc-text">索引技术</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E9%9B%86%E4%B8%AD%E5%BC%8F%E7%B4%A2%E5%BC%95"><span class="toc-number">1.0.1.3.1.</span> <span class="toc-text">集中式索引</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E6%B4%AA%E6%B3%9B%E5%BC%8F%E6%9F%A5%E8%AF%A2query-flooding"><span class="toc-number">1.0.1.3.2.</span> <span class="toc-text">洪泛式查询：Query flooding</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%B1%82%E6%AC%A1%E5%BC%8F%E8%A6%86%E7%9B%96%E7%BD%91%E7%BB%9C"><span class="toc-number">1.0.1.3.3.</span> <span class="toc-text">层次式覆盖网络</span></a></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#scoket%E5%BA%94%E7%94%A8"><span class="toc-number">1.0.2.</span> <span class="toc-text">Scoket应用</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%BA%94%E7%94%A8%E7%BC%96%E7%A8%8B%E6%8E%A5%E5%8F%A3api"><span class="toc-number">1.0.2.1.</span> <span class="toc-text">应用编程接口API</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#socket-api"><span class="toc-number">1.0.2.2.</span> <span class="toc-text">Socket API</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#socket%E6%8A%BD%E8%B1%A1"><span class="toc-number">1.0.2.2.1.</span> <span class="toc-text">Socket抽象</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#socket-api-%E5%87%BD%E6%95%B0%E6%B2%A1%E5%90%AC%E6%87%82%E8%AF%A6%E8%A7%A3"><span class="toc-number">1.0.2.2.2.</span> <span class="toc-text">Socket API 函数（没听懂）详解</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%BD%91%E7%BB%9C%E5%AD%97%E8%8A%82%E9%A1%BA%E5%BA%8F"><span class="toc-number">1.0.2.3.</span> <span class="toc-text">网络字节顺序</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%A7%A3%E6%9E%90%E6%9C%8D%E5%8A%A1%E5%99%A8ip%E5%9C%B0%E5%9D%80"><span class="toc-number">1.0.2.4.</span> <span class="toc-text">解析服务器IP地址</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#tcp%E5%AE%A2%E6%88%B7%E7%AB%AF%E8%BD%AF%E4%BB%B6%E6%B5%81%E7%A8%8B"><span class="toc-number">1.0.2.5.</span> <span class="toc-text">TCP客户端软件流程</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#udp%E5%AE%A2%E6%88%B7%E7%AB%AF%E8%BD%AF%E4%BB%B6%E6%B5%81%E7%A8%8B"><span class="toc-number">1.0.2.6.</span> <span class="toc-text">UDP客户端软件流程</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4%E7%A7%8D%E7%B1%BB%E5%9E%8B%E7%9A%84%E5%9F%BA%E6%9C%AC%E6%9C%8D%E5%8A%A1%E5%99%A8"><span class="toc-number">1.0.2.7.</span> <span class="toc-text">4种类型的基本服务器</span></a></li></ol></li></ol></li></ol></li></ol>
+    </nav>
+  </div>
+</aside>
+
+<main class="main" role="main">
+  <div class="content">
+  <article id="post-2022-02-16-应用层(下)" class="article article-type-post" itemscope itemtype="http://schema.org/BlogPosting">
+    
+    <div class="article-header">
+      
+        
+  
+    <h1 class="article-title" itemprop="name">
+      应用层(下)
+    </h1>
+  
+
+      
+      <div class="article-meta">
+        <span class="article-date">
+    <i class="icon icon-calendar-check"></i>
+	<a href="/2022/02/17/2022-02-16-%E5%BA%94%E7%94%A8%E5%B1%82(%E4%B8%8B)/" class="article-date">
+	  <time datetime="2022-02-16T21:50:00.000Z" itemprop="datePublished">2022-02-17</time>
+	</a>
+</span>
+        
+  <span class="article-category">
+    <i class="icon icon-folder"></i>
+    <a class="article-category-link" href="/categories/%E8%AE%A1%E7%BD%91/">计网</a>
+  </span>
+
+        
+
+        
+	<span class="article-read hidden-xs">
+	    <i class="icon icon-eye-fill" aria-hidden="true"></i>
+	    <span id="busuanzi_container_page_pv">
+			<span id="busuanzi_value_page_pv">0</span>
+		</span>
+	</span>
+
+
+        <span class="post-comment"><i class="icon icon-comment"></i> <a href="/2022/02/17/2022-02-16-%E5%BA%94%E7%94%A8%E5%B1%82(%E4%B8%8B)/#comments" class="article-comment-link">评论</a></span>
+        
+	
+		<span class="post-wordcount hidden-xs" itemprop="wordCount">字数统计: 794(字)</span>
+	
+	
+		<span class="post-readcount hidden-xs" itemprop="timeRequired">阅读时长: 2(分)</span>
+	
+
+      </div>
+    </div>
+    <div class="article-entry marked-body" itemprop="articleBody">
+      
         <h1 id="应用层"><a href="#应用层" class="headerlink" title="应用层"></a>应用层</h1><h3 id="p2p应用"><a href="#P2P应用" class="headerlink" title="P2P应用"></a>P2P应用</h3><h4 id="架构"><a href="#架构" class="headerlink" title="架构"></a>架构</h4><p><img src="https://s2.loli.net/2022/01/31/XuTgCmhrvA3Ptak.png" alt="image.png"></p>
 <h4 id="文件分发客户机x2f服务器-vs-p2p"><a href="#文件分发：客户机-x2F-服务器-vs-P2P" class="headerlink" title="文件分发：客户机&#x2F;服务器 vs P2P"></a>文件分发：客户机&#x2F;服务器 vs P2P</h4><p><img src="https://s2.loli.net/2022/01/31/WNbS5CPonFzODgL.png" alt="image.png"></p>
 <p><img src="https://s2.loli.net/2022/01/31/k1rgw4aKE9pVjTX.png" alt="image.png"></p>
@@ -270,111 +500,158 @@
 </ul>
 <p>。。。。。。</p>
 
+      
     </div>
-
+    <div class="article-footer">
+      <blockquote class="mt-2x">
+  <ul class="post-copyright list-unstyled">
     
-    <div class="about">
-        <h1>About this Post</h1>
-        <div class="details">
-            <p>This post is written by Dezeem, licensed under <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc/4.0">CC BY-NC 4.0</a>.</p>
-        </div>
-        
-    </div>
+    <li class="post-copyright-link hidden-xs">
+      <strong>本文链接：</strong>
+      <a href="http://dezeem.github.io/2022/02/17/2022-02-16-%E5%BA%94%E7%94%A8%E5%B1%82(%E4%B8%8B)/" title="应用层(下)" target="_blank" rel="external">http://dezeem.github.io/2022/02/17/2022-02-16-应用层(下)/</a>
+    </li>
     
+    <li class="post-copyright-license">
+      <strong>版权声明： </strong> 本博客所有文章除特别声明外，均采用 <a href="http://creativecommons.org/licenses/by/4.0/deed.zh" target="_blank" rel="external">CC BY 4.0 CN协议</a> 许可协议。转载请注明出处！
+    </li>
+  </ul>
+</blockquote>
 
-    <div class="container post-prev-next">
-        
-        <a href="/2022/02/17/2022-02-17-%E4%BC%A0%E8%BE%93%E5%B1%82(%E4%B8%8A)/" class="next">
-            <div>
-                <div class="text">
-                    <p class="label">Next</p>
-                    <h3 class="title">传输层(上)</h3>
-                </div>
-            </div>
+
+<div class="panel panel-default panel-badger">
+  <div class="panel-body">
+    <figure class="media">
+      <div class="media-left">
+        <a href="https://github.com/Dezeem" target="_blank" class="img-burn thumb-sm visible-lg">
+          <img src="/images/avatar.jpg" class="img-rounded w-full" alt="">
         </a>
-        
-        
-        <a href="/2022/01/30/2022-01-29-%E5%BA%94%E7%94%A8%E5%B1%82(%E4%B8%8A)/" class="prev">
-            <div>
-                <div class="text">
-                    <p class="label">Previous</p>
-                    <h3 class="title">应用层(上)</>
-                </div>
-            </div>
-        </a>
-        
+      </div>
+      <div class="media-body">
+        <h3 class="media-heading"><a href="https://github.com/Dezeem" target="_blank"><span class="text-dark">少先队长</span><small class="ml-1x">Software Engineer</small></a></h3>
+        <div>第四公民</div>
+      </div>
+    </figure>
+  </div>
+</div>
+
+
     </div>
-
+  </article>
+  
     
-        
-        
-    
-</article>
+  <section id="comments">
+  	
+  </section>
 
-        <footer>
-    <div class="inner">
-        <div class="links">
-            
-            <div class="group">
-                <h2 class="title">Blog</h2>
-                
-                <a href="/" class="item">Blog</a>
-                
-                <a href="/search" class="item">Search</a>
-                
-                <a href="/about" class="item">About</a>
-                
-                <a href="/atom.xml" class="item">RSS</a>
-                
-            </div>
-            
-            <div class="group">
-                <h2 class="title">Me</h2>
-                
-                <a target="_blank" rel="noopener" href="https://github.com/MrWillCom" class="item">GitHub</a>
-                
-            </div>
-            
+
+  
+</div>
+
+  <nav class="bar bar-footer clearfix" data-stick-bottom>
+  <div class="bar-inner">
+  
+  <ul class="pager pull-left">
+    
+    <li class="prev">
+      <a href="/2022/02/17/2022-02-17-%E4%BC%A0%E8%BE%93%E5%B1%82(%E4%B8%8A)/" title="传输层(上)"><i class="icon icon-angle-left" aria-hidden="true"></i><span>&nbsp;&nbsp;上一篇</span></a>
+    </li>
+    
+    
+    <li class="next">
+      <a href="/2022/01/30/2022-01-29-%E5%BA%94%E7%94%A8%E5%B1%82(%E4%B8%8A)/" title="应用层(上)"><span>下一篇&nbsp;&nbsp;</span><i class="icon icon-angle-right" aria-hidden="true"></i></a>
+    </li>
+    
+    
+    <li class="toggle-toc">
+      <a class="toggle-btn   collapsed  " data-toggle="collapse" href="#collapseToc" aria-expanded="false" title="文章目录" role="button">    <span>[&nbsp;</span><span>文章目录</span>
+        <i class="text-collapsed icon icon-anchor"></i>
+        <i class="text-in icon icon-close"></i>
+        <span>]</span>
+      </a>
+    </li>
+    
+  </ul>
+  
+  
+  
+  <div class="bar-right">
+    
+  </div>
+  </div>
+</nav>
+  
+
+
+</main>
+
+  <footer class="footer" itemscope itemtype="http://schema.org/WPFooter">
+	
+	
+    <ul class="social-links">
+    	
+        <li><a href="https://github.com/Dezeem" target="_blank" title="Github" data-toggle=tooltip data-placement=top><i class="icon icon-github"></i></a></li>
+        
+        <li><a href="/atom.xml" target="_blank" title="Rss" data-toggle=tooltip data-placement=top><i class="icon icon-rss"></i></a></li>
+        
+    </ul>
+
+    <div class="copyright">
+    	
+        &copy; 2024 Dezeem
+        
+        <div class="publishby">
+        	Theme by <a href="https://github.com/cofess" target="_blank"> cofess </a>base on <a href="https://github.com/cofess/hexo-theme-pure" target="_blank">pure</a>.
         </div>
-        <span>&copy; 2024 Dezeem<br>Powered by <a href="http://hexo.io/" target="_blank">Hexo</a> </span>
-        
-        
-            <br>
-            <div class="color-scheme-toggle" role="radiogroup" id="theme-color-scheme-toggle">
-                <label>
-                    <input type="radio" value="light">
-                    <span>Light</span>
-                </label>
-                <label>
-                    <input type="radio" value="dark">
-                    <span>Dark</span>
-                </label>
-                <label>
-                    <input type="radio" value="auto">
-                    <span>Auto</span>
-                </label>
-            </div>
-        
     </div>
 </footer>
+  <script src="//cdn.jsdelivr.net/npm/jquery@1.12.4/dist/jquery.min.js"></script>
+<script>
+window.jQuery || document.write('<script src="js/jquery.min.js"><\/script>')
+</script>
+
+<script src="/js/plugin.min.js"></script>
 
 
-        
-<script src="/js/main.js"></script>
+<script src="/js/application.js"></script>
 
-        
-        
-        
 
-        
-        <script src="https://unpkg.com/scrollreveal"></script>
-        <script>
-            window.addEventListener('load', () => {
-                ScrollReveal({ delay: 250, reset: true, easing: 'cubic-bezier(0, 0, 0, 1)' })
-                ScrollReveal().reveal('.post-list-item .cover-img img')
-                ScrollReveal().reveal('.post-list-item, .card, .content p img, .content .block-large img', { distance: '60px', origin: 'bottom', duration: 800 })
-            })
-        </script>
-        
-    </body>
+    <script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: '文章',
+            PAGES: '页面',
+            CATEGORIES: '分类',
+            TAGS: '标签',
+            UNTITLED: '(未命名)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+
+<script src="/js/insight.js"></script>
+
+
+
+
+
+
+   
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+
+   
+
+
+
+
+
+
+</body>
 </html>

@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
-  <head prefix="og: https://ogp.me/ns#">
+    <head prefix="og: https://ogp.me/ns#">
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="color-scheme" content="light dark">
@@ -10,34 +10,24 @@
     <link rel="shortcut icon" href="/favicon.png">
   
   
-  <link rel='manifest' href='/manifest.json'>
+    <link rel='manifest' href='/manifest.json'>
   
 
-  <meta name="description" content="实验五​		UDP是User Datagram Protocol的简称， 中文名是用户数据报协议，是OSI（Open System Interconnection，开放式系统互联） 参考模型中一种无连接的传输层协议，提供面向事务的简单不可靠信息传送服务。——百度百科 ​		1.在 Wireshark 中捕获数据包，然后执行一些会导致主机发送和接收多个 UDP 数据包的操作。（运行python代码发">
-<meta property="og:type" content="article">
-<meta property="og:title" content="UDP">
-<meta property="og:url" content="http://dezeem.github.io/2021/10/26/2021-10-21-5/index.html">
-<meta property="og:site_name" content="Dezeem&#39;log">
-<meta property="og:description" content="实验五​		UDP是User Datagram Protocol的简称， 中文名是用户数据报协议，是OSI（Open System Interconnection，开放式系统互联） 参考模型中一种无连接的传输层协议，提供面向事务的简单不可靠信息传送服务。——百度百科 ​		1.在 Wireshark 中捕获数据包，然后执行一些会导致主机发送和接收多个 UDP 数据包的操作。（运行python代码发">
-<meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://i.loli.net/2021/10/26/tiCywXKFIuGcYoe.png">
-<meta property="og:image" content="https://i.loli.net/2021/10/26/oEy1WwcSvBbfXzd.png">
-<meta property="article:published_time" content="2021-10-26T12:52:13.000Z">
-<meta property="article:modified_time" content="2024-05-08T13:02:58.452Z">
-<meta property="article:author" content="Dezeem">
-<meta property="article:tag" content="计网">
-<meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://i.loli.net/2021/10/26/tiCywXKFIuGcYoe.png">
-
-  
-  
-<link rel="stylesheet" href="https://unpkg.com/simple-icons-font@v13/font/simple-icons.min.css">
-
   
   
   
-<link rel="stylesheet" href="https://unpkg.com/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
-
+  <meta property="og:title" content="UDP - Dezeem&#39;log" />
+  
+  <meta property="og:type" content="article" />
+  
+  <meta property="og:url" content="http://dezeem.github.io/2021/10/26/2021-10-21-5/index.html" />
+  
+  <meta property="og:image" content="/favicon.png" />
+  
+  <meta property="og:article:published_time" content="2021-10-26T12:52:13.000Z" />
+  
+  <meta property="og:article:author" content="Dezeem" />
+  
   
 
   
@@ -53,30 +43,8 @@
 <link rel="stylesheet" href="/css/code-highlighting.css">
 
   
-  
-  
-<link rel="stylesheet" href="/css/components/card.css">
+<link rel="stylesheet" href="/css/components.css">
 
-  
-  
-  
-  
-<link rel="stylesheet" href="/css/components/button.css">
-
-  
-  
-  
-  
-<link rel="stylesheet" href="/css/components/badge.css">
-
-  
-  
-  
-  
-<link rel="stylesheet" href="/css/components/utilities.css">
-
-  
-  
   
 <link rel="stylesheet" href="/css/nav.css">
 
@@ -110,106 +78,81 @@
   
   
   
-  
-  
-<link rel="stylesheet" href="/css/scroll-reveal.css">
 
-  
-  
-  
-<link rel="stylesheet" href="/css/view-transition.css">
-
-  
-  
-  <script src="https://unpkg.com/lenis@1.1.9/dist/lenis.min.js"></script>
-  
-<link rel="stylesheet" href="https://unpkg.com/lenis@1.1.9/dist/lenis.css">
-
-  
-<script src="/js/smooth-scroll.js"></script>
-
-  
-
-  
-
-  <script>var ThemeCupertino = {}</script>
   
 <meta name="generator" content="Hexo 6.3.0"></head>
-
-  <body
-    data-color-scheme="auto"
-    data-uppercase-categories="true"
-    
-    data-rainbow-banner="true"
-    data-rainbow-banner-shown="auto"
-    data-rainbow-banner-month="6"
-    data-rainbow-banner-colors="#e50000,#ff8d00,#ffee00,#008121,#004cff,#760188"
-    
-    data-config-root="/"
-    
-    data-toc="true"
-    data-toc-max-depth="2"
-    
-    
-    
-    data-scroll-reveal-disappear="false"
-    data-scroll-reveal-query=".scroll-reveal, .post-list-item, .card, .content p img, .content .block-large img"
-    
-  >
-    <a href="#main-content" id="skip-to-content">Skip to content</a>
-    <nav id="theme-nav">
-  <div class="inner">
-    <a class="title" href="/">Blog</a>
-    <div class="nav-arrow"></div>
-    <div class="nav-items">
-      <a class="nav-item nav-item-home" href="/" style="--index: 0">Home</a>
-
-      
-      <a class="nav-item" href="/archives" style="--index: 1">Archives</a>
-      
-      <a class="nav-item" href="/friends" style="--index: 2">Friends</a>
-      
-      <a class="nav-item" href="/projects" style="--index: 3">Projects</a>
-      
-      <a class="nav-item" href="/about" style="--index: 4">About</a>
-      
-      <a class="nav-item is-icon" target="_blank" rel="noopener" href="https://github.com/MrWillCom" style="--index: 5"><i class="si si-github"></i></a>
-      
-      <a class="nav-item is-icon" target="_blank" rel="noopener" href="https://codepen.io/mrwillcom" style="--index: 6"><i class="si si-codepen"></i></a>
-      
-      <a class="nav-item is-icon" target="_blank" rel="noopener" href="https://www.patreon.com/MrWillCom" style="--index: 7"><i class="si si-patreon"></i></a>
-      
-      <a class="nav-item is-icon" target="_blank" rel="noopener" href="https://noc.social/@MrWillCom" style="--index: 8"><i class="si si-mastodon"></i></a>
-      
-      <a class="nav-item is-icon" href="/search" style="--index: 9"><i class="bi bi-search"></i></a>
-      
+    <body
+        data-color-scheme="auto"
+        data-uppercase-categories="true"
+        
+        data-rainbow-banner="true"
+        data-rainbow-banner-shown="auto"
+        data-rainbow-banner-month="7"
+        data-rainbow-banner-colors="#e50000,#ff8d00,#ffee00,#008121,#004cff,#760188"
+        
+        data-config-root="/"
+        
+        data-toc="true"
+        data-toc-max-depth="2"
+        
+        
+    >
+        <nav id="theme-nav">
+    <div class="inner">
+        <a class="title" href="/">Dezeem</a>
+        <div class="nav-arrow"></div>
+        <div class="nav-items">
+            <a class="nav-item nav-item-home" href="/">Home</a>
+            
+            
+            <a class="nav-item" href="/archives">Archives</a>
+            
+            
+            
+            <a class="nav-item" href="/tags">Tags</a>
+            
+            
+            
+            <a class="nav-item" href="/categories">Categories</a>
+            
+            
+            
+            <a class="nav-item" href="/about">About</a>
+            
+            
+            
+            <a class="nav-item nav-item-github nav-item-icon" href="https://github.com/Dezeem" target="_blank" aria-label="GitHub">&nbsp;</a>
+            
+            
+        </div>
     </div>
-  </div>
 </nav>
-
-    <main id="main-content">
-      
+        
 <article class="post">
-  <div class="meta">
-    
-    <div class="categories text-uppercase">
-    
-      <a href="/categories/Wireshark/">Wireshark</a>
-    
+    <div class="meta">
+        
+        <div class="categories text-uppercase">
+        
+            <a href="/categories/Wireshark/">Wireshark</a>
+        
+        </div>
+        
+
+        
+        <div class="date" id="date">
+            <span>October</span>
+            <span>26,</span>
+            <span>2021</span>
+        </div>
+        
+
+        <h1 class="title">UDP</h1>
     </div>
-    
 
-    
-    <time class="date" datetime="2021-10-26T20:52:13+08:00">
-      October 26, 2021
-    </time>
-    
+    <div class="divider"></div>
 
-    <h1 class="title">UDP</h1>
-  </div>
-
-  <div class="content">
-    <h1 id="实验五"><a href="#实验五" class="headerlink" title="实验五"></a>实验五</h1><p>​		UDP是User Datagram Protocol的简称， 中文名是用户数据报协议，是OSI（Open System Interconnection，开放式系统互联） 参考模型中一种无连接的传输层协议，提供面向事务的简单不可靠信息传送服务。——百度百科</p>
+    <div class="content">
+        <h1 id="实验五"><a href="#实验五" class="headerlink" title="实验五"></a>实验五</h1><p>​		UDP是User Datagram Protocol的简称， 中文名是用户数据报协议，是OSI（Open System Interconnection，开放式系统互联） 参考模型中一种无连接的传输层协议，提供面向事务的简单不可靠信息传送服务。——百度百科</p>
 <p>​		1.在 Wireshark 中捕获数据包，然后执行一些会导致主机发送和接收多个 UDP 数据包的操作。（运行python代码发送UDP数据包）</p>
 <p>​		2.停止数据包捕获后，设置数据包筛选器，以便 Wireshark 仅显示在主机上发送和接收的 UDP 数据包。 选择其中一个 UDP 数据包并在详细信息窗口中展开 UDP 字段。</p>
 <p>​		<img src="https://i.loli.net/2021/10/26/tiCywXKFIuGcYoe.png" alt="image.png"></p>
@@ -227,145 +170,118 @@
 <p>​		检查主机发送第一个UDP包的一对UDP数据包，第二个UDP数据包是该第一个UDP数据包的回复。（提示：要发送第二个数据包以响应第一个数据包，第一个数据包的发送者应是第二个数据包的目的地）。 描述两个数据包中的端口编号之间的关系。</p>
 <p>​		<strong>发送过去的 源端口号 之后就变成了回应时的目的端口号</strong></p>
 
-  </div>
+    </div>
 
-  
-  <div class="about">
-    <h1>About this Post</h1>
-    <div class="details">
-      <p>This post is written by Dezeem, licensed under <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc/4.0">CC BY-NC 4.0</a>.</p>
+    
+    <div class="about">
+        <h1>About this Post</h1>
+        <div class="details">
+            <p>This post is written by Dezeem, licensed under <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc/4.0">CC BY-NC 4.0</a>.</p>
+        </div>
+        
+        <p class="tags text-capitalize">
+            
+            <i class="icon"></i>
+            <a href="/tags/计网/" class="tag">#计网</a>
+        </p>
+        
     </div>
     
-    <p class="tags">
-      <i class="bi bi-tags icon"></i>
-      
-      <a href="/tags/%E8%AE%A1%E7%BD%91/" class="tag">#计网</a>
-      
-    </p>
-    
-  </div>
-  
 
-  <div class="container post-prev-next">
-    
-    <a href="/2021/10/26/2021-10-21-6/" class="next">
-      <div class="text">
-        <p class="label">Next</p>
-        <h3 class="title">IP</h3>
-      </div>
-    </a>
-    
-    
-    <a href="/2021/10/25/2021-10-24-4/" class="prev">
-      <div class="text">
-        <p class="label">Previous</p>
-        <h3 class="title">TCP</h3>
-      </div>
-    </a>
-    
-  </div>
+    <div class="container post-prev-next">
+        
+        <a href="/2021/10/26/2021-10-21-6/" class="next">
+            <div>
+                <div class="text">
+                    <p class="label">Next</p>
+                    <h3 class="title">IP</h3>
+                </div>
+            </div>
+        </a>
+        
+        
+        <a href="/2021/10/25/2021-10-24-4/" class="prev">
+            <div>
+                <div class="text">
+                    <p class="label">Previous</p>
+                    <h3 class="title">TCP</>
+                </div>
+            </div>
+        </a>
+        
+    </div>
 
-  
     
+        
+        
     
-  
 </article>
 
-
-    </main>
-    <footer>
-  <div class="inner">
-    <div class="links">
-      
-      <div class="group">
-        <h2 class="title">Blog</h2>
+        <footer>
+    <div class="inner">
+        <div class="links">
+            
+            <div class="group">
+                <h2 class="title">Blog</h2>
+                
+                <a href="/" class="item">Blog</a>
+                
+                <a href="/about" class="item">About</a>
+                
+                <a href="/atom.xml" class="item">RSS</a>
+                
+            </div>
+            
+            <div class="group">
+                <h2 class="title">Me</h2>
+                
+                <a target="_blank" rel="noopener" href="https://github.com/Dezeem" class="item">GitHub</a>
+                
+            </div>
+            
+        </div>
+        <span>&copy; 2024 Dezeem<br>Powered by <a href="http://hexo.io/" target="_blank">Hexo</a> </span>
         
-        <a href="/" class="item">Home</a>
+        <br>
+        <span class="footer-extra-description">See you again.</span>
         
-        <a href="/archives" class="item">Archives</a>
         
-        <a href="/tags" class="item">Tags</a>
+            <br>
+            <div class="color-scheme-toggle" role="radiogroup" id="theme-color-scheme-toggle">
+                <label>
+                    <input type="radio" value="light">
+                    <span>Light</span>
+                </label>
+                <label>
+                    <input type="radio" value="dark">
+                    <span>Dark</span>
+                </label>
+                <label>
+                    <input type="radio" value="auto">
+                    <span>Auto</span>
+                </label>
+            </div>
         
-        <a href="/categories" class="item">Categories</a>
-        
-        <a href="/search" class="item">Search</a>
-        
-        <a href="/friends" class="item">Friends</a>
-        
-        <a href="/projects" class="item">Projects</a>
-        
-        <a href="/resume" class="item">Resume</a>
-        
-        <a href="/about" class="item">About</a>
-        
-        <a href="/atom.xml" class="item">RSS</a>
-        
-      </div>
-      
-      <div class="group">
-        <h2 class="title">Projects</h2>
-        
-        <a target="_blank" rel="noopener" href="https://github.com/MrWillCom/hexo-theme-cupertino" class="item">Hexo Theme Cupertino</a>
-        
-        <a target="_blank" rel="noopener" href="https://github.com/MrWillCom/next-mastodon-gallery" class="item">Next Mastodon Gallery</a>
-        
-      </div>
-      
-      <div class="group">
-        <h2 class="title">Me</h2>
-        
-        <a target="_blank" rel="noopener" href="https://github.com/MrWillCom" class="item">GitHub</a>
-        
-        <a target="_blank" rel="noopener" href="https://codepen.io/mrwillcom" class="item">CodePen</a>
-        
-        <a target="_blank" rel="noopener" href="https://www.patreon.com/MrWillCom" class="item">Patreon</a>
-        
-        <a target="_blank" rel="noopener" href="https://noc.social/@MrWillCom" class="item">Mastodon</a>
-        
-        <a href="mailto:mr.will.com@outlook.com" class="item">Email</a>
-        
-      </div>
-      
     </div>
-    <span>&copy; 2024 Dezeem<br>Powered by <a href="http://hexo.io/" target="_blank">Hexo</a></span>
-    
-    
-      <br>
-      <div class="color-scheme-toggle" role="radiogroup" id="theme-color-scheme-toggle">
-        <label>
-          <input type="radio" value="light">
-          <span>Light</span>
-        </label>
-        <label>
-          <input type="radio" value="dark">
-          <span>Dark</span>
-        </label>
-        <label>
-          <input type="radio" value="auto">
-          <span>Auto</span>
-        </label>
-      </div>
-    
-  </div>
 </footer>
 
 
-    
+        
 <script src="/js/main.js"></script>
 
+        
+        
+        
 
-    
-
-    
-    
-<script src="/js/scroll-reveal.js"></script>
-
-    
-
-    
-
-    
-
-    
-  </body>
+        
+        <script src="https://unpkg.com/scrollreveal"></script>
+        <script>
+            window.addEventListener('load', () => {
+                ScrollReveal({ delay: 250, reset: true, easing: 'cubic-bezier(0, 0, 0, 1)' })
+                ScrollReveal().reveal('.post-list-item .cover-img img')
+                ScrollReveal().reveal('.post-list-item, .card, .content p img, .content .block-large img', { distance: '60px', origin: 'bottom', duration: 800 })
+            })
+        </script>
+        
+    </body>
 </html>

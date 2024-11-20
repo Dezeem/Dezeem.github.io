@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head prefix="og: https://ogp.me/ns#">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light dark">
+  
+  <title>SSL - 少先队长的Blog</title>
+  
+    <link rel="shortcut icon" href="/favicon.png">
+  
+  
+    <link rel='manifest' href='/manifest.json'>
+  
+
+  
+  
+  
+  <meta property="og:title" content="SSL - 少先队长的Blog" />
+  
+  <meta property="og:type" content="article" />
+  
+  <meta property="og:url" content="http://dezeem.github.io/2021/10/30/2021-10-21-12/index.html" />
+  
+  <meta property="og:image" content="/favicon.png" />
+  
+  <meta property="og:article:published_time" content="2021-10-29T21:39:00.000Z" />
+  
+  <meta property="og:article:author" content="Dezeem" />
+  
+  
+
+  
+<link rel="stylesheet" href="/css/var.css">
+
+  
+<link rel="stylesheet" href="/css/main.css">
+
+  
+<link rel="stylesheet" href="/css/typography.css">
+
+  
+<link rel="stylesheet" href="/css/code-highlighting.css">
+
+  
+<link rel="stylesheet" href="/css/components.css">
+
+  
+<link rel="stylesheet" href="/css/nav.css">
+
+  
+<link rel="stylesheet" href="/css/paginator.css">
+
+  
+<link rel="stylesheet" href="/css/footer.css">
+
+  
+<link rel="stylesheet" href="/css/post-list.css">
+
+  
+  
+<link rel="stylesheet" href="/css/rainbow-banner.css">
+
+  
+  
+  
+<link rel="stylesheet" href="/css/toc.css">
+
+  
+  
+  
+  
+  
+<link rel="stylesheet" href="/css/post.css">
+
+  
+  
+  
+  
+  
+
+  
+<meta name="generator" content="Hexo 6.3.0"></head>
+    <body
+        data-color-scheme="auto"
+        data-uppercase-categories="true"
+        
+        data-rainbow-banner="true"
+        data-rainbow-banner-shown="auto"
+        data-rainbow-banner-month="6"
+        data-rainbow-banner-colors="#e50000,#ff8d00,#ffee00,#008121,#004cff,#760188"
+        
+        data-config-root="/"
+        
+        data-toc="true"
+        data-toc-max-depth="2"
+        
+        
+    >
+        <nav id="theme-nav">
+    <div class="inner">
+        <a class="title" href="/">Blog</a>
+        <div class="nav-arrow"></div>
+        <div class="nav-items">
+            <a class="nav-item nav-item-home" href="/">Home</a>
+            
+            
+            <a class="nav-item" href="/archives">Archives</a>
+            
+            
+            
+            <a class="nav-item" href="/friends">Friends</a>
+            
+            
+            
+            <a class="nav-item" href="/projects">Projects</a>
+            
+            
+            
+            <a class="nav-item" href="/about">About</a>
+            
+            
+            
+            <a class="nav-item nav-item-github nav-item-icon" href="https://github.com/MrWillCom" target="_blank" aria-label="GitHub">&nbsp;</a>
+            
+            
+            
+            <a class="nav-item nav-item-codepen nav-item-icon" href="https://codepen.io/mrwillcom" target="_blank" aria-label="CodePen">&nbsp;</a>
+            
+            
+            
+            <a class="nav-item nav-item-patreon nav-item-icon" href="https://www.patreon.com/MrWillCom" target="_blank" aria-label="Patreon">&nbsp;</a>
+            
+            
+            
+            <a class="nav-item nav-item-mastodon nav-item-icon" href="https://noc.social/@MrWillCom" target="_blank" aria-label="Mastodon">&nbsp;</a>
+            
+            
+            
+            <a class="nav-item nav-item-discord nav-item-icon" href="https://discord.gg/UKuFDjcfY8" target="_blank" aria-label="Discord">&nbsp;</a>
+            
+            
+            
+            <a class="nav-item nav-item-search nav-item-icon" href="/search" target="_blank" aria-label="Search">&nbsp;</a>
+            
+            
+        </div>
+    </div>
+</nav>
+        
+<article class="post">
+    <div class="meta">
+        
+        <div class="categories text-uppercase">
+        
+            <a href="/categories/Wireshark/">Wireshark</a>
+        
+        </div>
+        
+
+        
+        <div class="date" id="date">
+            <span>October</span>
+            <span>30,</span>
+            <span>2021</span>
+        </div>
+        
+
+        <h1 class="title">SSL</h1>
+    </div>
+
+    <div class="divider"></div>
+
+    <div class="content">
+        <h1 id="实验十二"><a href="#实验十二" class="headerlink" title="实验十二"></a>实验十二</h1><p>​		<img src="https://i.loli.net/2021/10/29/r7oKa5uW6tFRYIc.png" alt="image.png"></p>
+<p>1.对于前 8个以太网帧，请分别指出每一个帧的来源（客户端和服务器），确定每个帧包含的SSL记录的数量，并且列出包含SSL记录的类型。绘制客户端和服务器含有箭头指向的时序图。</p>
+<p><img src="https://i.loli.net/2021/10/29/uWHFYlKdyz5OJQB.png" alt="image.png"></p>
+<p>2.每个 SSL记录都以相同的三个字段（可能具有不同的值）开头。 其中一个 字段是“内容类型”，长度为一个字节。 请列出所有三个字段及其长度。</p>
+<p>​		<img src="https://i.loli.net/2021/10/29/Ll9UrxhIvQCEDHB.png" alt="image.png"></p>
+<p>​		Content Type字段为1字节，Version字段为2字节，Length字段为2字节:</p>
+<p>3.展开 ClientHello记录（如果您的跟踪包含多个 ClientHello记录，请展开包 含第一个记录的以太网帧），内容类型的值是多少？</p>
+<p>​		Content Type: Handshake(22)</p>
+<p>4.ClientHello记录是否包含随机数（也称为“挑战码”（ challenge））？ 如果是 这样，十六进制的挑战码值是多少？</p>
+<p>​		包含</p>
+<p>5.ClientHello记录是否通知了它所支持密码加密套件（suite）？如果是这样， 请在第一个密码套件， 分别指出非对称密钥加密算法，对称密钥加密算法，哈希算法分别都是什么？<strong>（待补充）</strong></p>
+<p>​		<img src="https://i.loli.net/2021/10/29/oPWDlueUQjhG1sp.png" alt="image.png"></p>
+<p>6.找到 ServerHello SSL记录。 此记录是否指定了之前的密码套件之一？ 选择的密码套件中有哪些算法？</p>
+<p>​		<img src="https://i.loli.net/2021/10/29/yOQ3w2HPEVKtZs5.png" alt="image.png"></p>
+<p>​		指定了哈希加密算法（SHA哈希函数）</p>
+<p>7.此记录是否包含随机数？如果有，它有多长？SSL中客户端和服务器段随机数用来干什么？</p>
+<p>​		包含，有32字节，也就是用64个16进制数来表示。多次随机数生成为未来生成对话密钥提高安全性能。</p>
+<p>8.此记录是否包含会话 ID？ 会话 ID的目的是什么？</p>
+<p>​		包含（有的可能不会包含，也就是可以有也可以没有）</p>
+<p>​		目的：用一定时间内端口连接快速恢复连接过程。</p>
+<p>9.此记录是否包含证书，或者证书是否包含在单独的记录中。 证书是否适合一个单独的以太网帧传输？</p>
+<p>10.找到客户端密钥交换记录。 此记录是否包含前主密钥(pre-master secret)？ 这个前主密钥用于什么？ 前主密钥加密了吗？ 如果是这样，为什么？ 加密的前主密钥有多长？</p>
+<p>​		1）包含<br>​		3）使用EC Diffie-Hellman（ECDH加密算法）进行加密传输，使用的是服务器公钥加密，用以给服务器让服务器用私钥解密并且使用前面两个hello过程的随机数生成本次的会话加密密钥。<br>​		4）32个字节</p>
+<p>11.编码改变记录目的是什么？在您的跟踪中本记录有多少字节？</p>
+<p>​		告诉服务器已经计算好加密密钥，以后将会用商定的加密方式和密钥加密传输了，在我的跟踪中该记录有6个字节。</p>
+<p>12.在加密的握手记录中，什么是加密的？ 为什么？</p>
+<p>​		消息校验码是加密的，这个校验码是包含之前所有连接消息的摘要加密格式，只有服务器可以解开，因为在建立连接中，存在可能连接消息被侦听和更改的情况，因此还需要进行信息摘要计算和加密传输，判断是否存在异常，如果异常，将会直接关闭连接。</p>
+<p>13.服务器是否还向客户端发送更改编码记录和加密的握手记录？ 这些记录与客户发送的记录有何不同？</p>
+<p>14.如何加密应用程序数据？ 包含应用程序数据的记录是否包含消息认证码 MAC？ Wireshark是否区分加密的应用程序数据和消息认证码 MAC？</p>
+<p>​		<img src="https://i.loli.net/2021/10/29/9vI8LyXZGQhm71P.png" alt="image.png"></p>
+<p>​		使用本次对话协商和交换好对称加密密钥应用程序数据，这个数据里同时包括消息本身和消息认证码，所以比消息本身要长，但是加密过，所以无法区分。</p>
+
+    </div>
+
+    
+    <div class="about">
+        <h1>About this Post</h1>
+        <div class="details">
+            <p>This post is written by Dezeem, licensed under <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc/4.0">CC BY-NC 4.0</a>.</p>
+        </div>
+        
+        <p class="tags">
+            
+            <i class="icon"></i>
+            <a href="/tags/计网/" class="tag">#计网</a>
+        </p>
+        
+    </div>
+    
+
+    <div class="container post-prev-next">
+        
+        <a href="/2022/01/30/2022-01-29-%E5%BA%94%E7%94%A8%E5%B1%82(%E4%B8%8A)/" class="next">
+            <div>
+                <div class="text">
+                    <p class="label">Next</p>
+                    <h3 class="title">应用层(上)</h3>
+                </div>
+            </div>
+        </a>
+        
+        
+        <a href="/2021/10/30/2021-10-21-11/" class="prev">
+            <div>
+                <div class="text">
+                    <p class="label">Previous</p>
+                    <h3 class="title">802.11 WIFI</>
+                </div>
+            </div>
+        </a>
+        
+    </div>
+
+    
+        
+        
+    
+</article>
+
+        <footer>
+    <div class="inner">
+        <div class="links">
+            
+            <div class="group">
+                <h2 class="title">Blog</h2>
+                
+                <a href="/" class="item">Blog</a>
+                
+                <a href="/archives" class="item">Archives</a>
+                
+                <a href="/tags" class="item">Tags</a>
+                
+                <a href="/categories" class="item">Categories</a>
+                
+                <a href="/search" class="item">Search</a>
+                
+                <a href="/friends" class="item">Friends</a>
+                
+                <a href="/projects" class="item">Projects</a>
+                
+                <a href="/resume" class="item">Resume</a>
+                
+                <a href="/about" class="item">About</a>
+                
+                <a href="/atom.xml" class="item">RSS</a>
+                
+            </div>
+            
+            <div class="group">
+                <h2 class="title">Projects</h2>
+                
+                <a target="_blank" rel="noopener" href="https://github.com/MrWillCom/rsa-cli" class="item">RSA CLI</a>
+                
+                <a target="_blank" rel="noopener" href="https://github.com/MrWillCom/hexo-theme-cupertino" class="item">Hexo Theme Cupertino</a>
+                
+                <a target="_blank" rel="noopener" href="https://github.com/MrWillCom/a-calendar" class="item">A Calendar</a>
+                
+                <a target="_blank" rel="noopener" href="https://github.com/MrWillCom/auto-mirroring-bucket" class="item">Auto Mirroring Bucket</a>
+                
+            </div>
+            
+            <div class="group">
+                <h2 class="title">Me</h2>
+                
+                <a target="_blank" rel="noopener" href="https://github.com/MrWillCom" class="item">GitHub</a>
+                
+                <a target="_blank" rel="noopener" href="https://codepen.io/mrwillcom" class="item">CodePen</a>
+                
+                <a target="_blank" rel="noopener" href="https://www.patreon.com/MrWillCom" class="item">Patreon</a>
+                
+                <a target="_blank" rel="noopener" href="https://noc.social/@MrWillCom" class="item">Mastodon</a>
+                
+                <a target="_blank" rel="noopener" href="https://discord.gg/UKuFDjcfY8" class="item">Discord</a>
+                
+                <a href="mailto:mr.will.com@outlook.com" class="item">Email</a>
+                
+            </div>
+            
+        </div>
+        <span>&copy; 2024 Dezeem<br>Powered by <a href="http://hexo.io/" target="_blank">Hexo</a> </span>
+        
+        
+            <br>
+            <div class="color-scheme-toggle" role="radiogroup" id="theme-color-scheme-toggle">
+                <label>
+                    <input type="radio" value="light">
+                    <span>Light</span>
+                </label>
+                <label>
+                    <input type="radio" value="dark">
+                    <span>Dark</span>
+                </label>
+                <label>
+                    <input type="radio" value="auto">
+                    <span>Auto</span>
+                </label>
+            </div>
+        
+    </div>
+</footer>
+
+
+        
+<script src="/js/main.js"></script>
+
+        
+        
+        
+
+        
+        <script src="https://unpkg.com/scrollreveal"></script>
+        <script>
+            window.addEventListener('load', () => {
+                ScrollReveal({ delay: 250, reset: true, easing: 'cubic-bezier(0, 0, 0, 1)' })
+                ScrollReveal().reveal('.post-list-item .cover-img img')
+                ScrollReveal().reveal('.post-list-item, .card, .content p img, .content .block-large img', { distance: '60px', origin: 'bottom', duration: 800 })
+            })
+        </script>
+        
+    </body>
+</html>

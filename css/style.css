@@ -149,7 +149,7 @@ kbd,
 pre,
 samp {
   font-family: monospace,monospace;
-  font-size: 1em;
+  font-size: 3em;
 }
 
 button,
@@ -5548,7 +5548,7 @@ code {
   color: #555;
   background: #eee;
   border-radius: 3px;
-  font-size: 100%;
+  font-size: 85%;
 }
 
 pre code {

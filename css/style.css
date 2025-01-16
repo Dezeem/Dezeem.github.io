@@ -148,8 +148,8 @@ code,
 kbd,
 pre,
 samp {
-  font-family: monospace,monospace;
-  font-size: 14px;
+  font-family: 'Consolas', 'Courier New', monospace;
+  font-size: 1em;
 }
 
 button,
@@ -5531,7 +5531,7 @@ pre,
   margin: 10px 0;
   padding: 15px 10px;
   overflow: auto;
-  font-size: 13px;
+  font-size: 15px;
   color: #4d4d4c;
   line-height: 1.5;
 }

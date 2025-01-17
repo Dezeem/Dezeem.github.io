@@ -1,3 +1,4 @@
+http://dezeem.github.io/2024/01/16/2024-01-15-C++%E8%BF%9B%E9%98%B6/
 http://dezeem.github.io/2022/10/05/2022-10-04-%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/
 http://dezeem.github.io/2024/12/13/2024-12-12-Spark_Lyrics/
 http://dezeem.github.io/about/index.html
@@ -12,7 +13,6 @@ http://dezeem.github.io/2021/10/22/2021-10-21-1/
 http://dezeem.github.io/2021/10/30/2021-10-21-9/
 http://dezeem.github.io/2021/10/30/2021-10-21-11/
 http://dezeem.github.io/2021/10/30/2021-10-21-12/
-http://dezeem.github.io/2024/01/16/2024-01-15-C++%E8%BF%9B%E9%98%B6/
 http://dezeem.github.io/2023/06/06/2023-06-06-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/
 http://dezeem.github.io/categories/index.html
 http://dezeem.github.io/tags/index.html

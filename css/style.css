@@ -714,8 +714,8 @@ blockquote {
   padding: 10.5px 16px;
   margin: 0 0 21px;
   border: 1px dotted #eeeeee;
-  border-left: 3px solid #eeeeee;
-  background-color: #fbfbfb;
+  border-left: 3px solid #42b983;
+  background-color: rgba(66, 185, 131, .1);
 }
 
 blockquote p:last-child,
@@ -5545,10 +5545,10 @@ code {
   text-shadow: 0 1px #fff;
   padding: 0.2em 0.4em;
   margin: 0 0.3em;
-  color: #555;
+  color: #ff7300;
   background: #eee;
   border-radius: 3px;
-  font-size: 100%;
+  font-size: 105%;
 }
 
 pre code {

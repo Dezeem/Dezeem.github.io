@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head prefix="og: https://ogp.me/ns#">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light dark">
+  
+  <title>DHCP - Dezeem&#39;log</title>
+  
+    <link rel="shortcut icon" href="/favicon.png">
+  
+  
+    <link rel='manifest' href='/manifest.json'>
+  
+
+  
+  
+  
+  <meta property="og:title" content="DHCP - Dezeem&#39;log" />
+  
+  <meta property="og:type" content="article" />
+  
+  <meta property="og:url" content="http://dezeem.github.io/2021/10/28/2021-10-21-8/index.html" />
+  
+  <meta property="og:image" content="/favicon.png" />
+  
+  <meta property="og:article:published_time" content="2021-10-27T21:13:00.000Z" />
+  
+  <meta property="og:article:author" content="Dezeem" />
+  
+  
+
+  
+<link rel="stylesheet" href="/css/var.css">
+
+  
+<link rel="stylesheet" href="/css/main.css">
+
+  
+<link rel="stylesheet" href="/css/typography.css">
+
+  
+<link rel="stylesheet" href="/css/code-highlighting.css">
+
+  
+<link rel="stylesheet" href="/css/components.css">
+
+  
+<link rel="stylesheet" href="/css/nav.css">
+
+  
+<link rel="stylesheet" href="/css/paginator.css">
+
+  
+<link rel="stylesheet" href="/css/footer.css">
+
+  
+<link rel="stylesheet" href="/css/post-list.css">
+
+  
+  
+<link rel="stylesheet" href="/css/rainbow-banner.css">
+
+  
+  
+  
+<link rel="stylesheet" href="/css/toc.css">
+
+  
+  
+  
+  
+  
+<link rel="stylesheet" href="/css/post.css">
+
+  
+  
+  
+  
+  
+
+  
+<meta name="generator" content="Hexo 6.3.0"></head>
+    <body
+        data-color-scheme="auto"
+        data-uppercase-categories="true"
+        
+        data-rainbow-banner="true"
+        data-rainbow-banner-shown="auto"
+        data-rainbow-banner-month="10"
+        data-rainbow-banner-colors="#e50000,#ff8d00,#ffee00,#008121,#004cff,#760188"
+        
+        data-config-root="/"
+        
+        data-toc="true"
+        data-toc-max-depth="2"
+        
+        
+    >
+        <nav id="theme-nav">
+    <div class="inner">
+        <a class="title" href="/">Dezeem</a>
+        <div class="nav-arrow"></div>
+        <div class="nav-items">
+            <a class="nav-item nav-item-home" href="/">Home</a>
+            
+            
+            <a class="nav-item" href="/archives">Archives</a>
+            
+            
+            
+            <a class="nav-item" href="/tags">Tags</a>
+            
+            
+            
+            <a class="nav-item" href="/categories">Categories</a>
+            
+            
+            
+            <a class="nav-item" href="/about">About</a>
+            
+            
+            
+            <a class="nav-item nav-item-github nav-item-icon" href="https://github.com/Dezeem" target="_blank" aria-label="GitHub">&nbsp;</a>
+            
+            
+        </div>
+    </div>
+</nav>
+        
+<article class="post">
+    <div class="meta">
+        
+        <div class="categories text-uppercase">
+        
+            <a href="/categories/Wireshark/">Wireshark</a>
+        
+        </div>
+        
+
+        
+        <div class="date" id="date">
+            <span>October</span>
+            <span>28,</span>
+            <span>2021</span>
+        </div>
+        
+
+        <h1 class="title">DHCP</h1>
+    </div>
+
+    <div class="divider"></div>
+
+    <div class="content">
+        <h1 id="实验八"><a href="#实验八" class="headerlink" title="实验八"></a>实验八</h1><h2 id="dhcp-实验"><a href="#DHCP-实验" class="headerlink" title="DHCP 实验"></a>DHCP 实验</h2><ol>
+<li><p>打开cmd，输入ipconfig&#x2F;release</p>
+</li>
+<li><p>启动嗅探器并开始捕获。</p>
+</li>
+<li><p>cmd输入ipconfig&#x2F;renew</p>
+</li>
+<li><p>再输入ipconfig&#x2F;release</p>
+</li>
+<li><p>再输入ipconfig&#x2F;renew</p>
+</li>
+<li><p>停止捕获</p>
+<p>​				<img src="https://i.loli.net/2021/10/27/Vewb9O5KnHcSmFC.png" alt="image.png"></p>
+<p>​		1.DHCP 消息是否通过 UDP 或 TCP 发送？</p>
+<p>​		<strong>UDP</strong></p>
+<p>​		2.绘制时间数据图，说明客户端和服务器之间第一个四包发现&#x2F;提供&#x2F;请求&#x2F;ACK DHCP 交换的顺序。对于每个数据包，指示源和目的地端口编号。端口编号与此实验室作业中给出的示例相同吗？</p>
+<p><strong>Offer&#x2F;Request&#x2F;ACK&#x2F;release&#x2F;Discover</strong></p>
+<p>​		3.主机的链接层（例如以太网）地址是什么？<strong>WIFI无法查看</strong></p>
+<p>​		4.DHCP 发现消息中的哪些值将此消息与 DHCP 请求消息区分开来？</p>
+<p>​		<img src="https://i.loli.net/2021/10/27/uiyv3zeq5KtOY6X.png" alt="image.png"></p>
+<p>​		<strong>Type</strong></p>
+<p>​		5.前四条（发现&#x2F;提供&#x2F;请求&#x2F;ACK）DHCP 消息中每个邮件中的交易 ID 值是怎样的？ 第二组 （请求&#x2F;ACK） DHCP 消息中的交易 ID 值是哪些？ 交易 ID 字段的目的是什么？</p>
+<p>​		<strong>用于确认是哪条请求 类似于TCP IP的序列号</strong></p>
+<p>​		6.主机使用 DHCP 获取 IP 地址，除其他外。但主机的 IP 地址直到四消息交换结束才得到确认！ 如果 IP 地址直到四消息交换结束才设置，那么在四消息交换中的 IP 数据图中使用了哪些值？ 对于四个 DHCP 消息（发现&#x2F;提供&#x2F;请求&#x2F;ACK DHCP），指示封装 IP 数据图中携带的源和目的地 IP 地址。<br>​		7.您的 DHCP 服务器的 IP 地址是哪个？</p>
+<p>​		<strong>192.168.254.254</strong></p>
+<p>​		8.DHCP 服务器在DHCPoffer消息中向主机提供什么IP地址？指示哪个DHCP消息包含提供的 DHCP 地址。<br>​		<img src="https://i.loli.net/2021/10/27/AbxCtNkpEIZgY2P.png" alt="image.png"></p>
+<p>​		9.在此任务中的示例屏幕截图中，主机和 DHCP 服务器之间没有继电器。跟踪中的哪些值表示缺少继电器？ 你的实验中是否有Agent？如果是，代理的 IP 地址是什么？</p>
+<p>​		<strong>没有Agent</strong></p>
+<p>​		10.解释 DHCP 提供消息中路由器和子网掩码的目的。</p>
+<p>​		<strong>首先告诉路由器IP是因为我们之后得到了路由器IP以后发送一些请求的时候就向我们的路由器发送了等于起到了中间代理的作用</strong></p>
+<p>​		<strong>告诉我们子网掩码 是告诉我们当前我们获取子网的大小 告诉我们更多的信息便于以后配置。</strong></p>
+<p>​		11.在脚注 2 中注明的 DHCP 跟踪文件中，DHCP 服务器向客户端提供了特定的 IP 地址（参见上面的第 8 个问题）。 在客户对第一个服务器 OFFER 消息的响应中，客户端是否接受此 IP 地址？ 客户请求的地址在客户响应中的位置？</p>
+<p>​		接受了IP地址因为发出的Request请求我们请求的IP就是DHCP申请出来的OFFE的那个IP如下图客户端的IP地址请求在选项字段</p>
+<p>​		<img src="https://i.loli.net/2021/10/27/Wrl4ScOFT17deX5.png" alt="image.png"></p>
+<p>​		</p>
+<p>​		12.解释租赁时间的目的。实验中的租赁时间有多长？<br>​		<strong>因为DHCP服务器分配是不永久分配的，都是临时分配的且是有时间的如果时间到期就需要重新申请或者续期如果没有重新租赁的话DHCP服务器即自动关闭与其的服务提供</strong><br>​		<strong>实验中的话 即租赁时间为1个小时</strong></p>
+<p>​		<img src="https://i.loli.net/2021/10/27/kRl7ziJQeTKBoCY.png" alt="image.png"></p>
+<p>​		13.DHCPRelease消息的目的是什么？ DHCP 服务器是否确认收到客户的 DHCP 请求？ 如果客户的 DHCP 发布消息丢失，会发生什么情况？<br>​		<strong>告诉DHCP我要离开，DHCP收到消息后可以把分配出去的资源给回收并重新分配如果丢失的话那么DHCP分配的资源可能需要等到租赁到期的时候才能收获。</strong></p>
+<p>​		14.从您的 Wireshark窗口清除引导过滤器。在DHCP数据包交换期间是否发送或接收了 ARP 数据包？如果是这样，解释这些 ARP 包的目的。<br>​		<strong>需要MAC地址DHCP服务器在接受到广播Discover时，如果满足就需要回应，同样需要MAC之后在我们得到了IP地址后同一子网的ARP就会记录我们的IP对应的MAC，ARP就广播给这个子网中的所有主机告诉我们的IP所用的MAC地址。</strong></p>
+</li>
+</ol>
+
+    </div>
+
+    
+    <div class="about">
+        <h1>About this Post</h1>
+        <div class="details">
+            <p>This post is written by Dezeem, licensed under <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc/4.0">CC BY-NC 4.0</a>.</p>
+        </div>
+        
+        <p class="tags text-capitalize">
+            
+            <i class="icon"></i>
+            <a href="/tags/计网/" class="tag">#计网</a>
+        </p>
+        
+    </div>
+    
+
+    <div class="container post-prev-next">
+        
+        <a href="/2021/10/30/2021-10-21-9/" class="next">
+            <div>
+                <div class="text">
+                    <p class="label">Next</p>
+                    <h3 class="title">ICMP</h3>
+                </div>
+            </div>
+        </a>
+        
+        
+        <a href="/2021/10/27/2021-10-21-7/" class="prev">
+            <div>
+                <div class="text">
+                    <p class="label">Previous</p>
+                    <h3 class="title">NAT</>
+                </div>
+            </div>
+        </a>
+        
+    </div>
+
+    
+        
+        
+    
+</article>
+
+        <footer>
+    <div class="inner">
+        <div class="links">
+            
+            <div class="group">
+                <h2 class="title">Blog</h2>
+                
+                <a href="/about" class="item">About</a>
+                
+                <a href="/atom.xml" class="item">RSS</a>
+                
+            </div>
+            
+            <div class="group">
+                <h2 class="title">Me</h2>
+                
+                <a target="_blank" rel="noopener" href="https://github.com/Dezeem" class="item">GitHub</a>
+                
+            </div>
+            
+        </div>
+        <span>&copy; 2025 Dezeem<br>Powered by <a href="http://hexo.io/" target="_blank">Hexo</a> </span>
+        
+        <br>
+        <span class="footer-extra-description">欲买桂花同载酒，终不似，少年游。</span>
+        
+        
+            <br>
+            <div class="color-scheme-toggle" role="radiogroup" id="theme-color-scheme-toggle">
+                <label>
+                    <input type="radio" value="light">
+                    <span>Light</span>
+                </label>
+                <label>
+                    <input type="radio" value="dark">
+                    <span>Dark</span>
+                </label>
+                <label>
+                    <input type="radio" value="auto">
+                    <span>Auto</span>
+                </label>
+            </div>
+        
+    </div>
+</footer>
+
+
+        
+<script src="/js/main.js"></script>
+
+        
+        
+        
+
+        
+        <script src="https://unpkg.com/scrollreveal"></script>
+        <script>
+            window.addEventListener('load', () => {
+                ScrollReveal({ delay: 250, reset: true, easing: 'cubic-bezier(0, 0, 0, 1)' })
+                ScrollReveal().reveal('.post-list-item .cover-img img')
+                ScrollReveal().reveal('.post-list-item, .card, .content p img, .content .block-large img', { distance: '60px', origin: 'bottom', duration: 800 })
+            })
+        </script>
+        
+    </body>
+</html>

@@ -1,0 +1,502 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Head tag -->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <meta name="description" content="">
+  <meta name="author" content="">
+  <link rel="icon" href="/img/favicon.png">
+
+  
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5/css/all.min.css">
+
+  
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5/dist/css/bootstrap.min.css">
+
+
+  
+<link rel="stylesheet" href="/css/style.css">
+
+
+  
+  <title>应用层(上) - Dezeem&#39;log</title>
+<meta name="generator" content="Hexo 6.3.0"><link rel="alternate" href="/atom.xml" title="Dezeem'log" type="application/atom+xml">
+</head>
+
+
+<body>
+  <header>
+    <nav id="navbar" class="navbar fixed-nav scrolling-navbar">
+  <div class="container">
+    <div class="mark-wrapper">
+       
+      <div class="title-mark">Peomas</div>
+    </div>
+  
+    <button id="menu-btn" class="btn menu-btn" type="button" data-bs-toggle="collapse" data-bs-target="#nav-menu">
+      <div class="menu-icon"><span></span><span></span><span></span></div>
+    </button>
+  
+    <div id="nav-menu" class="collapse menu-wrapper">
+      <ul>
+        
+          <li>
+            <a href="/">Home </a>
+          </li>
+        
+          <li>
+            <a href="/archives">Archives </a>
+          </li>
+        
+          <li>
+            <a href="/categories">Category </a>
+          </li>
+        
+          <li>
+            <a href="/tags">Tag </a>
+          </li>
+        
+          <li>
+            <a href="/about">About </a>
+          </li>
+        
+        <li class="search-icon">
+          <button class="btn" data-bs-toggle="modal" data-bs-target="#searchModal" aria-label="Search">
+            <i class="fas fa-search"></i>
+          </button>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  </header>
+
+  <main>
+    <div class="container">
+      <div id="main">
+        <div class="row py-5">
+          <div class="col">
+            <div class="row">
+  <div class="left-content">
+    <article class="post-wrapper markdown-body">
+  <h2 class="post-title">
+    应用层(上)
+  </h2>
+  <div class="post-meta">
+    <time datetime="Invalid date Invalid date ">2022-01-30</time>
+    
+    
+      
+        <a class="tag" href="/categories/%E8%AE%A1%E7%BD%91/">计网</a> 
+       
+    
+    
+       
+    
+    
+  </div>
+  
+  <div id="content">
+    <h1 id="应用层"><a href="#应用层" class="headerlink" title="应用层"></a>应用层</h1><h2 id="1网络应用的体系结构"><a href="#1-网络应用的体系结构" class="headerlink" title="1.网络应用的体系结构"></a>1.网络应用的体系结构</h2><p>​	<strong>网络应用：</strong>百度、QQ、email、迅雷、支付宝、微信、百度云、淘宝网、网易。</p>
+<h3 id="体系结构"><a href="#体系结构：" class="headerlink" title="体系结构："></a>体系结构：</h3><h4 id="1客户机x2f服务器结构client-servercx2fs"><a href="#（1）客户机-x2F-服务器结构（Client-Server，C-x2F-S）" class="headerlink" title="（1）客户机&#x2F;服务器结构（Client-Server，C&#x2F;S）"></a>（1）客户机&#x2F;服务器结构（Client-Server，C&#x2F;S）</h4><p>​		<strong>服务器：</strong></p>
+<p>​		7*24小时提供服务</p>
+<p>​		永久性访问地址&#x2F;域名</p>
+<p>​		利用大量服务器实现可扩展性</p>
+<p>​		<strong>客户机：</strong></p>
+<p>​		与服务器通信，使用服务器提供的服务</p>
+<p>​		间歇性的接入网络</p>
+<p>​		可能使用动态IP地址</p>
+<p>​		不会与其他客户机直接通信</p>
+<p>​		<strong>例子：Web</strong> </p>
+<pre><code>    	![image.png](https://i.loli.net/2021/11/12/Wyd5468XE97D3vS.png)
+</code></pre>
+<h4 id="2点对点结构peer-to-peerp2p"><a href="#（2）点对点结构（Peer-to-peer，P2P）" class="headerlink" title="（2）点对点结构（Peer-to-peer，P2P）"></a>（2）点对点结构（Peer-to-peer，P2P）</h4><p>​		没有永远在线的服务器</p>
+<p>​		任意端系统&#x2F;节点之间可以直接通讯</p>
+<p>​		节点间歇性接入网络，可能改变IP地址</p>
+<p>​		<strong>优点：</strong>高度可伸缩；	<strong>缺点：</strong>难于管理</p>
+<h4 id="3混合结构hybrid"><a href="#（3）混合结构（Hybrid）" class="headerlink" title="（3）混合结构（Hybrid）"></a>（3）混合结构（Hybrid）</h4><p>​		 利用前两者的优点，规避两者的缺点。</p>
+<p>​		 <strong>Napster：</strong>文件传输使用P2P结构；文件的搜索采用C&#x2F;S结构——集中式</p>
+<p>​				<img src="https://i.loli.net/2021/11/12/T2AcdBGaulseStP.png" alt="image.png" style="zoom: 67%;"></p>
+<h3 id="网络应用进程通信"><a href="#网络应用进程通信：" class="headerlink" title="网络应用进程通信："></a>网络应用进程通信：</h3><p>​	<strong>网络应用的基础：进程间的通信</strong></p>
+<p>​		<strong>进程：</strong>主机上运行的程序</p>
+<p>​		<strong>同一主机</strong>的进程之间的通信方式：进程间通信机制，操作系统提供。<strong>不同主机</strong>：消息交换（报文交换）</p>
+<hr>
+<p>​		    客户机进程：发起通信的进程</p>
+<p>​			服务器进程：等待通信请求的进程</p>
+<hr>
+<h4 id="套接字socket"><a href="#套接字：Socket" class="headerlink" title="套接字：Socket"></a><strong>套接字：Socket</strong></h4><img src="https://i.loli.net/2021/11/12/ziQj7CKecGqk1hx.png" alt="image.png" style="zoom:67%;">
+
+<p><strong>进程间通信利用socket发送&#x2F;接收消息实现</strong></p>
+<p>​		<strong>类似于寄信：</strong></p>
+<p>​		发送方将消息送到门外邮箱</p>
+<p>​		发送方依赖（门外的）传输基础设施将消息传到接收方所在的主机，并送到接收方的门外</p>
+<p>​		接收方从门外获取消息</p>
+<p>​		<strong>传输基础设施向进程提供API:</strong></p>
+<p>​		传输协议的选择；参数的设置</p>
+<h4 id="如何寻址进程"><a href="#如何寻址进程" class="headerlink" title="如何寻址进程"></a>如何寻址进程</h4><p>不同主机上的进程间通信，每个进程必须拥有<strong>标识符</strong></p>
+<p>如何寻址主机——<strong>IP地址</strong></p>
+<p>Q：主机的IP地址是否足以定位进程？</p>
+<p>A：否。同一主机上可能同时有多个进程需要通信。</p>
+<p><strong>端口号&#x2F;Port number</strong></p>
+<ul>
+<li><p>为主机上每个需要通信的进程分配一个端口号</p>
+</li>
+<li><p>HTTP Server：80</p>
+</li>
+<li><p>Mail Server：25</p>
+<p><strong>进程的标识符&#x3D;IP地址+端口号</strong></p>
+</li>
+</ul>
+<h4 id="应用层协议"><a href="#应用层协议" class="headerlink" title="应用层协议"></a>应用层协议</h4><p>网络应用需要遵顼应用层协议</p>
+<p><strong>公开协议：</strong></p>
+<p>​	由RFC（Request For Comments）定义</p>
+<p>​	允许互操作</p>
+<p>​	HTTP、SMTP……</p>
+<p><strong>私有协议：</strong></p>
+<p>​	多数P2P文件共享应用</p>
+<h4 id="协议内容"><a href="#协议内容" class="headerlink" title="协议内容"></a>协议内容</h4><p><strong>消息的类型：</strong>请求消息、响应消息。</p>
+<p><strong>消息的语法（Syntax）&#x2F;格式：</strong>消息中有哪些字段（field）、字段如何描述</p>
+<p><strong>字段的语义（semantics）：</strong>字段中信息的含义</p>
+<p><strong>规则（rules）：</strong>进程何时发送&#x2F;响应消息</p>
+<h2 id="2网络应用的服务需求"><a href="#2-网络应用的服务需求" class="headerlink" title="2.网络应用的服务需求"></a>2.网络应用的服务需求</h2><p><strong>数据丢失（data loss）&#x2F;可靠性（reliability）</strong></p>
+<ul>
+<li>​	某些网络应用能够容忍一定的数据丢失：网络电话</li>
+<li>​	某些网络应用要求100%可靠的数据传输：文件传输，telnet</li>
+</ul>
+<p><strong>时间（timing）&#x2F;延迟（delay）</strong></p>
+<ul>
+<li>​	有些应用只有在延迟足够低时才“有效”</li>
+<li>​	网络电话&#x2F;网络游戏</li>
+</ul>
+<p><strong>带宽（bandwith）</strong></p>
+<ul>
+<li>某些应用只有在带宽达到最低要求时才“有效”：网络视频</li>
+<li>某些应用能够适应任何带宽——弹性应用：email</li>
+</ul>
+<p><strong>典型网络应用对传输服务的需求：</strong></p>
+<p><img src="https://i.loli.net/2021/11/12/kxXHiIqlOFuo4wL.png" alt="image.png"></p>
+<h2 id="3internet传输层服务模型"><a href="#3-Internet传输层服务模型" class="headerlink" title="3.Internet传输层服务模型"></a>3.Internet传输层服务模型</h2><h3 id="internet提供的传输服务"><a href="#Internet提供的传输服务" class="headerlink" title="Internet提供的传输服务"></a>Internet提供的传输服务</h3><p><img src="https://i.loli.net/2021/11/12/DcwX5anpjdIFYkq.png" alt="image.png"></p>
+<h3 id="典型网络应用所使用的传输层服务"><a href="#典型网络应用所使用的传输层服务" class="headerlink" title="典型网络应用所使用的传输层服务"></a><strong>典型网络应用所使用的传输层服务</strong></h3><p><img src="https://i.loli.net/2021/11/12/ams3t6JbzgNZpAG.png" alt="image.png"></p>
+<h2 id="4特定网络应用及协议"><a href="#4-特定网络应用及协议" class="headerlink" title="4.特定网络应用及协议"></a>4.特定网络应用及协议</h2><h3 id="web应用"><a href="#Web应用" class="headerlink" title="Web应用"></a>Web应用</h3><h4 id="关于web"><a href="#关于Web" class="headerlink" title="关于Web"></a><strong>关于Web</strong></h4><p><strong>World Wide Web:Tim Berners-Lee</strong></p>
+<ul>
+<li>网页</li>
+<li>网页互相链接</li>
+</ul>
+<p><strong>网页（Web Page）包含多个对象（objects）</strong></p>
+<ul>
+<li>​	对象：HTML文件、JPEG图片、视频文件、动态脚本等</li>
+<li>​	基本HTML文件：包含对其他对象引用的链接</li>
+</ul>
+<p> 对象的寻址（addressing）</p>
+<p>URL（Uniform Resoure Locator）：统一资源定位器</p>
+<p>Scheme：&#x2F;&#x2F;host：port&#x2F;path</p>
+<h4 id="http"><a href="#HTTP" class="headerlink" title="HTTP"></a>HTTP</h4><p><strong>HTTP协议：</strong>万维网应用遵循<strong>超文本传输协议</strong>（HyperText Transfer Protocol）</p>
+<p><strong>C&#x2F;S结构</strong></p>
+<ul>
+<li>客户——Browser：请求、接收、展示Web对象</li>
+<li>服务器——Web Server：响应客户的请求，发送对象。（Apache Web Server）</li>
+</ul>
+<p><strong>HTTP版本：</strong>1.0：RFC1945，1.1：RFC2068</p>
+<p><strong>使用TCP传输服务：</strong></p>
+<ul>
+<li>服务器在80端口等待客户的请求</li>
+<li>浏览器发起到服务器的TCP连接（创建套接字Socket）</li>
+<li>服务器接受来自浏览器的TCP连接</li>
+<li>浏览器（HTTP客户端）与Web服务器（HTTP服务器）交换HTTP消息</li>
+<li>关闭TCP连接</li>
+</ul>
+<p><strong>无状态（stateless）：</strong>服务器不维护任何有关客户端过去所发请求的信息</p>
+<p><strong>有状态的协议</strong>更复杂：需要维护状态（历史信息）、如果客户或服务器失效，会产生状态的不一致，解决这种问题代价高</p>
+<h5 id="http连接"><a href="#HTTP连接" class="headerlink" title="HTTP连接"></a>HTTP连接</h5><p><strong>非持久性连接（Nonpersistent HTTP）</strong>：每个TCP连接最多允许传输一个对象；HTTP 1.0版本使用非持久性连接。</p>
+<p><img src="https://i.loli.net/2021/11/12/4LuIbDASHGgqrYp.png" alt="image.png"></p>
+<p><img src="https://i.loli.net/2021/11/12/bvYnAystu14rHW2.png" alt="image.png"></p>
+<h6 id="响应时间分析与建模"><a href="#响应时间分析与建模" class="headerlink" title="响应时间分析与建模"></a>响应时间分析与建模</h6><p><strong>RTT（Round Trip Time）</strong>：从客户端发送一个很小的数据包到服务器并返回所经历的时间</p>
+<p>响应时间（Response time）</p>
+<p>​	发起、建立TCP连接：1个RTT</p>
+<p>​	发送HTTP请求消息到HTTP响应消息的前几个字节到达：1个RTT</p>
+<p>​	响应消息中所含文件&#x2F;对象传输时间</p>
+<p>​	Total &#x3D; 2RTT + 文件发送时间</p>
+<p>​	<img src="https://i.loli.net/2021/11/12/F2SA5aBWHxlfOU6.png" alt="image.png"></p>
+<p><strong>非持久性连接存在一些问题：</strong></p>
+<p>​		每个对象需要2个RTT</p>
+<p>​		操作系统需要为每个TCP连接开销资源（overhead）</p>
+<p>​		 </p>
+<ul>
+<li><strong>持久性连接（persistent HTTP）</strong>：每个TCP连接最多允许传输多个对象；HTTP 1.1版本默认使用持久性连接</li>
+</ul>
+<p>发送响应后，服务器保持TCP连接的打开</p>
+<p>后续的HTTP消息可以通过这个连接发送</p>
+<ul>
+<li><strong>无流水（pipelining）的持久性连接</strong><ul>
+<li>客户端只有收到前一个响应后才发送新的请求</li>
+<li>每个被引用的对象耗时1个RTT</li>
+</ul>
+</li>
+<li><strong>带有流水机制的持久性连接</strong><ul>
+<li>HTTP 1.1的默认选项</li>
+<li>客户端只要遇到一个引用对象就尽快发出请求</li>
+<li>理想请求下，收到所有的引用对象只需耗时约1个RTT</li>
+</ul>
+</li>
+</ul>
+<h5 id="http消息格式"><a href="#HTTP消息格式" class="headerlink" title="HTTP消息格式"></a>HTTP消息格式</h5><ul>
+<li>请求消息<ul>
+<li>ASCII码：人直接可读</li>
+</ul>
+</li>
+</ul>
+<p><img src="https://i.loli.net/2021/11/28/1d9fbOwySEFxgVq.png" alt="image.png"></p>
+<p>上传输入的方法：</p>
+<p>​		POST方法：网页经常需要填写表格（form）&#x2F;在请求消息的消息体（entity body）中上传客户端的输入</p>
+<p>​		URL方法：使用GET方法&#x2F;输入信息通过request行的URL字段上传</p>
+<p><img src="https://i.loli.net/2021/11/28/jZbC38q9JScfmzv.png" alt="image.png"></p>
+<ul>
+<li>响应消息</li>
+</ul>
+<p><img src="https://i.loli.net/2021/11/28/6CMy7RsVkHpnowv.png" alt="image.png"></p>
+<h4 id="cookie技术"><a href="#Cookie技术" class="headerlink" title="Cookie技术"></a>Cookie技术</h4><p>HTTP协议无状态，很多应用需要服务器掌握客户端的状态，如：网上购物</p>
+<ul>
+<li>某些网站为了辨别用户身份、进行session跟踪而储存在用户本地终端上的数据（通常经过加密）。</li>
+</ul>
+<h5 id="cookie的组件"><a href="#Cookie的组件" class="headerlink" title="Cookie的组件"></a>Cookie的组件</h5><ul>
+<li>HTTP响应消息的cookie头部行</li>
+<li>HTTP请求消息的cookie头部行</li>
+<li>保存在客户端主机上的cookie文件，由浏览器管理</li>
+<li>Web服务器端的后台数据</li>
+</ul>
+<h5 id="cookie的原理"><a href="#Cookie的原理" class="headerlink" title="Cookie的原理"></a>Cookie的原理</h5><p><img src="https://i.loli.net/2021/12/03/3N6KWmhL14Rupkq.png" alt="image.png"></p>
+<h5 id="cookie的作用"><a href="#Cookie的作用" class="headerlink" title="Cookie的作用"></a>Cookie的作用</h5><ul>
+<li>身份认证</li>
+<li>购物车</li>
+<li>推荐</li>
+<li>Web e-mail ……</li>
+</ul>
+<p><strong>Cookie技术存在一定的隐私问题</strong></p>
+<h4 id="web缓存x2f代理服务器技术"><a href="#Web缓存-x2F-代理服务器技术" class="headerlink" title="Web缓存&#x2F;代理服务器技术"></a>Web缓存&#x2F;代理服务器技术</h4><p>​	<strong>功能：在不访问服务器的前提下满足客户端的HTTP请求</strong></p>
+<p><strong>为什么要发明这种技术？</strong></p>
+<ul>
+<li>缩短客户请求的响应时间</li>
+<li>减少机构。组织的流量</li>
+<li>在大范围内(Internet)实现有效的内容分发</li>
+</ul>
+<h5 id="关于该技术"><a href="#关于该技术" class="headerlink" title="关于该技术"></a>关于该技术</h5><ul>
+<li><p><strong>用户设定浏览器通过缓存进行Web访问</strong></p>
+</li>
+<li><p><strong>浏览器向缓存&#x2F;代理服务器发送所有的HTTP请求</strong></p>
+<ul>
+<li>如果所请求对象在缓存中，缓存返回对象</li>
+<li>否则，缓存服务器向原始服务器发送HTTP请求，获取对象，然后返回给客户端并保存该对象</li>
+</ul>
+</li>
+</ul>
+<p><strong>缓存既充当客户端，也充当服务器</strong></p>
+<p><strong>一般由ISP(Internet服务提供商)假设</strong></p>
+<h5 id="条件性get方法"><a href="#条件性GET方法" class="headerlink" title="条件性GET方法"></a>条件性GET方法</h5><p><img src="https://i.loli.net/2021/12/03/BC3PMmiOoLtvWZT.png" alt="image.png"></p>
+<h3 id="email应用"><a href="#Email应用" class="headerlink" title="Email应用"></a>Email应用</h3><h4 id="构成组件"><a href="#构成组件" class="headerlink" title="构成组件"></a>构成组件</h4><ul>
+<li>邮件客户端（user agent）</li>
+<li>邮件服务器</li>
+<li>SMTP协议（Simple Mail Transfer Protocol）</li>
+</ul>
+<h4 id="邮件客户端"><a href="#邮件客户端" class="headerlink" title="邮件客户端"></a>邮件客户端</h4><ul>
+<li>读、写Email消息</li>
+<li>与服务器交互，收、发Email消息</li>
+<li>Outlook，Foxmail，Thunderbird</li>
+<li>Web客户端</li>
+</ul>
+<h4 id="邮件服务器"><a href="#邮件服务器" class="headerlink" title="邮件服务器"></a>邮件服务器</h4><ul>
+<li>邮箱：存储发给该用户的Email</li>
+<li>消息队列（message queue）：存储等待发送的Email</li>
+</ul>
+<h4 id="smtp协议"><a href="#SMTP协议" class="headerlink" title="SMTP协议"></a>SMTP协议</h4><ul>
+<li>邮件服务器之间传递消息所使用的协议</li>
+<li>客户端：发送消息的服务器</li>
+<li>服务器：接受消息的服务器</li>
+</ul>
+<p><strong>采取TCP进行email消息的可靠传输</strong></p>
+<p><strong>端口25</strong></p>
+<p><strong>传输过程的三个阶段：握手-&gt;消息的传输-&gt;关闭</strong></p>
+<p><strong>命令&#x2F;响应交互模式：</strong></p>
+<p><strong>命令（command）：ASCII文本</strong></p>
+<p><strong>响应（response）：状态代码和语句</strong></p>
+<p><strong>Email消息只能包含7位ASCII码</strong></p>
+<ul>
+<li>使用持久性连接</li>
+<li>消息必须由7位ASCII码构成</li>
+<li>SMTP服务器利用CRLF.CRLF确定消息的结束</li>
+</ul>
+<h5 id="smtp-vs-http"><a href="#SMTP-vs-HTTP" class="headerlink" title="SMTP vs HTTP"></a>SMTP vs HTTP</h5><p>SMTP：退式（push） HTTP：拉式（pull）</p>
+<p>都使用命令&#x2F;响应交互模式</p>
+<p>命令和状态代码都是ASCII码</p>
+<p><strong>HTTP：</strong>每个对象封装在独立的响应消息中</p>
+<p><strong>SMTP：</strong>多个对象在由多个部分构成的消息中发送</p>
+<h4 id="消息格式"><a href="#消息格式" class="headerlink" title="消息格式"></a>消息格式</h4><p><img src="https://i.loli.net/2021/12/03/PzuLh9Knlw8FCp6.png" alt="image.png"></p>
+<h5 id="多媒体扩展"><a href="#多媒体扩展" class="headerlink" title="多媒体扩展"></a>多媒体扩展</h5><p><img src="https://i.loli.net/2021/12/03/YjCXwieSypHGhOu.png" alt="image.png"></p>
+<h4 id="邮件访问协议从服务器获取邮件"><a href="#邮件访问协议：从服务器获取邮件" class="headerlink" title="邮件访问协议：从服务器获取邮件"></a>邮件访问协议：从服务器获取邮件</h4><p><strong>POP：Post Office Protocol</strong></p>
+<ul>
+<li>认证&#x2F;授权（客户端&lt;–&gt;服务器）和下载</li>
+<li>……</li>
+</ul>
+<p>IMAP：Internet Mail Access Protocol</p>
+<p>HTTP：163，QQ Mail等</p>
+<h3 id="dns应用"><a href="#DNS应用" class="headerlink" title="DNS应用"></a>DNS应用</h3><p><strong>DNS（Domain Name System）：解决Internet上主机&#x2F;路由器的识别问题</strong></p>
+<ul>
+<li>IP地址</li>
+<li>域名：<a target="_blank" rel="noopener" href="http://www.baidu.com/">www.baidu.com</a></li>
+</ul>
+<p>如何解决域名和IP地址之间的映射？</p>
+<ul>
+<li><strong>域名解析系统DNS</strong><ul>
+<li>多层命名服务器构成的分布式数据库</li>
+<li>应用层协议：完成名字的解析<ul>
+<li>internet核心功能，用应用层协议实现</li>
+<li>网络边界复杂</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h5 id="dns服务"><a href="#DNS服务" class="headerlink" title="DNS服务"></a>DNS服务</h5><ul>
+<li>域名向IP地址的翻译</li>
+<li>主机别名</li>
+<li>邮件服务器别名</li>
+<li>负载均衡：Web服务器</li>
+</ul>
+<p>为什么不适应集中式的DNS？</p>
+<ul>
+<li>单点失败问题</li>
+<li>流量问题</li>
+<li>距离问题</li>
+<li>维护性问题</li>
+</ul>
+<p><strong>分布式层次式数据库</strong></p>
+<p><img src="https://s2.loli.net/2022/01/30/bTfAOjkpUgc7rhF.png" alt="image.png"></p>
+<h4 id="本地域名解析服务器"><a href="#本地域名解析服务器：" class="headerlink" title="本地域名解析服务器："></a>本地域名解析服务器：</h4><ul>
+<li>不严格属于层级体系</li>
+<li>每个ISP有一个本地域名服务器<ul>
+<li>默认域名解析服务器</li>
+</ul>
+</li>
+<li>当主机进行DNS查询时，查询被发送到本地域名服务器<ul>
+<li>作为代理（proxy），将查询转发给（层级式）域名服务器解析系统</li>
+</ul>
+</li>
+</ul>
+<p><img src="https://s2.loli.net/2022/01/30/UYLvGO57jXMqJVa.png" alt="image.png"></p>
+<p><img src="https://s2.loli.net/2022/01/31/nmjaNg6KRfU7hZw.png" alt="image.png"></p>
+<h4 id="dns记录缓存和更新"><a href="#DNS记录缓存和更新" class="headerlink" title="DNS记录缓存和更新"></a>DNS记录缓存和更新</h4><ul>
+<li>只要域名解析服务器获得域名—IP映射，即缓存这一映射<ul>
+<li>一段时间过后，缓存条目失效（删除）</li>
+<li>本地域名服务器一般会缓存顶级域名服务器的映射<ul>
+<li>因此根域名服务器不会被经常访问</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h4 id="dns记录和消息格式"><a href="#DNS记录和消息格式" class="headerlink" title="DNS记录和消息格式"></a>DNS记录和消息格式</h4><p><img src="https://s2.loli.net/2022/01/31/jZ1DAhz2dVgluXS.png" alt="image.png"></p>
+<p><strong>DNS协议</strong></p>
+<ul>
+<li>查询（query）和回复（reply）消息</li>
+<li>消息格式相同</li>
+</ul>
+
+  </div>
+
+</article>
+  </div>
+  <div class="right-content">
+    <div id="toc" class="toc-wrapper"></div>
+  <div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+    </div>
+
+     
+  <button id="scroll-to-top" class="btn btn-top" aria-label="Scroll To Top">
+    <i class="fas fa-arrow-up"></i>
+  </button>
+ 
+
+  </main>
+
+  <div class="footer-wrapper">
+  <div class="left-content"></div>
+  <div class="right-content">
+    <div>Copyright &copy;2025</div>
+    <div>Powered By <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a> - Theme <a target="_blank" rel="noopener" href="https://github.com/thomasyu929/hexo-theme-peomas">Peomas</a></div>
+  </div>
+</div>
+
+  <div id="searchModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="searchModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Search</h5>
+        <button type="button" class="btn btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <div class="input-wrapper">
+          <i class="fas fa-search"></i>
+          <input id="search" class="search-input" type="text" placeholder="Input content to search..." />
+        </div>
+        <ul id="result" class="list-group result-wrapper">
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+  
+<script src="https://cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js"></script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5/dist/js/bootstrap.min.js"></script>
+
+
+<script src="/js/prism.js"></script>
+
+
+
+  
+<script src="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js"></script>
+
+  
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.css">
+
+  
+<script src="/js/nprogress.js"></script>
+
+
+
+ 
+  
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.11.1/tocbot.min.js"></script>
+
+  
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.11.1/tocbot.css">
+
+ 
+
+
+<script src="/js/event.js"></script>
+
+
+<script src="/js/search.js"></script>
+
+
+<script src="/js/plugin.js"></script>
+
+
+
+</body>
+
+</html>

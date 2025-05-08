@@ -1,0 +1,530 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Head tag -->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <meta name="description" content="">
+  <meta name="author" content="">
+  <link rel="icon" href="/img/favicon.png">
+
+  
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5/css/all.min.css">
+
+  
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5/dist/css/bootstrap.min.css">
+
+
+  
+<link rel="stylesheet" href="/css/style.css">
+
+
+  
+  <title>Effectivate C++ - Dezeem&#39;log</title>
+<meta name="generator" content="Hexo 6.3.0"><link rel="alternate" href="/atom.xml" title="Dezeem'log" type="application/atom+xml">
+</head>
+
+
+<body>
+  <header>
+    <nav id="navbar" class="navbar fixed-nav scrolling-navbar">
+  <div class="container">
+    <div class="mark-wrapper">
+       
+      <div class="title-mark">Peomas</div>
+    </div>
+  
+    <button id="menu-btn" class="btn menu-btn" type="button" data-bs-toggle="collapse" data-bs-target="#nav-menu">
+      <div class="menu-icon"><span></span><span></span><span></span></div>
+    </button>
+  
+    <div id="nav-menu" class="collapse menu-wrapper">
+      <ul>
+        
+          <li>
+            <a href="/">Home </a>
+          </li>
+        
+          <li>
+            <a href="/archives">Archives </a>
+          </li>
+        
+          <li>
+            <a href="/categories">Category </a>
+          </li>
+        
+          <li>
+            <a href="/tags">Tag </a>
+          </li>
+        
+          <li>
+            <a href="/about">About </a>
+          </li>
+        
+        <li class="search-icon">
+          <button class="btn" data-bs-toggle="modal" data-bs-target="#searchModal" aria-label="Search">
+            <i class="fas fa-search"></i>
+          </button>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  </header>
+
+  <main>
+    <div class="container">
+      <div id="main">
+        <div class="row py-5">
+          <div class="col">
+            <div class="row">
+  <div class="left-content">
+    <article class="post-wrapper markdown-body">
+  <h2 class="post-title">
+    Effectivate C++
+  </h2>
+  <div class="post-meta">
+    <time datetime="Invalid date Invalid date ">2024-01-16</time>
+    
+    
+      
+        <a class="tag" href="/categories/C/">C++</a> 
+       
+    
+    
+       
+    
+    
+  </div>
+  
+  <div id="content">
+    <h1 id="effectivate-c"><a class="markdownIt-Anchor" href="#effectivate-c"></a> Effectivate C++</h1>
+<h2 id="习惯c"><a class="markdownIt-Anchor" href="#习惯c"></a> 习惯C++</h2>
+<h3 id="01"><a class="markdownIt-Anchor" href="#01"></a> 01</h3>
+<p><strong>视C++为一个语言联邦</strong></p>
+<p><strong>次语言:</strong></p>
+<ul>
+<li>C语言：以C语言为基础。</li>
+<li>Object-Oriented C++：面向对象程序设计</li>
+<li>Template C++：泛型编程</li>
+<li>STL：程序库</li>
+</ul>
+<h3 id="02"><a class="markdownIt-Anchor" href="#02"></a> 02</h3>
+<p><strong>尽量以const, enum, inline替代 #define</strong></p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">define</span> ASPECT_RATIO 1.653 <span class="comment">//避免这种写法</span></span></span><br><span class="line"></span><br><span class="line"><span class="type">const</span> <span class="type">double</span> AspectRatio = <span class="number">1.653</span> <span class="comment">//替换</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>对于单纯常量，最好以const对象或enums替换#defines</li>
+<li>对于形似函数的宏（macros），最好改用inline函数替换#defines</li>
+</ul>
+<h3 id="03"><a class="markdownIt-Anchor" href="#03"></a> 03</h3>
+<p><strong>尽可能使用const</strong></p>
+<h3 id="04"><a class="markdownIt-Anchor" href="#04"></a> 04</h3>
+<p><strong>确定对象在被使用前已先被初始化</strong></p>
+<h1 id="c资源管理"><a class="markdownIt-Anchor" href="#c资源管理"></a> C++资源管理</h1>
+<h2 id="堆heap"><a class="markdownIt-Anchor" href="#堆heap"></a> 堆(heap)</h2>
+<p>在内存管理的语境下，堆——动态分配内存的区域，有别于数据结构的堆</p>
+<p>此内存被分配后需要手动释放，否则造成内存泄漏。</p>
+<p>自由存储区——free store</p>
+<ul>
+<li>特指用new和delete来分配和释放内存区域</li>
+<li>new和delete的底层通常使用malloc和free实现</li>
+</ul>
+<p>malloc和free的操作区域是heap</p>
+<h2 id="栈stack"><a class="markdownIt-Anchor" href="#栈stack"></a> 栈(stack)</h2>
+<p>在内存管理的语境下，栈——函数调用过程中产生的本地变量和调用数据的区域，和数据结构的栈高度类似，满足FIFO。</p>
+<h2 id="rall"><a class="markdownIt-Anchor" href="#rall"></a> RALL</h2>
+<p>Resource Acquisition Is Initialization——C++是主流编程语言中唯一依赖RALL做资源管理，依托栈和析构函数</p>
+<p>在包括 x86 在内的大部分计算机体系架构中，栈的增长方向是低地址，因而上方意味着低地址。</p>
+<h1 id="重新认识c"><a class="markdownIt-Anchor" href="#重新认识c"></a> 重新认识C++</h1>
+<h2 id="程序的生命周期"><a class="markdownIt-Anchor" href="#程序的生命周期"></a> 程序的生命周期</h2>
+<p>编码(Coding)→预处理(Pre-processing)→编译(Compiling)→运行(Running)</p>
+<h3 id="编码"><a class="markdownIt-Anchor" href="#编码"></a> 编码</h3>
+<p><a target="_blank" rel="noopener" href="http://openresty.org/cn/c-coding-style-guide.html">OpenResty® C 代码风格指南</a></p>
+<p>最基本的要求是遵循语言规范和设计文档，再者还有代码规范、注释规范、设计模式、编程惯用法等</p>
+<p>代码风格</p>
+<ul>
+<li>空格和空行
+<ul>
+<li>留白的艺术——像‘写诗’一样去写代码</li>
+</ul>
+</li>
+<li>起个好名字
+<ul>
+<li>变量、函数名和名字空间用 snake_case，全局变量加“g_”前缀；</li>
+<li>自定义类名用 CamelCase，成员函数用 snake_case，成员变量加“m_”前缀；</li>
+<li>宏和常量应当全大写，单词之间用下划线连接；</li>
+<li>尽量不要用下划线作为变量的前缀或者后缀（比如 _local、name_），很难识别;</li>
+</ul>
+</li>
+<li>注释</li>
+</ul>
+<h3 id="预处理"><a class="markdownIt-Anchor" href="#预处理"></a> 预处理</h3>
+<p>C/C++程序独有。预处理器（Pro-processer）起作用。“预处理”的目的是文字替换，即各种预处理指令，比如 #include、#define、#if 等，实现“预处理编程”。</p>
+<p>预处理阶段编程的操作目标是“源码”，用各种指令控制预处理器，把源码<br>
+改造成另一种形式，就像是捏橡皮泥一样。</p>
+<ul>
+<li>预处理指令都以符号“#”开头</li>
+<li>单独的一个“#”也是一个预处理指令，叫“空指令”</li>
+<li>“#include”，它的作用是“包含文件”，可以包含任意的文件</li>
+<li>使用“#if 1”“#if 0”来显式启用或者禁用大段代码，比“/* …*/”的注释方式安全</li>
+</ul>
+<h3 id="编译"><a class="markdownIt-Anchor" href="#编译"></a> 编译</h3>
+<p>编译和链接。经过编译器和链接器的“锤炼”，生成可在计算机上运行的二进制机器码。编译的过程中，编译器还会根据 C++ 语言规则检查程序的语法、语义是否正确，发现错误就会产生“编译失败”。这是最基本的 C++“静态检查”。</p>
+<h4 id="属性"><a class="markdownIt-Anchor" href="#属性"></a> 属性</h4>
+<p>C++11，标准委员会认识到了“编译指令”的好处，把“民间”用法升级为“官方版本”，起名叫“属性”。可以理解为给变量、函数、类等“贴”上一个编译阶段的“标签”，方便编译器识别处理。</p>
+<p>“属性”没有新增关键字，而是用两对方括号形式“[[…]]”，方括号的中间就是属性标签。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">[[noreturn]] 	<span class="comment">// 属性标签</span></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">func</span><span class="params">(<span class="type">bool</span> flag)</span> <span class="comment">// 函数绝不会返回任何值</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	throw_std::<span class="built_in">runtime_error</span>(<span class="string">&quot;XXX&quot;</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>C<ins>11 里只定义了两个属性：“noreturn”和“carries_dependency”，它们<br>
+基本上没什么大用处。C</ins>14 增加了一个比较实用的属性“deprecated”，用来标记不推<br>
+荐使用的变量、函数或者类，也就是被“废弃”。</p>
+<p>比如，原来写了一个函数 old_func()，后来觉得不够好，就另外重写了一个完全不同的新函数。但是，那个老函数已经发布出去被不少人用了，立即删除不太可能，该怎么办呢？<br>
+这个时候，可以让“属性”发挥威力了。你可以给函数加上一个“deprecated”的编译期标签，再加上一些说明文字：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[[<span class="built_in">deprecated</span>(<span class="string">&quot;deadline:2020-12-31&quot;</span>)]]</span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">old_func</span><span class="params">()</span></span>;</span><br></pre></td></tr></table></figure>
+<p>于是，任何用到这个函数的程序都会在编译时看到这个标签，报出一条警告：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">warning: ‘<span class="function"><span class="type">int</span> <span class="title">old_func</span><span class="params">()</span>’ is deprecated: deadline:<span class="number">2020</span><span class="number">-12</span><span class="number">-31</span> [-Wdeprecated-decl</span></span><br></pre></td></tr></table></figure>
+<p>程序能够正常编译，但这种强制的警告形式会“提醒”用户旧接口已经被废弃了，应该尽快迁移到新接口。这种形式比毫无约束力的文档或者注释要好得多。</p>
+<h4 id="静态断言static_assert"><a class="markdownIt-Anchor" href="#静态断言static_assert"></a> 静态断言（static_assert）</h4>
+<p>static_assert 运行在编译阶段，只能看到编译时的常数和类型，看不到运行时的变量、指针、内存数据等，是“静态”的。</p>
+<p><strong>编程范式</strong></p>
+<p>编程范式（Paradigm）。“编程范式”是一种“方法论”，就是指导你编写代码的一些思路、规则、习惯、定式和常用语。</p>
+<h3 id="运行"><a class="markdownIt-Anchor" href="#运行"></a> 运行</h3>
+<p>CPU 利用率通常是评价程序运行的好坏最直观、最容易获取的指标，优化它是提升系统性能最快速的手段。</p>
+<h4 id="系统级工具"><a class="markdownIt-Anchor" href="#系统级工具"></a> 系统级工具</h4>
+<p>四个“高性价比”的工具：top、pstack、strace 和 perf。它们用起来很简单，而且实用性很强，可以观测到程序的很多外部参数和内部函数调用，由内而外、由表及里地分析程序性能。</p>
+<p>某个进程 CPU 使用率太高，怀疑有问题，那我就要深入进程内部，看看到底是哪些操作消耗了 CPU。这时，我们可以选用两个工具：pstack 和 strace。</p>
+<p><em>pstack</em> 可以打印出进程的调用栈信息，有点像是给正在运行的进程拍了个快照，你能看到某个时刻的进程里调用的函数和关系，对进程的运行有个初步的印象。</p>
+<p>pstack 显示的只是进程的一个“静态截面”，信息量还是有点少，而 <em>strace</em> 可以显示出进程的正在运行的系统调用，实时查看进程与系统内核交换了哪些信息。</p>
+<p><em>perf</em> 可以说是 pstack 和 strace 的“高级版”，它按照固定的频率去“采样”，相当于连续执行多次的 pstack，然后再统计函数的调用次数，算出百分比。只要采样的频率足够大，把这些“瞬时截面”组合在一起，就可以得到进程运行时的可信数据，比较全面地描述出 CPU 使用情况。</p>
+<p>常用的 perf 命令是“perf top -K -p xxx”，按 CPU 使用率排序，只看用户空间的调用。</p>
+<h4 id="源码级工具"><a class="markdownIt-Anchor" href="#源码级工具"></a> 源码级工具</h4>
+<p>推荐一个专业的源码级性能分析工具：Google Performance Tools，简称为 gperftools。它是一个 C++ 工具集，包含了几个专门的性能分析工具（还有一个高效的内存分配器 tcmalloc），分析效果直观、友好、易理解，被广泛地应用于很多系统，经过了充分的实际验证。</p>
+<p>编译运行后会得到一个“case1.perf”的文件，里面就是 gperftools 的分析数据，但它是<br>
+二进制的，不能直接查看，如果想要获得可读的信息，需要另外一个工具脚本 pprof。但是，pprof 脚本并不含在 apt-get 的安装包里，所以，你还要从GitHub上下载源码，然后用“–text”选项，就可以输出文本形式的分析报告。pprof 也能输出图形化的分析报告，支持有向图和火焰图，需要你提前安装 Graphviz和 FlameGraph。</p>
+<h2 id="怎样写出好的类"><a class="markdownIt-Anchor" href="#怎样写出好的类"></a> 怎样写出“好”的类</h2>
+<h3 id="设计思想"><a class="markdownIt-Anchor" href="#设计思想"></a> 设计思想</h3>
+<p>抽象（Abstraction）和封装（Encapsulation）</p>
+<h3 id="实现原则"><a class="markdownIt-Anchor" href="#实现原则"></a> 实现原则</h3>
+<ul>
+<li>在设计类的时候尽量少用继承和虚函数。</li>
+<li>使用特殊标识符“final”可以禁止类被继承，简化类的层次关系。</li>
+</ul>
+<h3 id="编码准则"><a class="markdownIt-Anchor" href="#编码准则"></a> 编码准则</h3>
+<p>在必须使用继承的场合，建议你只使用 public 继承，避免使用 virtual、protected</p>
+<h3 id="常用技巧"><a class="markdownIt-Anchor" href="#常用技巧"></a> 常用技巧</h3>
+<ul>
+<li>“委托构造”（delegating constructor）</li>
+</ul>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">DemoDelegating</span> <span class="keyword">final</span></span><br><span class="line">&#123;</span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line">	<span class="type">int</span> a;	<span class="comment">// 成员变量</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">	<span class="built_in">DemoDelegating</span>(<span class="type">int</span> x) : <span class="built_in">a</span>(x)	<span class="comment">// 基本的构造函数</span></span><br><span class="line">&#123;&#125;</span><br><span class="line"><span class="built_in">DemoDelegating</span>() :	<span class="comment">// 无参数的构造函数</span></span><br><span class="line"><span class="built_in">DemoDelegating</span>(<span class="number">0</span>)	<span class="comment">// 给出默认值，委托给第一个构造函数</span></span><br><span class="line">&#123;&#125;</span><br><span class="line"><span class="built_in">DemoDelegating</span>(<span class="type">const</span> string&amp; s) : 	<span class="comment">// 字符串参数构造函数</span></span><br><span class="line"><span class="built_in">DemoDelegating</span>(<span class="built_in">stoi</span>(s))	<span class="comment">// 转换成整数，再委托给第一个构造函数</span></span><br><span class="line">&#123;&#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>“成员变量初始化”（In-class member initializer）</li>
+</ul>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">DemoInit</span> <span class="keyword">final</span></span><br><span class="line">&#123;</span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line">        <span class="type">int</span>	a = <span class="number">0</span>;</span><br><span class="line">        string	s =	<span class="string">&quot;</span></span><br><span class="line"><span class="string">        vector&lt;int&gt;	v&#123;1, 2, 3&#125;; </span></span><br><span class="line"><span class="string">public:</span></span><br><span class="line"><span class="string">	DemoInit() = default;</span></span><br><span class="line"><span class="string">	~DemoInit() = default;</span></span><br><span class="line"><span class="string">public:</span></span><br><span class="line"><span class="string">	DemoInit(int x) : a(x) &#123;&#125;</span></span><br><span class="line"><span class="string">&#125;;</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>“类型别名”（Type Alias）</li>
+</ul>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">using</span> <span class="type">uint_t</span> = <span class="type">unsigned</span> <span class="type">int</span>;	<span class="comment">// using别名</span></span><br><span class="line"><span class="keyword">typedef</span> <span class="type">unsigned</span> <span class="type">int</span> <span class="type">uint_t</span>；    <span class="comment">// 等价的typedef</span></span><br></pre></td></tr></table></figure>
+<h1 id="语言特性"><a class="markdownIt-Anchor" href="#语言特性"></a> 语言特性</h1>
+<h2 id="自动类型推导"><a class="markdownIt-Anchor" href="#自动类型推导"></a> 自动类型推导</h2>
+<p>关键字 <em>auto</em></p>
+<ul>
+<li>auto 总是推导出“值类型”，绝不会是“引用”；</li>
+<li>auto 可以附加上 const、volatile、*、&amp; 这样的类型修饰符，得到新的类型。</li>
+</ul>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">auto</span> x = <span class="number">0L</span>; 	<span class="comment">// 自动推导为long</span></span><br><span class="line"><span class="keyword">auto</span> y = &amp;x; 	<span class="comment">// 自动推导为long*</span></span><br><span class="line"><span class="keyword">auto</span> z &#123;&amp;x&#125;;	 <span class="comment">// 自动推导为long*</span></span><br><span class="line"><span class="keyword">auto</span> err;	<span class="comment">// 错误，没有赋值表达式，不知道是什么类型</span></span><br></pre></td></tr></table></figure>
+<p>C++ 的“自动类型推导”还有另外一个关键字：<em>decltype</em></p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> x = <span class="number">0</span>;	<span class="comment">// 整型变量</span></span><br><span class="line"><span class="keyword">decltype</span>(x) x1;	<span class="comment">// 推导为int，x1是int</span></span><br><span class="line"><span class="keyword">decltype</span>(x)&amp; x2 = x;	 <span class="comment">// 推导为int，x2是int&amp;，引用必须赋值</span></span><br><span class="line"><span class="keyword">decltype</span>(x)* x3;	<span class="comment">// 推导为int，x3是int*</span></span><br><span class="line"><span class="keyword">decltype</span>(&amp;x) x4;	<span class="comment">// 推导为int*，x4是int*</span></span><br><span class="line"><span class="keyword">decltype</span>(&amp;x)* x5;	<span class="comment">// 推导为int*，x5是int**</span></span><br><span class="line"><span class="keyword">decltype</span>(x2) x6 = x2; <span class="comment">// 推导为int&amp;，x6是int&amp;，引用必须赋值</span></span><br></pre></td></tr></table></figure>
+<p>decltype 不仅能够推导出值类型，还能够推导出引用类型，也就是表达式的“原始类<br>
+型”。</p>
+<p>C++14 增加了一个“decltype(auto)”的形式，既可以精确推导类型，又能像<br>
+auto 一样方便使用。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> x = <span class="number">0</span>;	<span class="comment">// 整型变量</span></span><br><span class="line"><span class="keyword">decltype</span>(<span class="keyword">auto</span>) x1 = (x);	 <span class="comment">// 推导为int&amp;，因为(expr)是引用类型</span></span><br><span class="line"><span class="keyword">decltype</span>(<span class="keyword">auto</span>) x2 = &amp;x;		 <span class="comment">// 推导为int*</span></span><br><span class="line"><span class="keyword">decltype</span>(<span class="keyword">auto</span>) x3 = x1; 	<span class="comment">// 推导为int&amp;</span></span><br></pre></td></tr></table></figure>
+<p>auto 还有一个“最佳实践”，就是“range-based for”，不需要关心容器元素类型、迭<br>
+代器返回值和首末位置，就能非常轻松地完成遍历操作。不过，为了保证效率，最好使<br>
+用“const auto&amp;”或者“auto&amp;”。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">vector&lt;<span class="type">int</span>&gt; v = &#123;<span class="number">2</span>,<span class="number">3</span>,<span class="number">5</span>,<span class="number">7</span>,<span class="number">11</span>&#125;; 	<span class="comment">// vector顺序容器</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span>(<span class="type">const</span> <span class="keyword">auto</span>&amp; i : v) &#123; 	<span class="comment">// 常引用方式访问元素，避免拷贝代价</span></span><br><span class="line">	cout &lt;&lt; i &lt;&lt; <span class="string">&quot;,&quot;</span>;	<span class="comment">// 常引用不会改变元素的值</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">auto</span>&amp; i : v) &#123;	<span class="comment">// 引用方式访问元素</span></span><br><span class="line">	i++;	<span class="comment">// 可以改变元素的值</span></span><br><span class="line">	cout &lt;&lt; i &lt;&lt; <span class="string">&quot;,&quot;</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="常量变量"><a class="markdownIt-Anchor" href="#常量变量"></a> 常量/变量</h2>
+<p>const/volatile/mutable</p>
+<ul>
+<li>const</li>
+</ul>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 需要加上volatile修饰，运行时才能看到效果</span></span><br><span class="line"><span class="type">const</span> <span class="keyword">volatile</span> <span class="type">int</span> MAX_LEN = <span class="number">1024</span>;</span><br><span class="line"><span class="keyword">auto</span> ptr = (<span class="type">int</span>*)(&amp;MAX_LEN);</span><br><span class="line">*ptr = <span class="number">2048</span>;</span><br><span class="line">cout &lt;&lt; MAX</span><br><span class="line">LEN &lt;&lt; endl;	<span class="comment">// 输出2048</span></span><br></pre></td></tr></table></figure>
+<p>我从来不用“* const”的形式，也建议你最好不要用，而且这种形式在实际开发时也确实没有多大作用（除非你想“炫技”）。</p>
+<img src="https://raw.githubusercontent.com/Dezeem/Note-img/main/img/202212171358334.png" alt="image-20221217135753980" style="zoom:67%;">
+<ul>
+<li>mutable</li>
+</ul>
+<p>用来修饰成员变量，允许 const 成员函数修改，mutable 变量的变化不影响对象的常量性，但要小心不要误用损坏对象。你今后再写类的时候，就要认真想一想，哪些操作改变了内部状态，哪些操作没改变内部状态，对于只读的函数，就要加上 const 修饰。写错了也不用怕，编译器会帮你检查出来。</p>
+<ul>
+<li>volatile</li>
+</ul>
+<p>它表示变量可能会被“不被察觉”地修改，禁止编译器优化，影响性能，应当少用。</p>
+<p><strong>尽可能多用 const，让代码更安全</strong></p>
+<img src="https://raw.githubusercontent.com/Dezeem/Note-img/main/img/202212171403172.png" alt="image-20221217140232505" style="zoom:50%;">
+<h2 id="智能指针"><a class="markdownIt-Anchor" href="#智能指针"></a> 智能指针</h2>
+<p>常用的有两种智能指针，分别是 unique_ptr 和 shared_ptr</p>
+<ul>
+<li>unique_ptr</li>
+</ul>
+<p>unique_ptr 是最简单、最容易使用的一个智能指针，在声明的时候必须用模板参数指定类型：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">unique_ptr&lt;<span class="type">int</span>&gt; <span class="title">ptr1</span><span class="params">(<span class="keyword">new</span> <span class="type">int</span>(<span class="number">10</span>))</span></span>;	<span class="comment">// int智能指针</span></span><br><span class="line"><span class="built_in">assert</span>(*ptr1 = <span class="number">10</span>);	<span class="comment">// 可以使用*取内容</span></span><br><span class="line"><span class="built_in">assert</span>(ptr1 != <span class="literal">nullptr</span>);	<span class="comment">// 可以判断是否为空指针</span></span><br><span class="line"><span class="function">unique_ptr&lt;string&gt; <span class="title">ptr2</span><span class="params">(<span class="keyword">new</span> string(<span class="string">&quot;hello&quot;</span>))</span></span>; <span class="comment">// string智能指针</span></span><br><span class="line"><span class="built_in">assert</span>(*ptr2 == <span class="string">&quot;hello&quot;</span>);	<span class="comment">// 可以使用*取内容</span></span><br><span class="line"><span class="built_in">assert</span>(ptr2-&gt;<span class="built_in">size</span>() == <span class="number">5</span>);	<span class="comment">// 可以使用-&gt;调用成员函数</span></span><br></pre></td></tr></table></figure>
+<p>unique_ptr 虽然名字叫指针，用起来也很像，但它实际上并不是指针，而是一个对象。所以，不要企图对它调用 delete，它会自动管理初始化时的指针，在离开作用域时析构释放内存。</p>
+<p>它也没有定义加减运算，不能随意移动指针地址，完全避免了指针越界等危险。</p>
+<p>未初始化的 unique_ptr 表示空指针，这样就相当于直接操作了空指针，运行时就会产生致命的错误。<br>
+为了避免这种低级错误，可以调用工厂函数 make_unique()，强制创建智能指针的时候必须初始化。同时还可以利用自动类型推导 auto，少写一些代码：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">auto</span> ptr3 = <span class="built_in">make_unique</span>&lt;<span class="type">int</span>&gt;(<span class="number">42</span>);	<span class="comment">// 工厂函数创建智能指针</span></span><br><span class="line"><span class="built_in">assert</span>(ptr3 &amp;&amp; *ptr3 == <span class="number">42</span>);</span><br><span class="line"><span class="keyword">auto</span> ptr4 = <span class="built_in">make_unique</span>&lt;string&gt;(<span class="string">&quot;god of war&quot;</span>); <span class="comment">// 工厂函数创建智能指针</span></span><br><span class="line"><span class="built_in">assert</span>(!ptr4-&gt;<span class="built_in">empty</span>());</span><br></pre></td></tr></table></figure>
+<p>尽量不要对 unique_ptr 执行赋值操作</p>
+<ul>
+<li>shared_ptr</li>
+</ul>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">shared_ptr&lt;<span class="type">int</span>&gt; <span class="title">ptr1</span><span class="params">(<span class="keyword">new</span> <span class="type">int</span>(<span class="number">10</span>))</span></span>; 	<span class="comment">// int智能指针</span></span><br><span class="line"><span class="built_in">assert</span>(*ptr1 = <span class="number">10</span>);<span class="comment">// 可以使用*取内容</span></span><br><span class="line"><span class="function">shared_ptr&lt;string&gt; <span class="title">ptr2</span><span class="params">(<span class="keyword">new</span> string(<span class="string">&quot;hello&quot;</span>))</span></span>; 	<span class="comment">// string智能指针</span></span><br><span class="line"><span class="built_in">assert</span>(*ptr2 == <span class="string">&quot;hello&quot;</span>);<span class="comment">// 可以使用*取内容</span></span><br><span class="line"><span class="keyword">auto</span> ptr3 = <span class="built_in">make_shared</span>&lt;<span class="type">int</span>&gt;(<span class="number">42</span>);	 <span class="comment">// 工厂函数创建智能指针</span></span><br><span class="line"><span class="built_in">assert</span>(ptr3 &amp;&amp; *ptr3 == <span class="number">42</span>);<span class="comment">// 可以判断是否为空指针</span></span><br><span class="line"><span class="keyword">auto</span> ptr4 = <span class="built_in">make_shared</span>&lt;string&gt;(<span class="string">&quot;zelda&quot;</span>);	 <span class="comment">// 工厂函数创建智能指针</span></span><br><span class="line"><span class="built_in">assert</span>(!ptr4-&gt;<span class="built_in">empty</span>());	<span class="comment">// 可以使用-&gt;调用成员函数</span></span><br></pre></td></tr></table></figure>
+<p>它的所有权是可以被安全共享的，也就是说支持拷贝赋值。</p>
+<h2 id="exception"><a class="markdownIt-Anchor" href="#exception"></a> Exception</h2>
+<ul>
+<li><em>异常的处理流程是完全独立的</em>，throw 抛出异常后就可以不用管了，错误处理代码都集中在专门的 catch 块里。这样就彻底分离了业务逻辑与错误逻辑，看起来更清楚。</li>
+<li><em>异常是绝对不能被忽略的</em>，必须被处理。如果你有意或者无意不写 catch 捕获异常，那么它会一直向上传播出去，直至找到一个能够处理的 catch 块。如果实在没有，那就会导致程序立即停止运行，明白地提示你发生了错误，而不会“坚持带病工作”。</li>
+<li><em>异常可以用在错误码无法使用的场合</em>，这也算是 C++ 的“私人原因”。因为它比 C 语言多了构造 / 析构函数、操作符重载等新特性，有的函数根本就没有返回值，或者返回值无法表示错误，而全局的 errno 实在是“太不优雅”了，与 C++ 的理念不符，所以也必须使用异常来报告错误。</li>
+</ul>
+<h2 id="函数式编程-lambda"><a class="markdownIt-Anchor" href="#函数式编程-lambda"></a> 函数式编程 lambda</h2>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">auto</span> func = [](<span class="type">int</span> x)	<span class="comment">// 定义一个lambda表达式</span></span><br><span class="line">&#123;</span><br><span class="line">	cout &lt;&lt; x*x &lt;&lt; endl;	<span class="comment">// lambda表达式的具体内容</span></span><br><span class="line">&#125;;</span><br><span class="line"><span class="built_in">func</span>(<span class="number">3</span>);<span class="comment">// 调用lambda表达式</span></span><br></pre></td></tr></table></figure>
+<p>lambda 表达式除了可以像普通函数那样被调用，还有一个普通函数所不具备的特殊本领，就是可以“捕获”外部变量，在内部的代码里直接操作。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> n = <span class="number">10</span>;	<span class="comment">// 一个外部变量</span></span><br><span class="line"><span class="keyword">auto</span> func = [=](<span class="type">int</span> x)	<span class="comment">// lambda表达式，用“=”值捕获</span></span><br><span class="line">&#123;</span><br><span class="line">	cout &lt;&lt; x*n &lt;&lt; endl;	<span class="comment">// 直接操作外部变量</span></span><br><span class="line">&#125;;</span><br><span class="line"><span class="built_in">func</span>(<span class="number">3</span>);	<span class="comment">// 调用lambda表达式</span></span><br></pre></td></tr></table></figure>
+<p>C++ 没有为 lambda 表达式引入新的关键字，并没有“lambda”这样的词汇，而是用了一个特殊的形式“[]”，术语叫“lambda 引出符”（lambda introducer）。在 lambda 引出符后面，就可以像普通函数那样，用圆括号声明入口参数，用花括号定义函数体。</p>
+<h1 id="标准库"><a class="markdownIt-Anchor" href="#标准库"></a> 标准库</h1>
+<h2 id="字符串"><a class="markdownIt-Anchor" href="#字符串"></a> 字符串</h2>
+<ol>
+<li>
+<p>字面量后缀</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std::literals::string_literals; 	<span class="comment">//必须打开名字空间</span></span><br><span class="line"><span class="keyword">auto</span> str = <span class="string">&quot;std string&quot;</span>s;	<span class="comment">// 后缀s，表示是标准字符串，直接类型推导</span></span><br></pre></td></tr></table></figure>
+</li>
+<li>
+<p>原始字符串</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">auto</span> str = <span class="string">R&quot;(nier:automata)&quot;</span>; 	<span class="comment">// 原始字符串：nier:automata</span></span><br></pre></td></tr></table></figure>
+</li>
+<li>
+<p>字符串转换函数</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">assert</span>(<span class="built_in">stoi</span>(<span class="string">&quot;42&quot;</span>) == <span class="number">42</span>);	<span class="comment">// 字符串转整数</span></span><br><span class="line"><span class="built_in">assert</span>(<span class="built_in">stol</span>(<span class="string">&quot;253&quot;</span>) == <span class="number">253L</span>);	<span class="comment">// 字符串转长整数</span></span><br><span class="line"><span class="built_in">assert</span>(<span class="built_in">stod</span>(<span class="string">&quot;2.0&quot;</span>) == <span class="number">2.0</span>);	<span class="comment">// 字符串转浮点数</span></span><br></pre></td></tr></table></figure>
+</li>
+<li>
+<p>字符串视图类</p>
+</li>
+</ol>
+<p><em>正则表达式</em></p>
+<p>C++ 正则表达式主要有两个类。</p>
+<ul>
+<li>regex：表示一个正则表达式，是 basic_regex 的特化形式；</li>
+<li>smatch：表示正则表达式的匹配结果，是 match_results 的特化形式。</li>
+</ul>
+<p>C++ 正则匹配有三个算法，注意它们都是“只读”的，不会变动原字符串。</p>
+<ul>
+<li>regex_match()：完全匹配一个字符串；</li>
+<li>regex_search()：在字符串里查找一个正则匹配；</li>
+<li>regex_replace()：正则查找再做替换。</li>
+</ul>
+<h2 id="容器"><a class="markdownIt-Anchor" href="#容器"></a> 容器</h2>
+<p>容器，就是能够“容纳”“存放”元素的一些数据结构。</p>
+<p>容器里存储的是元素的拷贝、副本，而不是引用。</p>
+<ul>
+<li>顺序容器
+<ul>
+<li>即数据结构里的线性表，一共有 5 种：array、vector、deque、list、forward_list</li>
+<li>连续存储的数组：array、vector 和 deque。
+<ul>
+<li>array 和 vector 直接对应 C 的内置数组，内存布局与 C 完全兼容，所以是开销最低、速度最快的容器。区别在于，array 是静态数组，而 vector 是动态数组。</li>
+<li>deque 也是动态数组，它可以在两端高效地插入删除元素，这也是它的名字double-end queue 的来历，而 vector 则只能用 push_back 在末端追加元素。</li>
+</ul>
+</li>
+<li>指针结构的链表：list 和 forward_list
+<ul>
+<li>list 是双向链表，而 forward_list是单向链表。</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>有序容器
+<ul>
+<li>C++ 的有序容器使用的是树结构，通常是红黑树——有着最好查找性能的二叉树。</li>
+<li>标准库里一共有四种有序容器：set/multiset 和 map/multimap。set 是集合，map 是关联数组（在其他语言里也叫“字典”）。</li>
+<li>有 multi 前缀的容器表示可以容纳重复的 key，内部结构与无前缀的相同，所以也可以认为只有两种有序容器。</li>
+<li>集合关系就用 set，关联数组就用 map。</li>
+</ul>
+</li>
+<li>无序容器
+<ul>
+<li>unordered_set/unordered_multiset、unordered_map/unordered_multimap。</li>
+<li>内部数据结构不是红黑树，而是散列表（也叫哈希表，hash table）</li>
+<li>如果只想要单纯的集合、字典，没有排序需求，就应该用无序容器，没有比较排序的成本，它的速度就会非常快。</li>
+</ul>
+</li>
+</ul>
+<h2 id="算法"><a class="markdownIt-Anchor" href="#算法"></a> 算法</h2>
+<p><em>迭代器</em></p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">array&lt;<span class="type">int</span>, 5&gt; arr = &#123;<span class="number">0</span>,<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>&#125;; 	<span class="comment">// array静态数组容器</span></span><br><span class="line"><span class="keyword">auto</span> b = <span class="built_in">begin</span>(arr);	<span class="comment">// 全局函数获取迭代器，首端</span></span><br><span class="line"><span class="keyword">auto</span> e = <span class="built_in">end</span>(arr);	<span class="comment">// 全局函数获取迭代器，末端</span></span><br><span class="line"><span class="built_in">assert</span>(<span class="built_in">distance</span>(b, e) == <span class="number">5</span>);	 <span class="comment">// 迭代器的距离</span></span><br><span class="line"><span class="keyword">auto</span> p = <span class="built_in">next</span>(b);	<span class="comment">// 获取“下一个”位置</span></span><br><span class="line"><span class="built_in">assert</span>(<span class="built_in">distance</span>(b, p) == <span class="number">1</span>);	 <span class="comment">// 迭代器的距离</span></span><br><span class="line"><span class="built_in">assert</span>(<span class="built_in">distance</span>(p, b) == <span class="number">-1</span>);	 <span class="comment">// 反向计算迭代器的距离</span></span><br><span class="line"><span class="built_in">advance</span>(p, <span class="number">2</span>);	<span class="comment">// 迭代器前进两个位置，指向元素&#x27;3&#x27;</span></span><br><span class="line"><span class="built_in">assert</span>(*p == <span class="number">3</span>);</span><br><span class="line"><span class="built_in">assert</span>(p == <span class="built_in">prev</span>(e, <span class="number">2</span>)); 	<span class="comment">// 是末端迭代器的前两个位置</span></span><br></pre></td></tr></table></figure>
+<p><code>for_each()</code></p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">vector&lt;<span class="type">int</span>&gt; v = &#123;<span class="number">3</span>,<span class="number">5</span>,<span class="number">1</span>,<span class="number">7</span>,<span class="number">10</span>&#125;; 	<span class="comment">// vector容器</span></span><br><span class="line"><span class="keyword">for</span>(<span class="type">const</span> <span class="keyword">auto</span>&amp; x : v) &#123;	<span class="comment">// range for循环</span></span><br><span class="line">	cout &lt;&lt; x &lt;&lt; <span class="string">&quot;,&quot;</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">auto</span> print = [](<span class="type">const</span> <span class="keyword">auto</span>&amp; x) 	<span class="comment">// 定义一个lambda表达式</span></span><br><span class="line">&#123;</span><br><span class="line">	cout &lt;&lt; x &lt;&lt; <span class="string">&quot;,&quot;</span>;</span><br><span class="line">&#125;;</span><br><span class="line">for_each(<span class="built_in">cbegin</span>(v), <span class="built_in">cend</span>(v), print);	<span class="comment">// for_each算法</span></span><br><span class="line"></span><br><span class="line">for_each(	<span class="comment">// for_each算法，内部定义lambda表达式</span></span><br><span class="line">	<span class="built_in">cbegin</span>(v), <span class="built_in">cend</span>(v),	<span class="comment">// 获取常量迭代器</span></span><br><span class="line">	[](<span class="type">const</span> <span class="keyword">auto</span>&amp; x)	<span class="comment">// 匿名lambda表达式</span></span><br><span class="line">	&#123;</span><br><span class="line">		cout &lt;&lt; x &lt;&lt; <span class="string">&quot;,&quot;</span>;</span><br><span class="line">	&#125;</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+<p><em>排序</em></p>
+<ul>
+<li>常见问题对应的算法：
+<ul>
+<li>要求排序后仍然保持元素的相对顺序，应该用 stable_sort，它是稳定的；</li>
+<li>选出前几名（TopN），应该用 partial_sort；</li>
+<li>选出前几名，但不要求再排出名次（BestN），应该用 nth_element；</li>
+<li>中位数（Median）、百分位数（Percentile），还是用 nth_element；</li>
+<li>按照某种规则把元素划分成两组，用 partition；</li>
+<li>第一名和最后一名，用 minmax_element。</li>
+</ul>
+</li>
+</ul>
+<p><img src="https://raw.githubusercontent.com/Dezeem/Note-img/main/img/202212181733088.png" alt="image-20221218173338732"></p>
+<p><em>查找</em></p>
+<h2 id="并发"><a class="markdownIt-Anchor" href="#并发"></a> 并发</h2>
+<p>“读而不写”就不会有数据竞争。</p>
+<ul>
+<li>多线程是并发最常用的实现方式，好处是任务并行、避免阻塞，坏处是开发难度高，有数据竞争、死锁等很多“坑”；</li>
+<li>call_once() 实现了仅调用一次的功能，避免多线程初始化时的冲突；</li>
+<li>thread_local 实现了线程局部存储，让每个线程都独立访问数据，互不干扰；</li>
+<li>atomic 实现了原子化变量，可以用作线程安全的计数器，也可以实现无锁数据结构；</li>
+<li>async() 启动一个异步任务，相当于开了一个线程，但内部通常会有优化，比直接使用线程更好。</li>
+</ul>
+<h1 id="技能进阶"><a class="markdownIt-Anchor" href="#技能进阶"></a> 技能进阶</h1>
+<h2 id="序列化反序列化"><a class="markdownIt-Anchor" href="#序列化反序列化"></a> 序列化/反序列化</h2>
+<h3 id="json"><a class="markdownIt-Anchor" href="#json"></a> JSON</h3>
+<p>JSON 是一种轻量级的数据交换格式，采用纯文本表示，所以是“human readable”，阅<br>
+读和修改都很方便。</p>
+<p>JSON for Modern C++ 可能不是最小最快的 JSON 解析工具，但功能足够完善，而且使<br>
+用方便，仅需要包含一个头文件“json.hpp”，没有外部依赖，也不需要额外的安装、编<br>
+译、链接工作，适合快速上手开发。</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git clone git@github.com:nlohmann/json.git <span class="meta"># git clone</span></span><br><span class="line">wget https:<span class="comment">//github.com/nlohmann/json/releases/download/v3.7.3/json.hpp</span></span><br></pre></td></tr></table></figure>
+<h3 id="messagepack"><a class="markdownIt-Anchor" href="#messagepack"></a> MessagePack</h3>
+<p>它也是一种轻量级的数据交换格式，与 JSON 的不同之处在于它不是纯文本，而是二进制。由于二进制这个特点，MessagePack 也得到了广泛的应用，著名的有 Redis、Pinterest。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git clone git@github.com:msgpack/msgpack-c.git</span><br><span class="line">g++ msgpack.cpp -std=c++14 -I../common/include -o a.out</span><br></pre></td></tr></table></figure>
+<h3 id="protobuffer"><a class="markdownIt-Anchor" href="#protobuffer"></a> ProtoBuffer</h3>
+<p>通常简称为 PB，由 Google 出品。PB 也是一种二进制的数据格式，但毕竟是工业级产品，所以没有 JSON 和 MessagePack那么“轻”，相关的东西比较多，要安装一个预处理器和开发库，编译时还要链接动态库（-lprotobuf）：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">apt-get install protobuf-compiler</span><br><span class="line">apt-get install libprotobuf-dev</span><br><span class="line"></span><br><span class="line">g++ protobuf.cpp -std=c++14 -lprotobuf -o a.out</span><br></pre></td></tr></table></figure>
+<p>PB 的另一个特点是数据有“模式”（schema），必须要先写一个 IDL（Interface Description Language）文件，定义好数据结构，只有预先定义了的数据结构，才能被序列化和反序列化。</p>
+<h2 id="网络通信"><a class="markdownIt-Anchor" href="#网络通信"></a> 网络通信</h2>
+<p><em>libcurl：高可移植、功能丰富的通信库</em></p>
+<p><em>cpr：更现代、更易用的通信库</em></p>
+<p>cpr 是对 libcurl 的一个 C<ins>11 封装，使用了很多现代 C</ins> 的高级特性，对外的接口模仿了 Python 的 requests 库，非常简单易用。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">git clone git@github.com:whoshuu/cpr.git</span><br><span class="line">cmake . -DUSE_SYSTEM_CURL=ON -DBUILD_CPR</span><br><span class="line">make &amp;&amp; make install</span><br></pre></td></tr></table></figure>
+<p><em>ZMQ：高效、快速、多功能的通信库</em></p>
+<p>作为消息队列，ZMQ 的另一大特点是零配置零维护零成本，不需要搭建额外的代理服务器，只要安装了开发库就能够直接使用，相当于把消息队列功能直接嵌入到你的应用程序里：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">apt-get install libzmq3-dev</span><br></pre></td></tr></table></figure>
+<p>ZMQ 是一个高级的网络通信库，支持多种通信模式，可以把消息队列功能直接嵌入应用程序，搭建出高效、灵活、免管理的分布式系统。</p>
+<h2 id="脚本语言"><a class="markdownIt-Anchor" href="#脚本语言"></a> 脚本语言</h2>
+<h3 id="python"><a class="markdownIt-Anchor" href="#python"></a> Python</h3>
+<p>pybind11 完全基于现代 C++ 开发（C<ins>11 以上），所以没有兼容旧系统的负担。它使用了大量的现代 C</ins> 特性，不仅代码干净整齐，运行效率也更高。</p>
+<p>pybind11 支持 Python2.7、Python3 和 PyPy，这里我用的是 Python3：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">apt-get install python3-dev</span><br><span class="line">apt-get install python3-pip</span><br><span class="line">pip3 install pybind11</span><br></pre></td></tr></table></figure>
+<h3 id="lua"><a class="markdownIt-Anchor" href="#lua"></a> Lua</h3>
+<p>第二个脚本语言是小巧高效的 Lua，号称是“最快的脚本语言”。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git clone git@github.com:openresty/luajit2.git</span><br><span class="line">make &amp;&amp; make install</span><br></pre></td></tr></table></figure>
+<h1 id="总结"><a class="markdownIt-Anchor" href="#总结"></a> 总结</h1>
+<h2 id="设计模式"><a class="markdownIt-Anchor" href="#设计模式"></a> 设计模式</h2>
+<p>常用有 5 个原则，也就是常说的“SOLID”。</p>
+<ol>
+<li>SRP，单一职责（Single ResponsibilityPrinciple）；</li>
+<li>OCP，开闭（Open Closed Principle）；</li>
+<li>LSP，里氏替换（Liskov Substitution Principle）；</li>
+<li>ISP，接口隔离（Interface-Segregation Principle）；</li>
+<li>DIP，依赖反转，有的时候也叫依赖倒置（Dependency Inversion Principle）。</li>
+</ol>
+
+  </div>
+
+</article>
+  </div>
+  <div class="right-content">
+    <div id="toc" class="toc-wrapper"></div>
+  <div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+    </div>
+
+     
+  <button id="scroll-to-top" class="btn btn-top" aria-label="Scroll To Top">
+    <i class="fas fa-arrow-up"></i>
+  </button>
+ 
+
+  </main>
+
+  <div class="footer-wrapper">
+  <div class="left-content"></div>
+  <div class="right-content">
+    <div>Copyright &copy;2025</div>
+    <div>Powered By <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a> - Theme <a target="_blank" rel="noopener" href="https://github.com/thomasyu929/hexo-theme-peomas">Peomas</a></div>
+  </div>
+</div>
+
+  <div id="searchModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="searchModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Search</h5>
+        <button type="button" class="btn btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <div class="input-wrapper">
+          <i class="fas fa-search"></i>
+          <input id="search" class="search-input" type="text" placeholder="Input content to search..." />
+        </div>
+        <ul id="result" class="list-group result-wrapper">
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+  
+<script src="https://cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js"></script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5/dist/js/bootstrap.min.js"></script>
+
+
+<script src="/js/prism.js"></script>
+
+
+
+  
+<script src="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js"></script>
+
+  
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.css">
+
+  
+<script src="/js/nprogress.js"></script>
+
+
+
+ 
+  
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.11.1/tocbot.min.js"></script>
+
+  
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.11.1/tocbot.css">
+
+ 
+
+
+<script src="/js/event.js"></script>
+
+
+<script src="/js/search.js"></script>
+
+
+<script src="/js/plugin.js"></script>
+
+
+
+</body>
+
+</html>

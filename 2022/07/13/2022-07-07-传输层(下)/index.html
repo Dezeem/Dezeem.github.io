@@ -90,8 +90,7 @@
   </div>
 </header>
   
-  <main class="main-content">
-    <div class="post-container">
+  <div class="post-container">
   <div class="container">
     <div class="post-inner">
       <!-- 文章主体 -->
@@ -242,7 +241,6 @@
     </div>
   </div>
 </div>
-  </main>
   
   <footer class="footer">
   <div class="container">
@@ -257,6 +255,13 @@
     </div>
   </div>
 </footer>
+  
+  <!-- 移动导航切换按钮 -->
+  <div class="mobile-nav-toggle">
+    <i class="fas fa-bars"></i>
+  </div>
+  
+  <!-- 移动导航菜单 -->
   <div class="mobile-nav">
   <div class="mobile-nav-inner">
     <div class="mobile-nav-header">
@@ -302,13 +307,18 @@
 
 <div class="mobile-nav-toggle">
   <i class="fas fa-bars"></i>
-</div> <!-- 新增 -->
+</div>
   
-  <!-- JavaScript -->
-  
-<script src="/js/main.js"></script>
-
-  
-  
+  <script>
+    // 初始化 KaTeX
+    document.addEventListener("DOMContentLoaded", function() {
+      renderMathInElement(document.body, {
+        delimiters: [
+          {left: "$$", right: "$$", display: true},
+          {left: "$", right: "$", display: false}
+        ]
+      });
+    });
+  </script>
 </body>
 </html>

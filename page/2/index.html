@@ -1,357 +1,608 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html lang="en">
+
+<!-- Head tag -->
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Dezeem&#39;log</title>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <meta name="description" content="">
+  <meta name="author" content="">
+  <link rel="icon" href="/img/favicon.png">
+
   
-    <link rel="icon" href="/img/favicon.png">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5/css/all.min.css">
+
   
-  
-  <!-- CSS -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5/dist/css/bootstrap.min.css">
+
+
   
 <link rel="stylesheet" href="/css/style.css">
 
-  
-  <!-- KaTeX for LaTeX support -->
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/katex.min.css">
-  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/katex.min.js"></script>
-  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/contrib/auto-render.min.js"></script>
-  
-  <!-- Font Awesome for icons -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-  
-  <!-- Theme JavaScript -->
-  
-<script src="/js/main.js"></script>
 
+  
+  <title>Dezeem&#39;log</title>
 <meta name="generator" content="Hexo 6.3.0"><link rel="alternate" href="/atom.xml" title="Dezeem'log" type="application/atom+xml">
 </head>
+
+
 <body>
-  <header class="header">
+  <header>
+    <nav id="navbar" class="navbar fixed-nav scrolling-navbar">
   <div class="container">
-    <div class="header-inner">
-      <div class="logo">
-        <a href="/">Dezeem&#39;log</a>
-      </div>
-      
-      <nav class="main-nav">
-        <ul>
-          
-            <li><a href="/">Home</a></li>
-          
-            <li><a href="/archives">Archives</a></li>
-          
-            <li><a href="/categories">Categories</a></li>
-          
-            <li><a href="/tags">Tags</a></li>
-          
-            <li><a href="/about">About</a></li>
-          
-        </ul>
-      </nav>
-      
-      <div class="header-right">
-        <!-- 语言切换 -->
-        <div class="language-switch">
-          <a href="#" class="lang-btn" data-lang="zh-CN">中文</a>
-          <a href="#" class="lang-btn" data-lang="en">EN</a>
-        </div>
+    <div class="mark-wrapper">
+       
+      <div class="title-mark">Dezeem</div>
+    </div>
+  
+    <button id="menu-btn" class="btn menu-btn" type="button" data-bs-toggle="collapse" data-bs-target="#nav-menu">
+      <div class="menu-icon"><span></span><span></span><span></span></div>
+    </button>
+  
+    <div id="nav-menu" class="collapse menu-wrapper">
+      <ul>
         
-        <!-- 暗黑模式切换 -->
-        <div class="theme-switch">
-          <button id="theme-toggle" aria-label="Toggle Dark Mode">
-            <i class="fas fa-moon dark-icon"></i>
-            <i class="fas fa-sun light-icon"></i>
+          <li>
+            <a href="/">Home </a>
+          </li>
+        
+          <li>
+            <a href="/archives">Archives </a>
+          </li>
+        
+          <li>
+            <a href="/categories">Category </a>
+          </li>
+        
+          <li>
+            <a href="/tags">Tag </a>
+          </li>
+        
+          <li>
+            <a href="/about">About </a>
+          </li>
+        
+        <li class="search-icon">
+          <button class="btn" data-bs-toggle="modal" data-bs-target="#searchModal" aria-label="Search">
+            <i class="fas fa-search"></i>
           </button>
-        </div>
-        
-        <!-- 搜索按钮 -->
-        <div class="search-btn">
-          <i class="fas fa-search"></i>
-        </div>
-      </div>
+        </li>
+      </ul>
     </div>
   </div>
-  
-  <!-- 搜索框 -->
-  <div class="search-container">
+</nav>
+
+  </header>
+
+  <main>
     <div class="container">
-      <form class="search-form">
-        <input type="text" class="search-input" placeholder="搜索">
-        <button type="submit" class="search-submit">
-          <i class="fas fa-search"></i>
-        </button>
-      </form>
-      <button class="search-close">
-        <i class="fas fa-times"></i>
-      </button>
-    </div>
-  </div>
-</header>
+      <div id="main">
+        <div class="row py-5">
+          <div class="col">
+            <div class="index-wrapper">
   
-  <div class="home-container">
-  <!-- 个人介绍部分 -->
-  <section class="profile-section">
-    <div class="container">
-      <div class="profile-inner">
-        <div class="avatar">
-          <img src="/img/avatar.png" alt="Canary">
+    <article class="row index-post-wrapper">
+      
+      <div class="col-12 col-md-12 mx-auto post-intro">
+        <div class="post-header ">
+          <a href="/2022/07/13/2022-07-07-%E4%BC%A0%E8%BE%93%E5%B1%82(%E4%B8%8B)/" target="_self">
+            <h3>传输层(下)</h3>
+          </a>
+          
         </div>
-        <div class="profile-info">
-          <h1 class="name">Canary</h1>
-          <p class="bio">热爱编程与写作的开发者</p>
-          <div class="social-links">
+        <div class="description">
+          
+            TCP概述
+点对点
+一个发送方，一个接收方
+
+
+可靠的、按序的字节流
+流水线机制
+TCP拥塞控制和流量控制机制设置窗口尺寸
+
+
+发送方&#x2F;接收方缓存
+全双工（full-duplex）
+同一连接中能够传输双向数据流
+
+
+面向连接
+通信双方在发送数据之前必须建立连接
+连接状态只在连接的两端中维护，在沿途节点中并不维护状态
+TCP连接包括：两台主机上的缓存、连接状态变量、socket等
+
+
+流量...
+          
+        </div>
+        <div class="post-footer">
+          <time datetime="2022-07-13 01:10" pubdate>
+            2022-07-13
+          </time>
+          <div>
             
-              <a href="https://github.com/dezeem" target="_blank" class="social-link">
-                <i class="fab fa-github"></i>
-              </a>
+               
+                <a class="tag" href="/categories/%E8%AE%A1%E7%BD%91/">计网</a>
+               
+             
             
           </div>
         </div>
       </div>
-    </div>
-  </section>
+    </article>
   
-  <!-- 文章列表部分 -->
-  <section class="posts-section">
-    <div class="container">
-      <div class="posts-inner">
-        
-          <article class="post-item">
-            <div class="post-date">
-              <time datetime="2022-07-12T17:10:00.000Z">2022-07-13</time>
-            </div>
-            <h2 class="post-title">
-              <a href="/2022/07/13/2022-07-07-%E4%BC%A0%E8%BE%93%E5%B1%82(%E4%B8%8B)/">传输层(下)</a>
-            </h2>
-            <div class="post-tags">
-              
-            </div>
-          </article>
-        
-          <article class="post-item">
-            <div class="post-date">
-              <time datetime="2022-02-20T16:30:00.000Z">2022-02-21</time>
-            </div>
-            <h2 class="post-title">
-              <a href="/2022/02/21/2022-02-20-%E5%B0%8F%E7%A8%8B%E5%BA%8F%E5%BC%80%E5%8F%91/">小程序开发</a>
-            </h2>
-            <div class="post-tags">
-              
-            </div>
-          </article>
-        
-          <article class="post-item">
-            <div class="post-date">
-              <time datetime="2022-02-17T11:40:00.000Z">2022-02-17</time>
-            </div>
-            <h2 class="post-title">
-              <a href="/2022/02/17/2022-02-17-%E4%BC%A0%E8%BE%93%E5%B1%82(%E4%B8%8A)/">传输层(上)</a>
-            </h2>
-            <div class="post-tags">
-              
-            </div>
-          </article>
-        
-          <article class="post-item">
-            <div class="post-date">
-              <time datetime="2022-02-16T21:50:00.000Z">2022-02-17</time>
-            </div>
-            <h2 class="post-title">
-              <a href="/2022/02/17/2022-02-16-%E5%BA%94%E7%94%A8%E5%B1%82(%E4%B8%8B)/">应用层(下)</a>
-            </h2>
-            <div class="post-tags">
-              
-            </div>
-          </article>
-        
-          <article class="post-item">
-            <div class="post-date">
-              <time datetime="2022-01-29T21:33:00.000Z">2022-01-30</time>
-            </div>
-            <h2 class="post-title">
-              <a href="/2022/01/30/2022-01-29-%E5%BA%94%E7%94%A8%E5%B1%82(%E4%B8%8A)/">应用层(上)</a>
-            </h2>
-            <div class="post-tags">
-              
-            </div>
-          </article>
-        
-          <article class="post-item">
-            <div class="post-date">
-              <time datetime="2021-10-29T21:39:00.000Z">2021-10-30</time>
-            </div>
-            <h2 class="post-title">
-              <a href="/2021/10/30/2021-10-21-12/">SSL</a>
-            </h2>
-            <div class="post-tags">
-              
-                
-                  <a href="/tags/%E8%AE%A1%E7%BD%91/" class="post-tag">#计网</a>
-                
-              
-            </div>
-          </article>
-        
-          <article class="post-item">
-            <div class="post-date">
-              <time datetime="2021-10-29T21:13:00.000Z">2021-10-30</time>
-            </div>
-            <h2 class="post-title">
-              <a href="/2021/10/30/2021-10-21-11/">802.11 WIFI</a>
-            </h2>
-            <div class="post-tags">
-              
-                
-                  <a href="/tags/%E8%AE%A1%E7%BD%91/" class="post-tag">#计网</a>
-                
-              
-            </div>
-          </article>
-        
-          <article class="post-item">
-            <div class="post-date">
-              <time datetime="2021-10-29T19:44:00.000Z">2021-10-30</time>
-            </div>
-            <h2 class="post-title">
-              <a href="/2021/10/30/2021-10-21-9/">ICMP</a>
-            </h2>
-            <div class="post-tags">
-              
-                
-                  <a href="/tags/%E8%AE%A1%E7%BD%91/" class="post-tag">#计网</a>
-                
-              
-            </div>
-          </article>
-        
-          <article class="post-item">
-            <div class="post-date">
-              <time datetime="2021-10-27T21:13:00.000Z">2021-10-28</time>
-            </div>
-            <h2 class="post-title">
-              <a href="/2021/10/28/2021-10-21-8/">DHCP</a>
-            </h2>
-            <div class="post-tags">
-              
-                
-                  <a href="/tags/%E8%AE%A1%E7%BD%91/" class="post-tag">#计网</a>
-                
-              
-            </div>
-          </article>
-        
-          <article class="post-item">
-            <div class="post-date">
-              <time datetime="2021-10-27T14:48:00.000Z">2021-10-27</time>
-            </div>
-            <h2 class="post-title">
-              <a href="/2021/10/27/2021-10-21-7/">NAT</a>
-            </h2>
-            <div class="post-tags">
-              
-                
-                  <a href="/tags/%E8%AE%A1%E7%BD%91/" class="post-tag">#计网</a>
-                
-              
-            </div>
-          </article>
-        
-      </div>
+    <article class="row index-post-wrapper">
       
-      <!-- 分页 -->
-      
-        <div class="pagination">
-          
-            <a href="/" class="prev">&laquo; button.prev</a>
-          
-          
-            <a href="/page/3/" class="next">button.next &raquo;</a>
+      <div class="col-12 col-md-12 mx-auto post-intro">
+        <div class="post-header ">
+          <a href="/2022/02/21/2022-02-20-%E5%B0%8F%E7%A8%8B%E5%BA%8F%E5%BC%80%E5%8F%91/" target="_self">
+            <h3>小程序开发</h3>
+          </a>
           
         </div>
+        <div class="description">
+          
+            概述简介​		小程序是一种不需要下载的安装即可使用的应用，它实现了应用“触手可及”的梦想，用户扫一扫或者搜一下即可打开应用。也体现了“用完即走”的理念。用户不用关心是否安装太多应用的问题。应用无处不在，随时可用，但又无需安装卸载。——Allenzhang
+特点：
+
+速度快：无需下载安装，加载速度快于HTML5，微信登录，随时可用
+无需适配：一次开发。多端兼容，免除了对各种手机型的适配
+社交分享：支...
+          
+        </div>
+        <div class="post-footer">
+          <time datetime="2022-02-21 00:30" pubdate>
+            2022-02-21
+          </time>
+          <div>
+            
+               
+                <a class="tag" href="/categories/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F/">微信小程序</a>
+               
+             
+            
+          </div>
+        </div>
+      </div>
+    </article>
+  
+    <article class="row index-post-wrapper">
       
-    </div>
-  </section>
+      <div class="col-12 col-md-12 mx-auto post-intro">
+        <div class="post-header ">
+          <a href="/2022/02/17/2022-02-17-%E4%BC%A0%E8%BE%93%E5%B1%82(%E4%B8%8A)/" target="_self">
+            <h3>传输层(上)</h3>
+          </a>
+          
+        </div>
+        <div class="description">
+          
+            传输层服务传输层服务和协议
+传输层 VS 网络层
+网络层：提供主机之间的逻辑通信机制
+传输层：提供应用进程之间的逻辑通信机制
+位于网络之上
+依赖于网络层服务
+对于网络层服务进行（可能的）增强
+
+
+
+
+类比：12个孩子给12个孩子发信
+
+应用进程 &#x3D; 孩子
+应用消息 &#x3D; 信封里的信
+主机 &#x3D; 房子
+传输层协议 &#x3D; 李雷和韩梅梅
+网络层协议 &#x3D; 邮政服...
+          
+        </div>
+        <div class="post-footer">
+          <time datetime="2022-02-17 19:40" pubdate>
+            2022-02-17
+          </time>
+          <div>
+            
+               
+                <a class="tag" href="/categories/%E8%AE%A1%E7%BD%91/">计网</a>
+               
+             
+            
+          </div>
+        </div>
+      </div>
+    </article>
+  
+    <article class="row index-post-wrapper">
+      
+      <div class="col-12 col-md-12 mx-auto post-intro">
+        <div class="post-header ">
+          <a href="/2022/02/17/2022-02-16-%E5%BA%94%E7%94%A8%E5%B1%82(%E4%B8%8B)/" target="_self">
+            <h3>应用层(下)</h3>
+          </a>
+          
+        </div>
+        <div class="description">
+          
+            应用层P2P应用架构
+文件分发：客户机&#x2F;服务器 vs P2P
+
+
+
+实例：BitTorrent
+索引技术P2P系统的索引：信息到节点位置（IP+端口号）的映射
+文件共享（电驴）
+
+利用索引动态跟踪节点所共享的文件的位置
+节点需要告诉索引它拥有哪些文件
+节点搜索索引，从而获知能够得到哪些文件
+
+即时消息（QQ）
+
+索引负责将用户名映射到位置
+当用户开启IM应用时，需要通知索引它的位置
+节点...
+          
+        </div>
+        <div class="post-footer">
+          <time datetime="2022-02-17 05:50" pubdate>
+            2022-02-17
+          </time>
+          <div>
+            
+               
+                <a class="tag" href="/categories/%E8%AE%A1%E7%BD%91/">计网</a>
+               
+             
+            
+          </div>
+        </div>
+      </div>
+    </article>
+  
+    <article class="row index-post-wrapper">
+      
+      <div class="col-12 col-md-12 mx-auto post-intro">
+        <div class="post-header ">
+          <a href="/2022/01/30/2022-01-29-%E5%BA%94%E7%94%A8%E5%B1%82(%E4%B8%8A)/" target="_self">
+            <h3>应用层(上)</h3>
+          </a>
+          
+        </div>
+        <div class="description">
+          
+            应用层1.网络应用的体系结构​	网络应用：百度、QQ、email、迅雷、支付宝、微信、百度云、淘宝网、网易。
+体系结构：（1）客户机&#x2F;服务器结构（Client-Server，C&#x2F;S）​		服务器：
+​		7*24小时提供服务
+​		永久性访问地址&#x2F;域名
+​		利用大量服务器实现可扩展性
+​		客户机：
+​		与服务器通信，使用服务器提供的服务
+​		间歇性的接入网络
+...
+          
+        </div>
+        <div class="post-footer">
+          <time datetime="2022-01-30 05:33" pubdate>
+            2022-01-30
+          </time>
+          <div>
+            
+               
+                <a class="tag" href="/categories/%E8%AE%A1%E7%BD%91/">计网</a>
+               
+             
+            
+          </div>
+        </div>
+      </div>
+    </article>
+  
+    <article class="row index-post-wrapper">
+      
+      <div class="col-12 col-md-12 mx-auto post-intro">
+        <div class="post-header ">
+          <a href="/2021/10/30/2021-10-21-12/" target="_self">
+            <h3>SSL</h3>
+          </a>
+          
+        </div>
+        <div class="description">
+          
+            实验十二​		
+1.对于前 8个以太网帧，请分别指出每一个帧的来源（客户端和服务器），确定每个帧包含的SSL记录的数量，并且列出包含SSL记录的类型。绘制客户端和服务器含有箭头指向的时序图。
+
+2.每个 SSL记录都以相同的三个字段（可能具有不同的值）开头。 其中一个 字段是“内容类型”，长度为一个字节。 请列出所有三个字段及其长度。
+​		
+​		Content Type字段为1字节，Versi...
+          
+        </div>
+        <div class="post-footer">
+          <time datetime="2021-10-30 05:39" pubdate>
+            2021-10-30
+          </time>
+          <div>
+            
+               
+                <a class="tag" href="/categories/Wireshark/">Wireshark</a>
+               
+             
+            
+               
+                <a class="tag" href="/tags/%E8%AE%A1%E7%BD%91/">计网</a>
+               
+            
+          </div>
+        </div>
+      </div>
+    </article>
+  
+    <article class="row index-post-wrapper">
+      
+      <div class="col-12 col-md-12 mx-auto post-intro">
+        <div class="post-header ">
+          <a href="/2021/10/30/2021-10-21-11/" target="_self">
+            <h3>802.11 WIFI</h3>
+          </a>
+          
+        </div>
+        <div class="description">
+          
+            实验十一信标框架​		
+
+发出此跟踪中大多数信标帧的两个接入点的SSID是什么？
+分别为30 Munroe st   linksys12这两个SSID
+
+从linksys_ses_24086接入点发送信标帧之间的时间间隔是多少？
+时间间隔0.102400s beacon Interval处可见
+
+Munroe街30号信标帧上的源MAC地址是什么（十六进制表示法）？回想一下本文中的图7.13，源、目...
+          
+        </div>
+        <div class="post-footer">
+          <time datetime="2021-10-30 05:13" pubdate>
+            2021-10-30
+          </time>
+          <div>
+            
+               
+                <a class="tag" href="/categories/Wireshark/">Wireshark</a>
+               
+             
+            
+               
+                <a class="tag" href="/tags/%E8%AE%A1%E7%BD%91/">计网</a>
+               
+            
+          </div>
+        </div>
+      </div>
+    </article>
+  
+    <article class="row index-post-wrapper">
+      
+      <div class="col-12 col-md-12 mx-auto post-intro">
+        <div class="post-header ">
+          <a href="/2021/10/30/2021-10-21-9/" target="_self">
+            <h3>ICMP</h3>
+          </a>
+          
+        </div>
+        <div class="description">
+          
+            实验九Ping 程序
+打开cmd
+
+启动嗅探器，开始捕获
+
+输入“ping –n 10 www.mit.edu”
+
+​	主机上的 ping 程序发送了10 个查询包并收到了 10 响应对于每个响应，源计算往返时间（RTT），数据包平均为 343 毫秒。
+4.Ping 程序终止时，停止在 Wireshark 中捕获数据包。		
+​		数据包列表显示 20 个数据包，说明源发送的 10 个 Ping ...
+          
+        </div>
+        <div class="post-footer">
+          <time datetime="2021-10-30 03:44" pubdate>
+            2021-10-30
+          </time>
+          <div>
+            
+               
+                <a class="tag" href="/categories/Wireshark/">Wireshark</a>
+               
+             
+            
+               
+                <a class="tag" href="/tags/%E8%AE%A1%E7%BD%91/">计网</a>
+               
+            
+          </div>
+        </div>
+      </div>
+    </article>
+  
+    <article class="row index-post-wrapper">
+      
+      <div class="col-12 col-md-12 mx-auto post-intro">
+        <div class="post-header ">
+          <a href="/2021/10/28/2021-10-21-8/" target="_self">
+            <h3>DHCP</h3>
+          </a>
+          
+        </div>
+        <div class="description">
+          
+            实验八DHCP 实验
+打开cmd，输入ipconfig&#x2F;release
+
+启动嗅探器并开始捕获。
+
+cmd输入ipconfig&#x2F;renew
+
+再输入ipconfig&#x2F;release
+
+再输入ipconfig&#x2F;renew
+
+停止捕获
+​				
+​		1.DHCP 消息是否通过 UDP 或 TCP 发送？
+​		UDP
+​		2.绘制时间数据图，说明客户端和服...
+          
+        </div>
+        <div class="post-footer">
+          <time datetime="2021-10-28 05:13" pubdate>
+            2021-10-28
+          </time>
+          <div>
+            
+               
+                <a class="tag" href="/categories/Wireshark/">Wireshark</a>
+               
+             
+            
+               
+                <a class="tag" href="/tags/%E8%AE%A1%E7%BD%91/">计网</a>
+               
+            
+          </div>
+        </div>
+      </div>
+    </article>
+  
+    <article class="row index-post-wrapper">
+      
+      <div class="col-12 col-md-12 mx-auto post-intro">
+        <div class="post-header ">
+          <a href="/2021/10/27/2021-10-21-7/" target="_self">
+            <h3>NAT</h3>
+          </a>
+          
+        </div>
+        <div class="description">
+          
+            实验七​		这个Lab由于我们不好捕捉包 所以我们需要下载别人给的捕获包http://gaia.cs.umass.edu/wireshark-labs/wireshark-traces.zip
+​		要用到的是NAT_home_side NAT_ISP_side
+​		一个是在客户机上捕获的一个是由路由器发送到ISP的包，我们先打开NAT_home_side 客户机的Wireshark文件
+​		...
+          
+        </div>
+        <div class="post-footer">
+          <time datetime="2021-10-27 22:48" pubdate>
+            2021-10-27
+          </time>
+          <div>
+            
+               
+                <a class="tag" href="/categories/Wireshark/">Wireshark</a>
+               
+             
+            
+               
+                <a class="tag" href="/tags/%E8%AE%A1%E7%BD%91/">计网</a>
+               
+            
+          </div>
+        </div>
+      </div>
+    </article>
+   
 </div>
-  
-  <footer class="footer">
-  <div class="container">
-    <div class="footer-inner">
-      <div class="copyright">
-        &copy; 2025 Dezeem
-      </div>
-      <div class="powered-by">
-        由 &lt;a href=&#34;https://hexo.io&#34; target=&#34;_blank&#34;&gt;Hexo&lt;/a&gt; 强力驱动 | 
-        主题 <a href="https://github.com/yourusername/hexo-theme-canary" target="_blank">Canary</a>
-      </div>
+
+
+  <div class="py-5 pagination-wrapper" aria-label="pagination">
+    <div>
+      <a class="extend prev" rel="prev" href="/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/3/"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
-</footer>
-  
-  <!-- 移动导航切换按钮 -->
-  <div class="mobile-nav-toggle">
-    <i class="fas fa-bars"></i>
-  </div>
-  
-  <!-- 移动导航菜单 -->
-  <div class="mobile-nav">
-  <div class="mobile-nav-inner">
-    <div class="mobile-nav-header">
-      <div class="logo">
-        <a href="/">Dezeem&#39;log</a>
+
+
+          </div>
+        </div>
       </div>
-      <button class="mobile-nav-close">
-        <i class="fas fa-times"></i>
-      </button>
     </div>
-    
-    <nav class="mobile-menu">
-      <ul>
-        
-          <li><a href="/">Home</a></li>
-        
-          <li><a href="/archives">Archives</a></li>
-        
-          <li><a href="/categories">Categories</a></li>
-        
-          <li><a href="/tags">Tags</a></li>
-        
-          <li><a href="/about">About</a></li>
-        
-      </ul>
-    </nav>
-    
-    <div class="mobile-nav-footer">
-      <div class="language-switch">
-        <a href="#" class="lang-btn" data-lang="zh-CN">中文</a>
-        <a href="#" class="lang-btn" data-lang="en">EN</a>
+
+     
+  <button id="scroll-to-top" class="btn btn-top" aria-label="Scroll To Top">
+    <i class="fas fa-arrow-up"></i>
+  </button>
+ 
+
+  </main>
+
+  <div class="footer-wrapper">
+  <div class="left-content"></div>
+  <div class="right-content">
+    <div>Copyright &copy;2025</div>
+    <div>Powered By <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a> - Theme <a target="_blank" rel="noopener" href="https://github.com/thomasyu929/hexo-theme-peomas">Peomas</a></div>
+  </div>
+</div>
+
+  <div id="searchModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="searchModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Search</h5>
+        <button type="button" class="btn btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
-      
-      <div class="theme-switch">
-        <button id="mobile-theme-toggle" aria-label="Toggle Dark Mode">
-          <i class="fas fa-moon dark-icon"></i>
-          <i class="fas fa-sun light-icon"></i>
-        </button>
+      <div class="modal-body">
+        <div class="input-wrapper">
+          <i class="fas fa-search"></i>
+          <input id="search" class="search-input" type="text" placeholder="Input content to search..." />
+        </div>
+        <ul id="result" class="list-group result-wrapper">
+        </ul>
       </div>
     </div>
   </div>
 </div>
 
-<div class="mobile-nav-toggle">
-  <i class="fas fa-bars"></i>
-</div>
   
-  <script>
-    // 初始化 KaTeX
-    document.addEventListener("DOMContentLoaded", function() {
-      renderMathInElement(document.body, {
-        delimiters: [
-          {left: "$$", right: "$$", display: true},
-          {left: "$", right: "$", display: false}
-        ]
-      });
-    });
-  </script>
+<script src="https://cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js"></script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5/dist/js/bootstrap.min.js"></script>
+
+
+<script src="/js/prism.js"></script>
+
+
+
+  
+<script src="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js"></script>
+
+  
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.css">
+
+  
+<script src="/js/nprogress.js"></script>
+
+
+
+ 
+  
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.11.1/tocbot.min.js"></script>
+
+  
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.11.1/tocbot.css">
+
+ 
+
+
+<script src="/js/event.js"></script>
+
+
+<script src="/js/search.js"></script>
+
+
+<script src="/js/plugin.js"></script>
+
+
+
 </body>
+
 </html>

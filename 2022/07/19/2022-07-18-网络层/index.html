@@ -1,119 +1,108 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html lang="en">
+
+<!-- Head tag -->
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>网络层 | Dezeem&#39;log</title>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <meta name="description" content="">
+  <meta name="author" content="">
+  <link rel="icon" href="/img/favicon.png">
+
   
-    <link rel="icon" href="/img/favicon.png">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5/css/all.min.css">
+
   
-  
-  <!-- CSS -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5/dist/css/bootstrap.min.css">
+
+
   
 <link rel="stylesheet" href="/css/style.css">
 
-  
-  <!-- KaTeX for LaTeX support -->
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/katex.min.css">
-  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/katex.min.js"></script>
-  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/contrib/auto-render.min.js"></script>
-  
-  <!-- Font Awesome for icons -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-  
-  <!-- Theme JavaScript -->
-  
-<script src="/js/main.js"></script>
 
+  
+  <title>网络层 - Dezeem&#39;log</title>
 <meta name="generator" content="Hexo 6.3.0"><link rel="alternate" href="/atom.xml" title="Dezeem'log" type="application/atom+xml">
 </head>
+
+
 <body>
-  <header class="header">
+  <header>
+    <nav id="navbar" class="navbar fixed-nav scrolling-navbar">
   <div class="container">
-    <div class="header-inner">
-      <div class="logo">
-        <a href="/">Dezeem&#39;log</a>
-      </div>
-      
-      <nav class="main-nav">
-        <ul>
-          
-            <li><a href="/">Home</a></li>
-          
-            <li><a href="/archives">Archives</a></li>
-          
-            <li><a href="/categories">Categories</a></li>
-          
-            <li><a href="/tags">Tags</a></li>
-          
-            <li><a href="/about">About</a></li>
-          
-        </ul>
-      </nav>
-      
-      <div class="header-right">
-        <!-- 语言切换 -->
-        <div class="language-switch">
-          <a href="#" class="lang-btn" data-lang="zh-CN">中文</a>
-          <a href="#" class="lang-btn" data-lang="en">EN</a>
-        </div>
+    <div class="mark-wrapper">
+       
+      <div class="title-mark">Dezeem</div>
+    </div>
+  
+    <button id="menu-btn" class="btn menu-btn" type="button" data-bs-toggle="collapse" data-bs-target="#nav-menu">
+      <div class="menu-icon"><span></span><span></span><span></span></div>
+    </button>
+  
+    <div id="nav-menu" class="collapse menu-wrapper">
+      <ul>
         
-        <!-- 暗黑模式切换 -->
-        <div class="theme-switch">
-          <button id="theme-toggle" aria-label="Toggle Dark Mode">
-            <i class="fas fa-moon dark-icon"></i>
-            <i class="fas fa-sun light-icon"></i>
+          <li>
+            <a href="/">Home </a>
+          </li>
+        
+          <li>
+            <a href="/archives">Archives </a>
+          </li>
+        
+          <li>
+            <a href="/categories">Category </a>
+          </li>
+        
+          <li>
+            <a href="/tags">Tag </a>
+          </li>
+        
+          <li>
+            <a href="/about">About </a>
+          </li>
+        
+        <li class="search-icon">
+          <button class="btn" data-bs-toggle="modal" data-bs-target="#searchModal" aria-label="Search">
+            <i class="fas fa-search"></i>
           </button>
-        </div>
-        
-        <!-- 搜索按钮 -->
-        <div class="search-btn">
-          <i class="fas fa-search"></i>
-        </div>
-      </div>
+        </li>
+      </ul>
     </div>
   </div>
-  
-  <!-- 搜索框 -->
-  <div class="search-container">
+</nav>
+
+  </header>
+
+  <main>
     <div class="container">
-      <form class="search-form">
-        <input type="text" class="search-input" placeholder="搜索">
-        <button type="submit" class="search-submit">
-          <i class="fas fa-search"></i>
-        </button>
-      </form>
-      <button class="search-close">
-        <i class="fas fa-times"></i>
-      </button>
-    </div>
+      <div id="main">
+        <div class="row py-5">
+          <div class="col">
+            <div class="row">
+  <div class="left-content">
+    <article class="post-wrapper markdown-body">
+  <h2 class="post-title">
+    网络层
+  </h2>
+  <div class="post-meta">
+    <time datetime="Invalid date Invalid date ">2022-07-19</time>
+    
+    
+      
+        <a class="tag" href="/categories/%E8%AE%A1%E7%BD%91/">计网</a> 
+       
+    
+    
+       
+    
+    
   </div>
-</header>
   
-  <div class="post-container">
-  <div class="container">
-    <div class="post-inner">
-      <!-- 文章主体 -->
-      <div class="post-main">
-        <article class="post-content">
-          <header class="post-header">
-            <h1 class="post-title">网络层</h1>
-            <div class="post-meta">
-              <time class="post-date" datetime="2022-07-18T20:30:00.000Z">
-                2022-07-19
-              </time>
-              
-                <span class="post-categories">
-                  
-                    <a href="/categories/%E8%AE%A1%E7%BD%91/" class="post-category">计网</a>
-                  
-                </span>
-              
-            </div>
-          </header>
-          
-          <div class="post-body">
-            <h1 id="网络层概述"><a href="#网络层概述" class="headerlink" title="网络层概述"></a>网络层概述</h1><p><strong>主要任务：</strong>实现网络互联，进而实现数据包在各个网络之间的传输</p>
+  <div id="content">
+    <h1 id="网络层概述"><a href="#网络层概述" class="headerlink" title="网络层概述"></a>网络层概述</h1><p><strong>主要任务：</strong>实现网络互联，进而实现数据包在各个网络之间的传输</p>
 <p>主要问题：</p>
 <ul>
 <li>网络层向传输层提供怎样的服务（可靠or不可靠）</li>
@@ -415,109 +404,98 @@
 </ul>
 <p>……</p>
 
-          </div>
-          
-          <footer class="post-footer">
-            
-          </footer>
-        </article>
-      </div>
-      
-      <!-- 文章目录 -->
-      
-        <div class="post-toc">
-          <div class="toc-header">
-            <h3>post.toc</h3>
-            <button class="toc-toggle">
-              <i class="fas fa-chevron-down"></i>
-            </button>
-          </div>
-          <div class="toc-content">
-            <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%BD%91%E7%BB%9C%E5%B1%82%E6%A6%82%E8%BF%B0"><span class="toc-number">1.</span> <span class="toc-text">网络层概述</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%A0%B8%E5%BF%83%E5%8A%9F%E8%83%BD"><span class="toc-number">1.1.</span> <span class="toc-text">核心功能</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9C%8D%E5%8A%A1%E6%A8%A1%E5%9E%8B"><span class="toc-number">1.2.</span> <span class="toc-text">服务模型</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%99%9A%E7%94%B5%E8%B7%AF%E7%BD%91%E7%BB%9C"><span class="toc-number">1.3.</span> <span class="toc-text">虚电路网络</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%99%9A%E7%94%B5%E8%B7%AF"><span class="toc-number">1.3.1.</span> <span class="toc-text">虚电路</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%95%B0%E6%8D%AE%E6%8A%A5%E7%BD%91%E7%BB%9C"><span class="toc-number">1.4.</span> <span class="toc-text">数据报网络</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%BD%AC%E5%8F%91%E8%A1%A8"><span class="toc-number">1.4.1.</span> <span class="toc-text">转发表</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#ipv4%E5%8D%8F%E8%AE%AE"><span class="toc-number">2.</span> <span class="toc-text">IPv4协议</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#internet%E7%BD%91%E7%BB%9C%E5%B1%82"><span class="toc-number">2.1.</span> <span class="toc-text">Internet网络层</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#ip%E6%95%B0%E6%8D%AE%E6%8A%A5"><span class="toc-number">2.2.</span> <span class="toc-text">IP数据报</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#ip%E6%95%B0%E6%8D%AE%E5%88%86%E7%89%87"><span class="toc-number">2.3.</span> <span class="toc-text">IP数据分片</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#ip%E5%88%86%E7%89%87%E4%B8%8E%E9%87%8D%E7%BB%84"><span class="toc-number">2.3.1.</span> <span class="toc-text">IP分片与重组</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#ip%E7%BC%96%E5%9D%80"><span class="toc-number">2.4.</span> <span class="toc-text">IP编址</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%8E%A5%E5%8F%A3"><span class="toc-number">2.4.1.</span> <span class="toc-text">接口</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#ip%E5%9C%B0%E5%9D%80"><span class="toc-number">2.4.2.</span> <span class="toc-text">IP地址</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9C%89%E7%B1%BBip%E5%9C%B0%E5%9D%80"><span class="toc-number">2.5.</span> <span class="toc-text">有类IP地址</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#ip%E5%AD%90%E7%BD%91"><span class="toc-number">2.6.</span> <span class="toc-text">IP子网</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AD%90%E7%BD%91%E5%88%92%E5%88%86"><span class="toc-number">2.7.</span> <span class="toc-text">子网划分</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AD%90%E7%BD%91%E6%8E%A9%E7%A0%81"><span class="toc-number">2.7.1.</span> <span class="toc-text">子网掩码</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%BA%94%E7%94%A8"><span class="toc-number">2.7.1.1.</span> <span class="toc-text">应用</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#cidr"><span class="toc-number">2.8.</span> <span class="toc-text">CIDR</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#dhcp%E5%8D%8F%E8%AE%AE"><span class="toc-number">2.9.</span> <span class="toc-text">DHCP协议</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%B7%A5%E4%BD%9C%E8%BF%87%E7%A8%8B"><span class="toc-number">2.9.1.</span> <span class="toc-text">工作过程</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#nat"><span class="toc-number">2.10.</span> <span class="toc-text">NAT</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#icmp%E5%8D%8F%E8%AE%AE"><span class="toc-number">2.11.</span> <span class="toc-text">ICMP协议</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%8A%A5%E6%96%87%E6%A0%BC%E5%BC%8F"><span class="toc-number">2.11.1.</span> <span class="toc-text">报文格式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%B7%AE%E9%94%99%E6%8A%A5%E5%91%8A%E6%8A%A5%E6%96%87"><span class="toc-number">2.11.2.</span> <span class="toc-text">差错报告报文</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#ipv6%E5%8D%8F%E8%AE%AE"><span class="toc-number">3.</span> <span class="toc-text">IPv6协议</span></a></li></ol>
+  </div>
+
+</article>
+  </div>
+  <div class="right-content">
+    <div id="toc" class="toc-wrapper"></div>
+  <div>
+</div>
+
+
           </div>
         </div>
-      
+      </div>
     </div>
+
+     
+  <button id="scroll-to-top" class="btn btn-top" aria-label="Scroll To Top">
+    <i class="fas fa-arrow-up"></i>
+  </button>
+ 
+
+  </main>
+
+  <div class="footer-wrapper">
+  <div class="left-content"></div>
+  <div class="right-content">
+    <div>Copyright &copy;2025</div>
+    <div>Powered By <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a> - Theme <a target="_blank" rel="noopener" href="https://github.com/thomasyu929/hexo-theme-peomas">Peomas</a></div>
   </div>
 </div>
-  
-  <footer class="footer">
-  <div class="container">
-    <div class="footer-inner">
-      <div class="copyright">
-        &copy; 2025 Dezeem
+
+  <div id="searchModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="searchModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Search</h5>
+        <button type="button" class="btn btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
-      <div class="powered-by">
-        由 &lt;a href=&#34;https://hexo.io&#34; target=&#34;_blank&#34;&gt;Hexo&lt;/a&gt; 强力驱动 | 
-        主题 <a href="https://github.com/yourusername/hexo-theme-canary" target="_blank">Canary</a>
-      </div>
-    </div>
-  </div>
-</footer>
-  
-  <!-- 移动导航切换按钮 -->
-  <div class="mobile-nav-toggle">
-    <i class="fas fa-bars"></i>
-  </div>
-  
-  <!-- 移动导航菜单 -->
-  <div class="mobile-nav">
-  <div class="mobile-nav-inner">
-    <div class="mobile-nav-header">
-      <div class="logo">
-        <a href="/">Dezeem&#39;log</a>
-      </div>
-      <button class="mobile-nav-close">
-        <i class="fas fa-times"></i>
-      </button>
-    </div>
-    
-    <nav class="mobile-menu">
-      <ul>
-        
-          <li><a href="/">Home</a></li>
-        
-          <li><a href="/archives">Archives</a></li>
-        
-          <li><a href="/categories">Categories</a></li>
-        
-          <li><a href="/tags">Tags</a></li>
-        
-          <li><a href="/about">About</a></li>
-        
-      </ul>
-    </nav>
-    
-    <div class="mobile-nav-footer">
-      <div class="language-switch">
-        <a href="#" class="lang-btn" data-lang="zh-CN">中文</a>
-        <a href="#" class="lang-btn" data-lang="en">EN</a>
-      </div>
-      
-      <div class="theme-switch">
-        <button id="mobile-theme-toggle" aria-label="Toggle Dark Mode">
-          <i class="fas fa-moon dark-icon"></i>
-          <i class="fas fa-sun light-icon"></i>
-        </button>
+      <div class="modal-body">
+        <div class="input-wrapper">
+          <i class="fas fa-search"></i>
+          <input id="search" class="search-input" type="text" placeholder="Input content to search..." />
+        </div>
+        <ul id="result" class="list-group result-wrapper">
+        </ul>
       </div>
     </div>
   </div>
 </div>
 
-<div class="mobile-nav-toggle">
-  <i class="fas fa-bars"></i>
-</div>
   
-  <script>
-    // 初始化 KaTeX
-    document.addEventListener("DOMContentLoaded", function() {
-      renderMathInElement(document.body, {
-        delimiters: [
-          {left: "$$", right: "$$", display: true},
-          {left: "$", right: "$", display: false}
-        ]
-      });
-    });
-  </script>
+<script src="https://cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js"></script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5/dist/js/bootstrap.min.js"></script>
+
+
+<script src="/js/prism.js"></script>
+
+
+
+  
+<script src="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js"></script>
+
+  
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.css">
+
+  
+<script src="/js/nprogress.js"></script>
+
+
+
+ 
+  
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.11.1/tocbot.min.js"></script>
+
+  
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.11.1/tocbot.css">
+
+ 
+
+
+<script src="/js/event.js"></script>
+
+
+<script src="/js/search.js"></script>
+
+
+<script src="/js/plugin.js"></script>
+
+
+
 </body>
+
 </html>

@@ -1,119 +1,110 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html lang="en">
+
+<!-- Head tag -->
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>SSL | Dezeem&#39;log</title>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <meta name="description" content="">
+  <meta name="author" content="">
+  <link rel="icon" href="/img/favicon.png">
+
   
-    <link rel="icon" href="/img/favicon.png">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5/css/all.min.css">
+
   
-  
-  <!-- CSS -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5/dist/css/bootstrap.min.css">
+
+
   
 <link rel="stylesheet" href="/css/style.css">
 
-  
-  <!-- KaTeX for LaTeX support -->
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/katex.min.css">
-  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/katex.min.js"></script>
-  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/contrib/auto-render.min.js"></script>
-  
-  <!-- Font Awesome for icons -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-  
-  <!-- Theme JavaScript -->
-  
-<script src="/js/main.js"></script>
 
+  
+  <title>SSL - Dezeem&#39;log</title>
 <meta name="generator" content="Hexo 6.3.0"><link rel="alternate" href="/atom.xml" title="Dezeem'log" type="application/atom+xml">
 </head>
+
+
 <body>
-  <header class="header">
+  <header>
+    <nav id="navbar" class="navbar fixed-nav scrolling-navbar">
   <div class="container">
-    <div class="header-inner">
-      <div class="logo">
-        <a href="/">Dezeem&#39;log</a>
-      </div>
-      
-      <nav class="main-nav">
-        <ul>
-          
-            <li><a href="/">Home</a></li>
-          
-            <li><a href="/archives">Archives</a></li>
-          
-            <li><a href="/categories">Categories</a></li>
-          
-            <li><a href="/tags">Tags</a></li>
-          
-            <li><a href="/about">About</a></li>
-          
-        </ul>
-      </nav>
-      
-      <div class="header-right">
-        <!-- 语言切换 -->
-        <div class="language-switch">
-          <a href="#" class="lang-btn" data-lang="zh-CN">中文</a>
-          <a href="#" class="lang-btn" data-lang="en">EN</a>
-        </div>
+    <div class="mark-wrapper">
+       
+      <div class="title-mark">Dezeem</div>
+    </div>
+  
+    <button id="menu-btn" class="btn menu-btn" type="button" data-bs-toggle="collapse" data-bs-target="#nav-menu">
+      <div class="menu-icon"><span></span><span></span><span></span></div>
+    </button>
+  
+    <div id="nav-menu" class="collapse menu-wrapper">
+      <ul>
         
-        <!-- 暗黑模式切换 -->
-        <div class="theme-switch">
-          <button id="theme-toggle" aria-label="Toggle Dark Mode">
-            <i class="fas fa-moon dark-icon"></i>
-            <i class="fas fa-sun light-icon"></i>
+          <li>
+            <a href="/">Home </a>
+          </li>
+        
+          <li>
+            <a href="/archives">Archives </a>
+          </li>
+        
+          <li>
+            <a href="/categories">Category </a>
+          </li>
+        
+          <li>
+            <a href="/tags">Tag </a>
+          </li>
+        
+          <li>
+            <a href="/about">About </a>
+          </li>
+        
+        <li class="search-icon">
+          <button class="btn" data-bs-toggle="modal" data-bs-target="#searchModal" aria-label="Search">
+            <i class="fas fa-search"></i>
           </button>
-        </div>
-        
-        <!-- 搜索按钮 -->
-        <div class="search-btn">
-          <i class="fas fa-search"></i>
-        </div>
-      </div>
+        </li>
+      </ul>
     </div>
   </div>
-  
-  <!-- 搜索框 -->
-  <div class="search-container">
+</nav>
+
+  </header>
+
+  <main>
     <div class="container">
-      <form class="search-form">
-        <input type="text" class="search-input" placeholder="搜索">
-        <button type="submit" class="search-submit">
-          <i class="fas fa-search"></i>
-        </button>
-      </form>
-      <button class="search-close">
-        <i class="fas fa-times"></i>
-      </button>
-    </div>
+      <div id="main">
+        <div class="row py-5">
+          <div class="col">
+            <div class="row">
+  <div class="left-content">
+    <article class="post-wrapper markdown-body">
+  <h2 class="post-title">
+    SSL
+  </h2>
+  <div class="post-meta">
+    <time datetime="Invalid date Invalid date ">2021-10-30</time>
+    
+    
+      
+        <a class="tag" href="/categories/Wireshark/">Wireshark</a> 
+       
+    
+    
+      
+        <a class="tag" href="/tags/%E8%AE%A1%E7%BD%91/">计网</a> 
+       
+    
+    
   </div>
-</header>
   
-  <div class="post-container">
-  <div class="container">
-    <div class="post-inner">
-      <!-- 文章主体 -->
-      <div class="post-main">
-        <article class="post-content">
-          <header class="post-header">
-            <h1 class="post-title">SSL</h1>
-            <div class="post-meta">
-              <time class="post-date" datetime="2021-10-29T21:39:00.000Z">
-                2021-10-30
-              </time>
-              
-                <span class="post-categories">
-                  
-                    <a href="/categories/Wireshark/" class="post-category">Wireshark</a>
-                  
-                </span>
-              
-            </div>
-          </header>
-          
-          <div class="post-body">
-            <h1 id="实验十二"><a href="#实验十二" class="headerlink" title="实验十二"></a>实验十二</h1><p>​		<img src="https://i.loli.net/2021/10/29/r7oKa5uW6tFRYIc.png" alt="image.png"></p>
+  <div id="content">
+    <h1 id="实验十二"><a href="#实验十二" class="headerlink" title="实验十二"></a>实验十二</h1><p>​		<img src="https://i.loli.net/2021/10/29/r7oKa5uW6tFRYIc.png" alt="image.png"></p>
 <p>1.对于前 8个以太网帧，请分别指出每一个帧的来源（客户端和服务器），确定每个帧包含的SSL记录的数量，并且列出包含SSL记录的类型。绘制客户端和服务器含有箭头指向的时序图。</p>
 <p><img src="https://i.loli.net/2021/10/29/uWHFYlKdyz5OJQB.png" alt="image.png"></p>
 <p>2.每个 SSL记录都以相同的三个字段（可能具有不同的值）开头。 其中一个 字段是“内容类型”，长度为一个字节。 请列出所有三个字段及其长度。</p>
@@ -145,115 +136,98 @@
 <p>​		<img src="https://i.loli.net/2021/10/29/9vI8LyXZGQhm71P.png" alt="image.png"></p>
 <p>​		使用本次对话协商和交换好对称加密密钥应用程序数据，这个数据里同时包括消息本身和消息认证码，所以比消息本身要长，但是加密过，所以无法区分。</p>
 
-          </div>
-          
-          <footer class="post-footer">
-            
-              <div class="post-tags">
-                
-                  <a href="/tags/%E8%AE%A1%E7%BD%91/" class="post-tag">#计网</a>
-                
-              </div>
-            
-          </footer>
-        </article>
-      </div>
-      
-      <!-- 文章目录 -->
-      
-        <div class="post-toc">
-          <div class="toc-header">
-            <h3>post.toc</h3>
-            <button class="toc-toggle">
-              <i class="fas fa-chevron-down"></i>
-            </button>
-          </div>
-          <div class="toc-content">
-            <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%AE%9E%E9%AA%8C%E5%8D%81%E4%BA%8C"><span class="toc-number">1.</span> <span class="toc-text">实验十二</span></a></li></ol>
+  </div>
+
+</article>
+  </div>
+  <div class="right-content">
+    <div id="toc" class="toc-wrapper"></div>
+  <div>
+</div>
+
+
           </div>
         </div>
-      
+      </div>
     </div>
+
+     
+  <button id="scroll-to-top" class="btn btn-top" aria-label="Scroll To Top">
+    <i class="fas fa-arrow-up"></i>
+  </button>
+ 
+
+  </main>
+
+  <div class="footer-wrapper">
+  <div class="left-content"></div>
+  <div class="right-content">
+    <div>Copyright &copy;2025</div>
+    <div>Powered By <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a> - Theme <a target="_blank" rel="noopener" href="https://github.com/thomasyu929/hexo-theme-peomas">Peomas</a></div>
   </div>
 </div>
-  
-  <footer class="footer">
-  <div class="container">
-    <div class="footer-inner">
-      <div class="copyright">
-        &copy; 2025 Dezeem
+
+  <div id="searchModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="searchModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Search</h5>
+        <button type="button" class="btn btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
-      <div class="powered-by">
-        由 &lt;a href=&#34;https://hexo.io&#34; target=&#34;_blank&#34;&gt;Hexo&lt;/a&gt; 强力驱动 | 
-        主题 <a href="https://github.com/yourusername/hexo-theme-canary" target="_blank">Canary</a>
-      </div>
-    </div>
-  </div>
-</footer>
-  
-  <!-- 移动导航切换按钮 -->
-  <div class="mobile-nav-toggle">
-    <i class="fas fa-bars"></i>
-  </div>
-  
-  <!-- 移动导航菜单 -->
-  <div class="mobile-nav">
-  <div class="mobile-nav-inner">
-    <div class="mobile-nav-header">
-      <div class="logo">
-        <a href="/">Dezeem&#39;log</a>
-      </div>
-      <button class="mobile-nav-close">
-        <i class="fas fa-times"></i>
-      </button>
-    </div>
-    
-    <nav class="mobile-menu">
-      <ul>
-        
-          <li><a href="/">Home</a></li>
-        
-          <li><a href="/archives">Archives</a></li>
-        
-          <li><a href="/categories">Categories</a></li>
-        
-          <li><a href="/tags">Tags</a></li>
-        
-          <li><a href="/about">About</a></li>
-        
-      </ul>
-    </nav>
-    
-    <div class="mobile-nav-footer">
-      <div class="language-switch">
-        <a href="#" class="lang-btn" data-lang="zh-CN">中文</a>
-        <a href="#" class="lang-btn" data-lang="en">EN</a>
-      </div>
-      
-      <div class="theme-switch">
-        <button id="mobile-theme-toggle" aria-label="Toggle Dark Mode">
-          <i class="fas fa-moon dark-icon"></i>
-          <i class="fas fa-sun light-icon"></i>
-        </button>
+      <div class="modal-body">
+        <div class="input-wrapper">
+          <i class="fas fa-search"></i>
+          <input id="search" class="search-input" type="text" placeholder="Input content to search..." />
+        </div>
+        <ul id="result" class="list-group result-wrapper">
+        </ul>
       </div>
     </div>
   </div>
 </div>
 
-<div class="mobile-nav-toggle">
-  <i class="fas fa-bars"></i>
-</div>
   
-  <script>
-    // 初始化 KaTeX
-    document.addEventListener("DOMContentLoaded", function() {
-      renderMathInElement(document.body, {
-        delimiters: [
-          {left: "$$", right: "$$", display: true},
-          {left: "$", right: "$", display: false}
-        ]
-      });
-    });
-  </script>
+<script src="https://cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js"></script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5/dist/js/bootstrap.min.js"></script>
+
+
+<script src="/js/prism.js"></script>
+
+
+
+  
+<script src="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js"></script>
+
+  
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.css">
+
+  
+<script src="/js/nprogress.js"></script>
+
+
+
+ 
+  
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.11.1/tocbot.min.js"></script>
+
+  
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.11.1/tocbot.css">
+
+ 
+
+
+<script src="/js/event.js"></script>
+
+
+<script src="/js/search.js"></script>
+
+
+<script src="/js/plugin.js"></script>
+
+
+
 </body>
+
 </html>

@@ -1,119 +1,108 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html lang="en">
+
+<!-- Head tag -->
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>刷题笔记 | Dezeem&#39;log</title>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <meta name="description" content="">
+  <meta name="author" content="">
+  <link rel="icon" href="/img/favicon.png">
+
   
-    <link rel="icon" href="/img/favicon.png">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5/css/all.min.css">
+
   
-  
-  <!-- CSS -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5/dist/css/bootstrap.min.css">
+
+
   
 <link rel="stylesheet" href="/css/style.css">
 
-  
-  <!-- KaTeX for LaTeX support -->
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/katex.min.css">
-  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/katex.min.js"></script>
-  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/contrib/auto-render.min.js"></script>
-  
-  <!-- Font Awesome for icons -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-  
-  <!-- Theme JavaScript -->
-  
-<script src="/js/main.js"></script>
 
+  
+  <title>刷题笔记 - Dezeem&#39;log</title>
 <meta name="generator" content="Hexo 6.3.0"><link rel="alternate" href="/atom.xml" title="Dezeem'log" type="application/atom+xml">
 </head>
+
+
 <body>
-  <header class="header">
+  <header>
+    <nav id="navbar" class="navbar fixed-nav scrolling-navbar">
   <div class="container">
-    <div class="header-inner">
-      <div class="logo">
-        <a href="/">Dezeem&#39;log</a>
-      </div>
-      
-      <nav class="main-nav">
-        <ul>
-          
-            <li><a href="/">Home</a></li>
-          
-            <li><a href="/archives">Archives</a></li>
-          
-            <li><a href="/categories">Categories</a></li>
-          
-            <li><a href="/tags">Tags</a></li>
-          
-            <li><a href="/about">About</a></li>
-          
-        </ul>
-      </nav>
-      
-      <div class="header-right">
-        <!-- 语言切换 -->
-        <div class="language-switch">
-          <a href="#" class="lang-btn" data-lang="zh-CN">中文</a>
-          <a href="#" class="lang-btn" data-lang="en">EN</a>
-        </div>
+    <div class="mark-wrapper">
+       
+      <div class="title-mark">Dezeem</div>
+    </div>
+  
+    <button id="menu-btn" class="btn menu-btn" type="button" data-bs-toggle="collapse" data-bs-target="#nav-menu">
+      <div class="menu-icon"><span></span><span></span><span></span></div>
+    </button>
+  
+    <div id="nav-menu" class="collapse menu-wrapper">
+      <ul>
         
-        <!-- 暗黑模式切换 -->
-        <div class="theme-switch">
-          <button id="theme-toggle" aria-label="Toggle Dark Mode">
-            <i class="fas fa-moon dark-icon"></i>
-            <i class="fas fa-sun light-icon"></i>
+          <li>
+            <a href="/">Home </a>
+          </li>
+        
+          <li>
+            <a href="/archives">Archives </a>
+          </li>
+        
+          <li>
+            <a href="/categories">Category </a>
+          </li>
+        
+          <li>
+            <a href="/tags">Tag </a>
+          </li>
+        
+          <li>
+            <a href="/about">About </a>
+          </li>
+        
+        <li class="search-icon">
+          <button class="btn" data-bs-toggle="modal" data-bs-target="#searchModal" aria-label="Search">
+            <i class="fas fa-search"></i>
           </button>
-        </div>
-        
-        <!-- 搜索按钮 -->
-        <div class="search-btn">
-          <i class="fas fa-search"></i>
-        </div>
-      </div>
+        </li>
+      </ul>
     </div>
   </div>
-  
-  <!-- 搜索框 -->
-  <div class="search-container">
+</nav>
+
+  </header>
+
+  <main>
     <div class="container">
-      <form class="search-form">
-        <input type="text" class="search-input" placeholder="搜索">
-        <button type="submit" class="search-submit">
-          <i class="fas fa-search"></i>
-        </button>
-      </form>
-      <button class="search-close">
-        <i class="fas fa-times"></i>
-      </button>
-    </div>
+      <div id="main">
+        <div class="row py-5">
+          <div class="col">
+            <div class="row">
+  <div class="left-content">
+    <article class="post-wrapper markdown-body">
+  <h2 class="post-title">
+    刷题笔记
+  </h2>
+  <div class="post-meta">
+    <time datetime="Invalid date Invalid date ">2022-10-05</time>
+    
+    
+      
+        <a class="tag" href="/categories/%E7%AE%97%E6%B3%95/">算法</a> 
+       
+    
+    
+       
+    
+    
   </div>
-</header>
   
-  <div class="post-container">
-  <div class="container">
-    <div class="post-inner">
-      <!-- 文章主体 -->
-      <div class="post-main">
-        <article class="post-content">
-          <header class="post-header">
-            <h1 class="post-title">刷题笔记</h1>
-            <div class="post-meta">
-              <time class="post-date" datetime="2022-10-04T20:24:00.000Z">
-                2022-10-05
-              </time>
-              
-                <span class="post-categories">
-                  
-                    <a href="/categories/%E7%AE%97%E6%B3%95/" class="post-category">算法</a>
-                  
-                </span>
-              
-            </div>
-          </header>
-          
-          <div class="post-body">
-            <h1 id="洛谷"><a class="markdownIt-Anchor" href="#洛谷"></a> 洛谷</h1>
+  <div id="content">
+    <h1 id="洛谷"><a class="markdownIt-Anchor" href="#洛谷"></a> 洛谷</h1>
 <h2 id="p1059-noip2006-普及组-明明的随机数"><a class="markdownIt-Anchor" href="#p1059-noip2006-普及组-明明的随机数"></a> P1059 [NOIP2006 普及组] 明明的随机数</h2>
 <blockquote>
 <p>数组去重排序</p>
@@ -498,109 +487,98 @@ pre = ~ (col | pos | neg) &amp; ((1 &lt;&lt; n) - 1) 代表可以放皇后的位
 <p><img src="https://raw.githubusercontent.com/Dezeem/Note-img/main/img/202209080819199.png" alt="img" style="zoom:50%;"><img src="https://raw.githubusercontent.com/Dezeem/Note-img/main/img/202209080824148.gif" alt="alt" style="zoom: 20%;"></p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="type">int</span> <span class="title">minPathSum</span><span class="params">(vector&lt;vector&lt;<span class="type">int</span>&gt; &gt;&amp; matrix)</span> </span>&#123;</span><br><span class="line">        <span class="type">int</span> n = matrix.<span class="built_in">size</span>();</span><br><span class="line">        <span class="type">int</span> m = matrix[<span class="number">0</span>].<span class="built_in">size</span>();  </span><br><span class="line">        <span class="comment">//dp[i][j]表示以当前i，j位置为终点的最短路径长度</span></span><br><span class="line">        vector&lt;vector&lt;<span class="type">int</span>&gt; &gt; <span class="built_in">dp</span>(n + <span class="number">1</span>, <span class="built_in">vector</span>&lt;<span class="type">int</span>&gt;(m + <span class="number">1</span>, <span class="number">0</span>));</span><br><span class="line">        dp[<span class="number">0</span>][<span class="number">0</span>] = matrix[<span class="number">0</span>][<span class="number">0</span>];</span><br><span class="line">        <span class="comment">//处理第一列</span></span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">1</span>; i &lt; n; i++)</span><br><span class="line">            dp[i][<span class="number">0</span>] = matrix[i][<span class="number">0</span>] + dp[i - <span class="number">1</span>][<span class="number">0</span>];</span><br><span class="line">        <span class="comment">//处理第一行</span></span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> j = <span class="number">1</span>; j &lt; m; j++)</span><br><span class="line">            dp[<span class="number">0</span>][j] = matrix[<span class="number">0</span>][j] + dp[<span class="number">0</span>][j - <span class="number">1</span>];</span><br><span class="line">        <span class="comment">//其他按照公式来</span></span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">1</span>; i &lt; n; i++)&#123; </span><br><span class="line">          <span class="keyword">for</span>(<span class="type">int</span> j = <span class="number">1</span>; j &lt; m; j++)&#123;</span><br><span class="line">              dp[i][j] = matrix[i][j] + (dp[i - <span class="number">1</span>][j] &gt; dp[i][j - <span class="number">1</span>] ? dp[i][j - <span class="number">1</span>] : dp[i - <span class="number">1</span>][j]);</span><br><span class="line">          &#125;</span><br><span class="line">      &#125;</span><br><span class="line">       <span class="keyword">return</span> dp[n - <span class="number">1</span>][m - <span class="number">1</span>];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
 
-          </div>
-          
-          <footer class="post-footer">
-            
-          </footer>
-        </article>
-      </div>
-      
-      <!-- 文章目录 -->
-      
-        <div class="post-toc">
-          <div class="toc-header">
-            <h3>post.toc</h3>
-            <button class="toc-toggle">
-              <i class="fas fa-chevron-down"></i>
-            </button>
-          </div>
-          <div class="toc-content">
-            <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%B4%9B%E8%B0%B7"><span class="toc-number">1.</span> <span class="toc-text"> 洛谷</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#p1059-noip2006-%E6%99%AE%E5%8F%8A%E7%BB%84-%E6%98%8E%E6%98%8E%E7%9A%84%E9%9A%8F%E6%9C%BA%E6%95%B0"><span class="toc-number">1.1.</span> <span class="toc-text"> P1059 [NOIP2006 普及组] 明明的随机数</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%89%9B%E5%AE%A2"><span class="toc-number">2.</span> <span class="toc-text"> 牛客</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#bm1-%E5%8F%8D%E8%BD%AC%E9%93%BE%E8%A1%A8"><span class="toc-number">2.0.1.</span> <span class="toc-text"> BM1 反转链表</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BE%E6%8E%92%E5%BA%8F"><span class="toc-number">2.1.</span> <span class="toc-text"> 二分查找&#x2F;排序</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#bm17-%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BE"><span class="toc-number">2.1.1.</span> <span class="toc-text"> BM17 二分查找</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#bm18-%E4%BA%8C%E7%BB%B4%E6%95%B0%E7%BB%84%E4%B8%AD%E7%9A%84%E6%9F%A5%E6%89%BE"><span class="toc-number">2.1.2.</span> <span class="toc-text"> BM18 二维数组中的查找</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#bm19-%E5%AF%BB%E6%89%BE%E5%B3%B0%E5%80%BC"><span class="toc-number">2.1.3.</span> <span class="toc-text"> BM19 寻找峰值</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#bm20-%E6%95%B0%E7%BB%84%E4%B8%AD%E7%9A%84%E9%80%86%E5%BA%8F%E5%AF%B9"><span class="toc-number">2.1.4.</span> <span class="toc-text"> BM20 数组中的逆序对</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#bm21-%E6%97%8B%E8%BD%AC%E6%95%B0%E7%BB%84%E7%9A%84%E6%9C%80%E5%B0%8F%E6%95%B0%E5%AD%97"><span class="toc-number">2.1.5.</span> <span class="toc-text"> BM21 旋转数组的最小数字</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#bm22-%E6%AF%94%E8%BE%83%E7%89%88%E6%9C%AC%E5%8F%B7"><span class="toc-number">2.1.6.</span> <span class="toc-text"> BM22 比较版本号</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C%E5%8F%89%E6%A0%91"><span class="toc-number">2.2.</span> <span class="toc-text"> 二叉树</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#bm27-%E6%8C%89%E4%B9%8B%E5%AD%97%E5%BD%A2%E9%A1%BA%E5%BA%8F%E6%89%93%E5%8D%B0%E4%BA%8C%E5%8F%89%E6%A0%91"><span class="toc-number">2.2.1.</span> <span class="toc-text"> BM27 按之字形顺序打印二叉树</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#bm28-%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9A%84%E6%9C%80%E5%A4%A7%E6%B7%B1%E5%BA%A6"><span class="toc-number">2.2.2.</span> <span class="toc-text"> BM28 二叉树的最大深度</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#bm29-%E4%BA%8C%E5%8F%89%E6%A0%91%E4%B8%AD%E5%92%8C%E4%B8%BA%E6%9F%90%E4%B8%80%E5%80%BC%E7%9A%84%E8%B7%AF%E5%BE%84%E4%B8%80"><span class="toc-number">2.2.3.</span> <span class="toc-text"> BM29 二叉树中和为某一值的路径(一)</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%A0%86%E6%A0%88%E9%98%9F%E5%88%97"><span class="toc-number">2.3.</span> <span class="toc-text"> 堆&#x2F;栈&#x2F;队列</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#bm42-%E7%94%A8%E4%B8%A4%E4%B8%AA%E6%A0%88%E5%AE%9E%E7%8E%B0%E9%98%9F%E5%88%97"><span class="toc-number">2.3.1.</span> <span class="toc-text"> BM42 用两个栈实现队列</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#bm43-%E5%8C%85%E5%90%ABmin%E5%87%BD%E6%95%B0%E7%9A%84%E6%A0%88"><span class="toc-number">2.3.2.</span> <span class="toc-text"> BM43 包含min函数的栈</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#bm44-%E6%9C%89%E6%95%88%E6%8B%AC%E5%8F%B7%E5%BA%8F%E5%88%97"><span class="toc-number">2.3.3.</span> <span class="toc-text"> BM44 有效括号序列</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#bm45-%E6%BB%91%E5%8A%A8%E7%AA%97%E5%8F%A3%E7%9A%84%E6%9C%80%E5%A4%A7%E5%80%BC"><span class="toc-number">2.3.4.</span> <span class="toc-text"> BM45 滑动窗口的最大值</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#bm46-%E6%9C%80%E5%B0%8F%E7%9A%84k%E4%B8%AA%E6%95%B0"><span class="toc-number">2.3.5.</span> <span class="toc-text"> BM46 最小的K个数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AF%BB%E6%89%BE%E7%AC%ACk%E5%A4%A7"><span class="toc-number">2.3.6.</span> <span class="toc-text"> 寻找第K大</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#bm48-%E6%95%B0%E6%8D%AE%E6%B5%81%E4%B8%AD%E7%9A%84%E4%B8%AD%E4%BD%8D%E6%95%B0"><span class="toc-number">2.3.7.</span> <span class="toc-text"> BM48 数据流中的中位数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#bm49-%E8%A1%A8%E8%BE%BE%E5%BC%8F%E6%B1%82%E5%80%BC"><span class="toc-number">2.3.8.</span> <span class="toc-text"> BM49 表达式求值</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%93%88%E5%B8%8C"><span class="toc-number">2.4.</span> <span class="toc-text"> 哈希</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#bm-50-%E4%B8%A4%E6%95%B0%E4%B9%8B%E5%92%8C"><span class="toc-number">2.4.1.</span> <span class="toc-text"> BM 50 两数之和</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#bm51-%E6%95%B0%E7%BB%84%E4%B8%AD%E5%87%BA%E7%8E%B0%E6%AC%A1%E6%95%B0%E8%B6%85%E8%BF%87%E4%B8%80%E5%8D%8A%E7%9A%84%E6%95%B0%E5%AD%97"><span class="toc-number">2.4.2.</span> <span class="toc-text"> BM51 数组中出现次数超过一半的数字</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#bm52-%E6%95%B0%E7%BB%84%E4%B8%AD%E5%8F%AA%E5%87%BA%E7%8E%B0%E4%B8%80%E6%AC%A1%E7%9A%84%E4%B8%A4%E4%B8%AA%E6%95%B0%E5%AD%97"><span class="toc-number">2.4.3.</span> <span class="toc-text"> BM52 数组中只出现一次的两个数字</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#bm53-%E7%BC%BA%E5%A4%B1%E7%9A%84%E7%AC%AC%E4%B8%80%E4%B8%AA%E6%AD%A3%E6%95%B4%E6%95%B0"><span class="toc-number">2.4.4.</span> <span class="toc-text"> BM53 缺失的第一个正整数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%89%E6%95%B0%E4%B9%8B%E5%92%8C"><span class="toc-number">2.4.5.</span> <span class="toc-text"> 三数之和</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%80%92%E5%BD%92%E5%9B%9E%E6%BA%AF"><span class="toc-number">2.5.</span> <span class="toc-text"> 递归&#x2F;回溯</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#bm55-%E6%B2%A1%E6%9C%89%E9%87%8D%E5%A4%8D%E9%A1%B9%E6%95%B0%E5%AD%97%E7%9A%84%E5%85%A8%E6%8E%92%E5%88%97"><span class="toc-number">2.5.1.</span> <span class="toc-text"> BM55 没有重复项数字的全排列</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#bm56-%E6%9C%89%E9%87%8D%E5%A4%8D%E9%A1%B9%E6%95%B0%E5%AD%97%E7%9A%84%E5%85%A8%E6%8E%92%E5%88%97"><span class="toc-number">2.5.2.</span> <span class="toc-text"> BM56 有重复项数字的全排列</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#bm57-%E5%B2%9B%E5%B1%BF%E6%95%B0%E9%87%8F"><span class="toc-number">2.5.3.</span> <span class="toc-text"> BM57 岛屿数量</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#bm58-%E5%AD%97%E7%AC%A6%E4%B8%B2%E7%9A%84%E6%8E%92%E5%88%97"><span class="toc-number">2.5.4.</span> <span class="toc-text"> BM58 字符串的排列</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#bm59-n%E7%9A%87%E5%90%8E%E9%97%AE%E9%A2%98"><span class="toc-number">2.5.5.</span> <span class="toc-text"> BM59 N皇后问题</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#bm60-%E6%8B%AC%E5%8F%B7%E7%94%9F%E6%88%90"><span class="toc-number">2.5.6.</span> <span class="toc-text"> BM60 括号生成</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#bm61-%E7%9F%A9%E9%98%B5%E6%9C%80%E9%95%BF%E9%80%92%E5%A2%9E%E8%B7%AF%E5%BE%84"><span class="toc-number">2.5.7.</span> <span class="toc-text"> BM61 矩阵最长递增路径</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92"><span class="toc-number">2.6.</span> <span class="toc-text"> 动态规划</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#bm62-%E6%96%90%E6%B3%A2%E9%82%A3%E5%A5%91%E6%95%B0%E5%88%97"><span class="toc-number">2.6.1.</span> <span class="toc-text"> BM62 斐波那契数列</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#bm63-%E8%B7%B3%E5%8F%B0%E9%98%B6"><span class="toc-number">2.6.2.</span> <span class="toc-text"> BM63 跳台阶</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#bm64-%E6%9C%80%E5%B0%8F%E8%8A%B1%E8%B4%B9%E7%88%AC%E6%A5%BC%E6%A2%AF"><span class="toc-number">2.6.3.</span> <span class="toc-text"> BM64 最小花费爬楼梯</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#bm65-%E6%9C%80%E9%95%BF%E5%85%AC%E5%85%B1%E5%AD%90%E5%BA%8F%E5%88%97"><span class="toc-number">2.6.4.</span> <span class="toc-text"> BM65 最长公共子序列</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#bm66-%E6%9C%80%E9%95%BF%E5%85%AC%E5%85%B1%E5%AD%90%E4%B8%B2"><span class="toc-number">2.6.5.</span> <span class="toc-text"> BM66 最长公共子串</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#bm67-%E4%B8%8D%E5%90%8C%E8%B7%AF%E5%BE%84%E7%9A%84%E6%95%B0%E7%9B%AE%E4%B8%80"><span class="toc-number">2.6.6.</span> <span class="toc-text"> BM67 不同路径的数目(一)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#bm68-%E7%9F%A9%E9%98%B5%E7%9A%84%E6%9C%80%E5%B0%8F%E8%B7%AF%E5%BE%84%E5%92%8C"><span class="toc-number">2.6.7.</span> <span class="toc-text"> BM68 矩阵的最小路径和</span></a></li></ol></li></ol></li></ol>
+  </div>
+
+</article>
+  </div>
+  <div class="right-content">
+    <div id="toc" class="toc-wrapper"></div>
+  <div>
+</div>
+
+
           </div>
         </div>
-      
+      </div>
     </div>
+
+     
+  <button id="scroll-to-top" class="btn btn-top" aria-label="Scroll To Top">
+    <i class="fas fa-arrow-up"></i>
+  </button>
+ 
+
+  </main>
+
+  <div class="footer-wrapper">
+  <div class="left-content"></div>
+  <div class="right-content">
+    <div>Copyright &copy;2025</div>
+    <div>Powered By <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a> - Theme <a target="_blank" rel="noopener" href="https://github.com/thomasyu929/hexo-theme-peomas">Peomas</a></div>
   </div>
 </div>
-  
-  <footer class="footer">
-  <div class="container">
-    <div class="footer-inner">
-      <div class="copyright">
-        &copy; 2025 Dezeem
+
+  <div id="searchModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="searchModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Search</h5>
+        <button type="button" class="btn btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
-      <div class="powered-by">
-        由 &lt;a href=&#34;https://hexo.io&#34; target=&#34;_blank&#34;&gt;Hexo&lt;/a&gt; 强力驱动 | 
-        主题 <a href="https://github.com/yourusername/hexo-theme-canary" target="_blank">Canary</a>
-      </div>
-    </div>
-  </div>
-</footer>
-  
-  <!-- 移动导航切换按钮 -->
-  <div class="mobile-nav-toggle">
-    <i class="fas fa-bars"></i>
-  </div>
-  
-  <!-- 移动导航菜单 -->
-  <div class="mobile-nav">
-  <div class="mobile-nav-inner">
-    <div class="mobile-nav-header">
-      <div class="logo">
-        <a href="/">Dezeem&#39;log</a>
-      </div>
-      <button class="mobile-nav-close">
-        <i class="fas fa-times"></i>
-      </button>
-    </div>
-    
-    <nav class="mobile-menu">
-      <ul>
-        
-          <li><a href="/">Home</a></li>
-        
-          <li><a href="/archives">Archives</a></li>
-        
-          <li><a href="/categories">Categories</a></li>
-        
-          <li><a href="/tags">Tags</a></li>
-        
-          <li><a href="/about">About</a></li>
-        
-      </ul>
-    </nav>
-    
-    <div class="mobile-nav-footer">
-      <div class="language-switch">
-        <a href="#" class="lang-btn" data-lang="zh-CN">中文</a>
-        <a href="#" class="lang-btn" data-lang="en">EN</a>
-      </div>
-      
-      <div class="theme-switch">
-        <button id="mobile-theme-toggle" aria-label="Toggle Dark Mode">
-          <i class="fas fa-moon dark-icon"></i>
-          <i class="fas fa-sun light-icon"></i>
-        </button>
+      <div class="modal-body">
+        <div class="input-wrapper">
+          <i class="fas fa-search"></i>
+          <input id="search" class="search-input" type="text" placeholder="Input content to search..." />
+        </div>
+        <ul id="result" class="list-group result-wrapper">
+        </ul>
       </div>
     </div>
   </div>
 </div>
 
-<div class="mobile-nav-toggle">
-  <i class="fas fa-bars"></i>
-</div>
   
-  <script>
-    // 初始化 KaTeX
-    document.addEventListener("DOMContentLoaded", function() {
-      renderMathInElement(document.body, {
-        delimiters: [
-          {left: "$$", right: "$$", display: true},
-          {left: "$", right: "$", display: false}
-        ]
-      });
-    });
-  </script>
+<script src="https://cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js"></script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5/dist/js/bootstrap.min.js"></script>
+
+
+<script src="/js/prism.js"></script>
+
+
+
+  
+<script src="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js"></script>
+
+  
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.css">
+
+  
+<script src="/js/nprogress.js"></script>
+
+
+
+ 
+  
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.11.1/tocbot.min.js"></script>
+
+  
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.11.1/tocbot.css">
+
+ 
+
+
+<script src="/js/event.js"></script>
+
+
+<script src="/js/search.js"></script>
+
+
+<script src="/js/plugin.js"></script>
+
+
+
 </body>
+
 </html>

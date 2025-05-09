@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Getting Started | Dezeem&#39;log</title>
+  
+    <link rel="icon" href="/img/favicon.png">
+  
+  
+  <!-- CSS -->
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+  <!-- KaTeX for LaTeX support -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/katex.min.css">
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/katex.min.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/contrib/auto-render.min.js"></script>
+  
+  <!-- Font Awesome for icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  
+  <!-- Theme JavaScript -->
+  
+<script src="/js/main.js"></script>
+
+<meta name="generator" content="Hexo 6.3.0"><link rel="alternate" href="/atom.xml" title="Dezeem'log" type="application/atom+xml">
+</head>
+<body>
+  <header class="header">
+  <div class="container">
+    <div class="header-inner">
+      <div class="logo">
+        <a href="/">Dezeem&#39;log</a>
+      </div>
+      
+      <nav class="main-nav">
+        <ul>
+          
+            <li><a href="/">Home</a></li>
+          
+            <li><a href="/archives">Archives</a></li>
+          
+            <li><a href="/categories">Categories</a></li>
+          
+            <li><a href="/tags">Tags</a></li>
+          
+            <li><a href="/about">About</a></li>
+          
+        </ul>
+      </nav>
+      
+      <div class="header-right">
+        <!-- 语言切换 -->
+        <div class="language-switch">
+          <a href="#" class="lang-btn" data-lang="zh-CN">中文</a>
+          <a href="#" class="lang-btn" data-lang="en">EN</a>
+        </div>
+        
+        <!-- 暗黑模式切换 -->
+        <div class="theme-switch">
+          <button id="theme-toggle" aria-label="Toggle Dark Mode">
+            <i class="fas fa-moon dark-icon"></i>
+            <i class="fas fa-sun light-icon"></i>
+          </button>
+        </div>
+        
+        <!-- 搜索按钮 -->
+        <div class="search-btn">
+          <i class="fas fa-search"></i>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <!-- 搜索框 -->
+  <div class="search-container">
+    <div class="container">
+      <form class="search-form">
+        <input type="text" class="search-input" placeholder="搜索">
+        <button type="submit" class="search-submit">
+          <i class="fas fa-search"></i>
+        </button>
+      </form>
+      <button class="search-close">
+        <i class="fas fa-times"></i>
+      </button>
+    </div>
+  </div>
+</header>
+  
+  <main class="main-content">
+    <div class="post-container">
+  <div class="container">
+    <div class="post-inner">
+      <!-- 文章主体 -->
+      <div class="post-main">
+        <article class="post-content">
+          <header class="post-header">
+            <h1 class="post-title">Getting Started</h1>
+            <div class="post-meta">
+              <time class="post-date" datetime="2021-10-21T16:02:13.000Z">
+                2021-10-22
+              </time>
+              
+                <span class="post-categories">
+                  
+                    <a href="/categories/Wireshark/" class="post-category">Wireshark</a>
+                  
+                </span>
+              
+            </div>
+          </header>
+          
+          <div class="post-body">
+            <h1 id="实验一"><a href="#实验一" class="headerlink" title="实验一"></a>实验一</h1><p>✨<strong>更新于2022-10-28</strong></p>
+<h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><p><em>数据包嗅探结构</em></p>
+<p><img src="https://raw.githubusercontent.com/Dezeem/Note-img/main/img/202210281337814.png" alt="image-20221028131519450"></p>
+<h2 id="wireshark"><a href="#Wireshark" class="headerlink" title="Wireshark"></a>Wireshark</h2><blockquote>
+<p>Wireshark是由一个国际网络专家团队开发的网络协议分析工具</p>
+</blockquote>
+<h2 id="实验内容"><a href="#实验内容" class="headerlink" title="实验内容"></a>实验内容</h2><p>​		下载并安装好Wireshark，打开软件选择WLAN，启动数据嗅探：</p>
+<p>​		然后访问指定网站如下：</p>
+<p>​		<a target="_blank" rel="noopener" href="http://gaia.cs.umass.edu/wireshark-labs/INTRO-wireshark-file1.html">http://gaia.cs.umass.edu/wireshark-labs/INTRO-wireshark-file1.html</a></p>
+<p><img src="https://i.loli.net/2021/10/22/KTArvleEpqFinWP.png" alt="image-20211021192400073.png"></p>
+<p>​		显示内容如上图所示</p>
+<p>​		显示过滤器中输入http，得到HTTP协议的数据传输信息：</p>
+<p><img src="https://i.loli.net/2021/10/22/eNUxrvqmCAVn6td.png" alt="image-20211021192529165.png"></p>
+<p>​		source 为请求方——本地ip地址</p>
+<p>​		Destination 为接收方——服务器ip地址</p>
+<p><img src="https://i.loli.net/2021/10/22/R8g6QyIKTMVj5CE.png" alt="image-20211021192910040.png"></p>
+<p>​		展开可查看详细信息</p>
+<p>​		HTTP版本为1.1</p>
+<p>​		返回200 OK，请求成功。</p>
+<p><strong>OVER</strong></p>
+
+          </div>
+          
+          <footer class="post-footer">
+            
+              <div class="post-tags">
+                
+                  <a href="/tags/%E8%AE%A1%E7%BD%91/" class="post-tag">#计网</a>
+                
+              </div>
+            
+          </footer>
+        </article>
+      </div>
+      
+      <!-- 文章目录 -->
+      
+        <div class="post-toc">
+          <div class="toc-header">
+            <h3>post.toc</h3>
+            <button class="toc-toggle">
+              <i class="fas fa-chevron-down"></i>
+            </button>
+          </div>
+          <div class="toc-content">
+            <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%AE%9E%E9%AA%8C%E4%B8%80"><span class="toc-number">1.</span> <span class="toc-text">实验一</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%A6%82%E8%BF%B0"><span class="toc-number">1.1.</span> <span class="toc-text">概述</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#wireshark"><span class="toc-number">1.2.</span> <span class="toc-text">Wireshark</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%9E%E9%AA%8C%E5%86%85%E5%AE%B9"><span class="toc-number">1.3.</span> <span class="toc-text">实验内容</span></a></li></ol></li></ol>
+          </div>
+        </div>
+      
+    </div>
+  </div>
+</div>
+  </main>
+  
+  <footer class="footer">
+  <div class="container">
+    <div class="footer-inner">
+      <div class="copyright">
+        &copy; 2025 Dezeem
+      </div>
+      <div class="powered-by">
+        由 &lt;a href=&#34;https://hexo.io&#34; target=&#34;_blank&#34;&gt;Hexo&lt;/a&gt; 强力驱动 | 
+        主题 <a href="https://github.com/yourusername/hexo-theme-canary" target="_blank">Canary</a>
+      </div>
+    </div>
+  </div>
+</footer>
+  <div class="mobile-nav">
+  <div class="mobile-nav-inner">
+    <div class="mobile-nav-header">
+      <div class="logo">
+        <a href="/">Dezeem&#39;log</a>
+      </div>
+      <button class="mobile-nav-close">
+        <i class="fas fa-times"></i>
+      </button>
+    </div>
+    
+    <nav class="mobile-menu">
+      <ul>
+        
+          <li><a href="/">Home</a></li>
+        
+          <li><a href="/archives">Archives</a></li>
+        
+          <li><a href="/categories">Categories</a></li>
+        
+          <li><a href="/tags">Tags</a></li>
+        
+          <li><a href="/about">About</a></li>
+        
+      </ul>
+    </nav>
+    
+    <div class="mobile-nav-footer">
+      <div class="language-switch">
+        <a href="#" class="lang-btn" data-lang="zh-CN">中文</a>
+        <a href="#" class="lang-btn" data-lang="en">EN</a>
+      </div>
+      
+      <div class="theme-switch">
+        <button id="mobile-theme-toggle" aria-label="Toggle Dark Mode">
+          <i class="fas fa-moon dark-icon"></i>
+          <i class="fas fa-sun light-icon"></i>
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="mobile-nav-toggle">
+  <i class="fas fa-bars"></i>
+</div> <!-- 新增 -->
+  
+  <!-- JavaScript -->
+  
+<script src="/js/main.js"></script>
+
+  
+  
+</body>
+</html>

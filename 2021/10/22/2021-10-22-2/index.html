@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>HTTP | Dezeem&#39;log</title>
+  
+    <link rel="icon" href="/img/favicon.png">
+  
+  
+  <!-- CSS -->
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+  <!-- KaTeX for LaTeX support -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/katex.min.css">
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/katex.min.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/contrib/auto-render.min.js"></script>
+  
+  <!-- Font Awesome for icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  
+  <!-- Theme JavaScript -->
+  
+<script src="/js/main.js"></script>
+
+<meta name="generator" content="Hexo 6.3.0"><link rel="alternate" href="/atom.xml" title="Dezeem'log" type="application/atom+xml">
+</head>
+<body>
+  <header class="header">
+  <div class="container">
+    <div class="header-inner">
+      <div class="logo">
+        <a href="/">Dezeem&#39;log</a>
+      </div>
+      
+      <nav class="main-nav">
+        <ul>
+          
+            <li><a href="/">Home</a></li>
+          
+            <li><a href="/archives">Archives</a></li>
+          
+            <li><a href="/categories">Categories</a></li>
+          
+            <li><a href="/tags">Tags</a></li>
+          
+            <li><a href="/about">About</a></li>
+          
+        </ul>
+      </nav>
+      
+      <div class="header-right">
+        <!-- 语言切换 -->
+        <div class="language-switch">
+          <a href="#" class="lang-btn" data-lang="zh-CN">中文</a>
+          <a href="#" class="lang-btn" data-lang="en">EN</a>
+        </div>
+        
+        <!-- 暗黑模式切换 -->
+        <div class="theme-switch">
+          <button id="theme-toggle" aria-label="Toggle Dark Mode">
+            <i class="fas fa-moon dark-icon"></i>
+            <i class="fas fa-sun light-icon"></i>
+          </button>
+        </div>
+        
+        <!-- 搜索按钮 -->
+        <div class="search-btn">
+          <i class="fas fa-search"></i>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <!-- 搜索框 -->
+  <div class="search-container">
+    <div class="container">
+      <form class="search-form">
+        <input type="text" class="search-input" placeholder="搜索">
+        <button type="submit" class="search-submit">
+          <i class="fas fa-search"></i>
+        </button>
+      </form>
+      <button class="search-close">
+        <i class="fas fa-times"></i>
+      </button>
+    </div>
+  </div>
+</header>
+  
+  <main class="main-content">
+    <div class="post-container">
+  <div class="container">
+    <div class="post-inner">
+      <!-- 文章主体 -->
+      <div class="post-main">
+        <article class="post-content">
+          <header class="post-header">
+            <h1 class="post-title">HTTP</h1>
+            <div class="post-meta">
+              <time class="post-date" datetime="2021-10-22T11:14:13.000Z">
+                2021-10-22
+              </time>
+              
+                <span class="post-categories">
+                  
+                    <a href="/categories/Wireshark/" class="post-category">Wireshark</a>
+                  
+                </span>
+              
+            </div>
+          </header>
+          
+          <div class="post-body">
+            <h1 id="实验二"><a href="#实验二" class="headerlink" title="实验二"></a>实验二</h1><h2 id="基于http获取x2f响应交互"><a href="#基于HTTP获取-x2F-响应交互" class="headerlink" title="基于HTTP获取&#x2F;响应交互"></a>基于HTTP获取&#x2F;响应交互</h2><p>​		1.启动浏览器，启动资源包嗅探器（尚未开始捕获），显示过滤http，等待一分多钟。</p>
+<p>​		2.访问指定网站<a target="_blank" rel="noopener" href="http://gaia.cs.umass.edu/wireshark-labs/HTTP-wireshark-file1.html">http://gaia.cs.umass.edu/wireshark-labs/HTTP-wireshark-file1.html</a>，</p>
+<p>​		显示如图：</p>
+<p><img src="https://i.loli.net/2021/10/22/GpuWCe1J8nR4Kkf.jpg" alt="屏幕截图 2021-10-22 111915.jpg"></p>
+<p>​		3.停止嗅探，查看内容：</p>
+<p><img src="https://i.loli.net/2021/10/22/ZTKrRjkzo5WLcEu.png" alt="image.png"></p>
+<p>​		       <img src="https://i.loli.net/2021/10/22/O68jYQUAoX4gasu.png" alt="image.png"></p>
+<p>​		浏览器提交GET请求。</p>
+<p>​		<strong>浏览器和服务器的HTTP版本均为1.1</strong></p>
+<p>​		<strong>浏览器的可接受服务器使用的语言</strong>如图所示：</p>
+<p><img src="https://i.loli.net/2021/10/22/Qox81PSja5XGOz3.png" alt="image.png"></p>
+<p>​		我的<strong>本地IP地址</strong>为：192.168.215.71</p>
+<p>​		<strong>服务器IP地址</strong>为：128.119.245.12</p>
+<p>​		<strong>服务器返回状态代码为200 OK</strong>表示请求成功。</p>
+<p>​		<img src="https://i.loli.net/2021/10/22/th27lHP8kMmZzfa.png" alt="image.png"></p>
+<p>​		可以看见Last-Modified行：<strong>Last-Modified: Fri, 22 Oct 2021 05:59:01 GMT\r\n</strong>，可以知道服务器检索上次修改的 HTML 文件的时间。</p>
+<p>​		以及<strong>Content-Length: 128\r\n</strong>，可以知道有多少字节的内容被退回到的浏览器。</p>
+<h2 id="getx2fresponse交互"><a href="#GET-x2F-response交互" class="headerlink" title="GET&#x2F;response交互"></a>GET&#x2F;response交互</h2><p>​		1.清空缓存，启动嗅探器，启动浏览器，访问指定网址，再刷新一次，显示如图。</p>
+<p>​		<img src="https://i.loli.net/2021/10/22/UNxuZQBFKra71p2.png" alt="image.png"></p>
+<p>​		2.检查第一个从浏览器到服务器的GET请求，没有If-Modified-Since行</p>
+<p>​		<img src="https://i.loli.net/2021/10/22/kShfjyKxwRoCbQg.png" alt="image.png"></p>
+<p>​		3.查看服务器返回内容：</p>
+<p><img src="https://i.loli.net/2021/10/22/PnArEUyjzMbGS8m.png" alt="image.png"></p>
+<p>​		返回了一段HTML代码</p>
+<p>​		4.检查第二个HTTP GET请求内容：</p>
+<p><img src="https://i.loli.net/2021/10/22/7hTxSasC5PblpfN.png" alt="image.png"></p>
+<p>可见<strong>If-Modified-Since: Fri, 22 Oct 2021 05:59:01 GMT\r\n</strong><br>        5.第二次HTTP返回的状态代码是304 Not Modified，没有明确返回文件内容，因为该网页内容在上次访问之后未被修改过，且本地中有上次访问的缓存。</p>
+<p>​		<img src="https://i.loli.net/2021/10/22/ep1PqucU6FCYsmQ.png" alt="image.png"></p>
+<h2 id="检索长文件"><a href="#检索长文件" class="headerlink" title="检索长文件"></a>检索长文件</h2><p>​		1.操作同上。</p>
+<p>​		2.开始数据嗅探，访问指定网站后停止。</p>
+<p><img src="https://i.loli.net/2021/10/22/3OKVZ1AMa2YR4Qm.png" alt="image.png"></p>
+<p>​		3.浏览器发送了一个GET请求消息，传输这一个HTTP响应需要4个TCP数据段。</p>
+<p><img src="https://i.loli.net/2021/10/22/8biSHfZ7qLvhXPm.png" alt="image.png"></p>
+<p>​		4.响应HTTP GET请求的相关的状态码200和短语是OK。</p>
+<h2 id="html-带有嵌入对象的文件"><a href="#HTML-带有嵌入对象的文件" class="headerlink" title="HTML 带有嵌入对象的文件"></a>HTML 带有嵌入对象的文件</h2><p>​		1.清除缓存，开始捕获，访问网站<a target="_blank" rel="noopener" href="http://gaia.cs.umass.edu/wireshark-labs/HTTP-wireshark-file4.html">http://gaia.cs.umass.edu/wireshark-labs/HTTP-wireshark-file4.html</a></p>
+<p>​		2.停止捕获，查看内容。</p>
+<p><img src="https://i.loli.net/2021/10/22/EzqUwirVXOpcj9h.png" alt="image.png">		浏览器发送了3个HTTP GET 请求，浏览器并不是同时下载这两张图片，有先后顺序。GET请求有两个发送给了 128.119.245.12，一个发送到了178.79.137.164。</p>
+<h2 id="http认证"><a href="#HTTP认证" class="headerlink" title="HTTP认证"></a>HTTP认证</h2><p>​		1.清楚缓存，开始捕获，访问网站并登录。</p>
+<p><img src="https://i.loli.net/2021/10/22/otQm4jUBS2GJsLY.png" alt="image.png"></p>
+<p><img src="https://i.loli.net/2021/10/22/GDq3X6M1ZgzYstW.png" alt="image.png"></p>
+<p>未登录时服务器返回401 Unauthorized，登录成功返回200 OK。</p>
+<p>当浏览器第二次发送 HTTP GET 消息时，HTTP GET 消息中包含Authorization，</p>
+<p>响应消息出现了ETag字段。</p>
+<p>​		输入的用户名和密码在客户端的 HTTP GET 消息中虽然可能看起来是加密的，但它们只是以称为 Base64 格式的格式进行编码。用户名和密码未加密！</p>
+
+          </div>
+          
+          <footer class="post-footer">
+            
+              <div class="post-tags">
+                
+                  <a href="/tags/%E8%AE%A1%E7%BD%91/" class="post-tag">#计网</a>
+                
+              </div>
+            
+          </footer>
+        </article>
+      </div>
+      
+      <!-- 文章目录 -->
+      
+        <div class="post-toc">
+          <div class="toc-header">
+            <h3>post.toc</h3>
+            <button class="toc-toggle">
+              <i class="fas fa-chevron-down"></i>
+            </button>
+          </div>
+          <div class="toc-content">
+            <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%AE%9E%E9%AA%8C%E4%BA%8C"><span class="toc-number">1.</span> <span class="toc-text">实验二</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9F%BA%E4%BA%8Ehttp%E8%8E%B7%E5%8F%96x2f%E5%93%8D%E5%BA%94%E4%BA%A4%E4%BA%92"><span class="toc-number">1.1.</span> <span class="toc-text">基于HTTP获取&#x2F;响应交互</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#getx2fresponse%E4%BA%A4%E4%BA%92"><span class="toc-number">1.2.</span> <span class="toc-text">GET&#x2F;response交互</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%A3%80%E7%B4%A2%E9%95%BF%E6%96%87%E4%BB%B6"><span class="toc-number">1.3.</span> <span class="toc-text">检索长文件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#html-%E5%B8%A6%E6%9C%89%E5%B5%8C%E5%85%A5%E5%AF%B9%E8%B1%A1%E7%9A%84%E6%96%87%E4%BB%B6"><span class="toc-number">1.4.</span> <span class="toc-text">HTML 带有嵌入对象的文件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#http%E8%AE%A4%E8%AF%81"><span class="toc-number">1.5.</span> <span class="toc-text">HTTP认证</span></a></li></ol></li></ol>
+          </div>
+        </div>
+      
+    </div>
+  </div>
+</div>
+  </main>
+  
+  <footer class="footer">
+  <div class="container">
+    <div class="footer-inner">
+      <div class="copyright">
+        &copy; 2025 Dezeem
+      </div>
+      <div class="powered-by">
+        由 &lt;a href=&#34;https://hexo.io&#34; target=&#34;_blank&#34;&gt;Hexo&lt;/a&gt; 强力驱动 | 
+        主题 <a href="https://github.com/yourusername/hexo-theme-canary" target="_blank">Canary</a>
+      </div>
+    </div>
+  </div>
+</footer>
+  <div class="mobile-nav">
+  <div class="mobile-nav-inner">
+    <div class="mobile-nav-header">
+      <div class="logo">
+        <a href="/">Dezeem&#39;log</a>
+      </div>
+      <button class="mobile-nav-close">
+        <i class="fas fa-times"></i>
+      </button>
+    </div>
+    
+    <nav class="mobile-menu">
+      <ul>
+        
+          <li><a href="/">Home</a></li>
+        
+          <li><a href="/archives">Archives</a></li>
+        
+          <li><a href="/categories">Categories</a></li>
+        
+          <li><a href="/tags">Tags</a></li>
+        
+          <li><a href="/about">About</a></li>
+        
+      </ul>
+    </nav>
+    
+    <div class="mobile-nav-footer">
+      <div class="language-switch">
+        <a href="#" class="lang-btn" data-lang="zh-CN">中文</a>
+        <a href="#" class="lang-btn" data-lang="en">EN</a>
+      </div>
+      
+      <div class="theme-switch">
+        <button id="mobile-theme-toggle" aria-label="Toggle Dark Mode">
+          <i class="fas fa-moon dark-icon"></i>
+          <i class="fas fa-sun light-icon"></i>
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="mobile-nav-toggle">
+  <i class="fas fa-bars"></i>
+</div> <!-- 新增 -->
+  
+  <!-- JavaScript -->
+  
+<script src="/js/main.js"></script>
+
+  
+  
+</body>
+</html>

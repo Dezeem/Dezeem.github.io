@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NAT | Dezeem&#39;log</title>
+  
+    <link rel="icon" href="/img/favicon.png">
+  
+  
+  <!-- CSS -->
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+  <!-- KaTeX for LaTeX support -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/katex.min.css">
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/katex.min.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/contrib/auto-render.min.js"></script>
+  
+  <!-- Font Awesome for icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  
+  <!-- Theme JavaScript -->
+  
+<script src="/js/main.js"></script>
+
+<meta name="generator" content="Hexo 6.3.0"><link rel="alternate" href="/atom.xml" title="Dezeem'log" type="application/atom+xml">
+</head>
+<body>
+  <header class="header">
+  <div class="container">
+    <div class="header-inner">
+      <div class="logo">
+        <a href="/">Dezeem&#39;log</a>
+      </div>
+      
+      <nav class="main-nav">
+        <ul>
+          
+            <li><a href="/">Home</a></li>
+          
+            <li><a href="/archives">Archives</a></li>
+          
+            <li><a href="/categories">Categories</a></li>
+          
+            <li><a href="/tags">Tags</a></li>
+          
+            <li><a href="/about">About</a></li>
+          
+        </ul>
+      </nav>
+      
+      <div class="header-right">
+        <!-- 语言切换 -->
+        <div class="language-switch">
+          <a href="#" class="lang-btn" data-lang="zh-CN">中文</a>
+          <a href="#" class="lang-btn" data-lang="en">EN</a>
+        </div>
+        
+        <!-- 暗黑模式切换 -->
+        <div class="theme-switch">
+          <button id="theme-toggle" aria-label="Toggle Dark Mode">
+            <i class="fas fa-moon dark-icon"></i>
+            <i class="fas fa-sun light-icon"></i>
+          </button>
+        </div>
+        
+        <!-- 搜索按钮 -->
+        <div class="search-btn">
+          <i class="fas fa-search"></i>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <!-- 搜索框 -->
+  <div class="search-container">
+    <div class="container">
+      <form class="search-form">
+        <input type="text" class="search-input" placeholder="搜索">
+        <button type="submit" class="search-submit">
+          <i class="fas fa-search"></i>
+        </button>
+      </form>
+      <button class="search-close">
+        <i class="fas fa-times"></i>
+      </button>
+    </div>
+  </div>
+</header>
+  
+  <main class="main-content">
+    <div class="post-container">
+  <div class="container">
+    <div class="post-inner">
+      <!-- 文章主体 -->
+      <div class="post-main">
+        <article class="post-content">
+          <header class="post-header">
+            <h1 class="post-title">NAT</h1>
+            <div class="post-meta">
+              <time class="post-date" datetime="2021-10-27T14:48:00.000Z">
+                2021-10-27
+              </time>
+              
+                <span class="post-categories">
+                  
+                    <a href="/categories/Wireshark/" class="post-category">Wireshark</a>
+                  
+                </span>
+              
+            </div>
+          </header>
+          
+          <div class="post-body">
+            <h1 id="实验七"><a href="#实验七" class="headerlink" title="实验七"></a>实验七</h1><p>​		这个Lab由于我们不好捕捉包 所以我们需要下载别人给的捕获包<a target="_blank" rel="noopener" href="http://gaia.cs.umass.edu/wireshark-labs/wireshark-traces.zip">http://gaia.cs.umass.edu/wireshark-labs/wireshark-traces.zip</a></p>
+<p>​		要用到的是NAT_home_side NAT_ISP_side</p>
+<p>​		一个是在客户机上捕获的一个是由路由器发送到ISP的包，我们<strong>先打开NAT_home_side 客户机的Wireshark文件</strong></p>
+<p>​		1.	客户的 IP 地址是什么？</p>
+<p>​		<strong>192.168.1.100</strong></p>
+<p>​		客户端实际上与几个不同的 Google 服务器进行通信，以便实现”安全浏览”。 将服务于谷歌主网页的谷歌主服务器IP地址为 64.233.169.104。 在显示过滤器输入表达”http +ip.addr &#x3D;&#x3D; 64.233.169.104”：</p>
+<p><img src="https://i.loli.net/2021/10/27/7fEQjrVywGmWUYR.png" alt="image.png"></p>
+<p><img src="https://i.loli.net/2021/10/27/Fx84I9VN3T6mQ5f.png" alt="image.png"></p>
+<p>​		2.现在考虑 HTTP GET 从客户端发送到 Google 服务器（其 IP 地址为 IP 地址 64.233.169.104），时间 7.109267。 携带此 HTTP GET 的 IP 数据图上的源和目的地 IP 地址以及 TCP 源和目的地端口是什么？</p>
+<ul>
+<li><p>​		客户机	<strong>Source IP 192.168.1.100 Des IP 64.233.169.104 TCP 端口4335 Dst Port 80</strong></p>
+</li>
+<li><p>​		路由器端	<strong>Source IP 71.192.34.104 Des IP 64.233.169.104 TCP 端口4335 Dst Port 80</strong></p>
+</li>
+</ul>
+<p>​		3.在什么时间收到相应的 200 OK HTTP 消息 from 谷歌服务器？ 携带此 HTTP 200 OK 消息的 IP 数据图上的源和目的地 IP 地址以及 TCP 源和目的地端口是什么？</p>
+<ul>
+<li><p>​		时间	7.158</p>
+</li>
+<li><p>​		客户机    Source IP 64.233.169.104 Des IP 192.168.1.100 TCP 端口4335 Dst Port 80<br>​		路由器端    Source IP 64.233.169.104 Des IP 71.192.34.104 TCP 端口4335 Dst Port 80</p>
+</li>
+</ul>
+<p>​		4.请记住，在 GET 命令发送到 HTTP 服务器之前，TCP 必须首先使用三向 SYN&#x2F;ACK 握手设置连接。 在什么时间发送的客户端到服务器 TCP SYN 段，该段设置 GET 在 7.109267 时发送的连接？ TCP SYN 段的源和目的地 IP 地址以及源和目的地端口是什么？ ACK 的源和目的地 IP 地址以及响应 SYN 发送的源和目的地端口是什么？ 此 ACK 在客户端收到的时间是哪个时间？</p>
+<ul>
+<li><p>​		7.158s</p>
+</li>
+<li><p>​		客户机	Source IP 64.233.169.104 Des IP 192.168.1.100 TCP 端口4335 Dst Port 80<br>​		路由器端	Source IP 64.233.169.104 Des IP 71.192.34.104 TCP 端口4335 Dst Port 80</p>
+</li>
+<li><p>​		6.117s</p>
+</li>
+</ul>
+<hr>
+<p>​		1.在NAT_ISP_side跟踪文件中，找到 HTTP GET 消息是从客户端发送到 Google 服务器的时间 7.109267（其中 t&#x3D;7.109267 是将此发送的时间记录在 NAT_home_side跟踪文件中）。 此消息在什么时间出现在NAT_ISP_side跟踪文件中？ 携带此 HTTP GET 的 IP 数据图上的源和目的地 IP 地址以及 TCP 源和目的地端口（如NAT_ISP_side跟踪文件中的记录）是什么？ 这些字段中哪些领域相同，哪些领域与您对上述问题 3 的回答不同？<br>​		<strong>这些在上面对比的时已经写出，基本一样。</strong></p>
+<p>​		2.HTTP 获取消息中的任何字段是否已更改？携带 HTTP GET 的 IP 数据图中的哪些字段已更改：版本、头长度、标志、检查表。 如果这些字段中的任何一个已更改，给出一个理由（在一句话中）说明该字段需要更改的原因。<br>​		<strong>checksum改变,因为源地址发生了改变。</strong></p>
+<p>​		3.在NAT_ISP_side跟踪文件中，从 Google 服务器收到的第一个 200 个 OK HTTP 消息在什么时间？ 携带此 HTTP 200 OK 消息的 IP 数据图上的源和目的地 IP 地址以及 TCP 源和目的地端口是什么？<br>​		<strong>一样,除了目的地址</strong></p>
+<p>​		4.在NAT_ISP_side跟踪文件中，客户端到服务器 TCP SYN 段和服务器对客户端 TCP ACK 段在什么时间与上述 5 个问题段对应？这两个细分市场的源和目的地 IP 地址以及来源和目的地端口是什么？<br>​		<strong>一样同上</strong></p>
+<p>​		3.使用您对上面 1-8 的答案，填写上述问题 1-8 中考虑的 HTTP 连接的 NAT 翻译表条目。<br>​		<strong>一个是内网地址，一个是外网地址</strong></p>
+
+          </div>
+          
+          <footer class="post-footer">
+            
+              <div class="post-tags">
+                
+                  <a href="/tags/%E8%AE%A1%E7%BD%91/" class="post-tag">#计网</a>
+                
+              </div>
+            
+          </footer>
+        </article>
+      </div>
+      
+      <!-- 文章目录 -->
+      
+        <div class="post-toc">
+          <div class="toc-header">
+            <h3>post.toc</h3>
+            <button class="toc-toggle">
+              <i class="fas fa-chevron-down"></i>
+            </button>
+          </div>
+          <div class="toc-content">
+            <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%AE%9E%E9%AA%8C%E4%B8%83"><span class="toc-number">1.</span> <span class="toc-text">实验七</span></a></li></ol>
+          </div>
+        </div>
+      
+    </div>
+  </div>
+</div>
+  </main>
+  
+  <footer class="footer">
+  <div class="container">
+    <div class="footer-inner">
+      <div class="copyright">
+        &copy; 2025 Dezeem
+      </div>
+      <div class="powered-by">
+        由 &lt;a href=&#34;https://hexo.io&#34; target=&#34;_blank&#34;&gt;Hexo&lt;/a&gt; 强力驱动 | 
+        主题 <a href="https://github.com/yourusername/hexo-theme-canary" target="_blank">Canary</a>
+      </div>
+    </div>
+  </div>
+</footer>
+  <div class="mobile-nav">
+  <div class="mobile-nav-inner">
+    <div class="mobile-nav-header">
+      <div class="logo">
+        <a href="/">Dezeem&#39;log</a>
+      </div>
+      <button class="mobile-nav-close">
+        <i class="fas fa-times"></i>
+      </button>
+    </div>
+    
+    <nav class="mobile-menu">
+      <ul>
+        
+          <li><a href="/">Home</a></li>
+        
+          <li><a href="/archives">Archives</a></li>
+        
+          <li><a href="/categories">Categories</a></li>
+        
+          <li><a href="/tags">Tags</a></li>
+        
+          <li><a href="/about">About</a></li>
+        
+      </ul>
+    </nav>
+    
+    <div class="mobile-nav-footer">
+      <div class="language-switch">
+        <a href="#" class="lang-btn" data-lang="zh-CN">中文</a>
+        <a href="#" class="lang-btn" data-lang="en">EN</a>
+      </div>
+      
+      <div class="theme-switch">
+        <button id="mobile-theme-toggle" aria-label="Toggle Dark Mode">
+          <i class="fas fa-moon dark-icon"></i>
+          <i class="fas fa-sun light-icon"></i>
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="mobile-nav-toggle">
+  <i class="fas fa-bars"></i>
+</div> <!-- 新增 -->
+  
+  <!-- JavaScript -->
+  
+<script src="/js/main.js"></script>
+
+  
+  
+</body>
+</html>

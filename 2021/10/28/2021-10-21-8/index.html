@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DHCP | Dezeem&#39;log</title>
+  
+    <link rel="icon" href="/img/favicon.png">
+  
+  
+  <!-- CSS -->
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+  <!-- KaTeX for LaTeX support -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/katex.min.css">
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/katex.min.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/contrib/auto-render.min.js"></script>
+  
+  <!-- Font Awesome for icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  
+  <!-- Theme JavaScript -->
+  
+<script src="/js/main.js"></script>
+
+<meta name="generator" content="Hexo 6.3.0"><link rel="alternate" href="/atom.xml" title="Dezeem'log" type="application/atom+xml">
+</head>
+<body>
+  <header class="header">
+  <div class="container">
+    <div class="header-inner">
+      <div class="logo">
+        <a href="/">Dezeem&#39;log</a>
+      </div>
+      
+      <nav class="main-nav">
+        <ul>
+          
+            <li><a href="/">Home</a></li>
+          
+            <li><a href="/archives">Archives</a></li>
+          
+            <li><a href="/categories">Categories</a></li>
+          
+            <li><a href="/tags">Tags</a></li>
+          
+            <li><a href="/about">About</a></li>
+          
+        </ul>
+      </nav>
+      
+      <div class="header-right">
+        <!-- 语言切换 -->
+        <div class="language-switch">
+          <a href="#" class="lang-btn" data-lang="zh-CN">中文</a>
+          <a href="#" class="lang-btn" data-lang="en">EN</a>
+        </div>
+        
+        <!-- 暗黑模式切换 -->
+        <div class="theme-switch">
+          <button id="theme-toggle" aria-label="Toggle Dark Mode">
+            <i class="fas fa-moon dark-icon"></i>
+            <i class="fas fa-sun light-icon"></i>
+          </button>
+        </div>
+        
+        <!-- 搜索按钮 -->
+        <div class="search-btn">
+          <i class="fas fa-search"></i>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <!-- 搜索框 -->
+  <div class="search-container">
+    <div class="container">
+      <form class="search-form">
+        <input type="text" class="search-input" placeholder="搜索">
+        <button type="submit" class="search-submit">
+          <i class="fas fa-search"></i>
+        </button>
+      </form>
+      <button class="search-close">
+        <i class="fas fa-times"></i>
+      </button>
+    </div>
+  </div>
+</header>
+  
+  <main class="main-content">
+    <div class="post-container">
+  <div class="container">
+    <div class="post-inner">
+      <!-- 文章主体 -->
+      <div class="post-main">
+        <article class="post-content">
+          <header class="post-header">
+            <h1 class="post-title">DHCP</h1>
+            <div class="post-meta">
+              <time class="post-date" datetime="2021-10-27T21:13:00.000Z">
+                2021-10-28
+              </time>
+              
+                <span class="post-categories">
+                  
+                    <a href="/categories/Wireshark/" class="post-category">Wireshark</a>
+                  
+                </span>
+              
+            </div>
+          </header>
+          
+          <div class="post-body">
+            <h1 id="实验八"><a href="#实验八" class="headerlink" title="实验八"></a>实验八</h1><h2 id="dhcp-实验"><a href="#DHCP-实验" class="headerlink" title="DHCP 实验"></a>DHCP 实验</h2><ol>
+<li><p>打开cmd，输入ipconfig&#x2F;release</p>
+</li>
+<li><p>启动嗅探器并开始捕获。</p>
+</li>
+<li><p>cmd输入ipconfig&#x2F;renew</p>
+</li>
+<li><p>再输入ipconfig&#x2F;release</p>
+</li>
+<li><p>再输入ipconfig&#x2F;renew</p>
+</li>
+<li><p>停止捕获</p>
+<p>​				<img src="https://i.loli.net/2021/10/27/Vewb9O5KnHcSmFC.png" alt="image.png"></p>
+<p>​		1.DHCP 消息是否通过 UDP 或 TCP 发送？</p>
+<p>​		<strong>UDP</strong></p>
+<p>​		2.绘制时间数据图，说明客户端和服务器之间第一个四包发现&#x2F;提供&#x2F;请求&#x2F;ACK DHCP 交换的顺序。对于每个数据包，指示源和目的地端口编号。端口编号与此实验室作业中给出的示例相同吗？</p>
+<p><strong>Offer&#x2F;Request&#x2F;ACK&#x2F;release&#x2F;Discover</strong></p>
+<p>​		3.主机的链接层（例如以太网）地址是什么？<strong>WIFI无法查看</strong></p>
+<p>​		4.DHCP 发现消息中的哪些值将此消息与 DHCP 请求消息区分开来？</p>
+<p>​		<img src="https://i.loli.net/2021/10/27/uiyv3zeq5KtOY6X.png" alt="image.png"></p>
+<p>​		<strong>Type</strong></p>
+<p>​		5.前四条（发现&#x2F;提供&#x2F;请求&#x2F;ACK）DHCP 消息中每个邮件中的交易 ID 值是怎样的？ 第二组 （请求&#x2F;ACK） DHCP 消息中的交易 ID 值是哪些？ 交易 ID 字段的目的是什么？</p>
+<p>​		<strong>用于确认是哪条请求 类似于TCP IP的序列号</strong></p>
+<p>​		6.主机使用 DHCP 获取 IP 地址，除其他外。但主机的 IP 地址直到四消息交换结束才得到确认！ 如果 IP 地址直到四消息交换结束才设置，那么在四消息交换中的 IP 数据图中使用了哪些值？ 对于四个 DHCP 消息（发现&#x2F;提供&#x2F;请求&#x2F;ACK DHCP），指示封装 IP 数据图中携带的源和目的地 IP 地址。<br>​		7.您的 DHCP 服务器的 IP 地址是哪个？</p>
+<p>​		<strong>192.168.254.254</strong></p>
+<p>​		8.DHCP 服务器在DHCPoffer消息中向主机提供什么IP地址？指示哪个DHCP消息包含提供的 DHCP 地址。<br>​		<img src="https://i.loli.net/2021/10/27/AbxCtNkpEIZgY2P.png" alt="image.png"></p>
+<p>​		9.在此任务中的示例屏幕截图中，主机和 DHCP 服务器之间没有继电器。跟踪中的哪些值表示缺少继电器？ 你的实验中是否有Agent？如果是，代理的 IP 地址是什么？</p>
+<p>​		<strong>没有Agent</strong></p>
+<p>​		10.解释 DHCP 提供消息中路由器和子网掩码的目的。</p>
+<p>​		<strong>首先告诉路由器IP是因为我们之后得到了路由器IP以后发送一些请求的时候就向我们的路由器发送了等于起到了中间代理的作用</strong></p>
+<p>​		<strong>告诉我们子网掩码 是告诉我们当前我们获取子网的大小 告诉我们更多的信息便于以后配置。</strong></p>
+<p>​		11.在脚注 2 中注明的 DHCP 跟踪文件中，DHCP 服务器向客户端提供了特定的 IP 地址（参见上面的第 8 个问题）。 在客户对第一个服务器 OFFER 消息的响应中，客户端是否接受此 IP 地址？ 客户请求的地址在客户响应中的位置？</p>
+<p>​		接受了IP地址因为发出的Request请求我们请求的IP就是DHCP申请出来的OFFE的那个IP如下图客户端的IP地址请求在选项字段</p>
+<p>​		<img src="https://i.loli.net/2021/10/27/Wrl4ScOFT17deX5.png" alt="image.png"></p>
+<p>​		</p>
+<p>​		12.解释租赁时间的目的。实验中的租赁时间有多长？<br>​		<strong>因为DHCP服务器分配是不永久分配的，都是临时分配的且是有时间的如果时间到期就需要重新申请或者续期如果没有重新租赁的话DHCP服务器即自动关闭与其的服务提供</strong><br>​		<strong>实验中的话 即租赁时间为1个小时</strong></p>
+<p>​		<img src="https://i.loli.net/2021/10/27/kRl7ziJQeTKBoCY.png" alt="image.png"></p>
+<p>​		13.DHCPRelease消息的目的是什么？ DHCP 服务器是否确认收到客户的 DHCP 请求？ 如果客户的 DHCP 发布消息丢失，会发生什么情况？<br>​		<strong>告诉DHCP我要离开，DHCP收到消息后可以把分配出去的资源给回收并重新分配如果丢失的话那么DHCP分配的资源可能需要等到租赁到期的时候才能收获。</strong></p>
+<p>​		14.从您的 Wireshark窗口清除引导过滤器。在DHCP数据包交换期间是否发送或接收了 ARP 数据包？如果是这样，解释这些 ARP 包的目的。<br>​		<strong>需要MAC地址DHCP服务器在接受到广播Discover时，如果满足就需要回应，同样需要MAC之后在我们得到了IP地址后同一子网的ARP就会记录我们的IP对应的MAC，ARP就广播给这个子网中的所有主机告诉我们的IP所用的MAC地址。</strong></p>
+</li>
+</ol>
+
+          </div>
+          
+          <footer class="post-footer">
+            
+              <div class="post-tags">
+                
+                  <a href="/tags/%E8%AE%A1%E7%BD%91/" class="post-tag">#计网</a>
+                
+              </div>
+            
+          </footer>
+        </article>
+      </div>
+      
+      <!-- 文章目录 -->
+      
+        <div class="post-toc">
+          <div class="toc-header">
+            <h3>post.toc</h3>
+            <button class="toc-toggle">
+              <i class="fas fa-chevron-down"></i>
+            </button>
+          </div>
+          <div class="toc-content">
+            <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%AE%9E%E9%AA%8C%E5%85%AB"><span class="toc-number">1.</span> <span class="toc-text">实验八</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#dhcp-%E5%AE%9E%E9%AA%8C"><span class="toc-number">1.1.</span> <span class="toc-text">DHCP 实验</span></a></li></ol></li></ol>
+          </div>
+        </div>
+      
+    </div>
+  </div>
+</div>
+  </main>
+  
+  <footer class="footer">
+  <div class="container">
+    <div class="footer-inner">
+      <div class="copyright">
+        &copy; 2025 Dezeem
+      </div>
+      <div class="powered-by">
+        由 &lt;a href=&#34;https://hexo.io&#34; target=&#34;_blank&#34;&gt;Hexo&lt;/a&gt; 强力驱动 | 
+        主题 <a href="https://github.com/yourusername/hexo-theme-canary" target="_blank">Canary</a>
+      </div>
+    </div>
+  </div>
+</footer>
+  <div class="mobile-nav">
+  <div class="mobile-nav-inner">
+    <div class="mobile-nav-header">
+      <div class="logo">
+        <a href="/">Dezeem&#39;log</a>
+      </div>
+      <button class="mobile-nav-close">
+        <i class="fas fa-times"></i>
+      </button>
+    </div>
+    
+    <nav class="mobile-menu">
+      <ul>
+        
+          <li><a href="/">Home</a></li>
+        
+          <li><a href="/archives">Archives</a></li>
+        
+          <li><a href="/categories">Categories</a></li>
+        
+          <li><a href="/tags">Tags</a></li>
+        
+          <li><a href="/about">About</a></li>
+        
+      </ul>
+    </nav>
+    
+    <div class="mobile-nav-footer">
+      <div class="language-switch">
+        <a href="#" class="lang-btn" data-lang="zh-CN">中文</a>
+        <a href="#" class="lang-btn" data-lang="en">EN</a>
+      </div>
+      
+      <div class="theme-switch">
+        <button id="mobile-theme-toggle" aria-label="Toggle Dark Mode">
+          <i class="fas fa-moon dark-icon"></i>
+          <i class="fas fa-sun light-icon"></i>
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="mobile-nav-toggle">
+  <i class="fas fa-bars"></i>
+</div> <!-- 新增 -->
+  
+  <!-- JavaScript -->
+  
+<script src="/js/main.js"></script>
+
+  
+  
+</body>
+</html>

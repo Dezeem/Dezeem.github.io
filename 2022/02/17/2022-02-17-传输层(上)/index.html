@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>传输层(上) | Dezeem&#39;log</title>
+  
+    <link rel="icon" href="/img/favicon.png">
+  
+  
+  <!-- CSS -->
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+  <!-- KaTeX for LaTeX support -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/katex.min.css">
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/katex.min.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/contrib/auto-render.min.js"></script>
+  
+  <!-- Font Awesome for icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  
+  <!-- Theme JavaScript -->
+  
+<script src="/js/main.js"></script>
+
+<meta name="generator" content="Hexo 6.3.0"><link rel="alternate" href="/atom.xml" title="Dezeem'log" type="application/atom+xml">
+</head>
+<body>
+  <header class="header">
+  <div class="container">
+    <div class="header-inner">
+      <div class="logo">
+        <a href="/">Dezeem&#39;log</a>
+      </div>
+      
+      <nav class="main-nav">
+        <ul>
+          
+            <li><a href="/">Home</a></li>
+          
+            <li><a href="/archives">Archives</a></li>
+          
+            <li><a href="/categories">Categories</a></li>
+          
+            <li><a href="/tags">Tags</a></li>
+          
+            <li><a href="/about">About</a></li>
+          
+        </ul>
+      </nav>
+      
+      <div class="header-right">
+        <!-- 语言切换 -->
+        <div class="language-switch">
+          <a href="#" class="lang-btn" data-lang="zh-CN">中文</a>
+          <a href="#" class="lang-btn" data-lang="en">EN</a>
+        </div>
+        
+        <!-- 暗黑模式切换 -->
+        <div class="theme-switch">
+          <button id="theme-toggle" aria-label="Toggle Dark Mode">
+            <i class="fas fa-moon dark-icon"></i>
+            <i class="fas fa-sun light-icon"></i>
+          </button>
+        </div>
+        
+        <!-- 搜索按钮 -->
+        <div class="search-btn">
+          <i class="fas fa-search"></i>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <!-- 搜索框 -->
+  <div class="search-container">
+    <div class="container">
+      <form class="search-form">
+        <input type="text" class="search-input" placeholder="搜索">
+        <button type="submit" class="search-submit">
+          <i class="fas fa-search"></i>
+        </button>
+      </form>
+      <button class="search-close">
+        <i class="fas fa-times"></i>
+      </button>
+    </div>
+  </div>
+</header>
+  
+  <main class="main-content">
+    <div class="post-container">
+  <div class="container">
+    <div class="post-inner">
+      <!-- 文章主体 -->
+      <div class="post-main">
+        <article class="post-content">
+          <header class="post-header">
+            <h1 class="post-title">传输层(上)</h1>
+            <div class="post-meta">
+              <time class="post-date" datetime="2022-02-17T11:40:00.000Z">
+                2022-02-17
+              </time>
+              
+                <span class="post-categories">
+                  
+                    <a href="/categories/%E8%AE%A1%E7%BD%91/" class="post-category">计网</a>
+                  
+                </span>
+              
+            </div>
+          </header>
+          
+          <div class="post-body">
+            <h1 id="传输层服务"><a href="#传输层服务" class="headerlink" title="传输层服务"></a>传输层服务</h1><h2 id="传输层服务和协议"><a href="#传输层服务和协议" class="headerlink" title="传输层服务和协议"></a>传输层服务和协议</h2><p><img src="https://s2.loli.net/2022/02/17/QjB2W7VwPI4fJMO.png" alt="image.png"></p>
+<h2 id="传输层-vs-网络层"><a href="#传输层-VS-网络层" class="headerlink" title="传输层 VS 网络层"></a>传输层 VS 网络层</h2><ul>
+<li>网络层：提供主机之间的逻辑通信机制</li>
+<li>传输层：提供应用进程之间的逻辑通信机制<ul>
+<li>位于网络之上</li>
+<li>依赖于网络层服务</li>
+<li>对于网络层服务进行（可能的）增强</li>
+</ul>
+</li>
+</ul>
+<hr>
+<p><strong>类比：12个孩子给12个孩子发信</strong></p>
+<ul>
+<li>应用进程 &#x3D; 孩子</li>
+<li>应用消息 &#x3D; 信封里的信</li>
+<li>主机 &#x3D; 房子</li>
+<li>传输层协议 &#x3D; 李雷和韩梅梅</li>
+<li>网络层协议 &#x3D; 邮政服务</li>
+</ul>
+<h2 id="internet传输层协议"><a href="#Internet传输层协议" class="headerlink" title="Internet传输层协议"></a>Internet传输层协议</h2><ul>
+<li>可靠、按序的交付服务（TCP）<ul>
+<li>拥塞控制</li>
+<li>流量控制</li>
+<li>连接建立</li>
+</ul>
+</li>
+<li>不可靠的交付服务（UDP）<ul>
+<li>基于”尽力而为（Best-effort）“的网络层，没有做（可靠性方面的）扩展</li>
+</ul>
+</li>
+<li>两种服务均不保证<ul>
+<li>延迟</li>
+<li>带宽</li>
+</ul>
+</li>
+</ul>
+<h1 id="复用和分用"><a href="#复用和分用" class="headerlink" title="复用和分用"></a>复用和分用</h1><blockquote>
+<blockquote>
+<p><strong>Why</strong>？</p>
+<p>如果某层的一个协议对应直接上层的多个协议&#x2F;实体，则需要多路复用&#x2F;分用。</p>
+</blockquote>
+<p><img src="https://s2.loli.net/2022/02/17/52eMXtVSoxifuj3.png" alt="image.png"></p>
+</blockquote>
+<h2 id="分用如何工作"><a href="#分用如何工作？" class="headerlink" title="分用如何工作？"></a>分用如何工作？</h2><ul>
+<li>主机接收到IP数据报（datagram）<ul>
+<li>每个数据报携带源IP地址、目的IP地址</li>
+<li>每个数据报携带一个传输层的段（Segment）<ul>
+<li><img src="https://s2.loli.net/2022/02/17/9xJj3d6ZuqCpome.png" alt="image.png"></li>
+</ul>
+</li>
+<li>每个段携带源端口号和目的端口号</li>
+</ul>
+</li>
+<li>主机收到Segment之后，传输层协议提取IP地址和端口号信息，将Segment导向相应的Socket<ul>
+<li>TCP做更多处理</li>
+</ul>
+</li>
+</ul>
+<h3 id="无连接分用"><a href="#无连接分用" class="headerlink" title="无连接分用"></a>无连接分用</h3><p><img src="https://s2.loli.net/2022/02/17/uREOPJmTjafXdUA.png" alt="image.png"></p>
+<p><img src="https://s2.loli.net/2022/02/17/9DgBzhtjrmG7YCv.png" alt="image.png"></p>
+<h3 id="面向连接的分用"><a href="#面向连接的分用" class="headerlink" title="面向连接的分用"></a>面向连接的分用</h3><p><img src="https://s2.loli.net/2022/02/17/GroPs1FRWKhn6xS.png" alt="image.png"></p>
+<p><img src="https://s2.loli.net/2022/02/17/kweS9dJpuX3bnGR.png" alt="image.png"></p>
+<blockquote>
+<p>多线程Web服务器</p>
+</blockquote>
+<p><img src="https://s2.loli.net/2022/02/17/3M9NOYEKautxSg1.png" alt="image.png"></p>
+<h1 id="无连接传输协议udp"><a href="#无连接传输协议—UDP" class="headerlink" title="无连接传输协议—UDP"></a>无连接传输协议—UDP</h1><p><strong>UDP：User Datagram Protocol</strong></p>
+<ul>
+<li>基于IP协议<ul>
+<li>复用&#x2F;分用</li>
+<li>简单的错误校验</li>
+</ul>
+</li>
+<li>”Best effort“服务，UDP段可能<ul>
+<li>丢失</li>
+<li>非按序到达</li>
+</ul>
+</li>
+<li>无连接<ul>
+<li>UDP发送方和接受方之间不需要握手</li>
+<li>每个UDP的段处理独立于其他段</li>
+</ul>
+</li>
+</ul>
+<blockquote>
+<p><strong>UDP为什么存在？</strong></p>
+<ul>
+<li>无需建立连接（减少延迟）</li>
+<li>实现简单：无需维持连接状态</li>
+<li>头部开销少</li>
+<li>没有拥塞控制：应用可以更好地控制发送时间和速率</li>
+</ul>
+</blockquote>
+<ul>
+<li>常用于流媒体应用<ul>
+<li>容忍丢失</li>
+<li>速率敏感</li>
+</ul>
+</li>
+<li>UDP还用于<ul>
+<li>DNS</li>
+<li>SNMP</li>
+</ul>
+</li>
+<li>在UDP上实现可靠数据传输<ul>
+<li>在应用层增加可靠性机制</li>
+<li>应用特定的错误恢复机制</li>
+</ul>
+</li>
+</ul>
+<p><img src="https://s2.loli.net/2022/02/17/yRiON8ugvAYDPj4.png" alt="image.png"></p>
+<h2 id="udp校验和checksum"><a href="#UDP校验和（checksum）" class="headerlink" title="UDP校验和（checksum）"></a>UDP校验和（checksum）</h2><p><img src="https://s2.loli.net/2022/02/17/VX7OlFHjkmLd9cS.png" alt="image.png"></p>
+<h1 id="可靠数据传输原理"><a href="#可靠数据传输原理" class="headerlink" title="可靠数据传输原理"></a>可靠数据传输原理</h1><h2 id="可靠数据传输协议"><a href="#可靠数据传输协议" class="headerlink" title="可靠数据传输协议"></a>可靠数据传输协议</h2><h3 id="基本结构接口"><a href="#基本结构：接口" class="headerlink" title="基本结构：接口"></a>基本结构：接口</h3><p><img src="https://s2.loli.net/2022/07/03/OHztSiZbnojAEpY.png" alt="image.png"></p>
+<p><strong>Rdt 2.0 -&gt; Rdt 2.1 -&gt; Rdt3.0</strong> </p>
+<h4 id="rdt-30性能"><a href="#Rdt-3-0性能" class="headerlink" title="Rdt 3.0性能"></a>Rdt 3.0性能</h4><p><img src="https://s2.loli.net/2022/07/06/xqcj5dMOmwPCilY.png" alt="image.png"></p>
+<h1 id="滑动窗口协议"><a href="#滑动窗口协议" class="headerlink" title="滑动窗口协议"></a>滑动窗口协议</h1><p><img src="https://s2.loli.net/2022/07/07/hr5v7jkQtBdbolc.png" alt="image.png"></p>
+<h2 id="gbngo-back-n协议"><a href="#GBN（Go-Back-N协议）" class="headerlink" title="GBN（Go-Back-N协议）"></a>GBN（Go-Back-N协议）</h2><h2 id="srselective-repeat协议"><a href="#SR（Selective-Repeat协议）" class="headerlink" title="SR（Selective Repeat协议）"></a>SR（Selective Repeat协议）</h2>
+          </div>
+          
+          <footer class="post-footer">
+            
+          </footer>
+        </article>
+      </div>
+      
+      <!-- 文章目录 -->
+      
+        <div class="post-toc">
+          <div class="toc-header">
+            <h3>post.toc</h3>
+            <button class="toc-toggle">
+              <i class="fas fa-chevron-down"></i>
+            </button>
+          </div>
+          <div class="toc-content">
+            <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%BC%A0%E8%BE%93%E5%B1%82%E6%9C%8D%E5%8A%A1"><span class="toc-number">1.</span> <span class="toc-text">传输层服务</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BC%A0%E8%BE%93%E5%B1%82%E6%9C%8D%E5%8A%A1%E5%92%8C%E5%8D%8F%E8%AE%AE"><span class="toc-number">1.1.</span> <span class="toc-text">传输层服务和协议</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BC%A0%E8%BE%93%E5%B1%82-vs-%E7%BD%91%E7%BB%9C%E5%B1%82"><span class="toc-number">1.2.</span> <span class="toc-text">传输层 VS 网络层</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#internet%E4%BC%A0%E8%BE%93%E5%B1%82%E5%8D%8F%E8%AE%AE"><span class="toc-number">1.3.</span> <span class="toc-text">Internet传输层协议</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%A4%8D%E7%94%A8%E5%92%8C%E5%88%86%E7%94%A8"><span class="toc-number">2.</span> <span class="toc-text">复用和分用</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%88%86%E7%94%A8%E5%A6%82%E4%BD%95%E5%B7%A5%E4%BD%9C"><span class="toc-number">2.1.</span> <span class="toc-text">分用如何工作？</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%97%A0%E8%BF%9E%E6%8E%A5%E5%88%86%E7%94%A8"><span class="toc-number">2.1.1.</span> <span class="toc-text">无连接分用</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%9D%A2%E5%90%91%E8%BF%9E%E6%8E%A5%E7%9A%84%E5%88%86%E7%94%A8"><span class="toc-number">2.1.2.</span> <span class="toc-text">面向连接的分用</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%97%A0%E8%BF%9E%E6%8E%A5%E4%BC%A0%E8%BE%93%E5%8D%8F%E8%AE%AEudp"><span class="toc-number">3.</span> <span class="toc-text">无连接传输协议—UDP</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#udp%E6%A0%A1%E9%AA%8C%E5%92%8Cchecksum"><span class="toc-number">3.1.</span> <span class="toc-text">UDP校验和（checksum）</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%8F%AF%E9%9D%A0%E6%95%B0%E6%8D%AE%E4%BC%A0%E8%BE%93%E5%8E%9F%E7%90%86"><span class="toc-number">4.</span> <span class="toc-text">可靠数据传输原理</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8F%AF%E9%9D%A0%E6%95%B0%E6%8D%AE%E4%BC%A0%E8%BE%93%E5%8D%8F%E8%AE%AE"><span class="toc-number">4.1.</span> <span class="toc-text">可靠数据传输协议</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9F%BA%E6%9C%AC%E7%BB%93%E6%9E%84%E6%8E%A5%E5%8F%A3"><span class="toc-number">4.1.1.</span> <span class="toc-text">基本结构：接口</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#rdt-30%E6%80%A7%E8%83%BD"><span class="toc-number">4.1.1.1.</span> <span class="toc-text">Rdt 3.0性能</span></a></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%BB%91%E5%8A%A8%E7%AA%97%E5%8F%A3%E5%8D%8F%E8%AE%AE"><span class="toc-number">5.</span> <span class="toc-text">滑动窗口协议</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#gbngo-back-n%E5%8D%8F%E8%AE%AE"><span class="toc-number">5.1.</span> <span class="toc-text">GBN（Go-Back-N协议）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#srselective-repeat%E5%8D%8F%E8%AE%AE"><span class="toc-number">5.2.</span> <span class="toc-text">SR（Selective Repeat协议）</span></a></li></ol></li></ol>
+          </div>
+        </div>
+      
+    </div>
+  </div>
+</div>
+  </main>
+  
+  <footer class="footer">
+  <div class="container">
+    <div class="footer-inner">
+      <div class="copyright">
+        &copy; 2025 Dezeem
+      </div>
+      <div class="powered-by">
+        由 &lt;a href=&#34;https://hexo.io&#34; target=&#34;_blank&#34;&gt;Hexo&lt;/a&gt; 强力驱动 | 
+        主题 <a href="https://github.com/yourusername/hexo-theme-canary" target="_blank">Canary</a>
+      </div>
+    </div>
+  </div>
+</footer>
+  <div class="mobile-nav">
+  <div class="mobile-nav-inner">
+    <div class="mobile-nav-header">
+      <div class="logo">
+        <a href="/">Dezeem&#39;log</a>
+      </div>
+      <button class="mobile-nav-close">
+        <i class="fas fa-times"></i>
+      </button>
+    </div>
+    
+    <nav class="mobile-menu">
+      <ul>
+        
+          <li><a href="/">Home</a></li>
+        
+          <li><a href="/archives">Archives</a></li>
+        
+          <li><a href="/categories">Categories</a></li>
+        
+          <li><a href="/tags">Tags</a></li>
+        
+          <li><a href="/about">About</a></li>
+        
+      </ul>
+    </nav>
+    
+    <div class="mobile-nav-footer">
+      <div class="language-switch">
+        <a href="#" class="lang-btn" data-lang="zh-CN">中文</a>
+        <a href="#" class="lang-btn" data-lang="en">EN</a>
+      </div>
+      
+      <div class="theme-switch">
+        <button id="mobile-theme-toggle" aria-label="Toggle Dark Mode">
+          <i class="fas fa-moon dark-icon"></i>
+          <i class="fas fa-sun light-icon"></i>
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="mobile-nav-toggle">
+  <i class="fas fa-bars"></i>
+</div> <!-- 新增 -->
+  
+  <!-- JavaScript -->
+  
+<script src="/js/main.js"></script>
+
+  
+  
+</body>
+</html>

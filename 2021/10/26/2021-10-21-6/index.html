@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>IP | Dezeem&#39;log</title>
+  
+    <link rel="icon" href="/img/favicon.png">
+  
+  
+  <!-- CSS -->
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+  <!-- KaTeX for LaTeX support -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/katex.min.css">
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/katex.min.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/contrib/auto-render.min.js"></script>
+  
+  <!-- Font Awesome for icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  
+  <!-- Theme JavaScript -->
+  
+<script src="/js/main.js"></script>
+
+<meta name="generator" content="Hexo 6.3.0"><link rel="alternate" href="/atom.xml" title="Dezeem'log" type="application/atom+xml">
+</head>
+<body>
+  <header class="header">
+  <div class="container">
+    <div class="header-inner">
+      <div class="logo">
+        <a href="/">Dezeem&#39;log</a>
+      </div>
+      
+      <nav class="main-nav">
+        <ul>
+          
+            <li><a href="/">Home</a></li>
+          
+            <li><a href="/archives">Archives</a></li>
+          
+            <li><a href="/categories">Categories</a></li>
+          
+            <li><a href="/tags">Tags</a></li>
+          
+            <li><a href="/about">About</a></li>
+          
+        </ul>
+      </nav>
+      
+      <div class="header-right">
+        <!-- 语言切换 -->
+        <div class="language-switch">
+          <a href="#" class="lang-btn" data-lang="zh-CN">中文</a>
+          <a href="#" class="lang-btn" data-lang="en">EN</a>
+        </div>
+        
+        <!-- 暗黑模式切换 -->
+        <div class="theme-switch">
+          <button id="theme-toggle" aria-label="Toggle Dark Mode">
+            <i class="fas fa-moon dark-icon"></i>
+            <i class="fas fa-sun light-icon"></i>
+          </button>
+        </div>
+        
+        <!-- 搜索按钮 -->
+        <div class="search-btn">
+          <i class="fas fa-search"></i>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <!-- 搜索框 -->
+  <div class="search-container">
+    <div class="container">
+      <form class="search-form">
+        <input type="text" class="search-input" placeholder="搜索">
+        <button type="submit" class="search-submit">
+          <i class="fas fa-search"></i>
+        </button>
+      </form>
+      <button class="search-close">
+        <i class="fas fa-times"></i>
+      </button>
+    </div>
+  </div>
+</header>
+  
+  <main class="main-content">
+    <div class="post-container">
+  <div class="container">
+    <div class="post-inner">
+      <!-- 文章主体 -->
+      <div class="post-main">
+        <article class="post-content">
+          <header class="post-header">
+            <h1 class="post-title">IP</h1>
+            <div class="post-meta">
+              <time class="post-date" datetime="2021-10-26T14:52:13.000Z">
+                2021-10-26
+              </time>
+              
+                <span class="post-categories">
+                  
+                    <a href="/categories/Wireshark/" class="post-category">Wireshark</a>
+                  
+                </span>
+              
+            </div>
+          </header>
+          
+          <div class="post-body">
+            <h1 id="实验六"><a href="#实验六" class="headerlink" title="实验六"></a>实验六</h1><p>​		IP 是整个 TCP&#x2F;IP 协议族的核心，也是构成互联网的基础。IP 位于 TCP&#x2F;IP 模型的网络层(相当于OSI模型的网络层)，对上可载送传输层各种协议的信息，例如 TCP、UDP 等；对下可将 IP 信息包放到链路层，通过以太网、令牌环网络等各种技术来传送。为了能适应异构网络，IP 强调适应性、简洁性和可操作性，并在可靠性做了一定的牺牲。IP 不保证分组的交付时限和可靠性，所传送分组有可能出现丢失、重复、延迟或乱序等问题。——百度百科</p>
+<hr>
+<h2 id="1从执行跟踪路线中捕获数据包"><a href="#1-从执行跟踪路线中捕获数据包" class="headerlink" title="1.从执行跟踪路线中捕获数据包"></a>1.从执行跟踪路线中捕获数据包</h2><ul>
+<li>​		打开wireshark捕获，</li>
+<li>​		设置一下pingplotter 首先是interval设置为10s 然后我们在输入框输入gaia.cs.umass.edu，</li>
+<li>​		每次点击之后刷新完了暂停之后去包那里设置packet size为2000 再次点击开始即重新发送reset再暂停再设置为3500再次开始等线再次刷新完了就暂停去把wireshark的捕获暂停下面是我的pingplotter 和 wireshark的捕获截图</li>
+</ul>
+<p><img src="https://i.loli.net/2021/10/26/irbCqRUZyvkmKh5.png" alt="image.png"></p>
+<p><img src="https://i.loli.net/2021/10/26/SuwKhjrD6g8kJBc.png" alt="image.png"></p>
+<h2 id="2查看捕获的痕迹"><a href="#2-查看捕获的痕迹" class="headerlink" title="2.查看捕获的痕迹"></a>2.查看捕获的痕迹</h2><p>​		1.选择发送的第一个 ICMP Echo Request 消息，然后在 packet details window 中展开数据包的 Internet 协议部分。您的计算机的 IP 地址是多少？</p>
+<p>​		<strong>source &#x3D; 192.168.31.1</strong></p>
+<p>​		2.在 IP header中，上层协议字段中值是什么？ </p>
+<p>​		<strong>上层协议字段中值是 1</strong></p>
+<p>​		3.IP header 有多少 bytes？ IP datagram 的有效负载中有多少 bytes？<br>​		<strong>IP header 20 bytes，数据报一共有 56 bytes，因此有效负载中有 36 bytes。</strong></p>
+<p>​		4.此 IP 数据报是否已被分段(fragmented)？</p>
+<p>​		<strong>应该没有，因为第一个包的 TTL 是 255，如果被分段就会出现多个 TTL 为 255 的包，可是没发现，所以没分段。</strong></p>
+<p>​		5.查看第一个 ICMP 及其所有后续 ICMP 消息。</p>
+<p><img src="https://i.loli.net/2021/10/26/kecVQHu8w1yYti3.png" alt="image.png"></p>
+<p>​		6.在您的计算器发送的这一系列 ICMP 消息中，IP 数据报中的哪些字段一直改变？</p>
+<p>​		<img src="https://i.loli.net/2021/10/26/E9Ldmnk6lzN2gWD.png" alt="image.png"></p>
+<p>​		<img src="https://i.loli.net/2021/10/26/WxN4MQi78z1DwhI.png" alt="image.png"></p>
+<p>​		<strong>标识符（Identification）、存活时间（Time To Live，TTL）、首部检验和 （Header Checksum）一直在变。</strong></p>
+<p>​		7.哪些字段保持不变？哪个字段必须保持不变？哪些字段必须更改？</p>
+<ul>
+<li><p>ID 字段和 TTL 字段的值是多少？</p>
+<p><strong>ID是27749,TTL是1</strong></p>
+</li>
+<li><p>对于第一跳路由器发送到您的计算器的所有 ICMP TTL 超出的回复，这些值是否保持不变？为什么？</p>
+</li>
+<li><p>在将 pingplotter 中的数据包大小更改为 2000 后，查找计算机发送的第一个 ICMP Echo Request 消息。该消息是否已碎片化为多个 IP 数据报？</p>
+<p><img src="https://i.loli.net/2021/10/26/PrtUQVJzCuwdTk8.png" alt="image.png"></p>
+<p><strong>可以看出该消息被碎片化为 2 个 IP 数据报</strong>。</p>
+</li>
+<li><p>IP 数据报的第一个片段。 IP 头中的哪些信息表明数据报已碎片化？ IP 头中的哪些信息表明这是第一个片段还是后一个片段？ 这个 IP 数据报有多长？</p>
+<p><img src="https://i.loli.net/2021/10/26/6HYdApJXgNyL2Kn.png" alt="image.png"></p>
+<p><strong>More fragments字段为 1 表示 Set，即该数据包被分片。通过 ID 字段判断这是第一个片段，分片长度为 1480 bytes。</strong></p>
+</li>
+<li><p>找到碎片 IP 数据报的第二个片段。 IP 标头中的哪些信息表明这不是第一个数据报片段？ 是否还有更多的片段？你是如何知道的？</p>
+<p><img src="https://i.loli.net/2021/10/26/Er3J4czQTbNFHki.png" alt="image.png"></p>
+</li>
+<li><p>在第一个和第二个片段中，IP 标头中哪些字段发生了变化？</p>
+<p><strong>分片偏移 （Fragment Offset）</strong></p>
+</li>
+<li><p>从原始数据报创建了多少个片段？</p>
+<p><img src="https://i.loli.net/2021/10/26/B8u5QNlGKXFTHft.png" alt="image.png"></p>
+<p>​	<strong>创建了三个片段</strong></p>
+</li>
+</ul>
+
+          </div>
+          
+          <footer class="post-footer">
+            
+              <div class="post-tags">
+                
+                  <a href="/tags/%E8%AE%A1%E7%BD%91/" class="post-tag">#计网</a>
+                
+              </div>
+            
+          </footer>
+        </article>
+      </div>
+      
+      <!-- 文章目录 -->
+      
+        <div class="post-toc">
+          <div class="toc-header">
+            <h3>post.toc</h3>
+            <button class="toc-toggle">
+              <i class="fas fa-chevron-down"></i>
+            </button>
+          </div>
+          <div class="toc-content">
+            <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%AE%9E%E9%AA%8C%E5%85%AD"><span class="toc-number">1.</span> <span class="toc-text">实验六</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1%E4%BB%8E%E6%89%A7%E8%A1%8C%E8%B7%9F%E8%B8%AA%E8%B7%AF%E7%BA%BF%E4%B8%AD%E6%8D%95%E8%8E%B7%E6%95%B0%E6%8D%AE%E5%8C%85"><span class="toc-number">1.1.</span> <span class="toc-text">1.从执行跟踪路线中捕获数据包</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2%E6%9F%A5%E7%9C%8B%E6%8D%95%E8%8E%B7%E7%9A%84%E7%97%95%E8%BF%B9"><span class="toc-number">1.2.</span> <span class="toc-text">2.查看捕获的痕迹</span></a></li></ol></li></ol>
+          </div>
+        </div>
+      
+    </div>
+  </div>
+</div>
+  </main>
+  
+  <footer class="footer">
+  <div class="container">
+    <div class="footer-inner">
+      <div class="copyright">
+        &copy; 2025 Dezeem
+      </div>
+      <div class="powered-by">
+        由 &lt;a href=&#34;https://hexo.io&#34; target=&#34;_blank&#34;&gt;Hexo&lt;/a&gt; 强力驱动 | 
+        主题 <a href="https://github.com/yourusername/hexo-theme-canary" target="_blank">Canary</a>
+      </div>
+    </div>
+  </div>
+</footer>
+  <div class="mobile-nav">
+  <div class="mobile-nav-inner">
+    <div class="mobile-nav-header">
+      <div class="logo">
+        <a href="/">Dezeem&#39;log</a>
+      </div>
+      <button class="mobile-nav-close">
+        <i class="fas fa-times"></i>
+      </button>
+    </div>
+    
+    <nav class="mobile-menu">
+      <ul>
+        
+          <li><a href="/">Home</a></li>
+        
+          <li><a href="/archives">Archives</a></li>
+        
+          <li><a href="/categories">Categories</a></li>
+        
+          <li><a href="/tags">Tags</a></li>
+        
+          <li><a href="/about">About</a></li>
+        
+      </ul>
+    </nav>
+    
+    <div class="mobile-nav-footer">
+      <div class="language-switch">
+        <a href="#" class="lang-btn" data-lang="zh-CN">中文</a>
+        <a href="#" class="lang-btn" data-lang="en">EN</a>
+      </div>
+      
+      <div class="theme-switch">
+        <button id="mobile-theme-toggle" aria-label="Toggle Dark Mode">
+          <i class="fas fa-moon dark-icon"></i>
+          <i class="fas fa-sun light-icon"></i>
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="mobile-nav-toggle">
+  <i class="fas fa-bars"></i>
+</div> <!-- 新增 -->
+  
+  <!-- JavaScript -->
+  
+<script src="/js/main.js"></script>
+
+  
+  
+</body>
+</html>

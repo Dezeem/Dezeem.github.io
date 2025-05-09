@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>数据链路层 | Dezeem&#39;log</title>
+  
+    <link rel="icon" href="/img/favicon.png">
+  
+  
+  <!-- CSS -->
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+  <!-- KaTeX for LaTeX support -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/katex.min.css">
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/katex.min.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/contrib/auto-render.min.js"></script>
+  
+  <!-- Font Awesome for icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  
+  <!-- Theme JavaScript -->
+  
+<script src="/js/main.js"></script>
+
+<meta name="generator" content="Hexo 6.3.0"><link rel="alternate" href="/atom.xml" title="Dezeem'log" type="application/atom+xml">
+</head>
+<body>
+  <header class="header">
+  <div class="container">
+    <div class="header-inner">
+      <div class="logo">
+        <a href="/">Dezeem&#39;log</a>
+      </div>
+      
+      <nav class="main-nav">
+        <ul>
+          
+            <li><a href="/">Home</a></li>
+          
+            <li><a href="/archives">Archives</a></li>
+          
+            <li><a href="/categories">Categories</a></li>
+          
+            <li><a href="/tags">Tags</a></li>
+          
+            <li><a href="/about">About</a></li>
+          
+        </ul>
+      </nav>
+      
+      <div class="header-right">
+        <!-- 语言切换 -->
+        <div class="language-switch">
+          <a href="#" class="lang-btn" data-lang="zh-CN">中文</a>
+          <a href="#" class="lang-btn" data-lang="en">EN</a>
+        </div>
+        
+        <!-- 暗黑模式切换 -->
+        <div class="theme-switch">
+          <button id="theme-toggle" aria-label="Toggle Dark Mode">
+            <i class="fas fa-moon dark-icon"></i>
+            <i class="fas fa-sun light-icon"></i>
+          </button>
+        </div>
+        
+        <!-- 搜索按钮 -->
+        <div class="search-btn">
+          <i class="fas fa-search"></i>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <!-- 搜索框 -->
+  <div class="search-container">
+    <div class="container">
+      <form class="search-form">
+        <input type="text" class="search-input" placeholder="搜索">
+        <button type="submit" class="search-submit">
+          <i class="fas fa-search"></i>
+        </button>
+      </form>
+      <button class="search-close">
+        <i class="fas fa-times"></i>
+      </button>
+    </div>
+  </div>
+</header>
+  
+  <main class="main-content">
+    <div class="post-container">
+  <div class="container">
+    <div class="post-inner">
+      <!-- 文章主体 -->
+      <div class="post-main">
+        <article class="post-content">
+          <header class="post-header">
+            <h1 class="post-title">数据链路层</h1>
+            <div class="post-meta">
+              <time class="post-date" datetime="2022-07-29T10:25:00.000Z">
+                2022-07-29
+              </time>
+              
+                <span class="post-categories">
+                  
+                    <a href="/categories/%E8%AE%A1%E7%BD%91/" class="post-category">计网</a>
+                  
+                </span>
+              
+            </div>
+          </header>
+          
+          <div class="post-body">
+            <h1 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h1><p><strong>相关术语：</strong></p>
+<ul>
+<li>主机和路由器：结点（nodes）</li>
+<li>连接相邻结点的通信信道：链路（links）<ul>
+<li>有线链路（wired links）</li>
+<li>无线链路（wireless links）</li>
+<li>局域网（LANs）</li>
+</ul>
+</li>
+<li>链路层（第二层）数据分组：帧（frame），封装网络层数据报</li>
+</ul>
+<p><strong>数据链路层</strong>负责通过一条链路从一个节点向另一个物理链路直接相连的相邻结点传送数据报</p>
+<hr>
+<h2 id="链路层服务"><a href="#链路层服务" class="headerlink" title="链路层服务"></a>链路层服务</h2><ul>
+<li><p>组帧（framing）</p>
+<ul>
+<li>封装数据报构成数据帧，加首部和尾部</li>
+<li>帧同步</li>
+</ul>
+</li>
+<li><p>链路接入（link access）</p>
+<ul>
+<li>如果是共享介质们需要解决信道接入（channel access）</li>
+<li>帧首部中的“MAC”地址，用于表示帧的源和目的<ul>
+<li><em>不同于IP地址</em></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>相邻结点间的可靠交付</p>
+<ul>
+<li>在低误码率的有线链路上很少采用（如：光纤）</li>
+<li>无线链路，需要可靠交付</li>
+</ul>
+</li>
+<li><p>流量控制</p>
+<ul>
+<li>协调（pacing）相邻的发送结点和接收</li>
+</ul>
+</li>
+<li><p>差错检测</p>
+<ul>
+<li>信号衰减和噪声会引起差错</li>
+<li>接收端检测到差错：<ul>
+<li>通知发送端重传或者直接丢弃帧</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>差错纠正</p>
+<ul>
+<li>接收端直接纠正比特差错</li>
+</ul>
+</li>
+<li><p>全双工和半双工通信控制</p>
+<ul>
+<li>全双工：链路两端结点<em>同时</em>双向传输</li>
+<li>半双工：链路两端结点<em>交替</em>双向传输</li>
+</ul>
+</li>
+</ul>
+<h1 id="差错编码"><a href="#差错编码" class="headerlink" title="差错编码"></a>差错编码</h1><h1 id="多路访问协议"><a href="#多路访问协议" class="headerlink" title="多路访问协议"></a>多路访问协议</h1><h2 id="mac"><a href="#MAC" class="headerlink" title="MAC"></a>MAC</h2><p><strong>两个或以上结点同时传输时→冲突：结点同时接收两个或多个信号（接受失败）</strong></p>
+<p><strong>MAC（mulitple access control protocol）多路访问控制协议</strong></p>
+<ul>
+<li><p>点对点链路</p>
+<ul>
+<li>拨号接入PPP</li>
+<li>以太网交换机与主机间的点对点链路</li>
+</ul>
+</li>
+<li><p>广播链路（共享介质）</p>
+<ul>
+<li>早期的总线以太网</li>
+<li>HFC的上行链路</li>
+<li>802.11无线局域网</li>
+</ul>
+</li>
+<li><p><strong>MAC分类</strong></p>
+<ul>
+<li><p>信道划分（channel partitioning）MAC协议</p>
+<ul>
+<li>多路复用技术</li>
+<li>TDMA、FDMA、CDMA、WDMA等</li>
+</ul>
+</li>
+<li><p>随机访问（random access）MAC协议</p>
+</li>
+<li><p>信道不划分，允许冲突</p>
+<ul>
+<li>采用冲突“恢复”机制</li>
+</ul>
+</li>
+<li><p>轮转MAC协议</p>
+</li>
+<li><p>结点轮流使用信道</p>
+</li>
+</ul>
+</li>
+</ul>
+
+          </div>
+          
+          <footer class="post-footer">
+            
+          </footer>
+        </article>
+      </div>
+      
+      <!-- 文章目录 -->
+      
+        <div class="post-toc">
+          <div class="toc-header">
+            <h3>post.toc</h3>
+            <button class="toc-toggle">
+              <i class="fas fa-chevron-down"></i>
+            </button>
+          </div>
+          <div class="toc-content">
+            <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%A6%82%E8%BF%B0"><span class="toc-number">1.</span> <span class="toc-text">概述</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%93%BE%E8%B7%AF%E5%B1%82%E6%9C%8D%E5%8A%A1"><span class="toc-number">1.1.</span> <span class="toc-text">链路层服务</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%B7%AE%E9%94%99%E7%BC%96%E7%A0%81"><span class="toc-number">2.</span> <span class="toc-text">差错编码</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%A4%9A%E8%B7%AF%E8%AE%BF%E9%97%AE%E5%8D%8F%E8%AE%AE"><span class="toc-number">3.</span> <span class="toc-text">多路访问协议</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#mac"><span class="toc-number">3.1.</span> <span class="toc-text">MAC</span></a></li></ol></li></ol>
+          </div>
+        </div>
+      
+    </div>
+  </div>
+</div>
+  </main>
+  
+  <footer class="footer">
+  <div class="container">
+    <div class="footer-inner">
+      <div class="copyright">
+        &copy; 2025 Dezeem
+      </div>
+      <div class="powered-by">
+        由 &lt;a href=&#34;https://hexo.io&#34; target=&#34;_blank&#34;&gt;Hexo&lt;/a&gt; 强力驱动 | 
+        主题 <a href="https://github.com/yourusername/hexo-theme-canary" target="_blank">Canary</a>
+      </div>
+    </div>
+  </div>
+</footer>
+  <div class="mobile-nav">
+  <div class="mobile-nav-inner">
+    <div class="mobile-nav-header">
+      <div class="logo">
+        <a href="/">Dezeem&#39;log</a>
+      </div>
+      <button class="mobile-nav-close">
+        <i class="fas fa-times"></i>
+      </button>
+    </div>
+    
+    <nav class="mobile-menu">
+      <ul>
+        
+          <li><a href="/">Home</a></li>
+        
+          <li><a href="/archives">Archives</a></li>
+        
+          <li><a href="/categories">Categories</a></li>
+        
+          <li><a href="/tags">Tags</a></li>
+        
+          <li><a href="/about">About</a></li>
+        
+      </ul>
+    </nav>
+    
+    <div class="mobile-nav-footer">
+      <div class="language-switch">
+        <a href="#" class="lang-btn" data-lang="zh-CN">中文</a>
+        <a href="#" class="lang-btn" data-lang="en">EN</a>
+      </div>
+      
+      <div class="theme-switch">
+        <button id="mobile-theme-toggle" aria-label="Toggle Dark Mode">
+          <i class="fas fa-moon dark-icon"></i>
+          <i class="fas fa-sun light-icon"></i>
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="mobile-nav-toggle">
+  <i class="fas fa-bars"></i>
+</div> <!-- 新增 -->
+  
+  <!-- JavaScript -->
+  
+<script src="/js/main.js"></script>
+
+  
+  
+</body>
+</html>

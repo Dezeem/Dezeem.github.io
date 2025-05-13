@@ -302,3 +302,27 @@ function handleScroll() {
 function shouldEnableScroll() {
   return document.body.scrollHeight > window.innerHeight * 2
 }
+
+// 在 initCodeCopy 函数中添加以下内容
+function initCodeCopy() {
+  document.querySelectorAll('.highlight').forEach(block => {
+    // 创建复制按钮
+    const btn = document.createElement('button');
+    btn.className = 'copy-code-btn';
+    btn.textContent = 'Copy';
+    block.appendChild(btn);
+
+    // 复制功能
+    btn.addEventListener('click', () => {
+      const code = block.querySelector('.code pre').innerText;
+      navigator.clipboard.writeText(code).then(() => {
+        btn.textContent = 'Copied!';
+        setTimeout(() => btn.textContent = 'Copy', 2000);
+      }).catch(err => {
+        console.error('Failed to copy:', err);
+        btn.textContent = 'Error';
+        setTimeout(() => btn.textContent = 'Copy', 2000);
+      });
+    });
+  });
+}

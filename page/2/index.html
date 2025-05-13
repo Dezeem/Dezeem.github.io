@@ -96,12 +96,42 @@
   <section class="profile-section" style="background-image: url('/img/cloud.jpg');">
     <div class="container">
       <div class="profile-inner">
+        <!-- 添加角色徽章 -->
+        <div class="profile-badge">
+          <i class="fas fa-code"></i> Coder
+        </div>
+        
         <div class="avatar">
           <img src="/img/avatar.png" alt="Canary">
         </div>
+        
         <div class="profile-info">
           <h1 class="name">Canary</h1>
-          <p class="bio">热爱编程与写作的开发者</p>
+          <p class="bio">旷野上的追风少年</p>
+          
+          <!-- 添加统计信息 -->
+          <div class="profile-stats">
+            <div class="stat-item">
+              <div class="stat-count">26</div>
+              <div class="stat-label">文章</div>
+            </div>
+            <div class="stat-item">
+              <div class="stat-count">6</div>
+              <div class="stat-label">分类</div>
+            </div>
+            <div class="stat-item">
+              <div class="stat-count">3</div>
+              <div class="stat-label">标签</div>
+            </div>
+          </div>
+          
+          <!-- 添加个人标签 -->
+          <div class="profile-tags">
+            <span class="profile-tag">摄影爱好者</span>
+            <span class="profile-tag">宇宙探索家</span>
+            <span class="profile-tag">自在独行侠</span>
+          </div>
+          
           <div class="social-links">
             
               <a href="https://github.com/dezeem" target="_blank" class="social-link">
@@ -118,6 +148,9 @@
   <section class="posts-section">
     <div class="container">
       <div class="posts-inner">
+        <!-- 添加文章列表标题 -->
+        <h2 class="posts-section-title">最新文章</h2>
+        
         
           <article class="post-item">
             <div class="post-date">
@@ -126,6 +159,30 @@
             <h2 class="post-title">
               <a href="/2022/07/13/2022-07-07-%E4%BC%A0%E8%BE%93%E5%B1%82(%E4%B8%8B)/">传输层(下)</a>
             </h2>
+            
+            <!-- 文章预览 -->
+            <div class="post-excerpt">
+              
+                 TCP概述
+
+点对点
+
+一个发送方，一个接收方
+
+
+可靠的、按序的字节流
+流水线机制
+
+TCP拥塞控制和流量控制机制设置窗口尺寸
+
+
+发送方/接收方缓存
+全双工（full-duplex）
+
+同一连接...
+              
+            </div>
+            
             <div class="post-tags">
               
             </div>
@@ -138,6 +195,16 @@
             <h2 class="post-title">
               <a href="/2022/02/21/2022-02-20-%E5%B0%8F%E7%A8%8B%E5%BA%8F%E5%BC%80%E5%8F%91/">小程序开发</a>
             </h2>
+            
+            <!-- 文章预览 -->
+            <div class="post-excerpt">
+              
+                 概述
+ 简介
+​		小程序是一种不需要下载的安装即可使用的应用，它实现了应用“触手可及”的梦想，用户扫一扫或者搜一下即可打开应用。也体现了“用完即走”的理念。用户不用关心是否安装太多应用的问题。应用...
+              
+            </div>
+            
             <div class="post-tags">
               
             </div>
@@ -150,6 +217,24 @@
             <h2 class="post-title">
               <a href="/2022/02/17/2022-02-17-%E4%BC%A0%E8%BE%93%E5%B1%82(%E4%B8%8A)/">传输层(上)</a>
             </h2>
+            
+            <!-- 文章预览 -->
+            <div class="post-excerpt">
+              
+                 传输层服务
+ 传输层服务和协议
+
+ 传输层 VS 网络层
+
+网络层：提供主机之间的逻辑通信机制
+传输层：提供应用进程之间的逻辑通信机制
+
+位于网络之上
+依赖于网络层服务
+对于网络层服务进行（可能的）...
+              
+            </div>
+            
             <div class="post-tags">
               
             </div>
@@ -162,6 +247,28 @@
             <h2 class="post-title">
               <a href="/2022/02/17/2022-02-16-%E5%BA%94%E7%94%A8%E5%B1%82(%E4%B8%8B)/">应用层(下)</a>
             </h2>
+            
+            <!-- 文章预览 -->
+            <div class="post-excerpt">
+              
+                 应用层
+ P2P应用
+ 架构
+
+ 文件分发：客户机/服务器 vs P2P
+
+
+
+
+实例：BitTorrent
+ 索引技术
+P2P系统的索引：信息到节点位置（IP+端口号）的映射
+文件共享（电驴）
+
+...
+              
+            </div>
+            
             <div class="post-tags">
               
             </div>
@@ -174,6 +281,18 @@
             <h2 class="post-title">
               <a href="/2022/01/30/2022-01-29-%E5%BA%94%E7%94%A8%E5%B1%82(%E4%B8%8A)/">应用层(上)</a>
             </h2>
+            
+            <!-- 文章预览 -->
+            <div class="post-excerpt">
+              
+                 应用层
+ 1.网络应用的体系结构
+​	**网络应用：**百度、QQ、email、迅雷、支付宝、微信、百度云、淘宝网、网易。
+ 体系结构：
+ （1）客户机/服务器结构（Client-Server，C/...
+              
+            </div>
+            
             <div class="post-tags">
               
             </div>
@@ -186,10 +305,22 @@
             <h2 class="post-title">
               <a href="/2021/10/30/2021-10-21-12/">SSL</a>
             </h2>
+            
+            <!-- 文章预览 -->
+            <div class="post-excerpt">
+              
+                 实验十二
+​		
+1.对于前 8个以太网帧，请分别指出每一个帧的来源（客户端和服务器），确定每个帧包含的SSL记录的数量，并且列出包含SSL记录的类型。绘制客户端和服务器含有箭头指向的时序图。
+
+2...
+              
+            </div>
+            
             <div class="post-tags">
               
                 
-                  <a href="/tags/%E8%AE%A1%E7%BD%91/" class="post-tag">#计网</a>
+                  <a href="/tags/%E8%AE%A1%E7%BD%91/" class="post-tag">计网</a>
                 
               
             </div>
@@ -202,10 +333,27 @@
             <h2 class="post-title">
               <a href="/2021/10/30/2021-10-21-11/">802.11 WIFI</a>
             </h2>
+            
+            <!-- 文章预览 -->
+            <div class="post-excerpt">
+              
+                 实验十一
+ 信标框架
+​		
+
+
+发出此跟踪中大多数信标帧的两个接入点的SSID是什么？
+分别为30 Munroe st   linksys12这两个SSID
+
+
+从linksys_ses_2408...
+              
+            </div>
+            
             <div class="post-tags">
               
                 
-                  <a href="/tags/%E8%AE%A1%E7%BD%91/" class="post-tag">#计网</a>
+                  <a href="/tags/%E8%AE%A1%E7%BD%91/" class="post-tag">计网</a>
                 
               
             </div>
@@ -218,10 +366,30 @@
             <h2 class="post-title">
               <a href="/2021/10/30/2021-10-21-9/">ICMP</a>
             </h2>
+            
+            <!-- 文章预览 -->
+            <div class="post-excerpt">
+              
+                 实验九
+ Ping 程序
+
+
+打开cmd
+
+
+启动嗅探器，开始捕获
+
+
+输入“ping –n 10 www.mit.edu”
+
+​	主机上的 ping 程序发送了10 个查询包并收到了 10 响应对...
+              
+            </div>
+            
             <div class="post-tags">
               
                 
-                  <a href="/tags/%E8%AE%A1%E7%BD%91/" class="post-tag">#计网</a>
+                  <a href="/tags/%E8%AE%A1%E7%BD%91/" class="post-tag">计网</a>
                 
               
             </div>
@@ -234,10 +402,33 @@
             <h2 class="post-title">
               <a href="/2021/10/28/2021-10-21-8/">DHCP</a>
             </h2>
+            
+            <!-- 文章预览 -->
+            <div class="post-excerpt">
+              
+                 实验八
+ DHCP 实验
+
+
+打开cmd，输入ipconfig/release
+
+
+启动嗅探器并开始捕获。
+
+
+cmd输入ipconfig/renew
+
+
+再输入ipconfig/release
+
+...
+              
+            </div>
+            
             <div class="post-tags">
               
                 
-                  <a href="/tags/%E8%AE%A1%E7%BD%91/" class="post-tag">#计网</a>
+                  <a href="/tags/%E8%AE%A1%E7%BD%91/" class="post-tag">计网</a>
                 
               
             </div>
@@ -250,10 +441,20 @@
             <h2 class="post-title">
               <a href="/2021/10/27/2021-10-21-7/">NAT</a>
             </h2>
+            
+            <!-- 文章预览 -->
+            <div class="post-excerpt">
+              
+                 实验七
+​		这个Lab由于我们不好捕捉包 所以我们需要下载别人给的捕获包http://gaia.cs.umass.edu/wireshark-labs/wireshark-traces.zip
+​...
+              
+            </div>
+            
             <div class="post-tags">
               
                 
-                  <a href="/tags/%E8%AE%A1%E7%BD%91/" class="post-tag">#计网</a>
+                  <a href="/tags/%E8%AE%A1%E7%BD%91/" class="post-tag">计网</a>
                 
               
             </div>
@@ -261,7 +462,7 @@
         
       </div>
       
-      <!-- 分页 -->
+      <!-- 分页部分保持不变 -->
       
         <div class="pagination">
           

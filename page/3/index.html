@@ -96,12 +96,42 @@
   <section class="profile-section" style="background-image: url('/img/cloud.jpg');">
     <div class="container">
       <div class="profile-inner">
+        <!-- 添加角色徽章 -->
+        <div class="profile-badge">
+          <i class="fas fa-code"></i> Coder
+        </div>
+        
         <div class="avatar">
           <img src="/img/avatar.png" alt="Canary">
         </div>
+        
         <div class="profile-info">
           <h1 class="name">Canary</h1>
-          <p class="bio">热爱编程与写作的开发者</p>
+          <p class="bio">旷野上的追风少年</p>
+          
+          <!-- 添加统计信息 -->
+          <div class="profile-stats">
+            <div class="stat-item">
+              <div class="stat-count">26</div>
+              <div class="stat-label">文章</div>
+            </div>
+            <div class="stat-item">
+              <div class="stat-count">6</div>
+              <div class="stat-label">分类</div>
+            </div>
+            <div class="stat-item">
+              <div class="stat-count">3</div>
+              <div class="stat-label">标签</div>
+            </div>
+          </div>
+          
+          <!-- 添加个人标签 -->
+          <div class="profile-tags">
+            <span class="profile-tag">摄影爱好者</span>
+            <span class="profile-tag">宇宙探索家</span>
+            <span class="profile-tag">自在独行侠</span>
+          </div>
+          
           <div class="social-links">
             
               <a href="https://github.com/dezeem" target="_blank" class="social-link">
@@ -118,6 +148,9 @@
   <section class="posts-section">
     <div class="container">
       <div class="posts-inner">
+        <!-- 添加文章列表标题 -->
+        <h2 class="posts-section-title">最新文章</h2>
+        
         
           <article class="post-item">
             <div class="post-date">
@@ -126,10 +159,19 @@
             <h2 class="post-title">
               <a href="/2021/10/26/2021-10-21-6/">IP</a>
             </h2>
+            
+            <!-- 文章预览 -->
+            <div class="post-excerpt">
+              
+                 实验六
+​		IP 是整个 TCP/IP 协议族的核心，也是构成互联网的基础。IP 位于 TCP/IP 模型的网络层(相当于OSI模型的网络层)，对上可载送传输层各种协议的信息，例如 TCP、UDP...
+              
+            </div>
+            
             <div class="post-tags">
               
                 
-                  <a href="/tags/%E8%AE%A1%E7%BD%91/" class="post-tag">#计网</a>
+                  <a href="/tags/%E8%AE%A1%E7%BD%91/" class="post-tag">计网</a>
                 
               
             </div>
@@ -142,10 +184,19 @@
             <h2 class="post-title">
               <a href="/2021/10/26/2021-10-21-5/">UDP</a>
             </h2>
+            
+            <!-- 文章预览 -->
+            <div class="post-excerpt">
+              
+                 实验五
+​		UDP是User Datagram Protocol的简称， 中文名是用户数据报协议，是OSI（Open System Interconnection，开放式系统互联） 参考模型中一种...
+              
+            </div>
+            
             <div class="post-tags">
               
                 
-                  <a href="/tags/%E8%AE%A1%E7%BD%91/" class="post-tag">#计网</a>
+                  <a href="/tags/%E8%AE%A1%E7%BD%91/" class="post-tag">计网</a>
                 
               
             </div>
@@ -158,10 +209,20 @@
             <h2 class="post-title">
               <a href="/2021/10/25/2021-10-24-4/">TCP</a>
             </h2>
+            
+            <!-- 文章预览 -->
+            <div class="post-excerpt">
+              
+                 实验四
+ TCP是什么？
+​		传输控制协议（TCP，Transmission Control Protocol）是一种面向连接的、可靠的、基于字节流的传输层通信协议，由IETF的RFC 793定义...
+              
+            </div>
+            
             <div class="post-tags">
               
                 
-                  <a href="/tags/%E8%AE%A1%E7%BD%91/" class="post-tag">#计网</a>
+                  <a href="/tags/%E8%AE%A1%E7%BD%91/" class="post-tag">计网</a>
                 
               
             </div>
@@ -174,10 +235,20 @@
             <h2 class="post-title">
               <a href="/2021/10/24/2021-10-23-3/">DNS</a>
             </h2>
+            
+            <!-- 文章预览 -->
+            <div class="post-excerpt">
+              
+                 实验三
+ 什么DNS？
+​		域名系统(Domain Name System,DNS)是Internet上解决网上机器命名的一种系统。采用域名系统来管理名字和IP的对应关系。域名可将一个IP地址关联...
+              
+            </div>
+            
             <div class="post-tags">
               
                 
-                  <a href="/tags/%E8%AE%A1%E7%BD%91/" class="post-tag">#计网</a>
+                  <a href="/tags/%E8%AE%A1%E7%BD%91/" class="post-tag">计网</a>
                 
               
             </div>
@@ -190,10 +261,21 @@
             <h2 class="post-title">
               <a href="/2021/10/22/2021-10-22-2/">HTTP</a>
             </h2>
+            
+            <!-- 文章预览 -->
+            <div class="post-excerpt">
+              
+                 实验二
+ 基于HTTP获取/响应交互
+​		1.启动浏览器，启动资源包嗅探器（尚未开始捕获），显示过滤http，等待一分多钟。
+​		2.访问指定网站http://gaia.cs.umass.edu...
+              
+            </div>
+            
             <div class="post-tags">
               
                 
-                  <a href="/tags/%E8%AE%A1%E7%BD%91/" class="post-tag">#计网</a>
+                  <a href="/tags/%E8%AE%A1%E7%BD%91/" class="post-tag">计网</a>
                 
               
             </div>
@@ -206,10 +288,28 @@
             <h2 class="post-title">
               <a href="/2021/10/22/2021-10-21-1/">Getting Started</a>
             </h2>
+            
+            <!-- 文章预览 -->
+            <div class="post-excerpt">
+              
+                 实验一
+✨更新于2022-10-28
+ 概述
+数据包嗅探结构
+
+ Wireshark
+
+Wireshark是由一个国际网络专家团队开发的网络协议分析工具
+
+ 实验内容
+​		下载并安装好Wiresh...
+              
+            </div>
+            
             <div class="post-tags">
               
                 
-                  <a href="/tags/%E8%AE%A1%E7%BD%91/" class="post-tag">#计网</a>
+                  <a href="/tags/%E8%AE%A1%E7%BD%91/" class="post-tag">计网</a>
                 
               
             </div>
@@ -217,7 +317,7 @@
         
       </div>
       
-      <!-- 分页 -->
+      <!-- 分页部分保持不变 -->
       
         <div class="pagination">
           

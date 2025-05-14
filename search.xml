@@ -1,41 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>Getting Started</title>
-    <url>/2021/10/22/2021-10-21-1/</url>
-    <content><![CDATA[ 实验一
-✨更新于2022-10-28
- 概述
-数据包嗅探结构
-
- Wireshark
-
-Wireshark是由一个国际网络专家团队开发的网络协议分析工具
-
- 实验内容
-​		下载并安装好Wireshark，打开软件选择WLAN，启动数据嗅探：
-​		然后访问指定网站如下：
-​		http://gaia.cs.umass.edu/wireshark-labs/INTRO-wireshark-file1.html
-
-​		显示内容如上图所示
-​		显示过滤器中输入http，得到HTTP协议的数据传输信息：
-
-​		source 为请求方——本地ip地址
-​		Destination 为接收方——服务器ip地址
-
-​		展开可查看详细信息
-​		HTTP版本为1.1
-​		返回200 OK，请求成功。
-OVER
-]]></content>
-      <categories>
-        <category>Wireshark</category>
-      </categories>
-      <tags>
-        <tag>计网</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>802.11 WIFI</title>
     <url>/2021/10/30/2021-10-21-11/</url>
     <content><![CDATA[ 实验十一
@@ -80,6 +45,41 @@ AP的MAC地址为第一条00:16:b6:f7:1d:51
 ​		希望打开
 4.您是否在跟踪中看到来自linksys_ses_24086 AP的回复身份验证？
 没有
+]]></content>
+      <categories>
+        <category>Wireshark</category>
+      </categories>
+      <tags>
+        <tag>计网</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Getting Started</title>
+    <url>/2021/10/22/2021-10-21-1/</url>
+    <content><![CDATA[ 实验一
+✨更新于2022-10-28
+ 概述
+数据包嗅探结构
+
+ Wireshark
+
+Wireshark是由一个国际网络专家团队开发的网络协议分析工具
+
+ 实验内容
+​		下载并安装好Wireshark，打开软件选择WLAN，启动数据嗅探：
+​		然后访问指定网站如下：
+​		http://gaia.cs.umass.edu/wireshark-labs/INTRO-wireshark-file1.html
+
+​		显示内容如上图所示
+​		显示过滤器中输入http，得到HTTP协议的数据传输信息：
+
+​		source 为请求方——本地ip地址
+​		Destination 为接收方——服务器ip地址
+
+​		展开可查看详细信息
+​		HTTP版本为1.1
+​		返回200 OK，请求成功。
+OVER
 ]]></content>
       <categories>
         <category>Wireshark</category>
@@ -1205,6 +1205,121 @@ ntohl：网络字节顺序-&gt;本地字节顺序（32bits）
       </categories>
   </entry>
   <entry>
+    <title>小程序开发</title>
+    <url>/2022/02/21/2022-02-20-%E5%B0%8F%E7%A8%8B%E5%BA%8F%E5%BC%80%E5%8F%91/</url>
+    <content><![CDATA[ 概述
+ 简介
+​		小程序是一种不需要下载的安装即可使用的应用，它实现了应用“触手可及”的梦想，用户扫一扫或者搜一下即可打开应用。也体现了“用完即走”的理念。用户不用关心是否安装太多应用的问题。应用无处不在，随时可用，但又无需安装卸载。——Allenzhang
+特点：
+
+速度快：无需下载安装，加载速度快于HTML5，微信登录，随时可用
+无需适配：一次开发。多端兼容，免除了对各种手机型的适配
+社交分享：支持直接或App分享给微信好友和群聊
+出色体验：可以达到近乎原生App的操作体验和流畅度，在离线状态亦可使用
+用完即走：通过扫码、长按、微信搜索、公众号、好友推荐等方式快速获取服务，用完即走
+低门槛：已有公众号的组织可以快速注册、可快速生成门店小程序
+
+ 开发流程
+小程序的技术模型：
+
+小程序的程序语言：
+
+渲染层：WXML + WXSS（类似HTML + CSS）
+逻辑层：JavaScript
+配置：JSON
+
+ 设计规范
+
+友好：重点突出；流程明确
+清晰：导航明确；减少等待；异常反馈
+便捷：减少输入；避免误操作；操作流畅
+统一：视觉统一；WeUI
+
+ 运营规范
+ 开发项目
+ 全局配置
+​		小程序根目录下的 app.json 文件用来对微信小程序进行全局配置，决定页面文件的路径、窗口表现、设置网络超时时间、设置多 tab 等。
+以下是一个包含了部分常用配置选项的 app.json ：
+&#123;  &quot;pages&quot;: [    &quot;pages/index/index&quot;,    &quot;pages/logs/index&quot;  ],  &quot;window&quot;: &#123;    &quot;navigationBarTitleText&quot;: &quot;Demo&quot;  &#125;,  &quot;tabBar&quot;: &#123;    &quot;list&quot;: [&#123;      &quot;pagePath&quot;: &quot;pages/index/index&quot;,      &quot;text&quot;: &quot;首页&quot;    &#125;, &#123;      &quot;pagePath&quot;: &quot;pages/logs/index&quot;,      &quot;text&quot;: &quot;日志&quot;    &#125;]  &#125;,  &quot;networkTimeout&quot;: &#123;    &quot;request&quot;: 10000,    &quot;downloadFile&quot;: 10000  &#125;,  &quot;debug&quot;: true&#125;
+ 页面配置
+​		每一个小程序页面也可以使用同名 .json 文件来对本页面的窗口表现进行配置，页面中配置项会覆盖 app.json 的 window 中相同的配置项。
+&#123;  &quot;navigationBarBackgroundColor&quot;: &quot;#ffffff&quot;,  &quot;navigationBarTextStyle&quot;: &quot;black&quot;,  &quot;navigationBarTitleText&quot;: &quot;微信接口功能演示&quot;,  &quot;backgroundColor&quot;: &quot;#eeeeee&quot;,  &quot;backgroundTextStyle&quot;: &quot;light&quot;&#125;
+
+	图片标记：路径可以使用http或相对路径
+	作为容器元素
+
+ 应用弹性盒子布局
+
+传统方式布局
+
+目标的实现属性赋值非常分散
+严重依赖于页面结构与内容的实际大小
+
+
+
+弹性盒子布局（统一，灵活）
+盒子属性：
+display:flex;flex-direction:column;	//垂直布局justify-content:space-around;	//自上而下放置时素材均匀分布align-items:center;		//元素在水平方向上居中显示
+ 响应式长度单位rpx
+让元素大小适配不同宽度屏幕
+.images &#123;	width:375rpx;	height:375rpx;	border-radius:50%;	//圆形图片&#125;
+ 导航链接
+navigator组件
+&lt;navigator style=&quot;display:inline&quot; open-type=&quot;redirect&quot; url=&quot;/pages/logs/logs&quot;hover-class=&quot;nav-hover&quot;class=&quot;nav-default&quot;&gt;启动日志&lt;/navigator&gt;//style=&quot;display:inline&quot;	设置为内联元素//open-type=&quot;redirect&quot;	重定向，不可返回；默认为navigate	.nav-hover &#123;	color:red;&#125;	//点击态.nav-default &#123;	color:blue;&#125;	//显示态//交换两者才可实现点击态
+ 配置tabBar（底部标签栏）
+app.json
+&quot;tabBar&quot;: &#123;  &quot;list&quot;: [    &#123;      &quot;text&quot;: &quot;启动日志&quot;,      &quot;pagePath&quot;: &quot;pages/logs/logs&quot;,      &quot;iconPath&quot;: &quot;images/icons/person.jpg&quot;,      &quot;selectedIconPath&quot;: &quot;images/icons/iperson.jpg&quot;    &#125;,    &#123;      &quot;text&quot;: &quot;主页&quot;,      &quot;pagePath&quot;: &quot;pages/index/index&quot;,      &quot;iconPath&quot;: &quot;images/icons/home.jpg&quot;,      &quot;selectedIconPath&quot;: &quot;images/icons/ihome.jpg&quot;    &#125;  ],  &quot;color&quot;:&quot;#000&quot;,  &quot;selectedColor&quot;:&quot;#00f&quot;&#125;,
+此时navigate失效，需要修改。
+&lt;navigator url=&quot;/pages/logs/logs&quot; open-type=&quot;switchTab&quot;&gt;启动日志&lt;/navigator&gt;
+ 配置全局导航栏样式
+app.json
+&quot;window&quot;: &#123;    &quot;backgroundTextStyle&quot;: &quot;light&quot;,    &quot;navigationBarBackgroundColor&quot;: &quot;#fff&quot;,    &quot;navigationBarTitleText&quot;: &quot;关于&quot;,       &quot;navigationBarTextStyle&quot;: &quot;black&quot;,    &quot;enablePullDownRefresh&quot;: true  &#125;,
+ 数据绑定
+weather.js
+Page(&#123;  data: &#123;    todayweather:&#123;      city:&quot;武汉&quot;,      weather:&quot;晴&quot;,      temperature:&quot;2℃&quot;    &#125;  &#125;&#125;)
+ 小程序的运行环境与基本架构
+​		每个小程序都是运行在它的微信客户端上的，通过微信客户端给它提供的运行环境，小程序可以直接获取微信客户端的原生体验和原生能力。
+ 条件渲染
+在框架中，使用 wx:if=&quot;&quot; 来判断是否需要渲染该代码块：
+&lt;view wx:if=&quot;&#123;&#123;condition&#125;&#125;&quot;&gt; True &lt;/view&gt;
+也可以用 wx:elif 和 wx:else 来添加一个 else 块：
+&lt;view wx:if=&quot;&#123;&#123;length &gt; 5&#125;&#125;&quot;&gt; 1 &lt;/view&gt;&lt;view wx:elif=&quot;&#123;&#123;length &gt; 2&#125;&#125;&quot;&gt; 2 &lt;/view&gt;&lt;view wx:else&gt; 3 &lt;/view&gt;
+因为 wx:if 是一个控制属性，需要将它添加到一个标签上。如果要一次性判断多个组件标签，可以使用一个 &lt;block/&gt; 标签将多个组件包装起来，并在上边使用 wx:if 控制属性。
+&lt;block wx:if=&quot;&#123;&#123;true&#125;&#125;&quot;&gt;  &lt;view&gt; view1 &lt;/view&gt;  &lt;view&gt; view2 &lt;/view&gt;&lt;/block&gt;
+&lt;block/&gt; 并不是一个组件，它仅仅是一个包装元素，不会在页面中做任何渲染，只接受控制属性。
+wx:if vs hidden
+因为 wx:if 之中的模板也可能包含数据绑定，所以当 wx:if 的条件值切换时，框架有一个局部渲染的过程，因为它会确保条件块在切换时销毁或重新渲染。同时 wx:if 也是惰性的，如果在初始渲染条件为 false，框架什么也不做，在条件第一次变成真的时候才开始局部渲染。
+相比之下，hidden 就简单的多，组件始终会被渲染，只是简单的控制显示与隐藏。
+一般来说，wx:if 有更高的切换消耗而 hidden 有更高的初始渲染消耗。因此，如果需要频繁切换的情景下，用 hidden 更好，如果在运行时条件不大可能改变则 wx:if 较好。
+ 列表渲染
+ swiper组件
+幻灯片轮播展示
+ 页面的生命周期函数
+&lt;swiper&gt;&lt;/swiper&gt;添加属性
+current=&quot;&#123;&#123; array.length - 1 &#125;&#125;&quot;	//切换到最后一张幻灯片(有缺陷)
+js文件
+current=&quot;&#123;&#123; currentIndex &#125;&#125;&quot;//初始化数据//生命周期函数onload:function(options) &#123;	this.setData(&#123;		currentIndex:this.data.array.length - 1	&#125;)&#125;//还包括其他的生命周期函数
+ 更新数据
+&lt;button bindtap=&quot;f0&quot;&gt;按钮&lt;button&gt;//更新数据不能直接赋值f0:function(event)&#123;	console.log(this.data.count)	//读取	this.setData(&#123;    	count:this.data.count + 1    &#125;)&#125;//this.serData可以动态设置变量
+ 事件机制
+&lt;button bindtap=&quot;f0&quot;&gt;按钮&lt;button&gt;		//会向上冒泡传递，父元素函数会被调用&lt;button catchtap=&quot;f1&quot;&gt;按钮&lt;button&gt;	//不会向上冒泡传递，父元素函数不会被调用
+ 组件自定义数据属性
+f1:function(event)&#123;	wx.navigateTo(&#123;		url:&#x27;/pages/index/index&#x27;	&#125;)&#125;	//点击页面相同f1:function(event)&#123;	wx.navigateTo(&#123;		url:&#x27;/pages/index/index?id=77&#x27;	&#125;)&#125;	//点击页面相同
+ 动态导航栏
+index.js
+onShareAppMessage: function()&#123;	return &#123;		title:&quot;向你推荐&quot; + this.data.movie.title	&#125;&#125;
+ 组件化开发
+ 自定义组件item.js
+item.json将组件属性设置true
+&#123;    &quot;component&quot;: true&#125;
+item.js
+Component(&#123;    options: &#123; // 组件配置        addGlobalClass: true,        // 指定所有 _ 开头的数据字段为纯数据字段        // 纯数据字段是一些不用于界面渲染的 data 字段，可以用于提升页面更新性能        pureDataPattern: /^_/,         multipleSlots: true // 在组件定义时的选项中启用多slot支持    &#125;,    properties: &#123;        vtabs: &#123;type: Array, value: []&#125;,    &#125;,    data: &#123;        currentView: 0,    &#125;,    observers: &#123; // 监测        activeTab: function(activeTab) &#123;            this.scrollTabBar(activeTab);        &#125;    &#125;,     relations: &#123;  // 关联的子/父组件        &#x27;../vtabs-content/index&#x27;: &#123;            type: &#x27;child&#x27;, // 关联的目标节点应为子节点            linked: function(target) &#123;                this.calcVtabsCotentHeight(target);            &#125;,            unlinked: function(target) &#123;                delete this.data._contentHeight[target.data.tabIndex];            &#125;        &#125;    &#125;,    lifetimes: &#123; // 组件声明周期        created: function() &#123;            // 组件实例刚刚被创建好时        &#125;,        attached: function() &#123;            // 在组件实例进入页面节点树时执行        &#125;,        detached: function() &#123;            // 在组件实例被从页面节点树移除时执行        &#125;,    &#125;,    methods: &#123; // 组件方法        calcVtabsCotentHeight(target) &#123;&#125;    &#125; &#125;);
+]]></content>
+      <categories>
+        <category>微信小程序</category>
+      </categories>
+  </entry>
+  <entry>
     <title>传输层(上)</title>
     <url>/2022/02/17/2022-02-17-%E4%BC%A0%E8%BE%93%E5%B1%82(%E4%B8%8A)/</url>
     <content><![CDATA[ 传输层服务
@@ -1356,121 +1471,6 @@ Rdt 2.0 -&gt; Rdt 2.1 -&gt; Rdt3.0
 ]]></content>
       <categories>
         <category>计网</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>小程序开发</title>
-    <url>/2022/02/21/2022-02-20-%E5%B0%8F%E7%A8%8B%E5%BA%8F%E5%BC%80%E5%8F%91/</url>
-    <content><![CDATA[ 概述
- 简介
-​		小程序是一种不需要下载的安装即可使用的应用，它实现了应用“触手可及”的梦想，用户扫一扫或者搜一下即可打开应用。也体现了“用完即走”的理念。用户不用关心是否安装太多应用的问题。应用无处不在，随时可用，但又无需安装卸载。——Allenzhang
-特点：
-
-速度快：无需下载安装，加载速度快于HTML5，微信登录，随时可用
-无需适配：一次开发。多端兼容，免除了对各种手机型的适配
-社交分享：支持直接或App分享给微信好友和群聊
-出色体验：可以达到近乎原生App的操作体验和流畅度，在离线状态亦可使用
-用完即走：通过扫码、长按、微信搜索、公众号、好友推荐等方式快速获取服务，用完即走
-低门槛：已有公众号的组织可以快速注册、可快速生成门店小程序
-
- 开发流程
-小程序的技术模型：
-
-小程序的程序语言：
-
-渲染层：WXML + WXSS（类似HTML + CSS）
-逻辑层：JavaScript
-配置：JSON
-
- 设计规范
-
-友好：重点突出；流程明确
-清晰：导航明确；减少等待；异常反馈
-便捷：减少输入；避免误操作；操作流畅
-统一：视觉统一；WeUI
-
- 运营规范
- 开发项目
- 全局配置
-​		小程序根目录下的 app.json 文件用来对微信小程序进行全局配置，决定页面文件的路径、窗口表现、设置网络超时时间、设置多 tab 等。
-以下是一个包含了部分常用配置选项的 app.json ：
-&#123;  &quot;pages&quot;: [    &quot;pages/index/index&quot;,    &quot;pages/logs/index&quot;  ],  &quot;window&quot;: &#123;    &quot;navigationBarTitleText&quot;: &quot;Demo&quot;  &#125;,  &quot;tabBar&quot;: &#123;    &quot;list&quot;: [&#123;      &quot;pagePath&quot;: &quot;pages/index/index&quot;,      &quot;text&quot;: &quot;首页&quot;    &#125;, &#123;      &quot;pagePath&quot;: &quot;pages/logs/index&quot;,      &quot;text&quot;: &quot;日志&quot;    &#125;]  &#125;,  &quot;networkTimeout&quot;: &#123;    &quot;request&quot;: 10000,    &quot;downloadFile&quot;: 10000  &#125;,  &quot;debug&quot;: true&#125;
- 页面配置
-​		每一个小程序页面也可以使用同名 .json 文件来对本页面的窗口表现进行配置，页面中配置项会覆盖 app.json 的 window 中相同的配置项。
-&#123;  &quot;navigationBarBackgroundColor&quot;: &quot;#ffffff&quot;,  &quot;navigationBarTextStyle&quot;: &quot;black&quot;,  &quot;navigationBarTitleText&quot;: &quot;微信接口功能演示&quot;,  &quot;backgroundColor&quot;: &quot;#eeeeee&quot;,  &quot;backgroundTextStyle&quot;: &quot;light&quot;&#125;
-
-	图片标记：路径可以使用http或相对路径
-	作为容器元素
-
- 应用弹性盒子布局
-
-传统方式布局
-
-目标的实现属性赋值非常分散
-严重依赖于页面结构与内容的实际大小
-
-
-
-弹性盒子布局（统一，灵活）
-盒子属性：
-display:flex;flex-direction:column;	//垂直布局justify-content:space-around;	//自上而下放置时素材均匀分布align-items:center;		//元素在水平方向上居中显示
- 响应式长度单位rpx
-让元素大小适配不同宽度屏幕
-.images &#123;	width:375rpx;	height:375rpx;	border-radius:50%;	//圆形图片&#125;
- 导航链接
-navigator组件
-&lt;navigator style=&quot;display:inline&quot; open-type=&quot;redirect&quot; url=&quot;/pages/logs/logs&quot;hover-class=&quot;nav-hover&quot;class=&quot;nav-default&quot;&gt;启动日志&lt;/navigator&gt;//style=&quot;display:inline&quot;	设置为内联元素//open-type=&quot;redirect&quot;	重定向，不可返回；默认为navigate	.nav-hover &#123;	color:red;&#125;	//点击态.nav-default &#123;	color:blue;&#125;	//显示态//交换两者才可实现点击态
- 配置tabBar（底部标签栏）
-app.json
-&quot;tabBar&quot;: &#123;  &quot;list&quot;: [    &#123;      &quot;text&quot;: &quot;启动日志&quot;,      &quot;pagePath&quot;: &quot;pages/logs/logs&quot;,      &quot;iconPath&quot;: &quot;images/icons/person.jpg&quot;,      &quot;selectedIconPath&quot;: &quot;images/icons/iperson.jpg&quot;    &#125;,    &#123;      &quot;text&quot;: &quot;主页&quot;,      &quot;pagePath&quot;: &quot;pages/index/index&quot;,      &quot;iconPath&quot;: &quot;images/icons/home.jpg&quot;,      &quot;selectedIconPath&quot;: &quot;images/icons/ihome.jpg&quot;    &#125;  ],  &quot;color&quot;:&quot;#000&quot;,  &quot;selectedColor&quot;:&quot;#00f&quot;&#125;,
-此时navigate失效，需要修改。
-&lt;navigator url=&quot;/pages/logs/logs&quot; open-type=&quot;switchTab&quot;&gt;启动日志&lt;/navigator&gt;
- 配置全局导航栏样式
-app.json
-&quot;window&quot;: &#123;    &quot;backgroundTextStyle&quot;: &quot;light&quot;,    &quot;navigationBarBackgroundColor&quot;: &quot;#fff&quot;,    &quot;navigationBarTitleText&quot;: &quot;关于&quot;,       &quot;navigationBarTextStyle&quot;: &quot;black&quot;,    &quot;enablePullDownRefresh&quot;: true  &#125;,
- 数据绑定
-weather.js
-Page(&#123;  data: &#123;    todayweather:&#123;      city:&quot;武汉&quot;,      weather:&quot;晴&quot;,      temperature:&quot;2℃&quot;    &#125;  &#125;&#125;)
- 小程序的运行环境与基本架构
-​		每个小程序都是运行在它的微信客户端上的，通过微信客户端给它提供的运行环境，小程序可以直接获取微信客户端的原生体验和原生能力。
- 条件渲染
-在框架中，使用 wx:if=&quot;&quot; 来判断是否需要渲染该代码块：
-&lt;view wx:if=&quot;&#123;&#123;condition&#125;&#125;&quot;&gt; True &lt;/view&gt;
-也可以用 wx:elif 和 wx:else 来添加一个 else 块：
-&lt;view wx:if=&quot;&#123;&#123;length &gt; 5&#125;&#125;&quot;&gt; 1 &lt;/view&gt;&lt;view wx:elif=&quot;&#123;&#123;length &gt; 2&#125;&#125;&quot;&gt; 2 &lt;/view&gt;&lt;view wx:else&gt; 3 &lt;/view&gt;
-因为 wx:if 是一个控制属性，需要将它添加到一个标签上。如果要一次性判断多个组件标签，可以使用一个 &lt;block/&gt; 标签将多个组件包装起来，并在上边使用 wx:if 控制属性。
-&lt;block wx:if=&quot;&#123;&#123;true&#125;&#125;&quot;&gt;  &lt;view&gt; view1 &lt;/view&gt;  &lt;view&gt; view2 &lt;/view&gt;&lt;/block&gt;
-&lt;block/&gt; 并不是一个组件，它仅仅是一个包装元素，不会在页面中做任何渲染，只接受控制属性。
-wx:if vs hidden
-因为 wx:if 之中的模板也可能包含数据绑定，所以当 wx:if 的条件值切换时，框架有一个局部渲染的过程，因为它会确保条件块在切换时销毁或重新渲染。同时 wx:if 也是惰性的，如果在初始渲染条件为 false，框架什么也不做，在条件第一次变成真的时候才开始局部渲染。
-相比之下，hidden 就简单的多，组件始终会被渲染，只是简单的控制显示与隐藏。
-一般来说，wx:if 有更高的切换消耗而 hidden 有更高的初始渲染消耗。因此，如果需要频繁切换的情景下，用 hidden 更好，如果在运行时条件不大可能改变则 wx:if 较好。
- 列表渲染
- swiper组件
-幻灯片轮播展示
- 页面的生命周期函数
-&lt;swiper&gt;&lt;/swiper&gt;添加属性
-current=&quot;&#123;&#123; array.length - 1 &#125;&#125;&quot;	//切换到最后一张幻灯片(有缺陷)
-js文件
-current=&quot;&#123;&#123; currentIndex &#125;&#125;&quot;//初始化数据//生命周期函数onload:function(options) &#123;	this.setData(&#123;		currentIndex:this.data.array.length - 1	&#125;)&#125;//还包括其他的生命周期函数
- 更新数据
-&lt;button bindtap=&quot;f0&quot;&gt;按钮&lt;button&gt;//更新数据不能直接赋值f0:function(event)&#123;	console.log(this.data.count)	//读取	this.setData(&#123;    	count:this.data.count + 1    &#125;)&#125;//this.serData可以动态设置变量
- 事件机制
-&lt;button bindtap=&quot;f0&quot;&gt;按钮&lt;button&gt;		//会向上冒泡传递，父元素函数会被调用&lt;button catchtap=&quot;f1&quot;&gt;按钮&lt;button&gt;	//不会向上冒泡传递，父元素函数不会被调用
- 组件自定义数据属性
-f1:function(event)&#123;	wx.navigateTo(&#123;		url:&#x27;/pages/index/index&#x27;	&#125;)&#125;	//点击页面相同f1:function(event)&#123;	wx.navigateTo(&#123;		url:&#x27;/pages/index/index?id=77&#x27;	&#125;)&#125;	//点击页面相同
- 动态导航栏
-index.js
-onShareAppMessage: function()&#123;	return &#123;		title:&quot;向你推荐&quot; + this.data.movie.title	&#125;&#125;
- 组件化开发
- 自定义组件item.js
-item.json将组件属性设置true
-&#123;    &quot;component&quot;: true&#125;
-item.js
-Component(&#123;    options: &#123; // 组件配置        addGlobalClass: true,        // 指定所有 _ 开头的数据字段为纯数据字段        // 纯数据字段是一些不用于界面渲染的 data 字段，可以用于提升页面更新性能        pureDataPattern: /^_/,         multipleSlots: true // 在组件定义时的选项中启用多slot支持    &#125;,    properties: &#123;        vtabs: &#123;type: Array, value: []&#125;,    &#125;,    data: &#123;        currentView: 0,    &#125;,    observers: &#123; // 监测        activeTab: function(activeTab) &#123;            this.scrollTabBar(activeTab);        &#125;    &#125;,     relations: &#123;  // 关联的子/父组件        &#x27;../vtabs-content/index&#x27;: &#123;            type: &#x27;child&#x27;, // 关联的目标节点应为子节点            linked: function(target) &#123;                this.calcVtabsCotentHeight(target);            &#125;,            unlinked: function(target) &#123;                delete this.data._contentHeight[target.data.tabIndex];            &#125;        &#125;    &#125;,    lifetimes: &#123; // 组件声明周期        created: function() &#123;            // 组件实例刚刚被创建好时        &#125;,        attached: function() &#123;            // 在组件实例进入页面节点树时执行        &#125;,        detached: function() &#123;            // 在组件实例被从页面节点树移除时执行        &#125;,    &#125;,    methods: &#123; // 组件方法        calcVtabsCotentHeight(target) &#123;&#125;    &#125; &#125;);
-]]></content>
-      <categories>
-        <category>微信小程序</category>
       </categories>
   </entry>
   <entry>

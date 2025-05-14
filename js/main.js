@@ -14,7 +14,7 @@ document.addEventListener('DOMContentLoaded', function() {
   });
   
   // 初始化移动导航
-  // initMobileNav();
+  initMobileNav();
   
   // 初始化目录折叠
   initTOC();
@@ -76,7 +76,6 @@ function initLanguage() {
 
 // DOM加载后初始化
 document.addEventListener('DOMContentLoaded', function() {
-  // 移除重复的初始化调用
   initLanguage();
   // initLanguageSwitch();
   // initMobileNav();
@@ -202,11 +201,18 @@ function initTOCScroll() {
   // 平滑滚动
   $tocLinks.on('click', function(e) {
     e.preventDefault();
-    const target = $(this.getAttribute('href'));
-    if (target.length) {
-      $('html, body').animate({
-        scrollTop: target.offset().top - 100
-      }, 500);
+    // 获取 href 并解码
+    const href = this.getAttribute('href');
+    if (!href || !href.startsWith('#')) return;
+    const decodedId = decodeURIComponent(href.slice(1));
+    // 用原生方法查找目标元素
+    const target = document.getElementById(decodedId);
+    if (target) {
+      // 平滑滚动到目标
+      window.scrollTo({
+        top: target.getBoundingClientRect().top + window.pageYOffset - 100,
+        behavior: 'smooth'
+      });
     }
   });
 
@@ -257,9 +263,24 @@ function initBackToTop() {
   });
 }
 
-$(document).ready(function() {
-  initTOCScroll();
-  initBackToTop();
+// 在文件顶部添加 jQuery 检查
+function initJQueryDependentFeatures() {
+  // 所有依赖 jQuery 的功能
+  $(document).ready(function() {
+    try {
+      initTOCScroll();
+      initBackToTop();
+    } catch (e) {
+      console.error('Error initializing jQuery features:', e);
+    }
+  });
+}
+
+// 在 DOMContentLoaded 中调用
+document.addEventListener('DOMContentLoaded', function() {
+  // ... 其他初始化代码 ...
+  
+  initJQueryDependentFeatures();
 });
 
 // 添加性能优化逻辑
@@ -323,6 +344,149 @@ function initCodeCopy() {
         btn.textContent = 'Error';
         setTimeout(() => btn.textContent = 'Copy', 2000);
       });
+    });
+  });
+}
+
+
+function initMobileNav() {
+  const mobileNav = document.querySelector('.mobile-nav');
+  const mobileNavToggle = document.querySelector('.mobile-nav-toggle');
+  const mobileNavClose = document.querySelector('.mobile-nav-close');
+  
+  if (!mobileNav || !mobileNavToggle || !mobileNavClose) return;
+
+  // Toggle mobile nav
+  mobileNavToggle.addEventListener('click', () => {
+    mobileNav.classList.add('active');
+  });
+
+  // Close mobile nav
+  mobileNavClose.addEventListener('click', () => {
+    mobileNav.classList.remove('active');
+  });
+
+  // Close when clicking outside
+  document.addEventListener('click', (e) => {
+    if (!mobileNav.contains(e.target) && 
+        e.target !== mobileNavToggle && 
+        !mobileNavToggle.contains(e.target)) {
+      mobileNav.classList.remove('active');
+    }
+  });
+}
+
+
+function initSearch() {
+  const searchBtn = document.querySelector('.search-btn');
+  const searchContainer = document.querySelector('.search-container');
+  const searchClose = document.querySelector('.search-close');
+  const searchInput = document.querySelector('.search-input');
+  const searchResults = document.createElement('div');
+  searchResults.className = 'search-results';
+  
+  if (!searchBtn || !searchContainer || !searchClose || !searchInput) return;
+
+  // 添加搜索结果容器
+  searchContainer.querySelector('.container').appendChild(searchResults);
+
+  // 搜索功能
+  function performSearch(query) {
+    if (!query.trim()) {
+      searchResults.innerHTML = '';
+      return;
+    }
+
+    // 使用Hexo的搜索API
+    if (window.searchJson) {
+      const results = window.searchJson.filter(item => {
+        return item.title.toLowerCase().includes(query.toLowerCase()) || 
+               item.content.toLowerCase().includes(query.toLowerCase());
+      });
+
+      displayResults(results);
+    } else {
+      // 如果没有预加载的搜索数据，使用fetch获取
+      fetch('/search.xml')
+        .then(response => response.text())
+        .then(str => (new window.DOMParser()).parseFromString(str, "text/xml"))
+        .then(data => {
+          const items = data.querySelectorAll('entry');
+          const results = Array.from(items).map(item => ({
+            title: item.querySelector('title').textContent,
+            url: item.querySelector('url').textContent,
+            content: item.querySelector('content').textContent
+          }));
+          displayResults(results.filter(item => 
+            item.title.toLowerCase().includes(query.toLowerCase()) ||
+            item.content.toLowerCase().includes(query.toLowerCase())
+          ));
+        });
+    }
+  }
+
+  // 显示搜索结果
+  function displayResults(results) {
+    if (results.length === 0) {
+      searchResults.innerHTML = '<div class="no-results">没有找到匹配的结果</div>';
+      return;
+    }
+
+    searchResults.innerHTML = results.map(result => `
+      <div class="search-result-item">
+        <a href="${result.url}" class="search-result-title">${result.title}</a>
+        <div class="search-result-excerpt">${result.content.substring(0, 150)}...</div>
+      </div>
+    `).join('');
+  }
+
+  // 输入防抖
+  let searchTimer;
+  searchInput.addEventListener('input', (e) => {
+    clearTimeout(searchTimer);
+    searchTimer = setTimeout(() => {
+      performSearch(e.target.value);
+    }, 300);
+  });
+
+  // 原有交互逻辑保持不变
+  searchBtn.addEventListener('click', () => {
+    searchContainer.classList.add('active');
+    searchInput.focus();
+  });
+
+  searchClose.addEventListener('click', () => {
+    searchContainer.classList.remove('active');
+    searchInput.value = '';
+    searchResults.innerHTML = '';
+  });
+
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') {
+      searchContainer.classList.remove('active');
+      searchInput.value = '';
+      searchResults.innerHTML = '';
+    }
+  });
+}
+
+
+function handleImageErrors() {
+  document.querySelectorAll('img').forEach(img => {
+    // Add error handler for broken images
+    img.addEventListener('error', function() {
+      // Replace broken image with placeholder or hide it
+      this.style.display = 'none';
+      
+      // Alternatively, you could set a placeholder image:
+      // this.src = '/path/to/placeholder-image.png';
+      // this.alt = 'Image failed to load';
+      
+      // Or show an error message
+      const errorSpan = document.createElement('span');
+      errorSpan.className = 'image-error';
+      errorSpan.textContent = 'Image failed to load';
+      this.parentNode.insertBefore(errorSpan, this.nextSibling);
     });
   });
 }

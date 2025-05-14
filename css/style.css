@@ -87,7 +87,7 @@ a:hover {
   color: var(--color-primary);
 }
 .main-nav {
-  padding-right: 6em;
+  padding-right: 2em;
 }
 .main-nav ul {
   display: flex;
@@ -223,6 +223,44 @@ h6 {
   color: #fff;
   font-size: 24px;
   cursor: pointer;
+}
+.search-results {
+  max-width: 600px;
+  width: 100%;
+  margin-top: 20px;
+  max-height: 60vh;
+  overflow-y: auto;
+  background: rgba(255,255,255,0.1);
+  border-radius: 8px;
+  padding: 15px;
+}
+.search-result-item {
+  margin-bottom: 15px;
+  padding-bottom: 15px;
+  border-bottom: 1px solid rgba(255,255,255,0.1);
+}
+.search-result-item:last-child {
+  margin-bottom: 0;
+  padding-bottom: 0;
+  border-bottom: none;
+}
+.search-result-title {
+  color: #fff;
+  font-size: 18px;
+  margin-bottom: 5px;
+  display: block;
+}
+.search-result-title:hover {
+  color: var(--color-primary);
+}
+.search-result-excerpt {
+  color: rgba(255,255,255,0.7);
+  font-size: 14px;
+}
+.no-results {
+  color: rgba(255,255,255,0.7);
+  text-align: center;
+  padding: 20px;
 }
 .footer .footer-inner {
   padding: 20px 0;
@@ -1378,6 +1416,15 @@ code:not([class]) {
   border-color: #539bf5;
   color: #539bf5;
 }
+.post-copyright {
+  margin: 2em 0 0 0;
+  padding: 1em;
+  background: var(--color-blockquote-bg);
+  border-left: 4px solid var(--color-primary);
+  border-radius: 0 8px 8px 0;
+  color: var(--color-blockquote-text);
+  font-size: 0.95em;
+}
 .archive-container {
   padding-top: 120px;
   padding-bottom: 80px;
@@ -1713,6 +1760,9 @@ code:not([class]) {
   padding-left: 1.2rem;
   border-left: none;
 }
+### 2. 检查样式,
+你的样式文件 `source/css/_partial/toc.styl` 已有 `.toc-return-top` 相关样式，但建议确保如下内容存在：,
+```stylus,
 .toc-return-top {
   position: fixed;
   bottom: 2rem;
@@ -1729,15 +1779,18 @@ code:not([class]) {
   align-items: center;
   justify-content: center;
 }
+### 2. 检查样式.visible,
+你的样式文件 `source/css/_partial/toc.styl` 已有 `.toc-return-top` 相关样式，但建议确保如下内容存在：.visible,
+```stylus.visible,
 .toc-return-top.visible {
   opacity: 1;
 }
-.toc-return-top .toc-arrow-icon {
+``` .toc-arrow-icon {
   width: 20px;
   height: 20px;
   fill: var(--color-text);
 }
-.toc-return-top .toc-arrow-icon:hover {
+``` .toc-arrow-icon:hover {
   fill: #1976d2;
 }
 .mobile-nav-toggle {
@@ -1964,6 +2017,12 @@ code:not([class]) {
   }
   .post-header {
     margin-bottom: 20px;
+  }
+  .post-main {
+    flex: 0 0 100% !important;
+    max-width: 100% !important;
+    margin: 0 !important;
+    padding: 0 !important;
   }
   .post-body h1 {
     font-size: 24px;

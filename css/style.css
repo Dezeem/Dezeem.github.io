@@ -1994,7 +1994,13 @@ code:not([class]) {
     margin-left: auto;
   }
   .profile-inner {
-    padding: 0 20px;
+    max-width: 100% !important;
+    margin-left: 0 !important;
+    padding: 20px 10px !important;
+    box-sizing: border-box;
+  }
+  .mobile-nav-toggle {
+    z-index: 300 !important;
   }
   .avatar {
     width: 120px;

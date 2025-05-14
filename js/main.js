@@ -2,17 +2,6 @@ document.addEventListener('DOMContentLoaded', function() {
   // 初始化主题
   initTheme();
   
-  // 确保在DOM加载完成后初始化
-  document.addEventListener('DOMContentLoaded', function() {
-    initMobileNav();
-    initTOC();
-    initThemeToggle();
-    initSearch();
-    initCodeCopy();
-    handleImageErrors();
-    initLanguageSwitch();
-  });
-  
   // 初始化移动导航
   initMobileNav();
   

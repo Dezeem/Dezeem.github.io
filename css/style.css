@@ -2020,6 +2020,19 @@ code:not([class]) {
   }
   .post-content {
     padding: 20px;
+    word-break: break-all;
+    overflow-wrap: break-word;
+  }
+  .post-excerpt,
+  blockquote {
+    word-break: break-all !important;
+    overflow-wrap: break-word !important;
+    white-space: normal !important;
+  }
+  .post-excerpt * {
+    word-break: break-all !important;
+    overflow-wrap: break-word !important;
+    white-space: normal !important;
   }
   .post-header {
     margin-bottom: 20px;

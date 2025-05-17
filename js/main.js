@@ -16,6 +16,11 @@ document.addEventListener('DOMContentLoaded', function() {
   
   // 处理图片加载错误
   handleImageErrors();
+
+  // 添加这一行，确保图片点击功能被初始化
+  enhancePostInteraction();
+
+  initJQueryDependentFeatures();
 });
 
 // 初始化主题
@@ -265,12 +270,123 @@ function initJQueryDependentFeatures() {
   });
 }
 
-// 在 DOMContentLoaded 中调用
-document.addEventListener('DOMContentLoaded', function() {
-  // ... 其他初始化代码 ...
+// 增强文章页面交互效果
+function enhancePostInteraction() {
+  // 仅在文章页面执行
+  if (!document.querySelector('.post-container')) return;
   
-  initJQueryDependentFeatures();
-});
+  document.querySelectorAll('.post-body h2, .post-body h3, .post-body h4').forEach(heading => {
+    // 确保标题有ID以便于目录跳转
+    if (!heading.id) {
+      heading.id = heading.textContent.trim().toLowerCase().replace(/\s+/g, '-');
+    }
+  });
+  
+  // 优化图片点击放大效果
+  const imgOverlayClass = 'img-overlay';
+  
+  // 确保不会重复添加事件监听器
+  document.querySelectorAll('.post-body img').forEach(img => {
+    // 检查是否已经添加了点击事件
+    if (img.getAttribute('data-zoom-enabled')) return;
+    
+    img.setAttribute('data-zoom-enabled', 'true');
+    img.style.cursor = 'zoom-in';
+    
+    img.addEventListener('click', () => {
+      // 检查是否已存在遮罩层
+      if (document.querySelector(`.${imgOverlayClass}`)) return;
+      
+      // 创建遮罩和放大图片容器
+      const overlay = document.createElement('div');
+      overlay.className = imgOverlayClass;
+      overlay.style.position = 'fixed';
+      overlay.style.top = '0';
+      overlay.style.left = '0';
+      overlay.style.width = '100%';
+      overlay.style.height = '100%';
+      overlay.style.backgroundColor = 'rgba(0, 0, 0, 0.9)';
+      overlay.style.zIndex = '9999';
+      overlay.style.display = 'flex';
+      overlay.style.alignItems = 'center';
+      overlay.style.justifyContent = 'center';
+      overlay.style.cursor = 'zoom-out';
+      
+      const imgClone = document.createElement('img');
+      imgClone.src = img.src;
+      imgClone.style.maxWidth = '90%';
+      imgClone.style.maxHeight = '90%';
+      imgClone.style.objectFit = 'contain';
+      imgClone.style.boxShadow = '0 5px 30px rgba(0, 0, 0, 0.3)';
+      imgClone.style.transform = 'scale(0.9)';
+      imgClone.style.opacity = '0';
+      imgClone.style.transition = 'all 0.3s ease';
+      
+      overlay.appendChild(imgClone);
+      document.body.appendChild(overlay);
+      
+      // 触发动画
+      setTimeout(() => {
+        imgClone.style.transform = 'scale(1)';
+        imgClone.style.opacity = '1';
+      }, 50);
+      
+      // 点击关闭
+      overlay.addEventListener('click', () => {
+        imgClone.style.transform = 'scale(0.9)';
+        imgClone.style.opacity = '0';
+        setTimeout(() => overlay.remove(), 300);
+      });
+      
+      // ESC键关闭
+      const escHandler = (e) => {
+        if (e.key === 'Escape') {
+          imgClone.style.transform = 'scale(0.9)';
+          imgClone.style.opacity = '0';
+          setTimeout(() => {
+            overlay.remove();
+            document.removeEventListener('keydown', escHandler);
+          }, 300);
+        }
+      };
+      
+      document.addEventListener('keydown', escHandler);
+    });
+  });
+  
+  // 简化代码块行号显示，减少DOM操作
+  document.querySelectorAll('pre code').forEach(block => {
+    if (block.parentNode.querySelector('.line-numbers-rows')) return;
+    
+    const lines = block.innerHTML.split('\n').length;
+    if (lines <= 1) return; // 单行代码不添加行号
+    
+    const lineNumbers = document.createElement('div');
+    lineNumbers.className = 'line-numbers-rows';
+    lineNumbers.style.position = 'absolute';
+    lineNumbers.style.top = '0';
+    lineNumbers.style.left = '0';
+    lineNumbers.style.width = '3em';
+    lineNumbers.style.textAlign = 'right';
+    lineNumbers.style.paddingRight = '0.5em';
+    lineNumbers.style.paddingTop = '1em';
+    lineNumbers.style.color = 'var(--color-text-light)';
+    lineNumbers.style.opacity = '0.5';
+    lineNumbers.style.userSelect = 'none';
+    
+    // 使用文档片段减少重排
+    const fragment = document.createDocumentFragment();
+    for (let i = 0; i < lines; i++) {
+      const line = document.createElement('span');
+      line.textContent = i + 1;
+      fragment.appendChild(line);
+    }
+    
+    lineNumbers.appendChild(fragment);
+    block.parentNode.style.position = 'relative';
+    block.parentNode.insertBefore(lineNumbers, block);
+  });
+}
 
 // 添加性能优化逻辑
 let rafId = null

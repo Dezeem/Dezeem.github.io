@@ -238,7 +238,35 @@
         </div>
       
     </div>
-  </div>
+    <!-- 在文件末尾添加，在最后的 </div> 之前 -->
+    
+    <!-- 添加返回顶部按钮 -->
+    <div class="back-to-top-post">
+      <i class="fas fa-arrow-up"></i>
+    </div>
+    
+    <!-- 添加文章页面专用的返回顶部JavaScript -->
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      // 返回顶部按钮
+      const backToTopBtn = document.querySelector('.back-to-top-post');
+      
+      window.addEventListener('scroll', function() {
+        if (window.pageYOffset > 300) {
+          backToTopBtn.classList.add('visible');
+        } else {
+          backToTopBtn.classList.remove('visible');
+        }
+      });
+      
+      backToTopBtn.addEventListener('click', function() {
+        window.scrollTo({
+          top: 0,
+          behavior: 'smooth'
+        });
+      });
+    });
+    </script>
 </div>
   
   <div class="footer">

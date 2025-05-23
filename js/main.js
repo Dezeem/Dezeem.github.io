@@ -20,6 +20,9 @@ document.addEventListener('DOMContentLoaded', function() {
   // 添加这一行，确保图片点击功能被初始化
   enhancePostInteraction();
 
+  // 初始化电影风格动画
+  initMovieStyleAnimation();
+
   initJQueryDependentFeatures();
 });
 
@@ -575,6 +578,27 @@ function initSearch() {
   });
 }
 
+// 初始化电影风格动画
+function initMovieStyleAnimation() {
+  // 检查是否存在电影风格的个人介绍部分
+  const movieStyleSection = document.querySelector('.profile-section.movie-style');
+  if (!movieStyleSection) return;
+  
+  // 添加淡入动画
+  const elements = [
+    '.movie-quote',
+    '.profile-content .avatar',
+    '.profile-content .profile-info'
+  ];
+  
+  elements.forEach((selector, index) => {
+    const element = movieStyleSection.querySelector(selector);
+    if (element) {
+      element.style.opacity = '0';
+      element.style.animation = `fadeIn 1s ease forwards ${index * 0.5}s`;
+    }
+  });
+}
 
 function handleImageErrors() {
   document.querySelectorAll('img').forEach(img => {

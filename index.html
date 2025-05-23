@@ -96,63 +96,75 @@
 </header>
   
   <div class="home-container">
-  <!-- 个人介绍部分 -->
-  <section class="profile-section" style="background-image: url('/img/cloud.jpg');">
-    <div class="container">
-      <div class="profile-inner">
-        <!-- 添加角色徽章 -->
-        <div class="profile-badge">
-          <i class="fas fa-code"></i> Coder
+  <!-- 个人介绍部分 - 只在首页显示 -->
+  
+  <section class="profile-section movie-style">
+    <div class="container-fluid">
+      <div class="profile-inner movie-style">
+        <!-- 添加电影台词部分 -->
+        <div class="movie-quote">
+          <p class="quote-text">"人生就像一盒巧克力，你永远不知道下一颗是什么味道。"</p>
+          <p class="quote-source">— 《阿甘正传》</p>
         </div>
         
-        <div class="avatar">
-          <img src="/img/avatar.png" alt="Dezeem">
+        <!-- 个人信息部分 -->
+        <div class="profile-content">
+          <div class="avatar">
+            <img src="/img/avatar.png" alt="Dezeem">
+          </div>
+          
+          <div class="profile-info">
+            <h1 class="name">Dezeem</h1>
+            <p class="bio">旷野上的追风少年</p>
+            
+            <!-- 添加统计信息 -->
+            <div class="profile-stats">
+              <div class="stat-item">
+                <a href="/archives/">
+                  <div class="stat-count">26</div>
+                  <div class="stat-label">文章</div>
+                </a>
+              </div>
+              <div class="stat-item">
+                <a href="/categories/">
+                  <div class="stat-count">6</div>
+                  <div class="stat-label">分类</div>
+                </a>
+              </div>
+              <div class="stat-item">
+                <a href="/tags/">
+                  <div class="stat-count">3</div>
+                  <div class="stat-label">标签</div>
+                </a>
+              </div>
+            </div>
+            
+            <!-- 添加个人标签 -->
+            <div class="profile-tags">
+              <span class="profile-tag">摄影爱好者</span>
+              <span class="profile-tag">宇宙探索家</span>
+              <span class="profile-tag">自在独行侠</span>
+            </div>
+            
+            <div class="social-links">
+              
+                <a href="https://github.com/dezeem" target="_blank" class="social-link">
+                  <i class="fab fa-github"></i>
+                </a>
+              
+            </div>
+          </div>
         </div>
         
-        <div class="profile-info">
-          <h1 class="name">Dezeem</h1>
-          <p class="bio">旷野上的追风少年</p>
-          
-          <!-- 添加统计信息 -->
-          <div class="profile-stats">
-            <div class="stat-item">
-              <a href="/archives/">
-                <div class="stat-count">26</div>
-                <div class="stat-label">文章</div>
-              </a>
-            </div>
-            <div class="stat-item">
-              <a href="/categories/">
-                <div class="stat-count">6</div>
-                <div class="stat-label">分类</div>
-              </a>
-            </div>
-            <div class="stat-item">
-              <a href="/tags/">
-                <div class="stat-count">3</div>
-                <div class="stat-label">标签</div>
-              </a>
-            </div>
-          </div>
-          
-          <!-- 添加个人标签 -->
-          <div class="profile-tags">
-            <span class="profile-tag">摄影爱好者</span>
-            <span class="profile-tag">宇宙探索家</span>
-            <span class="profile-tag">自在独行侠</span>
-          </div>
-          
-          <div class="social-links">
-            
-              <a href="https://github.com/dezeem" target="_blank" class="social-link">
-                <i class="fab fa-github"></i>
-              </a>
-            
-          </div>
+        <!-- 添加电影风格装饰元素 -->
+        <div class="movie-decoration">
+          <div class="film-strip left"></div>
+          <div class="film-strip right"></div>
         </div>
       </div>
     </div>
   </section>
+  
   
   <!-- 文章列表部分 -->
   <section class="posts-section">

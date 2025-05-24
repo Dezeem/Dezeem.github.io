@@ -1,19 +1,19 @@
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
   // 初始化主题
   initTheme();
-  
+
   // 初始化移动导航
   initMobileNav();
-  
+
   // 初始化目录折叠
   initTOC();
-  
+
   // 初始化搜索功能
   initSearch();
-  
+
   // 初始化代码复制功能
   initCodeCopy();
-  
+
   // 处理图片加载错误
   handleImageErrors();
 
@@ -34,22 +34,22 @@ function initTheme() {
   } else if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
     document.documentElement.setAttribute('data-theme', 'dark');
   }
-  
+
   const themeToggle = document.getElementById('theme-toggle');
   const mobileThemeToggle = document.getElementById('mobile-theme-toggle');
-  
+
   function toggleTheme() {
     const currentTheme = document.documentElement.getAttribute('data-theme') || 'light';
     const newTheme = currentTheme === 'light' ? 'dark' : 'light';
-    
+
     document.documentElement.setAttribute('data-theme', newTheme);
     localStorage.setItem('theme', newTheme);
   }
-  
+
   if (themeToggle) {
     themeToggle.addEventListener('click', toggleTheme);
   }
-  
+
   if (mobileThemeToggle) {
     mobileThemeToggle.addEventListener('click', toggleTheme);
   }
@@ -67,12 +67,12 @@ function initLanguage() {
       btn.classList.toggle('active', btn.dataset.lang === lang);
     });
   };
-  
+
   setPageLanguage(getCurrentLang());
 }
 
 // DOM加载后初始化
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
   initLanguage();
   // initLanguageSwitch();
   // initMobileNav();
@@ -81,16 +81,16 @@ document.addEventListener('DOMContentLoaded', function() {
   // initSearch();
   initCodeCopy();
   handleImageErrors();
-  
+
   // 确保目录显示/隐藏功能被初始化
   initTOCShowHide();
 });
 
 function initTOC() {
   const toc = document.querySelector('.post-toc');
-  
+
   if (!toc) return;
-  
+
   // 初始化目录高亮
   setTimeout(() => {
     initTOCHighlight();
@@ -123,7 +123,7 @@ function initTOCHighlight() {
     let currentId = '';
     let minDiff = Infinity;
     const scrollY = window.scrollY + 120;
-  
+
     // 找到当前滚动到的标题
     headings.forEach(heading => {
       const headingTop = heading.getBoundingClientRect().top + window.scrollY;
@@ -132,18 +132,18 @@ function initTOCHighlight() {
         currentId = heading.id;
       }
     });
-  
+
     // 重置所有目录项状态
     tocLis.forEach(li => {
       li.classList.remove('active');
       li.classList.remove('toc-open');
       const level = parseInt(li.className.match(/toc-level-(\d)/)?.[1]) || 1;
-      
+
       // 默认折叠所有标题
       const subOl = li.querySelector('ol');
       if (subOl) subOl.style.display = 'none';
     });
-  
+
     // 展开当前链路的所有层级
     if (currentId) {
       const normalizedId = decodeHash(currentId);
@@ -151,7 +151,7 @@ function initTOCHighlight() {
         const linkHash = decodeHash(link.getAttribute('href').substring(1));
         return linkHash === normalizedId;
       });
-  
+
       if (activeLink) {
         let li = activeLink.parentElement;
         while (li && li.matches('li')) {
@@ -182,7 +182,7 @@ function initTOCShowHide() {
   let show = localStorage.getItem('tocShow') !== 'false';
   toc.classList.toggle('hide', !show);
 
-  btn.addEventListener('click', function() {
+  btn.addEventListener('click', function () {
     show = !show;
     toc.classList.toggle('hide', !show);
     localStorage.setItem('tocShow', show);
@@ -196,7 +196,7 @@ function initTOCScroll() {
   const $headers = $('.post-body h1, .post-body h2, .post-body h3, .post-body h4');
 
   // 平滑滚动
-  $tocLinks.on('click', function(e) {
+  $tocLinks.on('click', function (e) {
     e.preventDefault();
     // 获取 href 并解码
     const href = this.getAttribute('href');
@@ -215,7 +215,7 @@ function initTOCScroll() {
 
   // 滚动监听
   let scrollTimer;
-  $window.on('scroll', function() {
+  $window.on('scroll', function () {
     clearTimeout(scrollTimer);
     scrollTimer = setTimeout(updateTOCState, 50);
   });
@@ -223,13 +223,13 @@ function initTOCScroll() {
   function updateTOCState() {
     const scrollTop = $window.scrollTop();
     const windowHeight = $window.height();
-    
+
     // 高亮逻辑
     let currentActive;
-    $headers.each(function() {
+    $headers.each(function () {
       const $header = $(this);
       const headerTop = $header.offset().top;
-      
+
       if (headerTop - scrollTop < windowHeight * 0.3) {
         currentActive = $header;
       }
@@ -255,7 +255,7 @@ function initTOCScroll() {
 
 // 返回顶部按钮
 function initBackToTop() {
-  $('#back-to-top').on('click', function() {
+  $('#back-to-top').on('click', function () {
     $('html, body').animate({ scrollTop: 0 }, 500);
   });
 }
@@ -263,7 +263,7 @@ function initBackToTop() {
 // 在文件顶部添加 jQuery 检查
 function initJQueryDependentFeatures() {
   // 所有依赖 jQuery 的功能
-  $(document).ready(function() {
+  $(document).ready(function () {
     try {
       initTOCScroll();
       initBackToTop();
@@ -277,29 +277,29 @@ function initJQueryDependentFeatures() {
 function enhancePostInteraction() {
   // 仅在文章页面执行
   if (!document.querySelector('.post-container')) return;
-  
+
   document.querySelectorAll('.post-body h2, .post-body h3, .post-body h4').forEach(heading => {
     // 确保标题有ID以便于目录跳转
     if (!heading.id) {
       heading.id = heading.textContent.trim().toLowerCase().replace(/\s+/g, '-');
     }
   });
-  
+
   // 优化图片点击放大效果
   const imgOverlayClass = 'img-overlay';
-  
+
   // 确保不会重复添加事件监听器
   document.querySelectorAll('.post-body img').forEach(img => {
     // 检查是否已经添加了点击事件
     if (img.getAttribute('data-zoom-enabled')) return;
-    
+
     img.setAttribute('data-zoom-enabled', 'true');
     img.style.cursor = 'zoom-in';
-    
+
     img.addEventListener('click', () => {
       // 检查是否已存在遮罩层
       if (document.querySelector(`.${imgOverlayClass}`)) return;
-      
+
       // 创建遮罩和放大图片容器
       const overlay = document.createElement('div');
       overlay.className = imgOverlayClass;
@@ -314,7 +314,7 @@ function enhancePostInteraction() {
       overlay.style.alignItems = 'center';
       overlay.style.justifyContent = 'center';
       overlay.style.cursor = 'zoom-out';
-      
+
       const imgClone = document.createElement('img');
       imgClone.src = img.src;
       imgClone.style.maxWidth = '90%';
@@ -324,23 +324,23 @@ function enhancePostInteraction() {
       imgClone.style.transform = 'scale(0.9)';
       imgClone.style.opacity = '0';
       imgClone.style.transition = 'all 0.3s ease';
-      
+
       overlay.appendChild(imgClone);
       document.body.appendChild(overlay);
-      
+
       // 触发动画
       setTimeout(() => {
         imgClone.style.transform = 'scale(1)';
         imgClone.style.opacity = '1';
       }, 50);
-      
+
       // 点击关闭
       overlay.addEventListener('click', () => {
         imgClone.style.transform = 'scale(0.9)';
         imgClone.style.opacity = '0';
         setTimeout(() => overlay.remove(), 300);
       });
-      
+
       // ESC键关闭
       const escHandler = (e) => {
         if (e.key === 'Escape') {
@@ -352,18 +352,18 @@ function enhancePostInteraction() {
           }, 300);
         }
       };
-      
+
       document.addEventListener('keydown', escHandler);
     });
   });
-  
+
   // 简化代码块行号显示，减少DOM操作
   document.querySelectorAll('pre code').forEach(block => {
     if (block.parentNode.querySelector('.line-numbers-rows')) return;
-    
+
     const lines = block.innerHTML.split('\n').length;
     if (lines <= 1) return; // 单行代码不添加行号
-    
+
     const lineNumbers = document.createElement('div');
     lineNumbers.className = 'line-numbers-rows';
     lineNumbers.style.position = 'absolute';
@@ -376,7 +376,7 @@ function enhancePostInteraction() {
     lineNumbers.style.color = 'var(--color-text-light)';
     lineNumbers.style.opacity = '0.5';
     lineNumbers.style.userSelect = 'none';
-    
+
     // 使用文档片段减少重排
     const fragment = document.createDocumentFragment();
     for (let i = 0; i < lines; i++) {
@@ -384,10 +384,91 @@ function enhancePostInteraction() {
       line.textContent = i + 1;
       fragment.appendChild(line);
     }
-    
+
     lineNumbers.appendChild(fragment);
     block.parentNode.style.position = 'relative';
     block.parentNode.insertBefore(lineNumbers, block);
+  });
+
+  // 添加触摸友好的图片查看
+  document.querySelectorAll('.post-body img').forEach(img => {
+    // ... 现有代码 ...
+    
+    // 添加双指缩放支持
+    let initialDistance = 0;
+    let currentScale = 1;
+    
+    img.addEventListener('touchstart', function(e) {
+      if (e.touches.length === 2) {
+        initialDistance = Math.hypot(
+          e.touches[0].pageX - e.touches[1].pageX,
+          e.touches[0].pageY - e.touches[1].pageY
+        );
+      }
+    });
+    
+    img.addEventListener('touchmove', function(e) {
+      if (e.touches.length === 2) {
+        e.preventDefault(); // 防止页面滚动
+        
+        const currentDistance = Math.hypot(
+          e.touches[0].pageX - e.touches[1].pageX,
+          e.touches[0].pageY - e.touches[1].pageY
+        );
+        
+        const newScale = (currentDistance / initialDistance) * currentScale;
+        
+        if (newScale >= 0.5 && newScale <= 3) {
+          img.style.transform = `scale(${newScale})`;
+        }
+      }
+    });
+    
+    img.addEventListener('touchend', function() {
+      if (img.style.transform) {
+        currentScale = parseFloat(img.style.transform.replace('scale(', '').replace(')', ''));
+        
+        // 如果缩放比例接近1，重置为原始大小
+        if (currentScale < 1.1 && currentScale > 0.9) {
+          img.style.transform = '';
+          currentScale = 1;
+        }
+      }
+    });
+  });
+  
+  // 优化代码块在移动端的显示
+  document.querySelectorAll('pre').forEach(pre => {
+    pre.style.overflowX = 'auto';
+    pre.style.WebkitOverflowScrolling = 'touch'; // 增强iOS滚动体验
+    
+    // 添加左右滑动提示
+    if (!pre.querySelector('.scroll-hint') && pre.scrollWidth > pre.clientWidth) {
+      const hint = document.createElement('div');
+      hint.className = 'scroll-hint';
+      hint.innerHTML = '<i class="fas fa-arrows-alt-h"></i>';
+      hint.style.position = 'absolute';
+      hint.style.right = '10px';
+      hint.style.top = '10px';
+      hint.style.background = 'rgba(0,0,0,0.3)';
+      hint.style.color = 'white';
+      hint.style.padding = '4px 8px';
+      hint.style.borderRadius = '4px';
+      hint.style.fontSize = '12px';
+      hint.style.opacity = '0.7';
+      hint.style.transition = 'opacity 0.3s';
+      
+      pre.style.position = 'relative';
+      pre.appendChild(hint);
+      
+      // 滚动时隐藏提示
+      pre.addEventListener('scroll', function() {
+        hint.style.opacity = '0';
+        setTimeout(() => {
+          hint.remove();
+        }, 300);
+      });
+    }
   });
 }
 
@@ -412,7 +493,7 @@ function handleScroll() {
   rafId = requestAnimationFrame(() => {
     const scrollTop = window.pageYOffset || document.documentElement.scrollTop
     const threshold = window.innerHeight * 0.2
-    
+
     let activeHeading = null
     headingsCache.some(({ el, top }) => {
       if (scrollTop >= top - threshold) {
@@ -457,33 +538,60 @@ function initCodeCopy() {
 }
 
 
+// 在initMobileNav函数中添加遮罩层处理
 function initMobileNav() {
-  const mobileNav = document.querySelector('.mobile-nav');
   const mobileNavToggle = document.querySelector('.mobile-nav-toggle');
+  const mobileNav = document.querySelector('.mobile-nav');
   const mobileNavClose = document.querySelector('.mobile-nav-close');
-  
-  if (!mobileNav || !mobileNavToggle || !mobileNavClose) return;
 
-  // Toggle mobile nav
-  mobileNavToggle.addEventListener('click', () => {
-    mobileNav.classList.add('active');
-  });
+  // 创建遮罩层
+  let overlay = document.querySelector('.mobile-nav-overlay');
+  if (!overlay) {
+    overlay = document.createElement('div');
+    overlay.className = 'mobile-nav-overlay';
+    document.body.appendChild(overlay);
+  }
 
-  // Close mobile nav
-  mobileNavClose.addEventListener('click', () => {
-    mobileNav.classList.remove('active');
-  });
+  if (mobileNavToggle) {
+    mobileNavToggle.addEventListener('click', function () {
+      mobileNav.classList.add('active');
+      overlay.classList.add('active');
+      document.body.style.overflow = 'hidden'; // 防止背景滚动
+    });
+  }
 
-  // Close when clicking outside
-  document.addEventListener('click', (e) => {
-    if (!mobileNav.contains(e.target) && 
-        e.target !== mobileNavToggle && 
-        !mobileNavToggle.contains(e.target)) {
+  if (mobileNavClose) {
+    mobileNavClose.addEventListener('click', function () {
       mobileNav.classList.remove('active');
-    }
-  });
-}
+      overlay.classList.remove('active');
+      document.body.style.overflow = ''; // 恢复滚动
+    });
+  }
 
+  // 点击遮罩层关闭导航
+  overlay.addEventListener('click', function () {
+    mobileNav.classList.remove('active');
+    overlay.classList.remove('active');
+    document.body.style.overflow = ''; // 恢复滚动
+  });
+
+  // 添加触摸滑动关闭导航
+  let touchStartX = 0;
+  let touchEndX = 0;
+
+  mobileNav.addEventListener('touchstart', function (e) {
+    touchStartX = e.changedTouches[0].screenX;
+  }, false);
+
+  mobileNav.addEventListener('touchend', function (e) {
+    touchEndX = e.changedTouches[0].screenX;
+    if (touchStartX - touchEndX < -50) { // 向右滑动
+      mobileNav.classList.remove('active');
+      overlay.classList.remove('active');
+      document.body.style.overflow = ''; // 恢复滚动
+    }
+  }, false);
+}
 
 function initSearch() {
   const searchBtn = document.querySelector('.search-btn');
@@ -492,7 +600,7 @@ function initSearch() {
   const searchInput = document.querySelector('.search-input');
   const searchResults = document.createElement('div');
   searchResults.className = 'search-results';
-  
+
   if (!searchBtn || !searchContainer || !searchClose || !searchInput) return;
 
   // 添加搜索结果容器
@@ -508,8 +616,8 @@ function initSearch() {
     // 使用Hexo的搜索API
     if (window.searchJson) {
       const results = window.searchJson.filter(item => {
-        return item.title.toLowerCase().includes(query.toLowerCase()) || 
-               item.content.toLowerCase().includes(query.toLowerCase());
+        return item.title.toLowerCase().includes(query.toLowerCase()) ||
+          item.content.toLowerCase().includes(query.toLowerCase());
       });
 
       displayResults(results);
@@ -525,7 +633,7 @@ function initSearch() {
             url: item.querySelector('url').textContent,
             content: item.querySelector('content').textContent
           }));
-          displayResults(results.filter(item => 
+          displayResults(results.filter(item =>
             item.title.toLowerCase().includes(query.toLowerCase()) ||
             item.content.toLowerCase().includes(query.toLowerCase())
           ));
@@ -583,14 +691,14 @@ function initMovieStyleAnimation() {
   // 检查是否存在电影风格的个人介绍部分
   const movieStyleSection = document.querySelector('.profile-section.movie-style');
   if (!movieStyleSection) return;
-  
+
   // 添加淡入动画
   const elements = [
     '.movie-quote',
     '.profile-content .avatar',
     '.profile-content .profile-info'
   ];
-  
+
   elements.forEach((selector, index) => {
     const element = movieStyleSection.querySelector(selector);
     if (element) {
@@ -603,14 +711,14 @@ function initMovieStyleAnimation() {
 function handleImageErrors() {
   document.querySelectorAll('img').forEach(img => {
     // Add error handler for broken images
-    img.addEventListener('error', function() {
+    img.addEventListener('error', function () {
       // Replace broken image with placeholder or hide it
       this.style.display = 'none';
-      
+
       // Alternatively, you could set a placeholder image:
       // this.src = '/path/to/placeholder-image.png';
       // this.alt = 'Image failed to load';
-      
+
       // Or show an error message
       const errorSpan = document.createElement('span');
       errorSpan.className = 'image-error';

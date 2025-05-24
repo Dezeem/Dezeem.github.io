@@ -2,7 +2,10 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+  <meta name="format-detection" content="telephone=no">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
   <title>IP | Dezeem&#39;log</title>
   
     <link rel="icon" href="/img/favicon.png">
@@ -47,8 +50,6 @@
             <li><a href="/categories">Categories</a></li>
           
             <li><a href="/tags">Tags</a></li>
-          
-            <li><a href="/essays">Essays</a></li>
           
             <li><a href="/about">About</a></li>
           
@@ -95,12 +96,12 @@
   </div>
 </header>
   
-  <div class="post-container">
+  <div class="post-container ">
   <div class="container">
-    <div class="post-inner">
+    <div class="post-inner ">
       <!-- 文章主体 -->
       <div class="post-main">
-        <article class="post-content">
+        <article class="post-content ">
           <header class="post-header">
             <h1 class="post-title">IP</h1>
             <div class="post-meta">
@@ -117,7 +118,7 @@
             </div>
           </header>
           
-          <div class="post-body">
+          <div class="post-body ">
             <h1 id="实验六"><a class="markdownIt-Anchor" href="#实验六"></a> 实验六</h1>
 <p>​		IP 是整个 TCP/IP 协议族的核心，也是构成互联网的基础。IP 位于 TCP/IP 模型的网络层(相当于OSI模型的网络层)，对上可载送传输层各种协议的信息，例如 TCP、UDP 等；对下可将 IP 信息包放到链路层，通过以太网、令牌环网络等各种技术来传送。为了能适应异构网络，IP 强调适应性、简洁性和可操作性，并在可靠性做了一定的牺牲。IP 不保证分组的交付时限和可靠性，所传送分组有可能出现丢失、重复、延迟或乱序等问题。——百度百科</p>
 <hr>
@@ -206,7 +207,7 @@
         
       </div>
       
-      <!-- 文章目录 -->
+      <!-- 文章目录 - 对歌词分类不显示 -->
       
         <!-- 确保目录生成参数正确 -->
         <div class="post-toc-wrapper">
@@ -218,7 +219,6 @@
         </div>
       
     </div>
-    <!-- 在文件末尾添加，在最后的 </div> 之前 -->
     
     <!-- 添加返回顶部按钮 -->
     <div class="back-to-top-post">
@@ -247,6 +247,7 @@
       });
     });
     </script>
+  </div>
 </div>
   
   <div class="footer">
@@ -292,8 +293,6 @@
           <li><a href="/categories">categories</a></li>
         
           <li><a href="/tags">tags</a></li>
-        
-          <li><a href="/essays">essays</a></li>
         
           <li><a href="/about">about</a></li>
         

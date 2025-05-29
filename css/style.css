@@ -1577,11 +1577,10 @@ h6 {
 }
 .post-body ul,
 .post-body ol {
-  margin: 1.5em 0 1.5em 2.5em;
+  margin: 0.2em 0 1.5em 2.5em;
 }
 .post-body ul li,
 .post-body ol li {
-  margin-bottom: 0.8em;
   padding-left: 0.5em;
   position: relative;
 }

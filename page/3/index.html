@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-CN">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
@@ -32,6 +32,8 @@
   <!-- 添加 jQuery 库 -->
   <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js"></script>
   
+  <!-- 在现有JS引用之后添加 -->
+  
 <meta name="generator" content="Hexo 6.3.0"><link rel="alternate" href="/atom.xml" title="Dezeem'log" type="application/atom+xml">
 </head>
 <body>
@@ -45,13 +47,13 @@
       <nav class="main-nav">
         <ul>
           
-            <li><a href="/archives">Archives</a></li>
+            <li><a href="/archives">归档</a></li>
           
-            <li><a href="/categories">Categories</a></li>
+            <li><a href="/categories">分类</a></li>
           
-            <li><a href="/tags">Tags</a></li>
+            <li><a href="/tags">标签</a></li>
           
-            <li><a href="/about">About</a></li>
+            <li><a href="/about">关于</a></li>
           
         </ul>
       </nav>
@@ -59,9 +61,9 @@
       <div class="header-right">
         <!-- 语言切换 -->
         <!-- <div class="language-switch">
-          <a href="#" class="lang-btn " data-lang="zh-CN">中文</a>
+          <a href="#" class="lang-btn active" data-lang="zh-CN">中文</a>
           <span class="separator">|</span>
-          <a href="#" class="lang-btn active" data-lang="en">EN</a>
+          <a href="#" class="lang-btn " data-lang="en">EN</a>
         </div> -->
         
         <!-- 暗黑模式切换 -->
@@ -84,7 +86,7 @@
   <div class="search-container">
     <div class="container">
       <form class="search-form">
-        <input type="text" class="search-input" placeholder="Search">
+        <input type="text" class="search-input" placeholder="搜索">
         <button type="submit" class="search-submit">
           <i class="fas fa-search"></i>
         </button>
@@ -107,6 +109,32 @@
         <!-- 添加文章列表标题 -->
         <h2 class="posts-section-title">最新文章</h2>
         
+        
+          <article class="post-item">
+            <div class="post-date">
+              <time datetime="2021-10-27T14:48:00.000Z">2021-10-27</time>
+            </div>
+            <h2 class="post-title">
+              <a href="/2021/10/27/2021-10-21-7/">NAT</a>
+            </h2>
+            
+            <!-- 文章预览 -->
+            <div class="post-excerpt">
+              
+                 实验七
+​		这个Lab由于我们不好捕捉包 所以我们需要下载别人给的捕获包http://gaia.cs.umass.edu/wireshark-labs/wireshark-traces.zip
+​...
+              
+            </div>
+            
+            <div class="post-tags">
+              
+                
+                  <a href="/tags/%E8%AE%A1%E7%BD%91/" class="post-tag">计网</a>
+                
+              
+            </div>
+          </article>
         
           <article class="post-item">
             <div class="post-date">
@@ -277,7 +305,7 @@ Wireshark是由一个国际网络专家团队开发的网络协议分析工具
       
         <div class="pagination">
           
-            <a href="/page/2/" class="prev">&laquo; Previous</a>
+            <a href="/page/2/" class="prev">&laquo; 上一页</a>
           
           
         </div>
@@ -337,8 +365,8 @@ Wireshark是由一个国际网络专家团队开发的网络协议分析工具
     
     <div class="mobile-nav-footer">
       <div class="language-switch">
-        <a href="#" class="lang-btn " data-lang="zh-CN">中文</a>
-        <a href="#" class="lang-btn active" data-lang="en">EN</a>
+        <a href="#" class="lang-btn active" data-lang="zh-CN">中文</a>
+        <a href="#" class="lang-btn " data-lang="en">EN</a>
       </div>
       
       <div class="theme-switch">

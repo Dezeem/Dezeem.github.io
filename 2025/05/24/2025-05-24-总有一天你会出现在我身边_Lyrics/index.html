@@ -6,7 +6,7 @@
   <meta name="format-detection" content="telephone=no">
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
-  <title>数据链路层 | Dezeem&#39;log</title>
+  <title>总有一天你会出现在我身边 | Dezeem&#39;log</title>
   
     <link rel="icon" href="/img/favicon.png">
   
@@ -33,6 +33,10 @@
   <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js"></script>
   
   <!-- 在现有JS引用之后添加 -->
+  
+    
+<script src="/js/lyrics.js"></script>
+
   
 <meta name="generator" content="Hexo 6.3.0"><link rel="alternate" href="/atom.xml" title="Dezeem'log" type="application/atom+xml">
 </head>
@@ -98,156 +102,69 @@
   </div>
 </header>
   
-  <div class="post-container ">
+  <div class="post-container lyrics-post-container">
   <div class="container">
-    <div class="post-inner ">
+    <div class="post-inner lyrics-post-inner">
       <!-- 文章主体 -->
       <div class="post-main">
-        <article class="post-content ">
+        <article class="post-content lyrics-content">
           <header class="post-header">
-            <h1 class="post-title">数据链路层</h1>
+            <h1 class="post-title">总有一天你会出现在我身边</h1>
             <div class="post-meta">
-              <time class="post-date" datetime="2022-07-29T10:25:00.000Z">
-                2022-07-29
+              <time class="post-date" datetime="2025-05-24T10:00:00.000Z">
+                2025-05-24
               </time>
               
                 <span class="post-categories">
                   
-                    <a href="/categories/%E8%AE%A1%E7%BD%91/" class="post-category">计网</a>
+                    <a href="/categories/%E6%AD%8C%E8%AF%8D/" class="post-category">歌词</a>
                   
                 </span>
               
             </div>
           </header>
           
-          <div class="post-body ">
-            <h1 id="概述"><a class="markdownIt-Anchor" href="#概述"></a> 概述</h1>
-<p><strong>相关术语：</strong></p>
-<ul>
-<li>主机和路由器：结点（nodes）</li>
-<li>连接相邻结点的通信信道：链路（links）
-<ul>
-<li>有线链路（wired links）</li>
-<li>无线链路（wireless links）</li>
-<li>局域网（LANs）</li>
-</ul>
-</li>
-<li>链路层（第二层）数据分组：帧（frame），封装网络层数据报</li>
-</ul>
-<p><strong>数据链路层</strong>负责通过一条链路从一个节点向另一个物理链路直接相连的相邻结点传送数据报</p>
-<hr>
-<h2 id="链路层服务"><a class="markdownIt-Anchor" href="#链路层服务"></a> 链路层服务</h2>
-<ul>
-<li>
-<p>组帧（framing）</p>
-<ul>
-<li>封装数据报构成数据帧，加首部和尾部</li>
-<li>帧同步</li>
-</ul>
-</li>
-<li>
-<p>链路接入（link access）</p>
-<ul>
-<li>如果是共享介质们需要解决信道接入（channel access）</li>
-<li>帧首部中的“MAC”地址，用于表示帧的源和目的
-<ul>
-<li><em>不同于IP地址</em></li>
-</ul>
-</li>
-</ul>
-</li>
-<li>
-<p>相邻结点间的可靠交付</p>
-<ul>
-<li>在低误码率的有线链路上很少采用（如：光纤）</li>
-<li>无线链路，需要可靠交付</li>
-</ul>
-</li>
-<li>
-<p>流量控制</p>
-<ul>
-<li>协调（pacing）相邻的发送结点和接收</li>
-</ul>
-</li>
-<li>
-<p>差错检测</p>
-<ul>
-<li>信号衰减和噪声会引起差错</li>
-<li>接收端检测到差错：
-<ul>
-<li>通知发送端重传或者直接丢弃帧</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>
-<p>差错纠正</p>
-<ul>
-<li>接收端直接纠正比特差错</li>
-</ul>
-</li>
-<li>
-<p>全双工和半双工通信控制</p>
-<ul>
-<li>全双工：链路两端结点<em>同时</em>双向传输</li>
-<li>半双工：链路两端结点<em>交替</em>双向传输</li>
-</ul>
-</li>
-</ul>
-<h1 id="差错编码"><a class="markdownIt-Anchor" href="#差错编码"></a> 差错编码</h1>
-<h1 id="多路访问协议"><a class="markdownIt-Anchor" href="#多路访问协议"></a> 多路访问协议</h1>
-<h2 id="mac"><a class="markdownIt-Anchor" href="#mac"></a> MAC</h2>
-<p><strong>两个或以上结点同时传输时→冲突：结点同时接收两个或多个信号（接受失败）</strong></p>
-<p><strong>MAC（mulitple access control protocol）多路访问控制协议</strong></p>
-<ul>
-<li>
-<p>点对点链路</p>
-<ul>
-<li>拨号接入PPP</li>
-<li>以太网交换机与主机间的点对点链路</li>
-</ul>
-</li>
-<li>
-<p>广播链路（共享介质）</p>
-<ul>
-<li>早期的总线以太网</li>
-<li>HFC的上行链路</li>
-<li>802.11无线局域网</li>
-</ul>
-</li>
-<li>
-<p><strong>MAC分类</strong></p>
-<ul>
-<li>
-<p>信道划分（channel partitioning）MAC协议</p>
-<ul>
-<li>多路复用技术</li>
-<li>TDMA、FDMA、CDMA、WDMA等</li>
-</ul>
-</li>
-<li>
-<p>随机访问（random access）MAC协议</p>
-</li>
-<li>
-<p>信道不划分，允许冲突</p>
-<ul>
-<li>采用冲突“恢复”机制</li>
-</ul>
-</li>
-<li>
-<p>轮转MAC协议</p>
-</li>
-<li>
-<p>结点轮流使用信道</p>
-</li>
-</ul>
-</li>
-</ul>
+          <div class="post-body lyrics-body">
+            <h1 id="总有一天你会出现在我身边"><a class="markdownIt-Anchor" href="#总有一天你会出现在我身边"></a> 总有一天你会出现在我身边</h1>
+<p>从前我的另一边<br>
+通往凌晨的街<br>
+空无一人的世界<br>
+行影匆匆这些年<br>
+期望从未破灭<br>
+默不作响的时间<br>
+最好的人注定会到身边<br>
+孤注一掷的执念<br>
+我终将看到你身影逆光 出现<br>
+等这一切 都被你了解 十指错落相牵<br>
+跨越时间 再没有分别 携手走过明天<br>
+雨后路人化鱼鲔<br>
+欢愉游跃摇曳<br>
+灿烂一抱的世界<br>
+光芒捧起你的脸<br>
+我飞在云层间<br>
+狂奔向你不停歇<br>
+你说最好的人会到身边<br>
+此刻我也这样想<br>
+你终将看到我最美模样 出现<br>
+等这一切 都被你了解 十指错落相牵<br>
+跨越时间 再没有分别 携手走过明天<br>
+总会有些 幸运会出现 我等待这一天<br>
+总有艰险 哪怕是谎言 我等待你出现<br>
+等这一切 都被你了解 十指错落相牵<br>
+跨越时间 再没有分别 携手走过明天<br>
+等这一切 都被你了解 十指错落相牵<br>
+跨越时间 总会有一天 你出现我身边</p>
 
           </div>
           
           <footer class="post-footer">
             <div class="post-tags">
+              
+                
+                  <a href="/tags/%E6%A3%B1%E9%95%9C%E4%B9%90%E9%98%9F/" class="post-tag">
+                    棱镜乐队
+                  </a>
+                
               
             </div>
           </footer>
@@ -267,15 +184,6 @@
       </div>
       
       <!-- 文章目录 - 对歌词分类不显示 -->
-      
-        <!-- 确保目录生成参数正确 -->
-        <div class="post-toc-wrapper">
-          <div class="post-toc">
-            <div class="toc-content">
-              <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%A6%82%E8%BF%B0"><span class="toc-number">1.</span> <span class="toc-text"> 概述</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%93%BE%E8%B7%AF%E5%B1%82%E6%9C%8D%E5%8A%A1"><span class="toc-number">1.1.</span> <span class="toc-text"> 链路层服务</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%B7%AE%E9%94%99%E7%BC%96%E7%A0%81"><span class="toc-number">2.</span> <span class="toc-text"> 差错编码</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%A4%9A%E8%B7%AF%E8%AE%BF%E9%97%AE%E5%8D%8F%E8%AE%AE"><span class="toc-number">3.</span> <span class="toc-text"> 多路访问协议</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#mac"><span class="toc-number">3.1.</span> <span class="toc-text"> MAC</span></a></li></ol></li></ol>
-            </div>
-          </div>
-        </div>
       
     </div>
     

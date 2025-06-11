@@ -11,6 +11,15 @@ document.addEventListener('DOMContentLoaded', function () {
   // 初始化搜索功能
   initSearch();
 
+  initLanguage();
+
+  initCodeCopy();
+
+  handleImageErrors();
+
+  // 确保目录显示/隐藏功能被初始化
+  initTOCShowHide();
+
   // 初始化代码复制功能
   initCodeCopy();
 
@@ -56,35 +65,17 @@ function initTheme() {
 }
 
 function initLanguage() {
-  // 从 HTML 标签获取语言配置
-  const getCurrentLang = () => {
-    return document.documentElement.lang || 'en';
-  };
-
-  // 设置按钮高亮
-  const setPageLanguage = (lang) => {
-    document.querySelectorAll('.lang-btn').forEach(btn => {
-      btn.classList.toggle('active', btn.dataset.lang === lang);
-    });
-  };
-
-  setPageLanguage(getCurrentLang());
+  // 从localStorage获取保存的语言，默认为中文
+  const savedLang = localStorage.getItem('blog_language') || 'zh-CN';
+  
+  // 设置HTML标签的lang属性
+  document.documentElement.setAttribute('lang', savedLang);
+  
+  // 更新语言按钮的激活状态
+  document.querySelectorAll('.lang-btn').forEach(btn => {
+    btn.classList.toggle('active', btn.dataset.lang === savedLang);
+  });
 }
-
-// DOM加载后初始化
-document.addEventListener('DOMContentLoaded', function () {
-  initLanguage();
-  // initLanguageSwitch();
-  // initMobileNav();
-  initTOC();
-  // initThemeToggle();
-  // initSearch();
-  initCodeCopy();
-  handleImageErrors();
-
-  // 确保目录显示/隐藏功能被初始化
-  initTOCShowHide();
-});
 
 function initTOC() {
   const toc = document.querySelector('.post-toc');
@@ -620,7 +611,7 @@ function initSearch() {
           item.content.toLowerCase().includes(query.toLowerCase());
       });
 
-      displayResults(results);
+      displayResults(results, query);
     } else {
       // 如果没有预加载的搜索数据，使用fetch获取
       fetch('/search.xml')
@@ -636,24 +627,72 @@ function initSearch() {
           displayResults(results.filter(item =>
             item.title.toLowerCase().includes(query.toLowerCase()) ||
             item.content.toLowerCase().includes(query.toLowerCase())
-          ));
+          ), query);
         });
     }
   }
 
+  // 高亮搜索词函数
+  function highlightText(text, query) {
+    if (!query.trim()) return text;
+    
+    const queryTerms = query.trim().toLowerCase().split(/\s+/);
+    let highlightedText = text;
+    
+    queryTerms.forEach(term => {
+      if (term.length < 2) return; // 忽略过短的词
+      
+      const regex = new RegExp(`(${escapeRegExp(term)})`, 'gi');
+      highlightedText = highlightedText.replace(regex, '<span class="highlight-text">$1</span>');
+    });
+    
+    return highlightedText;
+  }
+  
+  // 转义正则表达式特殊字符
+  function escapeRegExp(string) {
+    return string.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+  }
+
   // 显示搜索结果
-  function displayResults(results) {
+  function displayResults(results, query) {
     if (results.length === 0) {
       searchResults.innerHTML = '<div class="no-results">没有找到匹配的结果</div>';
       return;
     }
 
-    searchResults.innerHTML = results.map(result => `
-      <div class="search-result-item">
-        <a href="${result.url}" class="search-result-title">${result.title}</a>
-        <div class="search-result-excerpt">${result.content.substring(0, 150)}...</div>
-      </div>
-    `).join('');
+    searchResults.innerHTML = results.map(result => {
+      // 提取匹配上下文
+      let excerpt = result.content;
+      const queryLower = query.toLowerCase();
+      const contentLower = result.content.toLowerCase();
+      const index = contentLower.indexOf(queryLower);
+      
+      if (index > -1) {
+        // 从匹配位置前后各取一些文本
+        const start = Math.max(0, index - 60);
+        const end = Math.min(result.content.length, index + query.length + 60);
+        excerpt = result.content.substring(start, end);
+        
+        // 如果不是从头开始，添加省略号
+        if (start > 0) excerpt = '...' + excerpt;
+        if (end < result.content.length) excerpt += '...';
+      } else {
+        // 如果没有直接匹配，取前150个字符
+        excerpt = result.content.substring(0, 150) + '...';
+      }
+      
+      // 高亮标题和摘要中的搜索词
+      const highlightedTitle = highlightText(result.title, query);
+      const highlightedExcerpt = highlightText(excerpt, query);
+      
+      return `
+        <div class="search-result-item">
+          <a href="${result.url}" class="search-result-title">${highlightedTitle}</a>
+          <div class="search-result-excerpt">${highlightedExcerpt}</div>
+        </div>
+      `;
+    }).join('');
   }
 
   // 输入防抖

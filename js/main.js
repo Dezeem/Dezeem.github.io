@@ -308,8 +308,8 @@ function enhancePostInteraction() {
 
       const imgClone = document.createElement('img');
       imgClone.src = img.src;
-      imgClone.style.maxWidth = '90%';
-      imgClone.style.maxHeight = '90%';
+      imgClone.style.minWidth = 'min(50%, 95vw)';
+      imgClone.style.minHeight = 'min(50%, 95vh)';
       imgClone.style.objectFit = 'contain';
       imgClone.style.boxShadow = '0 5px 30px rgba(0, 0, 0, 0.3)';
       imgClone.style.transform = 'scale(0.9)';
@@ -741,8 +741,8 @@ function initMovieStyleAnimation() {
   elements.forEach((selector, index) => {
     const element = movieStyleSection.querySelector(selector);
     if (element) {
-      element.style.opacity = '0';
-      element.style.animation = `fadeIn 1s ease forwards ${index * 0.5}s`;
+      element.style.opacity = '1';
+      // element.style.animation = `fadeIn 1s ease forwards ${index * 0.5}s`;
     }
   });
 }

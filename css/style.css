@@ -2724,12 +2724,13 @@ code:not([class]) {
   line-height: 50px;
   font-size: 24px;
   box-shadow: 0 2px 10px rgba(0,0,0,0.2);
-  z-index: 99;
+  z-index: 1000;
   cursor: pointer;
   transition: all 0.3s ease;
   touch-action: manipulation;
   min-width: 44px;
   min-height: 44px;
+  pointer-events: auto;
 }
 @media (max-width: 768px) {
   .mobile-nav-toggle {

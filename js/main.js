@@ -464,6 +464,7 @@ function enhancePostInteraction() {
 // 添加性能优化逻辑
 let rafId = null
 const headingsCache = []
+const $headerHeight = 70; // 默认 header 高度，可根据实际情况调整
 
 function cacheHeadings() {
   headingsCache.length = 0
@@ -474,6 +475,23 @@ function cacheHeadings() {
       top: rect.top + window.pageYOffset - $headerHeight
     })
   })
+}
+
+// 更新激活状态的函数
+function updateActiveState(activeHeading) {
+  // 移除所有标题的激活状态
+  document.querySelectorAll('.post-toc .toc-content a').forEach(link => {
+    link.classList.remove('active')
+  })
+  
+  if (activeHeading) {
+    // 激活对应的目录链接
+    const activeId = '#' + activeHeading.id
+    const activeLink = document.querySelector(`.post-toc .toc-content a[href="${activeId}"]`)
+    if (activeLink) {
+      activeLink.classList.add('active')
+    }
+  }
 }
 
 // 优化后的滚动处理
@@ -500,6 +518,13 @@ function handleScroll() {
 // 边界条件处理
 function shouldEnableScroll() {
   return document.body.scrollHeight > window.innerHeight * 2
+}
+
+// 初始化性能优化
+function initPerformanceOptimizations() {
+  cacheHeadings()
+  window.addEventListener('scroll', handleScroll, { passive: true })
+  window.addEventListener('resize', cacheHeadings)
 }
 
 // 在 initCodeCopy 函数中添加以下内容
@@ -529,9 +554,16 @@ function initCodeCopy() {
 
 // 在initMobileNav函数中添加遮罩层处理
 function initMobileNav() {
+  console.log('Initializing mobile nav...');
   const mobileNavToggle = document.querySelector('.mobile-nav-toggle');
   const mobileNav = document.querySelector('.mobile-nav');
   const mobileNavClose = document.querySelector('.mobile-nav-close');
+
+  console.log('Elements found:', {
+    mobileNavToggle: !!mobileNavToggle,
+    mobileNav: !!mobileNav,
+    mobileNavClose: !!mobileNavClose
+  });
 
   // 创建遮罩层
   let overlay = document.querySelector('.mobile-nav-overlay');
@@ -539,47 +571,60 @@ function initMobileNav() {
     overlay = document.createElement('div');
     overlay.className = 'mobile-nav-overlay';
     document.body.appendChild(overlay);
+    console.log('Created mobile nav overlay');
   }
 
   if (mobileNavToggle) {
     mobileNavToggle.addEventListener('click', function () {
+      console.log('Mobile nav toggle clicked');
       mobileNav.classList.add('active');
       overlay.classList.add('active');
       document.body.style.overflow = 'hidden'; // 防止背景滚动
     });
+    console.log('Added click listener to mobile nav toggle');
   }
 
   if (mobileNavClose) {
     mobileNavClose.addEventListener('click', function () {
+      console.log('Mobile nav close clicked');
       mobileNav.classList.remove('active');
       overlay.classList.remove('active');
       document.body.style.overflow = ''; // 恢复滚动
     });
+    console.log('Added click listener to mobile nav close');
   }
 
   // 点击遮罩层关闭导航
   overlay.addEventListener('click', function () {
+    console.log('Mobile nav overlay clicked');
     mobileNav.classList.remove('active');
     overlay.classList.remove('active');
     document.body.style.overflow = ''; // 恢复滚动
   });
+  console.log('Added click listener to mobile nav overlay');
 
   // 添加触摸滑动关闭导航
   let touchStartX = 0;
   let touchEndX = 0;
 
-  mobileNav.addEventListener('touchstart', function (e) {
-    touchStartX = e.changedTouches[0].screenX;
-  }, false);
+  if (mobileNav) {
+    mobileNav.addEventListener('touchstart', function (e) {
+      touchStartX = e.changedTouches[0].screenX;
+    }, false);
 
-  mobileNav.addEventListener('touchend', function (e) {
-    touchEndX = e.changedTouches[0].screenX;
-    if (touchStartX - touchEndX < -50) { // 向右滑动
-      mobileNav.classList.remove('active');
-      overlay.classList.remove('active');
-      document.body.style.overflow = ''; // 恢复滚动
-    }
-  }, false);
+    mobileNav.addEventListener('touchend', function (e) {
+      touchEndX = e.changedTouches[0].screenX;
+      if (touchStartX - touchEndX < -50) { // 向右滑动
+        console.log('Mobile nav swipe right detected');
+        mobileNav.classList.remove('active');
+        overlay.classList.remove('active');
+        document.body.style.overflow = ''; // 恢复滚动
+      }
+    }, false);
+    console.log('Added touch listeners to mobile nav');
+  }
+  
+  console.log('Mobile nav initialization complete');
 }
 
 function initSearch() {

@@ -13,8 +13,6 @@ document.addEventListener('DOMContentLoaded', function () {
 
   initLanguage();
 
-  initCodeCopy();
-
   handleImageErrors();
 
   // 确保目录显示/隐藏功能被初始化

@@ -1,6 +1,41 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>Getting Started</title>
+    <url>/2021/10/22/2021-10-21-1/</url>
+    <content><![CDATA[ 实验一
+✨更新于2022-10-28
+ 概述
+数据包嗅探结构
+
+ Wireshark
+
+Wireshark是由一个国际网络专家团队开发的网络协议分析工具
+
+ 实验内容
+​		下载并安装好Wireshark，打开软件选择WLAN，启动数据嗅探：
+​		然后访问指定网站如下：
+​		http://gaia.cs.umass.edu/wireshark-labs/INTRO-wireshark-file1.html
+
+​		显示内容如上图所示
+​		显示过滤器中输入http，得到HTTP协议的数据传输信息：
+
+​		source 为请求方——本地ip地址
+​		Destination 为接收方——服务器ip地址
+
+​		展开可查看详细信息
+​		HTTP版本为1.1
+​		返回200 OK，请求成功。
+OVER
+]]></content>
+      <categories>
+        <category>Wireshark</category>
+      </categories>
+      <tags>
+        <tag>计网</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>802.11 WIFI</title>
     <url>/2021/10/30/2021-10-21-11/</url>
     <content><![CDATA[ 实验十一
@@ -45,41 +80,6 @@ AP的MAC地址为第一条00:16:b6:f7:1d:51
 ​		希望打开
 4.您是否在跟踪中看到来自linksys_ses_24086 AP的回复身份验证？
 没有
-]]></content>
-      <categories>
-        <category>Wireshark</category>
-      </categories>
-      <tags>
-        <tag>计网</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Getting Started</title>
-    <url>/2021/10/22/2021-10-21-1/</url>
-    <content><![CDATA[ 实验一
-✨更新于2022-10-28
- 概述
-数据包嗅探结构
-
- Wireshark
-
-Wireshark是由一个国际网络专家团队开发的网络协议分析工具
-
- 实验内容
-​		下载并安装好Wireshark，打开软件选择WLAN，启动数据嗅探：
-​		然后访问指定网站如下：
-​		http://gaia.cs.umass.edu/wireshark-labs/INTRO-wireshark-file1.html
-
-​		显示内容如上图所示
-​		显示过滤器中输入http，得到HTTP协议的数据传输信息：
-
-​		source 为请求方——本地ip地址
-​		Destination 为接收方——服务器ip地址
-
-​		展开可查看详细信息
-​		HTTP版本为1.1
-​		返回200 OK，请求成功。
-OVER
 ]]></content>
       <categories>
         <category>Wireshark</category>
@@ -453,68 +453,6 @@ tracert 程序终止时，停止在 Wireshark 中捕获数据包。
       </tags>
   </entry>
   <entry>
-    <title>HTTP</title>
-    <url>/2021/10/22/2021-10-22-2/</url>
-    <content><![CDATA[ 实验二
- 基于HTTP获取/响应交互
-​		1.启动浏览器，启动资源包嗅探器（尚未开始捕获），显示过滤http，等待一分多钟。
-​		2.访问指定网站http://gaia.cs.umass.edu/wireshark-labs/HTTP-wireshark-file1.html，
-​		显示如图：
-
-​		3.停止嗅探，查看内容：
-
-​		       
-​		浏览器提交GET请求。
-​		浏览器和服务器的HTTP版本均为1.1
-​		浏览器的可接受服务器使用的语言如图所示：
-
-​		我的本地IP地址为：192.168.215.71
-​		服务器IP地址为：128.119.245.12
-​		服务器返回状态代码为200 OK表示请求成功。
-​		
-​		可以看见Last-Modified行：Last-Modified: Fri, 22 Oct 2021 05:59:01 GMT\r\n，可以知道服务器检索上次修改的 HTML 文件的时间。
-​		以及Content-Length: 128\r\n，可以知道有多少字节的内容被退回到的浏览器。
- GET/response交互
-​		1.清空缓存，启动嗅探器，启动浏览器，访问指定网址，再刷新一次，显示如图。
-​		
-​		2.检查第一个从浏览器到服务器的GET请求，没有If-Modified-Since行
-​		
-​		3.查看服务器返回内容：
-
-​		返回了一段HTML代码
-​		4.检查第二个HTTP GET请求内容：
-
-可见If-Modified-Since: Fri, 22 Oct 2021 05:59:01 GMT\r\n
-5.第二次HTTP返回的状态代码是304 Not Modified，没有明确返回文件内容，因为该网页内容在上次访问之后未被修改过，且本地中有上次访问的缓存。
-​		
- 检索长文件
-​		1.操作同上。
-​		2.开始数据嗅探，访问指定网站后停止。
-
-​		3.浏览器发送了一个GET请求消息，传输这一个HTTP响应需要4个TCP数据段。
-
-​		4.响应HTTP GET请求的相关的状态码200和短语是OK。
- HTML 带有嵌入对象的文件
-​		1.清除缓存，开始捕获，访问网站http://gaia.cs.umass.edu/wireshark-labs/HTTP-wireshark-file4.html
-​		2.停止捕获，查看内容。
-		浏览器发送了3个HTTP GET 请求，浏览器并不是同时下载这两张图片，有先后顺序。GET请求有两个发送给了 128.119.245.12，一个发送到了178.79.137.164。
- HTTP认证
-​		1.清楚缓存，开始捕获，访问网站并登录。
-
-
-未登录时服务器返回401 Unauthorized，登录成功返回200 OK。
-当浏览器第二次发送 HTTP GET 消息时，HTTP GET 消息中包含Authorization，
-响应消息出现了ETag字段。
-​		输入的用户名和密码在客户端的 HTTP GET 消息中虽然可能看起来是加密的，但它们只是以称为 Base64 格式的格式进行编码。用户名和密码未加密！
-]]></content>
-      <categories>
-        <category>Wireshark</category>
-      </categories>
-      <tags>
-        <tag>计网</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>DNS</title>
     <url>/2021/10/24/2021-10-23-3/</url>
     <content><![CDATA[ 实验三
@@ -599,6 +537,68 @@ nslookup www.aiit.or.kr bitsy.mit.edu
 ​		DNS查询是什么 “Type” 为 “A”，表示查询 IP 地址，没有任何 “answers”
 ​		DNS未响应
 
+]]></content>
+      <categories>
+        <category>Wireshark</category>
+      </categories>
+      <tags>
+        <tag>计网</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>HTTP</title>
+    <url>/2021/10/22/2021-10-22-2/</url>
+    <content><![CDATA[ 实验二
+ 基于HTTP获取/响应交互
+​		1.启动浏览器，启动资源包嗅探器（尚未开始捕获），显示过滤http，等待一分多钟。
+​		2.访问指定网站http://gaia.cs.umass.edu/wireshark-labs/HTTP-wireshark-file1.html，
+​		显示如图：
+
+​		3.停止嗅探，查看内容：
+
+​		       
+​		浏览器提交GET请求。
+​		浏览器和服务器的HTTP版本均为1.1
+​		浏览器的可接受服务器使用的语言如图所示：
+
+​		我的本地IP地址为：192.168.215.71
+​		服务器IP地址为：128.119.245.12
+​		服务器返回状态代码为200 OK表示请求成功。
+​		
+​		可以看见Last-Modified行：Last-Modified: Fri, 22 Oct 2021 05:59:01 GMT\r\n，可以知道服务器检索上次修改的 HTML 文件的时间。
+​		以及Content-Length: 128\r\n，可以知道有多少字节的内容被退回到的浏览器。
+ GET/response交互
+​		1.清空缓存，启动嗅探器，启动浏览器，访问指定网址，再刷新一次，显示如图。
+​		
+​		2.检查第一个从浏览器到服务器的GET请求，没有If-Modified-Since行
+​		
+​		3.查看服务器返回内容：
+
+​		返回了一段HTML代码
+​		4.检查第二个HTTP GET请求内容：
+
+可见If-Modified-Since: Fri, 22 Oct 2021 05:59:01 GMT\r\n
+5.第二次HTTP返回的状态代码是304 Not Modified，没有明确返回文件内容，因为该网页内容在上次访问之后未被修改过，且本地中有上次访问的缓存。
+​		
+ 检索长文件
+​		1.操作同上。
+​		2.开始数据嗅探，访问指定网站后停止。
+
+​		3.浏览器发送了一个GET请求消息，传输这一个HTTP响应需要4个TCP数据段。
+
+​		4.响应HTTP GET请求的相关的状态码200和短语是OK。
+ HTML 带有嵌入对象的文件
+​		1.清除缓存，开始捕获，访问网站http://gaia.cs.umass.edu/wireshark-labs/HTTP-wireshark-file4.html
+​		2.停止捕获，查看内容。
+		浏览器发送了3个HTTP GET 请求，浏览器并不是同时下载这两张图片，有先后顺序。GET请求有两个发送给了 128.119.245.12，一个发送到了178.79.137.164。
+ HTTP认证
+​		1.清楚缓存，开始捕获，访问网站并登录。
+
+
+未登录时服务器返回401 Unauthorized，登录成功返回200 OK。
+当浏览器第二次发送 HTTP GET 消息时，HTTP GET 消息中包含Authorization，
+响应消息出现了ETag字段。
+​		输入的用户名和密码在客户端的 HTTP GET 消息中虽然可能看起来是加密的，但它们只是以称为 Base64 格式的格式进行编码。用户名和密码未加密！
 ]]></content>
       <categories>
         <category>Wireshark</category>
@@ -1359,115 +1359,96 @@ Rdt 2.0 -&gt; Rdt 2.1 -&gt; Rdt3.0
       </categories>
   </entry>
   <entry>
-    <title>小程序开发</title>
-    <url>/2022/02/21/2022-02-20-%E5%B0%8F%E7%A8%8B%E5%BA%8F%E5%BC%80%E5%8F%91/</url>
-    <content><![CDATA[ 概述
- 简介
-​		小程序是一种不需要下载的安装即可使用的应用，它实现了应用“触手可及”的梦想，用户扫一扫或者搜一下即可打开应用。也体现了“用完即走”的理念。用户不用关心是否安装太多应用的问题。应用无处不在，随时可用，但又无需安装卸载。——Allenzhang
-特点：
+    <title>云开发</title>
+    <url>/2022/07/15/2022-07-15-%E4%BA%91%E5%BC%80%E5%8F%91/</url>
+    <content><![CDATA[ 云开发基础
 
-速度快：无需下载安装，加载速度快于HTML5，微信登录，随时可用
-无需适配：一次开发。多端兼容，免除了对各种手机型的适配
-社交分享：支持直接或App分享给微信好友和群聊
-出色体验：可以达到近乎原生App的操作体验和流畅度，在离线状态亦可使用
-用完即走：通过扫码、长按、微信搜索、公众号、好友推荐等方式快速获取服务，用完即走
-低门槛：已有公众号的组织可以快速注册、可快速生成门店小程序
+云开发是微信团队联合腾讯云提供的原生 Serverless 云服务，致力于帮助更多的开发者快速实现小程序业务的开发，怏速迭代。
 
- 开发流程
-小程序的技术模型：
-
-小程序的程序语言：
-
-渲染层：WXML + WXSS（类似HTML + CSS）
-逻辑层：JavaScript
-配置：JSON
-
- 设计规范
-
-友好：重点突出；流程明确
-清晰：导航明确；减少等待；异常反馈
-便捷：减少输入；避免误操作；操作流畅
-统一：视觉统一；WeUI
-
- 运营规范
- 开发项目
- 全局配置
-​		小程序根目录下的 app.json 文件用来对微信小程序进行全局配置，决定页面文件的路径、窗口表现、设置网络超时时间、设置多 tab 等。
-以下是一个包含了部分常用配置选项的 app.json ：
-&#123;  &quot;pages&quot;: [    &quot;pages/index/index&quot;,    &quot;pages/logs/index&quot;  ],  &quot;window&quot;: &#123;    &quot;navigationBarTitleText&quot;: &quot;Demo&quot;  &#125;,  &quot;tabBar&quot;: &#123;    &quot;list&quot;: [&#123;      &quot;pagePath&quot;: &quot;pages/index/index&quot;,      &quot;text&quot;: &quot;首页&quot;    &#125;, &#123;      &quot;pagePath&quot;: &quot;pages/logs/index&quot;,      &quot;text&quot;: &quot;日志&quot;    &#125;]  &#125;,  &quot;networkTimeout&quot;: &#123;    &quot;request&quot;: 10000,    &quot;downloadFile&quot;: 10000  &#125;,  &quot;debug&quot;: true&#125;
- 页面配置
-​		每一个小程序页面也可以使用同名 .json 文件来对本页面的窗口表现进行配置，页面中配置项会覆盖 app.json 的 window 中相同的配置项。
-&#123;  &quot;navigationBarBackgroundColor&quot;: &quot;#ffffff&quot;,  &quot;navigationBarTextStyle&quot;: &quot;black&quot;,  &quot;navigationBarTitleText&quot;: &quot;微信接口功能演示&quot;,  &quot;backgroundColor&quot;: &quot;#eeeeee&quot;,  &quot;backgroundTextStyle&quot;: &quot;light&quot;&#125;
-
-	图片标记：路径可以使用http或相对路径
-	作为容器元素
-
- 应用弹性盒子布局
-
-传统方式布局
-
-目标的实现属性赋值非常分散
-严重依赖于页面结构与内容的实际大小
+ 云开发 VS 传统开发
+ 传统模式
+产品经理 → 后端开发 → 部署上线 → 前端开发 → 正式发布
+ 云开发
+产品经理 → 前端开发 → 正式发布
 
 
 
-弹性盒子布局（统一，灵活）
-盒子属性：
-display:flex;flex-direction:column;	//垂直布局justify-content:space-around;	//自上而下放置时素材均匀分布align-items:center;		//元素在水平方向上居中显示
- 响应式长度单位rpx
-让元素大小适配不同宽度屏幕
-.images &#123;	width:375rpx;	height:375rpx;	border-radius:50%;	//圆形图片&#125;
- 导航链接
-navigator组件
-&lt;navigator style=&quot;display:inline&quot; open-type=&quot;redirect&quot; url=&quot;/pages/logs/logs&quot;hover-class=&quot;nav-hover&quot;class=&quot;nav-default&quot;&gt;启动日志&lt;/navigator&gt;//style=&quot;display:inline&quot;	设置为内联元素//open-type=&quot;redirect&quot;	重定向，不可返回；默认为navigate	.nav-hover &#123;	color:red;&#125;	//点击态.nav-default &#123;	color:blue;&#125;	//显示态//交换两者才可实现点击态
- 配置tabBar（底部标签栏）
-app.json
-&quot;tabBar&quot;: &#123;  &quot;list&quot;: [    &#123;      &quot;text&quot;: &quot;启动日志&quot;,      &quot;pagePath&quot;: &quot;pages/logs/logs&quot;,      &quot;iconPath&quot;: &quot;images/icons/person.jpg&quot;,      &quot;selectedIconPath&quot;: &quot;images/icons/iperson.jpg&quot;    &#125;,    &#123;      &quot;text&quot;: &quot;主页&quot;,      &quot;pagePath&quot;: &quot;pages/index/index&quot;,      &quot;iconPath&quot;: &quot;images/icons/home.jpg&quot;,      &quot;selectedIconPath&quot;: &quot;images/icons/ihome.jpg&quot;    &#125;  ],  &quot;color&quot;:&quot;#000&quot;,  &quot;selectedColor&quot;:&quot;#00f&quot;&#125;,
-此时navigate失效，需要修改。
-&lt;navigator url=&quot;/pages/logs/logs&quot; open-type=&quot;switchTab&quot;&gt;启动日志&lt;/navigator&gt;
- 配置全局导航栏样式
-app.json
-&quot;window&quot;: &#123;    &quot;backgroundTextStyle&quot;: &quot;light&quot;,    &quot;navigationBarBackgroundColor&quot;: &quot;#fff&quot;,    &quot;navigationBarTitleText&quot;: &quot;关于&quot;,       &quot;navigationBarTextStyle&quot;: &quot;black&quot;,    &quot;enablePullDownRefresh&quot;: true  &#125;,
- 数据绑定
-weather.js
-Page(&#123;  data: &#123;    todayweather:&#123;      city:&quot;武汉&quot;,      weather:&quot;晴&quot;,      temperature:&quot;2℃&quot;    &#125;  &#125;&#125;)
- 小程序的运行环境与基本架构
-​		每个小程序都是运行在它的微信客户端上的，通过微信客户端给它提供的运行环境，小程序可以直接获取微信客户端的原生体验和原生能力。
- 条件渲染
-在框架中，使用 wx:if=&quot;&quot; 来判断是否需要渲染该代码块：
-&lt;view wx:if=&quot;&#123;&#123;condition&#125;&#125;&quot;&gt; True &lt;/view&gt;
-也可以用 wx:elif 和 wx:else 来添加一个 else 块：
-&lt;view wx:if=&quot;&#123;&#123;length &gt; 5&#125;&#125;&quot;&gt; 1 &lt;/view&gt;&lt;view wx:elif=&quot;&#123;&#123;length &gt; 2&#125;&#125;&quot;&gt; 2 &lt;/view&gt;&lt;view wx:else&gt; 3 &lt;/view&gt;
-因为 wx:if 是一个控制属性，需要将它添加到一个标签上。如果要一次性判断多个组件标签，可以使用一个 &lt;block/&gt; 标签将多个组件包装起来，并在上边使用 wx:if 控制属性。
-&lt;block wx:if=&quot;&#123;&#123;true&#125;&#125;&quot;&gt;  &lt;view&gt; view1 &lt;/view&gt;  &lt;view&gt; view2 &lt;/view&gt;&lt;/block&gt;
-&lt;block/&gt; 并不是一个组件，它仅仅是一个包装元素，不会在页面中做任何渲染，只接受控制属性。
-wx:if vs hidden
-因为 wx:if 之中的模板也可能包含数据绑定，所以当 wx:if 的条件值切换时，框架有一个局部渲染的过程，因为它会确保条件块在切换时销毁或重新渲染。同时 wx:if 也是惰性的，如果在初始渲染条件为 false，框架什么也不做，在条件第一次变成真的时候才开始局部渲染。
-相比之下，hidden 就简单的多，组件始终会被渲染，只是简单的控制显示与隐藏。
-一般来说，wx:if 有更高的切换消耗而 hidden 有更高的初始渲染消耗。因此，如果需要频繁切换的情景下，用 hidden 更好，如果在运行时条件不大可能改变则 wx:if 较好。
- 列表渲染
- swiper组件
-幻灯片轮播展示
- 页面的生命周期函数
-&lt;swiper&gt;&lt;/swiper&gt;添加属性
-current=&quot;&#123;&#123; array.length - 1 &#125;&#125;&quot;	//切换到最后一张幻灯片(有缺陷)
-js文件
-current=&quot;&#123;&#123; currentIndex &#125;&#125;&quot;//初始化数据//生命周期函数onload:function(options) &#123;	this.setData(&#123;		currentIndex:this.data.array.length - 1	&#125;)&#125;//还包括其他的生命周期函数
- 更新数据
-&lt;button bindtap=&quot;f0&quot;&gt;按钮&lt;button&gt;//更新数据不能直接赋值f0:function(event)&#123;	console.log(this.data.count)	//读取	this.setData(&#123;    	count:this.data.count + 1    &#125;)&#125;//this.serData可以动态设置变量
- 事件机制
-&lt;button bindtap=&quot;f0&quot;&gt;按钮&lt;button&gt;		//会向上冒泡传递，父元素函数会被调用&lt;button catchtap=&quot;f1&quot;&gt;按钮&lt;button&gt;	//不会向上冒泡传递，父元素函数不会被调用
- 组件自定义数据属性
-f1:function(event)&#123;	wx.navigateTo(&#123;		url:&#x27;/pages/index/index&#x27;	&#125;)&#125;	//点击页面相同f1:function(event)&#123;	wx.navigateTo(&#123;		url:&#x27;/pages/index/index?id=77&#x27;	&#125;)&#125;	//点击页面相同
- 动态导航栏
+ 云开发能力
+
+
+存储：在小程序端直接上传/下载云端文件，可视化管理
+
+
+云函数：在云端运行的代码，微信私有天然鉴权，开发者只需编写自身业务逻辑代码
+
+
+云数据库：一个既可在小程序前端操作，也能在云函数中读写的JSON数据库
+
+
+音视频服务：提供互通高品质实时音视频通话服务，支持互动白板，美颜滤镜，高清视频通话等，基于云开发快速接入
+
+
+智能图像服务：集成智能鉴黄、人脸识别、人脸识别、人脸核身等AI视觉能力，基于云开发怏速接入。
+
+
+ 数据存储能力
+ 一行代码创建数据
+
+ 一行代码查询数据
+
+ 云开发 API
+ 初始化
+小程序
+
+服务端
+
+
+初始化选项 env 支持传入一个 Object，指定服务使用的默认环境
+
+ 注意事项
+
+云开发 API 同时支持callback 风格和promise 风格
+云开发 API 初始化时如果没有设置 ID，默认使用先创建的那个
+在服务端可以借助云开发 SDK 内置的 getWXContext 来获取到用户的身份信息
+
+ 数组查询
+
+ 字段查询
+
+ 正则查询
+
+ 地理位置索引
+减少开发压力，只需要一个字段。
+ 文件存储
+存储于云端，可以生成临时链接。
+ 云函数定时触发器
+&#123;   &quot;Type&quot;:&quot;Timer&quot;,   &quot;TriggerName&quot;:&quot;EveryDay&quot;,   &quot;Time&quot;:&quot;2019-02-21T11:49:00Z&quot;,   &quot;Message&quot;:&quot;user define msg body&quot;&#125;
+ Todo项目实战
+ Vant UI
+导入Vant UI
+//安装npm i vant//初始化npm init -y//安装组件npm i @vant/weapp@1.3.3 -S --production
+​		删除app.json中的&quot;style&quot;:&quot;v2&quot;。防止微信中的样式与 vant 中的样式发生冲突。
+在project.config.json中的setting节点中修改以下两项：
+&quot;packNpmManually&quot;: true,&quot;packNpmRelationList&quot;: [      &#123;        &quot;packageJsonPath&quot;: &quot;./package.json&quot;,        &quot;miniprogramNpmDistDir&quot;: &quot;./&quot;      &#125;]
+构建 npm
+&quot;usingComponents&quot;: &#123;  &quot;van-button&quot;: &quot;@vant/weapp/button/index&quot;&#125;
+
+ 组件引入
+&quot;usingComponents&quot;: &#123;    &quot;vant-button&quot; : &quot;@vant/weapp/button&quot;,    &quot;van-cell&quot; : &quot;@vant/weapp/cell&quot;,    &quot;van-cell-group&quot; : &quot;@vant/weapp/cell-group&quot;  &#125;
+ 下拉刷新
+index.json
+&quot;enablePullDownRefresh&quot;: true
 index.js
-onShareAppMessage: function()&#123;	return &#123;		title:&quot;向你推荐&quot; + this.data.movie.title	&#125;&#125;
- 组件化开发
- 自定义组件item.js
-item.json将组件属性设置true
-&#123;    &quot;component&quot;: true&#125;
-item.js
-Component(&#123;    options: &#123; // 组件配置        addGlobalClass: true,        // 指定所有 _ 开头的数据字段为纯数据字段        // 纯数据字段是一些不用于界面渲染的 data 字段，可以用于提升页面更新性能        pureDataPattern: /^_/,         multipleSlots: true // 在组件定义时的选项中启用多slot支持    &#125;,    properties: &#123;        vtabs: &#123;type: Array, value: []&#125;,    &#125;,    data: &#123;        currentView: 0,    &#125;,    observers: &#123; // 监测        activeTab: function(activeTab) &#123;            this.scrollTabBar(activeTab);        &#125;    &#125;,     relations: &#123;  // 关联的子/父组件        &#x27;../vtabs-content/index&#x27;: &#123;            type: &#x27;child&#x27;, // 关联的目标节点应为子节点            linked: function(target) &#123;                this.calcVtabsCotentHeight(target);            &#125;,            unlinked: function(target) &#123;                delete this.data._contentHeight[target.data.tabIndex];            &#125;        &#125;    &#125;,    lifetimes: &#123; // 组件声明周期        created: function() &#123;            // 组件实例刚刚被创建好时        &#125;,        attached: function() &#123;            // 在组件实例进入页面节点树时执行        &#125;,        detached: function() &#123;            // 在组件实例被从页面节点树移除时执行        &#125;,    &#125;,    methods: &#123; // 组件方法        calcVtabsCotentHeight(target) &#123;&#125;    &#125; &#125;);
+onPullDownRefresh:function()&#123;    this.getdata();    wx.stopPullDownRefresh()  &#125;,
+ 选择位置
+app.json
+&quot;requiredPrivateInfos&quot;: [    &quot;chooseLocation&quot;  ],  &quot;permission&quot;: &#123;    &quot;scope.userLocation&quot;: &#123;      &quot;desc&quot;: &quot;你的位置信息将用于小程序位置接口&quot;    &#125;  &#125;
+addtodo.js
+chooseLocation:function()&#123;  wx.chooseLocation(&#123;    latitude: 0,    longitude: 0,    success: res =&gt; &#123;      console.log(res)      let LocationObj = &#123;        latitude:res.latitude,        longitude:res.longitude,        name:res.name,        address:res.address      &#125;      this.pagedata.LocationObj = LocationObj    &#125;,    fail: (res) =&gt; &#123;      console.log(res)    &#125;,    complete: (res) =&gt; &#123;      console.log(res)    &#125;,  &#125;)&#125;
+ 导航
+todoInfo.js
+viewLocation:function()&#123;    wx.openLocation(&#123;      latitude: this.data.task.location.latitude,      longitude: this.data.task.location.longitude,      address: this.data.task.location.address,      name: this.data.task.location.name,      scale: 0,      success: (res) =&gt; &#123;&#125;,      fail: (res) =&gt; &#123;&#125;,      complete: (res) =&gt; &#123;&#125;,    &#125;)  &#125;
+注意传送LocationObj对象
 ]]></content>
       <categories>
         <category>微信小程序</category>
@@ -1608,99 +1589,184 @@ TCP采用这种方法
       </categories>
   </entry>
   <entry>
-    <title>云开发</title>
-    <url>/2022/07/15/2022-07-15-%E4%BA%91%E5%BC%80%E5%8F%91/</url>
-    <content><![CDATA[ 云开发基础
+    <title>小程序开发</title>
+    <url>/2022/02/21/2022-02-20-%E5%B0%8F%E7%A8%8B%E5%BA%8F%E5%BC%80%E5%8F%91/</url>
+    <content><![CDATA[ 概述
+ 简介
+​		小程序是一种不需要下载的安装即可使用的应用，它实现了应用“触手可及”的梦想，用户扫一扫或者搜一下即可打开应用。也体现了“用完即走”的理念。用户不用关心是否安装太多应用的问题。应用无处不在，随时可用，但又无需安装卸载。——Allenzhang
+特点：
 
-云开发是微信团队联合腾讯云提供的原生 Serverless 云服务，致力于帮助更多的开发者快速实现小程序业务的开发，怏速迭代。
+速度快：无需下载安装，加载速度快于HTML5，微信登录，随时可用
+无需适配：一次开发。多端兼容，免除了对各种手机型的适配
+社交分享：支持直接或App分享给微信好友和群聊
+出色体验：可以达到近乎原生App的操作体验和流畅度，在离线状态亦可使用
+用完即走：通过扫码、长按、微信搜索、公众号、好友推荐等方式快速获取服务，用完即走
+低门槛：已有公众号的组织可以快速注册、可快速生成门店小程序
 
- 云开发 VS 传统开发
- 传统模式
-产品经理 → 后端开发 → 部署上线 → 前端开发 → 正式发布
- 云开发
-产品经理 → 前端开发 → 正式发布
+ 开发流程
+小程序的技术模型：
+
+小程序的程序语言：
+
+渲染层：WXML + WXSS（类似HTML + CSS）
+逻辑层：JavaScript
+配置：JSON
+
+ 设计规范
+
+友好：重点突出；流程明确
+清晰：导航明确；减少等待；异常反馈
+便捷：减少输入；避免误操作；操作流畅
+统一：视觉统一；WeUI
+
+ 运营规范
+ 开发项目
+ 全局配置
+​		小程序根目录下的 app.json 文件用来对微信小程序进行全局配置，决定页面文件的路径、窗口表现、设置网络超时时间、设置多 tab 等。
+以下是一个包含了部分常用配置选项的 app.json ：
+&#123;  &quot;pages&quot;: [    &quot;pages/index/index&quot;,    &quot;pages/logs/index&quot;  ],  &quot;window&quot;: &#123;    &quot;navigationBarTitleText&quot;: &quot;Demo&quot;  &#125;,  &quot;tabBar&quot;: &#123;    &quot;list&quot;: [&#123;      &quot;pagePath&quot;: &quot;pages/index/index&quot;,      &quot;text&quot;: &quot;首页&quot;    &#125;, &#123;      &quot;pagePath&quot;: &quot;pages/logs/index&quot;,      &quot;text&quot;: &quot;日志&quot;    &#125;]  &#125;,  &quot;networkTimeout&quot;: &#123;    &quot;request&quot;: 10000,    &quot;downloadFile&quot;: 10000  &#125;,  &quot;debug&quot;: true&#125;
+ 页面配置
+​		每一个小程序页面也可以使用同名 .json 文件来对本页面的窗口表现进行配置，页面中配置项会覆盖 app.json 的 window 中相同的配置项。
+&#123;  &quot;navigationBarBackgroundColor&quot;: &quot;#ffffff&quot;,  &quot;navigationBarTextStyle&quot;: &quot;black&quot;,  &quot;navigationBarTitleText&quot;: &quot;微信接口功能演示&quot;,  &quot;backgroundColor&quot;: &quot;#eeeeee&quot;,  &quot;backgroundTextStyle&quot;: &quot;light&quot;&#125;
+
+	图片标记：路径可以使用http或相对路径
+	作为容器元素
+
+ 应用弹性盒子布局
+
+传统方式布局
+
+目标的实现属性赋值非常分散
+严重依赖于页面结构与内容的实际大小
 
 
 
- 云开发能力
-
-
-存储：在小程序端直接上传/下载云端文件，可视化管理
-
-
-云函数：在云端运行的代码，微信私有天然鉴权，开发者只需编写自身业务逻辑代码
-
-
-云数据库：一个既可在小程序前端操作，也能在云函数中读写的JSON数据库
-
-
-音视频服务：提供互通高品质实时音视频通话服务，支持互动白板，美颜滤镜，高清视频通话等，基于云开发快速接入
-
-
-智能图像服务：集成智能鉴黄、人脸识别、人脸识别、人脸核身等AI视觉能力，基于云开发怏速接入。
-
-
- 数据存储能力
- 一行代码创建数据
-
- 一行代码查询数据
-
- 云开发 API
- 初始化
-小程序
-
-服务端
-
-
-初始化选项 env 支持传入一个 Object，指定服务使用的默认环境
-
- 注意事项
-
-云开发 API 同时支持callback 风格和promise 风格
-云开发 API 初始化时如果没有设置 ID，默认使用先创建的那个
-在服务端可以借助云开发 SDK 内置的 getWXContext 来获取到用户的身份信息
-
- 数组查询
-
- 字段查询
-
- 正则查询
-
- 地理位置索引
-减少开发压力，只需要一个字段。
- 文件存储
-存储于云端，可以生成临时链接。
- 云函数定时触发器
-&#123;   &quot;Type&quot;:&quot;Timer&quot;,   &quot;TriggerName&quot;:&quot;EveryDay&quot;,   &quot;Time&quot;:&quot;2019-02-21T11:49:00Z&quot;,   &quot;Message&quot;:&quot;user define msg body&quot;&#125;
- Todo项目实战
- Vant UI
-导入Vant UI
-//安装npm i vant//初始化npm init -y//安装组件npm i @vant/weapp@1.3.3 -S --production
-​		删除app.json中的&quot;style&quot;:&quot;v2&quot;。防止微信中的样式与 vant 中的样式发生冲突。
-在project.config.json中的setting节点中修改以下两项：
-&quot;packNpmManually&quot;: true,&quot;packNpmRelationList&quot;: [      &#123;        &quot;packageJsonPath&quot;: &quot;./package.json&quot;,        &quot;miniprogramNpmDistDir&quot;: &quot;./&quot;      &#125;]
-构建 npm
-&quot;usingComponents&quot;: &#123;  &quot;van-button&quot;: &quot;@vant/weapp/button/index&quot;&#125;
-
- 组件引入
-&quot;usingComponents&quot;: &#123;    &quot;vant-button&quot; : &quot;@vant/weapp/button&quot;,    &quot;van-cell&quot; : &quot;@vant/weapp/cell&quot;,    &quot;van-cell-group&quot; : &quot;@vant/weapp/cell-group&quot;  &#125;
- 下拉刷新
-index.json
-&quot;enablePullDownRefresh&quot;: true
-index.js
-onPullDownRefresh:function()&#123;    this.getdata();    wx.stopPullDownRefresh()  &#125;,
- 选择位置
+弹性盒子布局（统一，灵活）
+盒子属性：
+display:flex;flex-direction:column;	//垂直布局justify-content:space-around;	//自上而下放置时素材均匀分布align-items:center;		//元素在水平方向上居中显示
+ 响应式长度单位rpx
+让元素大小适配不同宽度屏幕
+.images &#123;	width:375rpx;	height:375rpx;	border-radius:50%;	//圆形图片&#125;
+ 导航链接
+navigator组件
+&lt;navigator style=&quot;display:inline&quot; open-type=&quot;redirect&quot; url=&quot;/pages/logs/logs&quot;hover-class=&quot;nav-hover&quot;class=&quot;nav-default&quot;&gt;启动日志&lt;/navigator&gt;//style=&quot;display:inline&quot;	设置为内联元素//open-type=&quot;redirect&quot;	重定向，不可返回；默认为navigate	.nav-hover &#123;	color:red;&#125;	//点击态.nav-default &#123;	color:blue;&#125;	//显示态//交换两者才可实现点击态
+ 配置tabBar（底部标签栏）
 app.json
-&quot;requiredPrivateInfos&quot;: [    &quot;chooseLocation&quot;  ],  &quot;permission&quot;: &#123;    &quot;scope.userLocation&quot;: &#123;      &quot;desc&quot;: &quot;你的位置信息将用于小程序位置接口&quot;    &#125;  &#125;
-addtodo.js
-chooseLocation:function()&#123;  wx.chooseLocation(&#123;    latitude: 0,    longitude: 0,    success: res =&gt; &#123;      console.log(res)      let LocationObj = &#123;        latitude:res.latitude,        longitude:res.longitude,        name:res.name,        address:res.address      &#125;      this.pagedata.LocationObj = LocationObj    &#125;,    fail: (res) =&gt; &#123;      console.log(res)    &#125;,    complete: (res) =&gt; &#123;      console.log(res)    &#125;,  &#125;)&#125;
- 导航
-todoInfo.js
-viewLocation:function()&#123;    wx.openLocation(&#123;      latitude: this.data.task.location.latitude,      longitude: this.data.task.location.longitude,      address: this.data.task.location.address,      name: this.data.task.location.name,      scale: 0,      success: (res) =&gt; &#123;&#125;,      fail: (res) =&gt; &#123;&#125;,      complete: (res) =&gt; &#123;&#125;,    &#125;)  &#125;
-注意传送LocationObj对象
+&quot;tabBar&quot;: &#123;  &quot;list&quot;: [    &#123;      &quot;text&quot;: &quot;启动日志&quot;,      &quot;pagePath&quot;: &quot;pages/logs/logs&quot;,      &quot;iconPath&quot;: &quot;images/icons/person.jpg&quot;,      &quot;selectedIconPath&quot;: &quot;images/icons/iperson.jpg&quot;    &#125;,    &#123;      &quot;text&quot;: &quot;主页&quot;,      &quot;pagePath&quot;: &quot;pages/index/index&quot;,      &quot;iconPath&quot;: &quot;images/icons/home.jpg&quot;,      &quot;selectedIconPath&quot;: &quot;images/icons/ihome.jpg&quot;    &#125;  ],  &quot;color&quot;:&quot;#000&quot;,  &quot;selectedColor&quot;:&quot;#00f&quot;&#125;,
+此时navigate失效，需要修改。
+&lt;navigator url=&quot;/pages/logs/logs&quot; open-type=&quot;switchTab&quot;&gt;启动日志&lt;/navigator&gt;
+ 配置全局导航栏样式
+app.json
+&quot;window&quot;: &#123;    &quot;backgroundTextStyle&quot;: &quot;light&quot;,    &quot;navigationBarBackgroundColor&quot;: &quot;#fff&quot;,    &quot;navigationBarTitleText&quot;: &quot;关于&quot;,       &quot;navigationBarTextStyle&quot;: &quot;black&quot;,    &quot;enablePullDownRefresh&quot;: true  &#125;,
+ 数据绑定
+weather.js
+Page(&#123;  data: &#123;    todayweather:&#123;      city:&quot;武汉&quot;,      weather:&quot;晴&quot;,      temperature:&quot;2℃&quot;    &#125;  &#125;&#125;)
+ 小程序的运行环境与基本架构
+​		每个小程序都是运行在它的微信客户端上的，通过微信客户端给它提供的运行环境，小程序可以直接获取微信客户端的原生体验和原生能力。
+ 条件渲染
+在框架中，使用 wx:if=&quot;&quot; 来判断是否需要渲染该代码块：
+&lt;view wx:if=&quot;&#123;&#123;condition&#125;&#125;&quot;&gt; True &lt;/view&gt;
+也可以用 wx:elif 和 wx:else 来添加一个 else 块：
+&lt;view wx:if=&quot;&#123;&#123;length &gt; 5&#125;&#125;&quot;&gt; 1 &lt;/view&gt;&lt;view wx:elif=&quot;&#123;&#123;length &gt; 2&#125;&#125;&quot;&gt; 2 &lt;/view&gt;&lt;view wx:else&gt; 3 &lt;/view&gt;
+因为 wx:if 是一个控制属性，需要将它添加到一个标签上。如果要一次性判断多个组件标签，可以使用一个 &lt;block/&gt; 标签将多个组件包装起来，并在上边使用 wx:if 控制属性。
+&lt;block wx:if=&quot;&#123;&#123;true&#125;&#125;&quot;&gt;  &lt;view&gt; view1 &lt;/view&gt;  &lt;view&gt; view2 &lt;/view&gt;&lt;/block&gt;
+&lt;block/&gt; 并不是一个组件，它仅仅是一个包装元素，不会在页面中做任何渲染，只接受控制属性。
+wx:if vs hidden
+因为 wx:if 之中的模板也可能包含数据绑定，所以当 wx:if 的条件值切换时，框架有一个局部渲染的过程，因为它会确保条件块在切换时销毁或重新渲染。同时 wx:if 也是惰性的，如果在初始渲染条件为 false，框架什么也不做，在条件第一次变成真的时候才开始局部渲染。
+相比之下，hidden 就简单的多，组件始终会被渲染，只是简单的控制显示与隐藏。
+一般来说，wx:if 有更高的切换消耗而 hidden 有更高的初始渲染消耗。因此，如果需要频繁切换的情景下，用 hidden 更好，如果在运行时条件不大可能改变则 wx:if 较好。
+ 列表渲染
+ swiper组件
+幻灯片轮播展示
+ 页面的生命周期函数
+&lt;swiper&gt;&lt;/swiper&gt;添加属性
+current=&quot;&#123;&#123; array.length - 1 &#125;&#125;&quot;	//切换到最后一张幻灯片(有缺陷)
+js文件
+current=&quot;&#123;&#123; currentIndex &#125;&#125;&quot;//初始化数据//生命周期函数onload:function(options) &#123;	this.setData(&#123;		currentIndex:this.data.array.length - 1	&#125;)&#125;//还包括其他的生命周期函数
+ 更新数据
+&lt;button bindtap=&quot;f0&quot;&gt;按钮&lt;button&gt;//更新数据不能直接赋值f0:function(event)&#123;	console.log(this.data.count)	//读取	this.setData(&#123;    	count:this.data.count + 1    &#125;)&#125;//this.serData可以动态设置变量
+ 事件机制
+&lt;button bindtap=&quot;f0&quot;&gt;按钮&lt;button&gt;		//会向上冒泡传递，父元素函数会被调用&lt;button catchtap=&quot;f1&quot;&gt;按钮&lt;button&gt;	//不会向上冒泡传递，父元素函数不会被调用
+ 组件自定义数据属性
+f1:function(event)&#123;	wx.navigateTo(&#123;		url:&#x27;/pages/index/index&#x27;	&#125;)&#125;	//点击页面相同f1:function(event)&#123;	wx.navigateTo(&#123;		url:&#x27;/pages/index/index?id=77&#x27;	&#125;)&#125;	//点击页面相同
+ 动态导航栏
+index.js
+onShareAppMessage: function()&#123;	return &#123;		title:&quot;向你推荐&quot; + this.data.movie.title	&#125;&#125;
+ 组件化开发
+ 自定义组件item.js
+item.json将组件属性设置true
+&#123;    &quot;component&quot;: true&#125;
+item.js
+Component(&#123;    options: &#123; // 组件配置        addGlobalClass: true,        // 指定所有 _ 开头的数据字段为纯数据字段        // 纯数据字段是一些不用于界面渲染的 data 字段，可以用于提升页面更新性能        pureDataPattern: /^_/,         multipleSlots: true // 在组件定义时的选项中启用多slot支持    &#125;,    properties: &#123;        vtabs: &#123;type: Array, value: []&#125;,    &#125;,    data: &#123;        currentView: 0,    &#125;,    observers: &#123; // 监测        activeTab: function(activeTab) &#123;            this.scrollTabBar(activeTab);        &#125;    &#125;,     relations: &#123;  // 关联的子/父组件        &#x27;../vtabs-content/index&#x27;: &#123;            type: &#x27;child&#x27;, // 关联的目标节点应为子节点            linked: function(target) &#123;                this.calcVtabsCotentHeight(target);            &#125;,            unlinked: function(target) &#123;                delete this.data._contentHeight[target.data.tabIndex];            &#125;        &#125;    &#125;,    lifetimes: &#123; // 组件声明周期        created: function() &#123;            // 组件实例刚刚被创建好时        &#125;,        attached: function() &#123;            // 在组件实例进入页面节点树时执行        &#125;,        detached: function() &#123;            // 在组件实例被从页面节点树移除时执行        &#125;,    &#125;,    methods: &#123; // 组件方法        calcVtabsCotentHeight(target) &#123;&#125;    &#125; &#125;);
 ]]></content>
       <categories>
         <category>微信小程序</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>局域网</title>
+    <url>/2022/07/30/2022-07-29-%E5%B1%80%E5%9F%9F%E7%BD%91/</url>
+    <content><![CDATA[ ARP协议
+ MAC地址
+MAC（或称LAN地址，物理地址，以太网地址）
+
+作用：用于局域网内标识一个帧从哪个接口出发，到达哪个物理相连的其他接口
+48为MAC地址（用于大部分LANs）,固化在网卡的ROM中，有时也可以软件设置
+例子：1A-2F-BB-76-09-AD（16进制）
+
+ ARP协议
+地址解析协议
+ARP表：LAN中的每个IP结点（主机/路由器）维护一个表
+
+存储某些LAN结点的IP/MAC地址映射关系 &lt;IP地址；MAC地址；TTL&gt;
+TTL（Time To Live）经过这个时间以后该映射关系会被遗弃
+
+ARP是“即插即用”协议：结点自主创建ARP表，无需干预
+ 以太网
+“统治地位”的有线LAN技术：
+
+造价低廉
+应用最广泛的LAN技术
+比令牌局域网和ATM等简单
+满足网络速率需求：10 Mbps~10 Gbps
+
+…
+ 交换机
+网络设备对比
+
+…
+ 虚拟局域网
+…
+ PPP协议
+ 802.11无线局域网
+802.11b
+
+2.4-2.5GHz频段
+最高速率：11 Mbps
+物理层采用直接序列扩频技术（DSSS）技术
+
+802.11a
+
+5-6GHz频段
+最高速率：54 Mbps
+
+802.11g
+
+2.4-2.5GHz频段
+最高速率：54 Mbps
+
+802.11n：多天线（MIMO）
+
+2.4-2.5GHz频段
+最高速率：600 Mbps
+
+
+均使用CSMA/CA多路访问控制协议
+均有基础设施（基站）网络模式和特定网（自组网）网络模式
+
+]]></content>
+      <categories>
+        <category>计网</category>
       </categories>
   </entry>
   <entry>
@@ -2073,72 +2139,6 @@ ICMPv6：新版ICMP
       </categories>
   </entry>
   <entry>
-    <title>局域网</title>
-    <url>/2022/07/30/2022-07-29-%E5%B1%80%E5%9F%9F%E7%BD%91/</url>
-    <content><![CDATA[ ARP协议
- MAC地址
-MAC（或称LAN地址，物理地址，以太网地址）
-
-作用：用于局域网内标识一个帧从哪个接口出发，到达哪个物理相连的其他接口
-48为MAC地址（用于大部分LANs）,固化在网卡的ROM中，有时也可以软件设置
-例子：1A-2F-BB-76-09-AD（16进制）
-
- ARP协议
-地址解析协议
-ARP表：LAN中的每个IP结点（主机/路由器）维护一个表
-
-存储某些LAN结点的IP/MAC地址映射关系 &lt;IP地址；MAC地址；TTL&gt;
-TTL（Time To Live）经过这个时间以后该映射关系会被遗弃
-
-ARP是“即插即用”协议：结点自主创建ARP表，无需干预
- 以太网
-“统治地位”的有线LAN技术：
-
-造价低廉
-应用最广泛的LAN技术
-比令牌局域网和ATM等简单
-满足网络速率需求：10 Mbps~10 Gbps
-
-…
- 交换机
-网络设备对比
-
-…
- 虚拟局域网
-…
- PPP协议
- 802.11无线局域网
-802.11b
-
-2.4-2.5GHz频段
-最高速率：11 Mbps
-物理层采用直接序列扩频技术（DSSS）技术
-
-802.11a
-
-5-6GHz频段
-最高速率：54 Mbps
-
-802.11g
-
-2.4-2.5GHz频段
-最高速率：54 Mbps
-
-802.11n：多天线（MIMO）
-
-2.4-2.5GHz频段
-最高速率：600 Mbps
-
-
-均使用CSMA/CA多路访问控制协议
-均有基础设施（基站）网络模式和特定网（自组网）网络模式
-
-]]></content>
-      <categories>
-        <category>计网</category>
-      </categories>
-  </entry>
-  <entry>
     <title>数据链路层</title>
     <url>/2022/07/29/2022-07-29-%E6%95%B0%E6%8D%AE%E9%93%BE%E8%B7%AF%E5%B1%82/</url>
     <content><![CDATA[ 概述
@@ -2267,142 +2267,6 @@ TDMA、FDMA、CDMA、WDMA等
       <categories>
         <category>计网</category>
       </categories>
-  </entry>
-  <entry>
-    <title>数据结构</title>
-    <url>/2023/06/06/2023-06-06-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/</url>
-    <content><![CDATA[ 数据结构
- 线性表
- 链表
-// define element typetypedef int ElemType;// define struct of linked listtypedef struct LNode &#123;    ElemType data;    struct LNode *next;&#125; LNode, *LinkList;// define Statustypedef enum Status &#123;    ERROR,    SUCCESS&#125; Status;LinkList CreateList_Head(LinkList &amp;L)&#123;    LNode *s;    int x;    L = (LinkList)malloc(sizeof(LNode));     //创建头结点    L-&gt;next  =NULL;    scanf(&quot;%d&quot;,&amp;x);    while(x!=9999)&#123;        s=(LNode*)malloc(sizeof(LNode));        s-&gt;data=x;        s-&gt;next=L-&gt;next;        L-&gt;next=s;                          //插入结点        scanf(&quot;%d&quot;,&amp;x);    &#125;    return L;&#125;void TraverseList(LinkList L)&#123;    LNode *p = L-&gt;next;    while(p)&#123;        cout &lt;&lt; p-&gt;data &lt;&lt; &quot; &quot; ;        p = p-&gt;next;    &#125;&#125;int main()&#123;    LinkList L;    L = new LNode;    CreateList_Head(L);    TraverseList(L);    return 0;&#125;
- 栈
-#include &lt;stdio.h&gt;#include &lt;stdlib.h&gt;#define ERROR 0#define OK 1#define STACKSIZE 10;              //存储空间分配增量#define STACK_INIT_SIZE 100;    //存储空间初始分配量typedef int ElemType;typedef int Status;typedef struct&#123;    ElemType* base;    //栈底    ElemType* top;     //栈顶    int stacksize;          //当前已分配的空间&#125;SqStack;//初始化栈Status initStack(SqStack &amp;S)&#123;    S.base = (ElemType *)malloc(100 * sizeof(ElemType));    if (!S.base)&#123;        exit(0);    &#125;    S.top = S.base;    S.stacksize = 100;    return OK;&#125;//入栈Status Push(SqStack&amp; S, ElemType e)&#123;    if (S.top - S.base &gt;= S.stacksize)   //如果栈满就追加空间    &#123;                           //新增内存空间        S.base = (ElemType*)realloc(S.base, (S.stacksize + 10) * sizeof(ElemType));        if (!S.base) exit(0);        S.top = S.base + S.stacksize;        S.stacksize += 10;    &#125;    *S.top++ = e;    return OK;&#125;//出栈Status Pop(SqStack&amp; S, ElemType &amp;e)&#123;    if (S.top == S.base) return ERROR;    e = *--S.top;    return OK;&#125;
- 队列
-
-根据存储结构划分：1.链式队列	2.循环队列	3.单向队列	4.双端队列
-
- 顺序队列
-#define MAXSIZE 1000typedef struct &#123;    int data[MAXSIZE];    int front,rear;&#125;Sequeue;void SequeueInit(Sequeue &amp;Top)&#123;//队列的初始化    Top.front=0;    Top.rear=0;&#125;void SequeueEmpty(Sequeue &amp;Top)&#123;//判队列为空    if(Top.rear==Top.front)    &#123;        printf(&quot;队列为空\n&quot;);    &#125;    else  printf(&quot;队列不为空\n&quot;);&#125;void SequeuePush(Sequeue &amp;Top,int m)&#123;//循环入队列   if((Top.rear+1)%MAXSIZE==Top.front)        &#123;printf(&quot;队列已满&quot;);&#125;   else&#123;       Top.data[Top.rear]=m;       printf(&quot;%d已入队\n&quot;,m);       Top.rear=(Top.rear+1)%MAXSIZE;&#125;&#125;void SequeueTop(Sequeue &amp;Top)//求队列头部元素&#123;    printf(&quot;队列头部元素为%d\n&quot;,Top.data[Top.front]);&#125;void SequeuePop(Sequeue &amp;Top)&#123;//循环出队列    int i=0;    if(Top.rear==Top.front)     &#123;printf(&quot;队列为空&quot;);&#125;    else&#123;        while (Top.rear!=Top.front) &#123;            i++;            printf(&quot;队第%d元素为%d\n&quot;,i,Top.data[Top.front]);            Top.front=(Top.front+1)%MAXSIZE;        &#125;    &#125;&#125;int SequeueTopp(Sequeue &amp;Top)//求队列头部元素( 返回值)&#123;    return Top.data[Top.front];&#125;void SequeuePushh(Sequeue &amp;Top,int m)&#123;//不循环入队列    Top.data[Top.rear]=m;    Top.rear++;&#125;int  SequeuePopp(Sequeue &amp;Top)&#123;//不循环出队列    int m=Top.data[Top.front];        Top.front++;        return m;&#125;
- 循环队列
- 数组
- 动态数组
- 树和二叉树
- 二叉树
-
-C++：nullptr 专用于初始化空类型指针
-
-#include&lt;iostream&gt;using namespace std;template&lt;typename DataType&gt;struct BiNode&#123;    DataType data;    BiNode *lchild, *rchild;&#125;;template&lt;typename DataType&gt;class BiTree&#123;public:    BiTree( )&#123;        root = Creat(root);	//构造函数，建立二叉树    &#125;    ~BiTree( )&#123;        Release(root);   //析构函数，释放各结点的存储空间    &#125;    void PreOrder( )&#123;        PreOrder(root);   //前序遍历二叉树    &#125;    void InOrder( )&#123;        InOrder(root);   //中序遍历二叉树    &#125;    void PostOrder( )&#123;        PostOrder(root);   //后序遍历二叉树    &#125;    void LeverOrder( ); //层序遍历二叉树private:    BiNode &lt;DataType&gt;*Creat(BiNode&lt;DataType&gt; *bt); //构造函数    void Release(BiNode&lt;DataType&gt; *bt); 		  //析构函数调用    void PreOrder(BiNode&lt;DataType&gt; *bt); 		  //前序遍历函数    void InOrder(BiNode&lt;DataType&gt; *bt); 		  //中序遍历函数    void PostOrder(BiNode&lt;DataType&gt; *bt); 		  //后序遍历函数    BiNode&lt;DataType&gt; *root;					     //指向根结点的头指针&#125;;template&lt;typename DataType&gt;BiNode&lt;DataType&gt; *BiTree &lt;DataType&gt;:: Creat(BiNode&lt;DataType&gt; *bt)&#123;    char ch;    cout &lt;&lt; &quot;请输入扩展二叉树的前序遍历序列，每次输入一个字符:&quot;;    cin &gt;&gt; ch; //输入结点的数据信息，假设为字符    if (ch == &#x27;#&#x27;) bt = nullptr; //建立一棵空树    else    &#123;        bt = new BiNode&lt;DataType&gt;;        bt-&gt;data = ch;        bt-&gt;lchild = Creat(bt-&gt;lchild); //递归建立左子树        bt-&gt;rchild = Creat(bt-&gt;rchild); //递归建立右子树    &#125;    return bt;&#125;template&lt;typename DataType&gt;	//前序遍历void BiTree&lt;DataType&gt;:: PreOrder(BiNode&lt;DataType&gt; *bt)&#123;    if (bt == nullptr) return;     cout &lt;&lt; bt-&gt;data; 	      PreOrder(bt-&gt;lchild);     PreOrder(bt-&gt;rchild); &#125;template&lt;typename DataType&gt;	//中序遍历void BiTree&lt;DataType&gt;:: InOrder(BiNode&lt;DataType&gt; *bt)&#123;    if (bt == nullptr) return;     else    &#123;        InOrder(bt-&gt;lchild);         cout &lt;&lt; bt-&gt;data;         InOrder(bt-&gt;rchild);    &#125;&#125;template&lt;typename DataType&gt;	//后序遍历void BiTree&lt;DataType&gt;:: PostOrder(BiNode&lt;DataType&gt; *bt)&#123;    if (bt == nullptr) return;    else    &#123;        InOrder(bt-&gt;lchild);        InOrder(bt-&gt;rchild);        cout &lt;&lt; bt-&gt;data;    &#125;&#125;template&lt;typename DataType&gt;	//层次遍历void BiTree&lt;DataType&gt;:: LeverOrder( )&#123;    BiNode&lt;DataType&gt; *Q[100], *q = nullptr; //顺序队列    int front = -1, rear = -1; //队列初始化    if (root == nullptr) return; //二叉树为空，算法结束    Q[++rear] = root; //根指针入队    while (front != rear) //当队列非空时    &#123;        q = Q[++front]; //出队        cout &lt;&lt; q-&gt;data;        if (q-&gt;lchild != nullptr) Q[++rear] = q-&gt;lchild;        if (q-&gt;rchild != nullptr) Q[++rear] = q-&gt;rchild;    &#125;&#125;template&lt;typename DataType&gt;void BiTree&lt;DataType&gt;:: Release(BiNode&lt;DataType&gt; *bt)&#123;    if (bt == nullptr) return;    else    &#123;        Release(bt-&gt;lchild); //释放左子树        Release(bt-&gt;rchild); //释放右子树        delete bt; //释放根结点    &#125;&#125;
- 层序遍历
-class Solution &#123;public:    vector&lt;vector&lt;int&gt; &gt; levelOrder(TreeNode* root) &#123;        vector&lt;vector&lt;int&gt; &gt; res;        if(root == NULL)	//如果是空，则直接返回空vector            return res;         queue&lt;TreeNode*&gt; q; 	//队列存储，进行层次遍历        q.push(root);        TreeNode* cur;        while(!q.empty())&#123;            //记录二叉树的某一行            vector&lt;int&gt; row;              int n = q.size();            //因先进入的是根节点，故每层节点多少，队列大小就是多少            for(int i = 0; i &lt; n; i++)&#123;                cur = q.front();                q.pop();                row.push_back(cur-&gt;val);                //若是左右孩子存在，则存入左右孩子作为下一个层次                if(cur-&gt;left)                    q.push(cur-&gt;left);                if(cur-&gt;right)                    q.push(cur-&gt;right);            &#125;            //每一层加入输出            res.push_back(row);         &#125;        return res;    &#125;&#125;;
- AVL Tree
-
-AVL树（Adelson-Velsky and Landis Tree）是CS中最早被发明的自平衡二叉查找树。
-
-一棵AVL树有如下必要条件：
-
-必须是二叉查找树
-每个节点的左子树和右子树的高度差至多为1
-
-AVL Tree Visualzation 可视化演示
-struct AVLnode&#123;    int key;    //值    struct AVLnode *left;    struct AVLnode *right;    int height;     //高度&#125;;void printAVL(avlNode *node, int level)	//树尖向左打印&#123;    int i;    if (node != NULL)    &#123;        printAVL(node-&gt;right, level + 1);        printf(&quot;\n\n&quot;);        for (i = 0; i &lt; level; i++) printf(&quot;\t&quot;);        printf(&quot;%d&quot;, node-&gt;key);        printAVL(node-&gt;left, level + 1);    &#125;&#125;
- 平衡化操作
-平衡二叉树 — 优雅的进行旋转
- LL型
-
-avlNode *rightRotate(avlNode *T)&#123;    avlNode *L = T-&gt;left;    avlNode *T3 = L-&gt;right;    L-&gt;right = T;    T-&gt;left = T3;    T-&gt;height = (Max(nodeHeight(T-&gt;left), nodeHeight(T-&gt;right)) + 1);    L-&gt;height = (Max(nodeHeight(L-&gt;left), nodeHeight(L-&gt;right)) + 1);    return L;&#125;
- RR型
-
-avlNode *leftRotate(avlNode *T)&#123;    avlNode *R= T-&gt;right;    avlNode *T3 = R-&gt;left;    R-&gt;left = z;    T-&gt;right = T3;    T-&gt;height = (Max(nodeHeight(T-&gt;left), nodeHeight(T-&gt;right)) + 1);    R-&gt;height = (Max(nodeHeight(R-&gt;left), nodeHeight(R-&gt;right)) + 1);    return R;&#125;
- LR型
-
-avlNode *LeftRightRotate(avlNode *z)&#123;    T-&gt;left = leftRotate(T-&gt;left);    return (rightRotate(T));&#125;
- RL型
-
-avlNode *RightLeftRotate(avlNode *T)&#123;    T-&gt;right = rightRotate(T-&gt;right);    return (leftRotate(T));&#125;
- 二叉查找树
-
-​		二叉查找树（英语：Binary Search Tree），也称为二叉搜索树、有序二叉树（ordered binary tree）或排序二叉树（sorted binary tree）。
-
-一棵空树或者具有下列性质的二叉树：
-
-若任意结点的左子树不空，则左子树上所有结点的值均小于它的根结点的值；
-若任意结点的右子树不空，则右子树上所有结点的值均大于或等于它的根结点的值；
-任意结点的左、右子树也分别为二叉查找树
-
-typedef struct node&#123;     int data;    struct node *left;    struct node *right;&#125; node;
- 红黑树
-
-红黑树（Red Black Tree） 是一种自平衡二叉查找树
-
-红黑树满足以下特征：
-
-节点分为红色或者黑色；
-根节点必为黑色；
-叶子节点都为黑色，且为null；
-连接红色节点的两个子节点都为黑色（红黑树不会出现相邻的红色节点）；
-从任意节点出发，到其每个叶子节点的路径中包含相同数量的黑色节点；
-新加入到红黑树的节点为红色节点；(推断)
-
-类比234树——4阶B树
- 图
- 邻接表
-#include&lt;iostream&gt;using namespace std;struct EdgeNode //定义边表结点&#123;    int adjvex; //邻接点域    EdgeNode *next;&#125;;template &lt;typename DataType&gt;struct VertexNode //定义顶点表结点&#123;    DataType vertex;    EdgeNode *firstEdge;&#125;;const int MaxSize = 10; //图的最多顶点数int visited[MaxSize] = &#123;0&#125;;template  &lt;typename DataType&gt;class ALGraph&#123;public:    ALGraph(DataType a[ ], int n, int e); //构造函数，建立n个顶点e条边的图    ~ALGraph( ); //析构函数，释放邻接表各边表结点的存储空间    void DFTraverse(int v); //深度优先遍历图    void BFTraverse(int v); //广度优先遍历图private:    VertexNode&lt;DataType&gt; adjlist[MaxSize]; //存放顶点表的数组    int vertexNum, edgeNum; //图的顶点数和边数&#125;;template &lt;typename DataType&gt;ALGraph&lt;DataType&gt; :: ALGraph(DataType a[ ], int n, int e)&#123;    int i, j, k;    EdgeNode *s = nullptr;    vertexNum = n;    edgeNum = e;    for (i = 0; i &lt; vertexNum; i++) //输入顶点信息，初始化顶点表    &#123;        adjlist[i].vertex = a[i];        adjlist[i].firstEdge = NULL;    &#125;    for (k = 0; k &lt; edgeNum; k++) //依次输入每一条边    &#123;        cout &lt;&lt; &quot;输入边所依附的两个顶点的编号：&quot;;        cin &gt;&gt; i &gt;&gt; j; //输入边所依附的两个顶点的编号        s = new EdgeNode;        s-&gt;adjvex = j; //生成一个边表结点s        s-&gt;next = adjlist[i].firstEdge; //将结点s插入到第i个边表的表头        adjlist[i].firstEdge = s;    &#125;&#125;template &lt;typename DataType&gt;ALGraph&lt;DataType&gt;  :: ~ALGraph( )&#123;    EdgeNode *p = NULL, *q = NULL;    for (int i = 0; i &lt; vertexNum; i++)    &#123;        p = q = adjlist[i].firstEdge;        while (p != NULL)        &#123;            p = p-&gt;next;            delete q;            q = p;        &#125;    &#125;&#125;template  &lt;typename DataType&gt;void ALGraph&lt;DataType&gt;  :: DFTraverse(int v)&#123;    int j;    EdgeNode *p = NULL;    cout &lt;&lt; adjlist[v].vertex;    visited[v] = 1;    p = adjlist[v].firstEdge; //工作指针p指向顶点v的边表    while (p != NULL) //依次搜索顶点v的邻接点    &#123;        j = p-&gt;adjvex;        if (visited[j] == 0) DFTraverse(j);        p = p-&gt;next;    &#125;&#125;template &lt;typename DataType&gt;void ALGraph&lt;DataType&gt; :: BFTraverse(int v)&#123;    int w, j, Q[MaxSize]; //采用顺序队列    int front = -1, rear = -1; //初始化队列    EdgeNode *p = nullptr;    cout &lt;&lt; adjlist[v].vertex;    visited[v] = 1;    Q[++rear] = v; //被访问顶点入队    while (front != rear) //当队列非空时    &#123;        w = Q[++front];        p = adjlist[w].firstEdge; //工作指针p指向顶点v的边表        while (p != NULL)        &#123;            j = p-&gt;adjvex;            if (visited[j] == 0)            &#123;                cout &lt;&lt; adjlist[j].vertex;                visited[j] = 1;                Q[++rear] = j;            &#125;            p = p-&gt;next;        &#125;    &#125;&#125;int main( )&#123;//测试数据是图6-20(a)，边是(0 1)(0 3)(0 4)(1 2)(2 4)(3 2)(3 4)    char ch[ ] = &#123;&#x27;A&#x27;,&#x27;B&#x27;,&#x27;C&#x27;,&#x27;D&#x27;,&#x27;E&#x27;&#125;;    int i;    ALGraph&lt;char&gt; ALG(ch, 5, 6); //建立具有5个顶点6条边的有向图    for (i = 0; i &lt; MaxSize; i++)        visited[i] = 0;    cout &lt;&lt; &quot;深度优先遍历序列是：&quot;;    ALG.DFTraverse(0); //从顶点0出发进行深度优先遍历    for (i = 0; i &lt; MaxSize; i++)        visited[i] = 0;    cout &lt;&lt; &quot;广度优先遍历序列是：&quot;;    ALG.BFTraverse(0); //从顶点0出发进行广度优先遍历    return 0;&#125;
- 邻接矩阵
-/************************************************邻接矩阵类MGraph的使用范例*************************************************/#include&lt;iostream&gt;using namespace std;const int MaxSize = 10; //图中最多顶点个数int visited[MaxSize] = &#123;0&#125;; //全局数组变量visited初始化template &lt;typename DataType&gt;class MGraph&#123;public:    MGraph(DataType a[ ], int n, int e); //构造函数，建立具有n个顶点e条边的图    ~MGraph( ) &#123; &#125;; //析构函数    void DFTraverse(int v); //深度优先遍历图    void BFTraverse(int v); //广度优先遍历图private:    DataType vertex[MaxSize]; //存放图中顶点的数组    int edge[MaxSize][MaxSize]; //存放图中边的数组    int vertexNum, edgeNum; //图的顶点数和边数&#125;;template&lt;typename DataType&gt;MGraph &lt;DataType&gt;:: MGraph(DataType a[ ], int n, int e)&#123;    int i, j, k;    vertexNum = n;    edgeNum = e;    for (i = 0; i &lt; vertexNum; i++) //存储顶点        vertex[i] = a[i];    for (i = 0; i &lt; vertexNum; i++) //初始化邻接矩阵        for (j = 0; j &lt; vertexNum; j++)            edge[i][j] = 0;    for (k = 0; k &lt; edgeNum; k++) //依次输入每一条边    &#123;        cout &lt;&lt; &quot;请输入边依附的两个顶点的编号：&quot;;        cin &gt;&gt; i &gt;&gt; j; //输入边依附的两个顶点的编号        edge[i][j] = 1;        edge[j][i] = 1; //置有边标志    &#125;&#125;template&lt;typename DataType&gt;void MGraph &lt;DataType&gt;:: DFTraverse(int v)&#123;    cout &lt;&lt; vertex[v];    visited[v] = 1;    for (int j = 0; j &lt; vertexNum; j++)        if (edge[v][j] == 1 &amp;&amp; visited[j] == 0) DFTraverse( j );&#125;template&lt;typename DataType&gt;void MGraph &lt;DataType&gt;:: BFTraverse(int v)&#123;    int w, j, Q[MaxSize]; //采用顺序队列    int front = -1, rear = -1; //初始化队列    cout &lt;&lt; vertex[v];    visited[v] = 1;    Q[++rear] = v; //被访问顶点入队    while (front != rear) //当队列非空时    &#123;        w = Q[++front]; //将队头元素出队并送到v中        for (j = 0; j &lt; vertexNum; j++)            if (edge[w][j] == 1 &amp;&amp; visited[j] == 0 )            &#123;                cout &lt;&lt; vertex[j];                visited[j] = 1;                Q[++rear] = j;            &#125;    &#125;&#125;int main( )&#123;    int i;    char ch[ ]= &#123;&#x27;A&#x27;,&#x27;B&#x27;,&#x27;C&#x27;,&#x27;D&#x27;,&#x27;E&#x27;&#125;;    /* 测试数据六条边是：(0 1)(0 2)(0 3)(0 4)(1 2)(2 4) */    MGraph&lt;char&gt; MG&#123;ch, 5, 6&#125;; //建立具有5个顶点6条边的无向图    for (i = 0; i &lt; MaxSize; i++)        visited[i] = 0;    cout &lt;&lt; &quot;深度优先遍历序列是：&quot; &lt;&lt; endl;    MG.DFTraverse(0); //从顶点0出发进行深度优先遍历    for (i = 0; i &lt; MaxSize; i++)        visited[i] = 0;    cout &lt;&lt; &quot;广度优先遍历序列是：&quot; &lt;&lt; endl;    MG.BFTraverse(0); //从顶点0出发进行广度优先遍历    return 0;&#125;
- 字典
- 排序
-经典排序算法
-
- Bubble sort
-include &lt;iostream&gt;using namespace std;template&lt;typename T&gt; //整数或浮点数皆可使用,若要使用类(class)或结构体(struct)时必须重载大于(&gt;)运算符void bubble_sort(T arr[], int len) &#123;        int i, j;        for (i = 0; i &lt; len - 1; i++)                for (j = 0; j &lt; len - 1 - i; j++)                        if (arr[j] &gt; arr[j + 1])                                swap(arr[j], arr[j + 1]);&#125;int main() &#123;        int arr[] = &#123; 61, 17, 29, 22, 34, 60, 72, 21, 50, 1, 62 &#125;;        int len = (int) sizeof(arr) / sizeof(*arr);        bubble_sort(arr, len);        for (int i = 0; i &lt; len; i++)                cout &lt;&lt; arr[i] &lt;&lt; &#x27; &#x27;;        cout &lt;&lt; endl;        float arrf[] = &#123; 17.5, 19.1, 0.6, 1.9, 10.5, 12.4, 3.8, 19.7, 1.5, 25.4, 28.6, 4.4, 23.8, 5.4 &#125;;        len = (float) sizeof(arrf) / sizeof(*arrf);        bubble_sort(arrf, len);        for (int i = 0; i &lt; len; i++)                cout &lt;&lt; arrf[i] &lt;&lt; &#x27; &#x27;&lt;&lt;endl;        return 0;&#125;
- Selection sort
-Selection sort is a simple and intuitive sorting algorithm that is O(n²) time complex no matter what data goes in. So when using it, the smaller the data size, the better. The only advantage is that it doesn’t take up extra memory space.
-算法步骤
-
-First, find the smallest (large) element in the unsorted sequence and store it at the beginning of the sorted sequence.
-Then find the smallest (large) element from the remaining unsorted elements and put it at the end of the sorted sequence.
-Repeat the second step until all elements are sorted.
-
-template&lt;typename T&gt;void selection_sort(vector&lt;T&gt;&amp; arr) &#123;    for (int i = 0; i &lt; arr.size() - 1; i++) &#123;        int min = i;        for (int j = i + 1; j &lt; arr.size(); j++)            if (arr[j] &lt; arr[min])                min = j;        swap(arr[i], arr[min]);    &#125;&#125;
- Insertion sort
-The code implementation of insertion sort is not as simple and brutal as bubble sort and selection sort, but its principle should be the easiest to understand, because anyone who has played poker should be able to understand it in seconds. Insertion sort is one of the simplest and most intuitive sorting algorithms. It works by constructing an ordered sequence, and for unsorted data, scanning backward and forward in the sorted sequence to find the appropriate position and insert it.
-Insertion sort, like bubble sort, also has an optimization algorithm called split-half insertion.
-void insertion_sort(int arr[],int len)&#123;    for(int i=1;i&lt;len;i++)&#123;        int key=arr[i];        int j=i-1;        while((j&gt;=0) &amp;&amp; (key&lt;arr[j]))&#123;            arr[j+1]=arr[j];            j--;        &#125;        arr[j+1]=key;    &#125;&#125;
- Shell sort
-template&lt;typename T&gt;void shell_sort(T array[], int length) &#123;    int h = 1;    while (h &lt; length / 3) &#123;        h = 3 * h + 1;    &#125;    while (h &gt;= 1) &#123;        for (int i = h; i &lt; length; i++) &#123;            for (int j = i; j &gt;= h &amp;&amp; array[j] &lt; array[j - h]; j -= h) &#123;                swap(array[j], array[j - h]);            &#125;        &#125;        h = h / 3;    &#125;&#125;
- Merge sort
-// 迭代版template&lt;typename T&gt;void merge_sort(T arr[], int len) &#123;    T *a = arr;    T *b = new T[len];    for (int seg = 1; seg &lt; len; seg += seg) &#123;        for (int start = 0; start &lt; len; start += seg + seg) &#123;            int low = start, mid = min(start + seg, len), high = min(start + seg + seg, len);            int k = low;            int start1 = low, end1 = mid;            int start2 = mid, end2 = high;            while (start1 &lt; end1 &amp;&amp; start2 &lt; end2)                b[k++] = a[start1] &lt; a[start2] ? a[start1++] : a[start2++];            while (start1 &lt; end1)                b[k++] = a[start1++];            while (start2 &lt; end2)                b[k++] = a[start2++];        &#125;        T *temp = a;        a = b;        b = temp;    &#125;    if (a != arr) &#123;        for (int i = 0; i &lt; len; i++)            b[i] = a[i];        b = a;    &#125;    delete[] b;&#125;//递归版void Merge(vector&lt;int&gt; &amp;Array, int front, int mid, int end) &#123;    // preconditions:    // Array[front...mid] is sorted    // Array[mid+1 ... end] is sorted    // Copy Array[front ... mid] to LeftSubArray    // Copy Array[mid+1 ... end] to RightSubArray    vector&lt;int&gt; LeftSubArray(Array.begin() + front, Array.begin() + mid + 1);    vector&lt;int&gt; RightSubArray(Array.begin() + mid + 1, Array.begin() + end + 1);    int idxLeft = 0, idxRight = 0;    LeftSubArray.insert(LeftSubArray.end(), numeric_limits&lt;int&gt;::max());    RightSubArray.insert(RightSubArray.end(), numeric_limits&lt;int&gt;::max());    // Pick min of LeftSubArray[idxLeft] and RightSubArray[idxRight], and put into Array[i]    for (int i = front; i &lt;= end; i++) &#123;        if (LeftSubArray[idxLeft] &lt; RightSubArray[idxRight]) &#123;            Array[i] = LeftSubArray[idxLeft];            idxLeft++;        &#125; else &#123;            Array[i] = RightSubArray[idxRight];            idxRight++;        &#125;    &#125;&#125;void MergeSort(vector&lt;int&gt; &amp;Array, int front, int end) &#123;    if (front &gt;= end)        return;    int mid = (front + end) / 2;    MergeSort(Array, front, mid);    MergeSort(Array, mid + 1, end);    Merge(Array, front, mid, end);&#125;
- Quick sort
-template &lt;typename T&gt;void quick_sort_recursive(T arr[], int start, int end) &#123;    if (start &gt;= end)        return;    T mid = arr[end];    int left = start, right = end - 1;    while (left &lt; right) &#123; //在整个范围内搜寻比枢纽元值小或大的元素，然后将左侧元素与右侧元素交换        while (arr[left] &lt; mid &amp;&amp; left &lt; right) //试图在左侧找到一个比枢纽元更大的元素            left++;        while (arr[right] &gt;= mid &amp;&amp; left &lt; right) //试图在右侧找到一个比枢纽元更小的元素            right--;        std::swap(arr[left], arr[right]); //交换元素    &#125;    if (arr[left] &gt;= arr[end])        std::swap(arr[left], arr[end]);    else        left++;    quick_sort_recursive(arr, start, left - 1);    quick_sort_recursive(arr, left + 1, end);&#125;template &lt;typename T&gt;void quick_sort(T arr[], int len) &#123;    quick_sort_recursive(arr, 0, len - 1);&#125;
- Time complexity
-​		During the partition process, both the head and tail pointers are scanned cyclically to the last position where the base value was placed. Thus, the head and tail pointer scans together are equivalent to scanning the entire region of the array to be sorted. Therefore, we can conclude that the time complexity of a single partition operation is O(n). The formula for the overall time complexity: T(n) = n + T(L) + T®.
-
-Time complexity：O(nlog⁡2n)O(n\log_{2}{n})O(nlog2​n)
- Optimization
- One-sided recursive optimization
-​		Mode：when this layer has finished the partition operation, let this layer continue to complete the partition operation to the left of the base value, while the sorting work to the right of the base value is left to the next layer of recursive functions to handle.
-
-function is called 4 times.
-Without the method, the actual number is 7.
-void quick_sort(int *arr, int l, int r) &#123;    while (l &lt; r) &#123;        // 进行一轮 partition 操作        // 获得基准值的位置        int ind = partition(arr, l, r);        // 右侧正常调用递归函数         quick_sort(arr, ind + 1, r);        // 用本层处理左侧的排序        r = ind - 1;    &#125;    return ;&#125;
- Optimization of benchmark value selection
-three-point middle method is to take the three values of the head, tail and middle elements of the sorting interval in each round, and then use the middle value after they are sorted as the base value for the current round.For example, suppose the three values of this round are 2, 9 and 7, and the middle value is 7, so the base value of this round is 7.
- Partition Operation Optimization
-
-Let the head pointer look backward for red elements and the tail pointer look forward for green elements, then swap the elements pointed by the head and tail pointers and repeat the process until the head and tail pointers are interleaved and stop.
- Heapsort
-经典问题：蚂蚁问题
-假设现在有一个水平面，上面有 8 只蚂蚁排成一排。方便起见，我们给所有的蚂蚁从左到右依次编号，编号为 1 到 8。从 0 秒开始，红色蚂蚁向左爬，蓝色蚂蚁向右爬，爬行的速度都是 1m/s。如果有 2 只蚂蚁迎面碰到以后，这 2 只蚂蚁不会做任何的感情交流，而会立刻掉头向相反方向继续爬行。而爬行到桌子边沿的蚂蚁，会从桌子上掉下去。问：有哪些蚂蚁会从左边掉下去，又有哪些蚂蚁会从右边掉下去？
-
- 大顶堆
-
-]]></content>
-      <categories>
-        <category>算法</category>
-      </categories>
-      <tags>
-        <tag>手册</tag>
-      </tags>
   </entry>
   <entry>
     <title>刷题笔记</title>
@@ -2797,34 +2661,139 @@ class Solution &#123;public:    int minPathSum(vector&lt;vector&lt;int&gt; &gt;&
       </categories>
   </entry>
   <entry>
-    <title>なんでもないや-RADWIMPS</title>
-    <url>/2024/10/25/2024-10-24-%E6%B2%A1%E4%BB%80%E4%B9%88%E5%A4%A7%E4%B8%8D%E4%BA%86_Lyrics/</url>
-    <content><![CDATA[
-    なんでもないや
-	Album: 你的名字。
-    Lyricist & Composer : 野田洋次郎 (Yojiro Noda)
+    <title>数据结构</title>
+    <url>/2023/06/06/2023-06-06-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/</url>
+    <content><![CDATA[ 数据结构
+ 线性表
+ 链表
+// define element typetypedef int ElemType;// define struct of linked listtypedef struct LNode &#123;    ElemType data;    struct LNode *next;&#125; LNode, *LinkList;// define Statustypedef enum Status &#123;    ERROR,    SUCCESS&#125; Status;LinkList CreateList_Head(LinkList &amp;L)&#123;    LNode *s;    int x;    L = (LinkList)malloc(sizeof(LNode));     //创建头结点    L-&gt;next  =NULL;    scanf(&quot;%d&quot;,&amp;x);    while(x!=9999)&#123;        s=(LNode*)malloc(sizeof(LNode));        s-&gt;data=x;        s-&gt;next=L-&gt;next;        L-&gt;next=s;                          //插入结点        scanf(&quot;%d&quot;,&amp;x);    &#125;    return L;&#125;void TraverseList(LinkList L)&#123;    LNode *p = L-&gt;next;    while(p)&#123;        cout &lt;&lt; p-&gt;data &lt;&lt; &quot; &quot; ;        p = p-&gt;next;    &#125;&#125;int main()&#123;    LinkList L;    L = new LNode;    CreateList_Head(L);    TraverseList(L);    return 0;&#125;
+ 栈
+#include &lt;stdio.h&gt;#include &lt;stdlib.h&gt;#define ERROR 0#define OK 1#define STACKSIZE 10;              //存储空间分配增量#define STACK_INIT_SIZE 100;    //存储空间初始分配量typedef int ElemType;typedef int Status;typedef struct&#123;    ElemType* base;    //栈底    ElemType* top;     //栈顶    int stacksize;          //当前已分配的空间&#125;SqStack;//初始化栈Status initStack(SqStack &amp;S)&#123;    S.base = (ElemType *)malloc(100 * sizeof(ElemType));    if (!S.base)&#123;        exit(0);    &#125;    S.top = S.base;    S.stacksize = 100;    return OK;&#125;//入栈Status Push(SqStack&amp; S, ElemType e)&#123;    if (S.top - S.base &gt;= S.stacksize)   //如果栈满就追加空间    &#123;                           //新增内存空间        S.base = (ElemType*)realloc(S.base, (S.stacksize + 10) * sizeof(ElemType));        if (!S.base) exit(0);        S.top = S.base + S.stacksize;        S.stacksize += 10;    &#125;    *S.top++ = e;    return OK;&#125;//出栈Status Pop(SqStack&amp; S, ElemType &amp;e)&#123;    if (S.top == S.base) return ERROR;    e = *--S.top;    return OK;&#125;
+ 队列
 
+根据存储结构划分：1.链式队列	2.循环队列	3.单向队列	4.双端队列
 
+ 顺序队列
+#define MAXSIZE 1000typedef struct &#123;    int data[MAXSIZE];    int front,rear;&#125;Sequeue;void SequeueInit(Sequeue &amp;Top)&#123;//队列的初始化    Top.front=0;    Top.rear=0;&#125;void SequeueEmpty(Sequeue &amp;Top)&#123;//判队列为空    if(Top.rear==Top.front)    &#123;        printf(&quot;队列为空\n&quot;);    &#125;    else  printf(&quot;队列不为空\n&quot;);&#125;void SequeuePush(Sequeue &amp;Top,int m)&#123;//循环入队列   if((Top.rear+1)%MAXSIZE==Top.front)        &#123;printf(&quot;队列已满&quot;);&#125;   else&#123;       Top.data[Top.rear]=m;       printf(&quot;%d已入队\n&quot;,m);       Top.rear=(Top.rear+1)%MAXSIZE;&#125;&#125;void SequeueTop(Sequeue &amp;Top)//求队列头部元素&#123;    printf(&quot;队列头部元素为%d\n&quot;,Top.data[Top.front]);&#125;void SequeuePop(Sequeue &amp;Top)&#123;//循环出队列    int i=0;    if(Top.rear==Top.front)     &#123;printf(&quot;队列为空&quot;);&#125;    else&#123;        while (Top.rear!=Top.front) &#123;            i++;            printf(&quot;队第%d元素为%d\n&quot;,i,Top.data[Top.front]);            Top.front=(Top.front+1)%MAXSIZE;        &#125;    &#125;&#125;int SequeueTopp(Sequeue &amp;Top)//求队列头部元素( 返回值)&#123;    return Top.data[Top.front];&#125;void SequeuePushh(Sequeue &amp;Top,int m)&#123;//不循环入队列    Top.data[Top.rear]=m;    Top.rear++;&#125;int  SequeuePopp(Sequeue &amp;Top)&#123;//不循环出队列    int m=Top.data[Top.front];        Top.front++;        return m;&#125;
+ 循环队列
+ 数组
+ 动态数组
+ 树和二叉树
+ 二叉树
 
-    .line {
-      text-align: center; 
-      display: block;
-      width: 100%;
-      font-size: 1.4em;
-    }
-    rt {
-      color: blue;
-      font-size: 0.6em;
-    }
+C++：nullptr 专用于初始化空类型指针
 
-二人(ふたり)の間(あいだ) 通(とお)り過(す)ぎた風(かぜ)はどこから寂(さび)しさを運(はこ)んできたの泣(な)いたりしたそのあとの空(そら)はやけに透(す)き通(とお)っていたりしたんだいつもは尖(とが)ってた父(ちち)の言葉(ことば)が今日(きょう)は暖(あたた)かく感(かん)じました優(やさ)しさも笑顔(えがお)も夢(ゆめ)の語(かた)り方(かた)も知(し)らなくて全部(ぜんぶ) 君(きみ)を真似(まね)たよもう少(すこ)しだけでいいあと少(すこ)しだけでいいもう少(すこ)しだけでいいからもう少(すこ)しだけでいいあと少(すこ)しだけでいいもう少(すこ)しだけくっついていようか僕(ぼく)らタイムフライヤー時(じ)を駆(か)け上(あ)がるクライマー時(じ)のかくれんぼはぐれっこはもういやなんだ嬉(うれ)しくて泣(な)くのは悲(かな)しくて笑(わら)うのは君(くん)の心(こころ)が 君(きみ)を追(お)い越(こ)したんだよ星(ほし)にまで願(ねが)って手(て)にいれたオモチャも部屋(べや)の隅(すみ)っこに今(いま) 転(ころ)がってる叶(かな)えたい夢(ゆめ)も今日(きょう)で１００個(こ)できたよたった一(ひと)つといつか交換(こうかん)こしよういつもは喋(しゃべ)らないあの子(こ)に今日(きょう)は放課(ほうか)後(ご)「また明日(あした)」と声(こえ)をかけた慣(な)れないこともたまにならいいね特(とく)にあなたが 隣(となり)にいたらもう少(すこ)しだけでいいあと少(すこ)しだけでいいもう少(すこ)しだけでいいからもう少(すこ)しだけでいいあと少(すこ)しだけでいいもう少(すこ)しだけくっついていようよ僕(ぼく)らタイムフライヤー君(くん)を知(し)っていたんだ僕(ぼく)が 僕(ぼく)の名前(なまえ)を覚(おぼ)えるよりずっと前(まえ)に君(くん)のいない 世界(せかい)にも何(なに)かの意味(いみ)はきっとあってでも君(きみ)のいない 世界(せかい)など夏休(なつやす)みのない 八月(がつ)のよう君(くん)のいない 世界(せかい)など笑(わら)うことない サンタのよう君(くん)のいない 世界(せかい)など僕(ぼく)らタイムフライヤー時(じ)を駆(か)け上(あ)がるクライマー時(じ)のかくれんぼはぐれっこはもういやなんだなんでもないややっぱりなんでもないや今(いま)から行(い)くよ僕(ぼく)らタイムフライヤー時(じ)を駆(か)け上(あ)がるクライマー時(じ)のかくれんぼはぐれっこ はもういいよ君(くん)は派手(はで)なクライヤーその涙(なみだ) 止(と)めてみたいなだけど 君(きみ)は拒(こば)んだ零(こぼ)れるままの涙(なみだ)を見(み)てわかった嬉(うれ)しくて泣(な)くのは悲(かな)しくて 笑(わら)うのは僕(ぼく)の心(こころ)が 僕(ぼく)を追(お)い越(こ)したんだよ
+#include&lt;iostream&gt;using namespace std;template&lt;typename DataType&gt;struct BiNode&#123;    DataType data;    BiNode *lchild, *rchild;&#125;;template&lt;typename DataType&gt;class BiTree&#123;public:    BiTree( )&#123;        root = Creat(root);	//构造函数，建立二叉树    &#125;    ~BiTree( )&#123;        Release(root);   //析构函数，释放各结点的存储空间    &#125;    void PreOrder( )&#123;        PreOrder(root);   //前序遍历二叉树    &#125;    void InOrder( )&#123;        InOrder(root);   //中序遍历二叉树    &#125;    void PostOrder( )&#123;        PostOrder(root);   //后序遍历二叉树    &#125;    void LeverOrder( ); //层序遍历二叉树private:    BiNode &lt;DataType&gt;*Creat(BiNode&lt;DataType&gt; *bt); //构造函数    void Release(BiNode&lt;DataType&gt; *bt); 		  //析构函数调用    void PreOrder(BiNode&lt;DataType&gt; *bt); 		  //前序遍历函数    void InOrder(BiNode&lt;DataType&gt; *bt); 		  //中序遍历函数    void PostOrder(BiNode&lt;DataType&gt; *bt); 		  //后序遍历函数    BiNode&lt;DataType&gt; *root;					     //指向根结点的头指针&#125;;template&lt;typename DataType&gt;BiNode&lt;DataType&gt; *BiTree &lt;DataType&gt;:: Creat(BiNode&lt;DataType&gt; *bt)&#123;    char ch;    cout &lt;&lt; &quot;请输入扩展二叉树的前序遍历序列，每次输入一个字符:&quot;;    cin &gt;&gt; ch; //输入结点的数据信息，假设为字符    if (ch == &#x27;#&#x27;) bt = nullptr; //建立一棵空树    else    &#123;        bt = new BiNode&lt;DataType&gt;;        bt-&gt;data = ch;        bt-&gt;lchild = Creat(bt-&gt;lchild); //递归建立左子树        bt-&gt;rchild = Creat(bt-&gt;rchild); //递归建立右子树    &#125;    return bt;&#125;template&lt;typename DataType&gt;	//前序遍历void BiTree&lt;DataType&gt;:: PreOrder(BiNode&lt;DataType&gt; *bt)&#123;    if (bt == nullptr) return;     cout &lt;&lt; bt-&gt;data; 	      PreOrder(bt-&gt;lchild);     PreOrder(bt-&gt;rchild); &#125;template&lt;typename DataType&gt;	//中序遍历void BiTree&lt;DataType&gt;:: InOrder(BiNode&lt;DataType&gt; *bt)&#123;    if (bt == nullptr) return;     else    &#123;        InOrder(bt-&gt;lchild);         cout &lt;&lt; bt-&gt;data;         InOrder(bt-&gt;rchild);    &#125;&#125;template&lt;typename DataType&gt;	//后序遍历void BiTree&lt;DataType&gt;:: PostOrder(BiNode&lt;DataType&gt; *bt)&#123;    if (bt == nullptr) return;    else    &#123;        InOrder(bt-&gt;lchild);        InOrder(bt-&gt;rchild);        cout &lt;&lt; bt-&gt;data;    &#125;&#125;template&lt;typename DataType&gt;	//层次遍历void BiTree&lt;DataType&gt;:: LeverOrder( )&#123;    BiNode&lt;DataType&gt; *Q[100], *q = nullptr; //顺序队列    int front = -1, rear = -1; //队列初始化    if (root == nullptr) return; //二叉树为空，算法结束    Q[++rear] = root; //根指针入队    while (front != rear) //当队列非空时    &#123;        q = Q[++front]; //出队        cout &lt;&lt; q-&gt;data;        if (q-&gt;lchild != nullptr) Q[++rear] = q-&gt;lchild;        if (q-&gt;rchild != nullptr) Q[++rear] = q-&gt;rchild;    &#125;&#125;template&lt;typename DataType&gt;void BiTree&lt;DataType&gt;:: Release(BiNode&lt;DataType&gt; *bt)&#123;    if (bt == nullptr) return;    else    &#123;        Release(bt-&gt;lchild); //释放左子树        Release(bt-&gt;rchild); //释放右子树        delete bt; //释放根结点    &#125;&#125;
+ 层序遍历
+class Solution &#123;public:    vector&lt;vector&lt;int&gt; &gt; levelOrder(TreeNode* root) &#123;        vector&lt;vector&lt;int&gt; &gt; res;        if(root == NULL)	//如果是空，则直接返回空vector            return res;         queue&lt;TreeNode*&gt; q; 	//队列存储，进行层次遍历        q.push(root);        TreeNode* cur;        while(!q.empty())&#123;            //记录二叉树的某一行            vector&lt;int&gt; row;              int n = q.size();            //因先进入的是根节点，故每层节点多少，队列大小就是多少            for(int i = 0; i &lt; n; i++)&#123;                cur = q.front();                q.pop();                row.push_back(cur-&gt;val);                //若是左右孩子存在，则存入左右孩子作为下一个层次                if(cur-&gt;left)                    q.push(cur-&gt;left);                if(cur-&gt;right)                    q.push(cur-&gt;right);            &#125;            //每一层加入输出            res.push_back(row);         &#125;        return res;    &#125;&#125;;
+ AVL Tree
+
+AVL树（Adelson-Velsky and Landis Tree）是CS中最早被发明的自平衡二叉查找树。
+
+一棵AVL树有如下必要条件：
+
+必须是二叉查找树
+每个节点的左子树和右子树的高度差至多为1
+
+AVL Tree Visualzation 可视化演示
+struct AVLnode&#123;    int key;    //值    struct AVLnode *left;    struct AVLnode *right;    int height;     //高度&#125;;void printAVL(avlNode *node, int level)	//树尖向左打印&#123;    int i;    if (node != NULL)    &#123;        printAVL(node-&gt;right, level + 1);        printf(&quot;\n\n&quot;);        for (i = 0; i &lt; level; i++) printf(&quot;\t&quot;);        printf(&quot;%d&quot;, node-&gt;key);        printAVL(node-&gt;left, level + 1);    &#125;&#125;
+ 平衡化操作
+平衡二叉树 — 优雅的进行旋转
+ LL型
+
+avlNode *rightRotate(avlNode *T)&#123;    avlNode *L = T-&gt;left;    avlNode *T3 = L-&gt;right;    L-&gt;right = T;    T-&gt;left = T3;    T-&gt;height = (Max(nodeHeight(T-&gt;left), nodeHeight(T-&gt;right)) + 1);    L-&gt;height = (Max(nodeHeight(L-&gt;left), nodeHeight(L-&gt;right)) + 1);    return L;&#125;
+ RR型
+
+avlNode *leftRotate(avlNode *T)&#123;    avlNode *R= T-&gt;right;    avlNode *T3 = R-&gt;left;    R-&gt;left = z;    T-&gt;right = T3;    T-&gt;height = (Max(nodeHeight(T-&gt;left), nodeHeight(T-&gt;right)) + 1);    R-&gt;height = (Max(nodeHeight(R-&gt;left), nodeHeight(R-&gt;right)) + 1);    return R;&#125;
+ LR型
+
+avlNode *LeftRightRotate(avlNode *z)&#123;    T-&gt;left = leftRotate(T-&gt;left);    return (rightRotate(T));&#125;
+ RL型
+
+avlNode *RightLeftRotate(avlNode *T)&#123;    T-&gt;right = rightRotate(T-&gt;right);    return (leftRotate(T));&#125;
+ 二叉查找树
+
+​		二叉查找树（英语：Binary Search Tree），也称为二叉搜索树、有序二叉树（ordered binary tree）或排序二叉树（sorted binary tree）。
+
+一棵空树或者具有下列性质的二叉树：
+
+若任意结点的左子树不空，则左子树上所有结点的值均小于它的根结点的值；
+若任意结点的右子树不空，则右子树上所有结点的值均大于或等于它的根结点的值；
+任意结点的左、右子树也分别为二叉查找树
+
+typedef struct node&#123;     int data;    struct node *left;    struct node *right;&#125; node;
+ 红黑树
+
+红黑树（Red Black Tree） 是一种自平衡二叉查找树
+
+红黑树满足以下特征：
+
+节点分为红色或者黑色；
+根节点必为黑色；
+叶子节点都为黑色，且为null；
+连接红色节点的两个子节点都为黑色（红黑树不会出现相邻的红色节点）；
+从任意节点出发，到其每个叶子节点的路径中包含相同数量的黑色节点；
+新加入到红黑树的节点为红色节点；(推断)
+
+类比234树——4阶B树
+ 图
+ 邻接表
+#include&lt;iostream&gt;using namespace std;struct EdgeNode //定义边表结点&#123;    int adjvex; //邻接点域    EdgeNode *next;&#125;;template &lt;typename DataType&gt;struct VertexNode //定义顶点表结点&#123;    DataType vertex;    EdgeNode *firstEdge;&#125;;const int MaxSize = 10; //图的最多顶点数int visited[MaxSize] = &#123;0&#125;;template  &lt;typename DataType&gt;class ALGraph&#123;public:    ALGraph(DataType a[ ], int n, int e); //构造函数，建立n个顶点e条边的图    ~ALGraph( ); //析构函数，释放邻接表各边表结点的存储空间    void DFTraverse(int v); //深度优先遍历图    void BFTraverse(int v); //广度优先遍历图private:    VertexNode&lt;DataType&gt; adjlist[MaxSize]; //存放顶点表的数组    int vertexNum, edgeNum; //图的顶点数和边数&#125;;template &lt;typename DataType&gt;ALGraph&lt;DataType&gt; :: ALGraph(DataType a[ ], int n, int e)&#123;    int i, j, k;    EdgeNode *s = nullptr;    vertexNum = n;    edgeNum = e;    for (i = 0; i &lt; vertexNum; i++) //输入顶点信息，初始化顶点表    &#123;        adjlist[i].vertex = a[i];        adjlist[i].firstEdge = NULL;    &#125;    for (k = 0; k &lt; edgeNum; k++) //依次输入每一条边    &#123;        cout &lt;&lt; &quot;输入边所依附的两个顶点的编号：&quot;;        cin &gt;&gt; i &gt;&gt; j; //输入边所依附的两个顶点的编号        s = new EdgeNode;        s-&gt;adjvex = j; //生成一个边表结点s        s-&gt;next = adjlist[i].firstEdge; //将结点s插入到第i个边表的表头        adjlist[i].firstEdge = s;    &#125;&#125;template &lt;typename DataType&gt;ALGraph&lt;DataType&gt;  :: ~ALGraph( )&#123;    EdgeNode *p = NULL, *q = NULL;    for (int i = 0; i &lt; vertexNum; i++)    &#123;        p = q = adjlist[i].firstEdge;        while (p != NULL)        &#123;            p = p-&gt;next;            delete q;            q = p;        &#125;    &#125;&#125;template  &lt;typename DataType&gt;void ALGraph&lt;DataType&gt;  :: DFTraverse(int v)&#123;    int j;    EdgeNode *p = NULL;    cout &lt;&lt; adjlist[v].vertex;    visited[v] = 1;    p = adjlist[v].firstEdge; //工作指针p指向顶点v的边表    while (p != NULL) //依次搜索顶点v的邻接点    &#123;        j = p-&gt;adjvex;        if (visited[j] == 0) DFTraverse(j);        p = p-&gt;next;    &#125;&#125;template &lt;typename DataType&gt;void ALGraph&lt;DataType&gt; :: BFTraverse(int v)&#123;    int w, j, Q[MaxSize]; //采用顺序队列    int front = -1, rear = -1; //初始化队列    EdgeNode *p = nullptr;    cout &lt;&lt; adjlist[v].vertex;    visited[v] = 1;    Q[++rear] = v; //被访问顶点入队    while (front != rear) //当队列非空时    &#123;        w = Q[++front];        p = adjlist[w].firstEdge; //工作指针p指向顶点v的边表        while (p != NULL)        &#123;            j = p-&gt;adjvex;            if (visited[j] == 0)            &#123;                cout &lt;&lt; adjlist[j].vertex;                visited[j] = 1;                Q[++rear] = j;            &#125;            p = p-&gt;next;        &#125;    &#125;&#125;int main( )&#123;//测试数据是图6-20(a)，边是(0 1)(0 3)(0 4)(1 2)(2 4)(3 2)(3 4)    char ch[ ] = &#123;&#x27;A&#x27;,&#x27;B&#x27;,&#x27;C&#x27;,&#x27;D&#x27;,&#x27;E&#x27;&#125;;    int i;    ALGraph&lt;char&gt; ALG(ch, 5, 6); //建立具有5个顶点6条边的有向图    for (i = 0; i &lt; MaxSize; i++)        visited[i] = 0;    cout &lt;&lt; &quot;深度优先遍历序列是：&quot;;    ALG.DFTraverse(0); //从顶点0出发进行深度优先遍历    for (i = 0; i &lt; MaxSize; i++)        visited[i] = 0;    cout &lt;&lt; &quot;广度优先遍历序列是：&quot;;    ALG.BFTraverse(0); //从顶点0出发进行广度优先遍历    return 0;&#125;
+ 邻接矩阵
+/************************************************邻接矩阵类MGraph的使用范例*************************************************/#include&lt;iostream&gt;using namespace std;const int MaxSize = 10; //图中最多顶点个数int visited[MaxSize] = &#123;0&#125;; //全局数组变量visited初始化template &lt;typename DataType&gt;class MGraph&#123;public:    MGraph(DataType a[ ], int n, int e); //构造函数，建立具有n个顶点e条边的图    ~MGraph( ) &#123; &#125;; //析构函数    void DFTraverse(int v); //深度优先遍历图    void BFTraverse(int v); //广度优先遍历图private:    DataType vertex[MaxSize]; //存放图中顶点的数组    int edge[MaxSize][MaxSize]; //存放图中边的数组    int vertexNum, edgeNum; //图的顶点数和边数&#125;;template&lt;typename DataType&gt;MGraph &lt;DataType&gt;:: MGraph(DataType a[ ], int n, int e)&#123;    int i, j, k;    vertexNum = n;    edgeNum = e;    for (i = 0; i &lt; vertexNum; i++) //存储顶点        vertex[i] = a[i];    for (i = 0; i &lt; vertexNum; i++) //初始化邻接矩阵        for (j = 0; j &lt; vertexNum; j++)            edge[i][j] = 0;    for (k = 0; k &lt; edgeNum; k++) //依次输入每一条边    &#123;        cout &lt;&lt; &quot;请输入边依附的两个顶点的编号：&quot;;        cin &gt;&gt; i &gt;&gt; j; //输入边依附的两个顶点的编号        edge[i][j] = 1;        edge[j][i] = 1; //置有边标志    &#125;&#125;template&lt;typename DataType&gt;void MGraph &lt;DataType&gt;:: DFTraverse(int v)&#123;    cout &lt;&lt; vertex[v];    visited[v] = 1;    for (int j = 0; j &lt; vertexNum; j++)        if (edge[v][j] == 1 &amp;&amp; visited[j] == 0) DFTraverse( j );&#125;template&lt;typename DataType&gt;void MGraph &lt;DataType&gt;:: BFTraverse(int v)&#123;    int w, j, Q[MaxSize]; //采用顺序队列    int front = -1, rear = -1; //初始化队列    cout &lt;&lt; vertex[v];    visited[v] = 1;    Q[++rear] = v; //被访问顶点入队    while (front != rear) //当队列非空时    &#123;        w = Q[++front]; //将队头元素出队并送到v中        for (j = 0; j &lt; vertexNum; j++)            if (edge[w][j] == 1 &amp;&amp; visited[j] == 0 )            &#123;                cout &lt;&lt; vertex[j];                visited[j] = 1;                Q[++rear] = j;            &#125;    &#125;&#125;int main( )&#123;    int i;    char ch[ ]= &#123;&#x27;A&#x27;,&#x27;B&#x27;,&#x27;C&#x27;,&#x27;D&#x27;,&#x27;E&#x27;&#125;;    /* 测试数据六条边是：(0 1)(0 2)(0 3)(0 4)(1 2)(2 4) */    MGraph&lt;char&gt; MG&#123;ch, 5, 6&#125;; //建立具有5个顶点6条边的无向图    for (i = 0; i &lt; MaxSize; i++)        visited[i] = 0;    cout &lt;&lt; &quot;深度优先遍历序列是：&quot; &lt;&lt; endl;    MG.DFTraverse(0); //从顶点0出发进行深度优先遍历    for (i = 0; i &lt; MaxSize; i++)        visited[i] = 0;    cout &lt;&lt; &quot;广度优先遍历序列是：&quot; &lt;&lt; endl;    MG.BFTraverse(0); //从顶点0出发进行广度优先遍历    return 0;&#125;
+ 字典
+ 排序
+经典排序算法
+
+ Bubble sort
+include &lt;iostream&gt;using namespace std;template&lt;typename T&gt; //整数或浮点数皆可使用,若要使用类(class)或结构体(struct)时必须重载大于(&gt;)运算符void bubble_sort(T arr[], int len) &#123;        int i, j;        for (i = 0; i &lt; len - 1; i++)                for (j = 0; j &lt; len - 1 - i; j++)                        if (arr[j] &gt; arr[j + 1])                                swap(arr[j], arr[j + 1]);&#125;int main() &#123;        int arr[] = &#123; 61, 17, 29, 22, 34, 60, 72, 21, 50, 1, 62 &#125;;        int len = (int) sizeof(arr) / sizeof(*arr);        bubble_sort(arr, len);        for (int i = 0; i &lt; len; i++)                cout &lt;&lt; arr[i] &lt;&lt; &#x27; &#x27;;        cout &lt;&lt; endl;        float arrf[] = &#123; 17.5, 19.1, 0.6, 1.9, 10.5, 12.4, 3.8, 19.7, 1.5, 25.4, 28.6, 4.4, 23.8, 5.4 &#125;;        len = (float) sizeof(arrf) / sizeof(*arrf);        bubble_sort(arrf, len);        for (int i = 0; i &lt; len; i++)                cout &lt;&lt; arrf[i] &lt;&lt; &#x27; &#x27;&lt;&lt;endl;        return 0;&#125;
+ Selection sort
+Selection sort is a simple and intuitive sorting algorithm that is O(n²) time complex no matter what data goes in. So when using it, the smaller the data size, the better. The only advantage is that it doesn’t take up extra memory space.
+算法步骤
+
+First, find the smallest (large) element in the unsorted sequence and store it at the beginning of the sorted sequence.
+Then find the smallest (large) element from the remaining unsorted elements and put it at the end of the sorted sequence.
+Repeat the second step until all elements are sorted.
+
+template&lt;typename T&gt;void selection_sort(vector&lt;T&gt;&amp; arr) &#123;    for (int i = 0; i &lt; arr.size() - 1; i++) &#123;        int min = i;        for (int j = i + 1; j &lt; arr.size(); j++)            if (arr[j] &lt; arr[min])                min = j;        swap(arr[i], arr[min]);    &#125;&#125;
+ Insertion sort
+The code implementation of insertion sort is not as simple and brutal as bubble sort and selection sort, but its principle should be the easiest to understand, because anyone who has played poker should be able to understand it in seconds. Insertion sort is one of the simplest and most intuitive sorting algorithms. It works by constructing an ordered sequence, and for unsorted data, scanning backward and forward in the sorted sequence to find the appropriate position and insert it.
+Insertion sort, like bubble sort, also has an optimization algorithm called split-half insertion.
+void insertion_sort(int arr[],int len)&#123;    for(int i=1;i&lt;len;i++)&#123;        int key=arr[i];        int j=i-1;        while((j&gt;=0) &amp;&amp; (key&lt;arr[j]))&#123;            arr[j+1]=arr[j];            j--;        &#125;        arr[j+1]=key;    &#125;&#125;
+ Shell sort
+template&lt;typename T&gt;void shell_sort(T array[], int length) &#123;    int h = 1;    while (h &lt; length / 3) &#123;        h = 3 * h + 1;    &#125;    while (h &gt;= 1) &#123;        for (int i = h; i &lt; length; i++) &#123;            for (int j = i; j &gt;= h &amp;&amp; array[j] &lt; array[j - h]; j -= h) &#123;                swap(array[j], array[j - h]);            &#125;        &#125;        h = h / 3;    &#125;&#125;
+ Merge sort
+// 迭代版template&lt;typename T&gt;void merge_sort(T arr[], int len) &#123;    T *a = arr;    T *b = new T[len];    for (int seg = 1; seg &lt; len; seg += seg) &#123;        for (int start = 0; start &lt; len; start += seg + seg) &#123;            int low = start, mid = min(start + seg, len), high = min(start + seg + seg, len);            int k = low;            int start1 = low, end1 = mid;            int start2 = mid, end2 = high;            while (start1 &lt; end1 &amp;&amp; start2 &lt; end2)                b[k++] = a[start1] &lt; a[start2] ? a[start1++] : a[start2++];            while (start1 &lt; end1)                b[k++] = a[start1++];            while (start2 &lt; end2)                b[k++] = a[start2++];        &#125;        T *temp = a;        a = b;        b = temp;    &#125;    if (a != arr) &#123;        for (int i = 0; i &lt; len; i++)            b[i] = a[i];        b = a;    &#125;    delete[] b;&#125;//递归版void Merge(vector&lt;int&gt; &amp;Array, int front, int mid, int end) &#123;    // preconditions:    // Array[front...mid] is sorted    // Array[mid+1 ... end] is sorted    // Copy Array[front ... mid] to LeftSubArray    // Copy Array[mid+1 ... end] to RightSubArray    vector&lt;int&gt; LeftSubArray(Array.begin() + front, Array.begin() + mid + 1);    vector&lt;int&gt; RightSubArray(Array.begin() + mid + 1, Array.begin() + end + 1);    int idxLeft = 0, idxRight = 0;    LeftSubArray.insert(LeftSubArray.end(), numeric_limits&lt;int&gt;::max());    RightSubArray.insert(RightSubArray.end(), numeric_limits&lt;int&gt;::max());    // Pick min of LeftSubArray[idxLeft] and RightSubArray[idxRight], and put into Array[i]    for (int i = front; i &lt;= end; i++) &#123;        if (LeftSubArray[idxLeft] &lt; RightSubArray[idxRight]) &#123;            Array[i] = LeftSubArray[idxLeft];            idxLeft++;        &#125; else &#123;            Array[i] = RightSubArray[idxRight];            idxRight++;        &#125;    &#125;&#125;void MergeSort(vector&lt;int&gt; &amp;Array, int front, int end) &#123;    if (front &gt;= end)        return;    int mid = (front + end) / 2;    MergeSort(Array, front, mid);    MergeSort(Array, mid + 1, end);    Merge(Array, front, mid, end);&#125;
+ Quick sort
+template &lt;typename T&gt;void quick_sort_recursive(T arr[], int start, int end) &#123;    if (start &gt;= end)        return;    T mid = arr[end];    int left = start, right = end - 1;    while (left &lt; right) &#123; //在整个范围内搜寻比枢纽元值小或大的元素，然后将左侧元素与右侧元素交换        while (arr[left] &lt; mid &amp;&amp; left &lt; right) //试图在左侧找到一个比枢纽元更大的元素            left++;        while (arr[right] &gt;= mid &amp;&amp; left &lt; right) //试图在右侧找到一个比枢纽元更小的元素            right--;        std::swap(arr[left], arr[right]); //交换元素    &#125;    if (arr[left] &gt;= arr[end])        std::swap(arr[left], arr[end]);    else        left++;    quick_sort_recursive(arr, start, left - 1);    quick_sort_recursive(arr, left + 1, end);&#125;template &lt;typename T&gt;void quick_sort(T arr[], int len) &#123;    quick_sort_recursive(arr, 0, len - 1);&#125;
+ Time complexity
+​		During the partition process, both the head and tail pointers are scanned cyclically to the last position where the base value was placed. Thus, the head and tail pointer scans together are equivalent to scanning the entire region of the array to be sorted. Therefore, we can conclude that the time complexity of a single partition operation is O(n). The formula for the overall time complexity: T(n) = n + T(L) + T®.
+
+Time complexity：O(nlog⁡2n)O(n\log_{2}{n})O(nlog2​n)
+ Optimization
+ One-sided recursive optimization
+​		Mode：when this layer has finished the partition operation, let this layer continue to complete the partition operation to the left of the base value, while the sorting work to the right of the base value is left to the next layer of recursive functions to handle.
+
+function is called 4 times.
+Without the method, the actual number is 7.
+void quick_sort(int *arr, int l, int r) &#123;    while (l &lt; r) &#123;        // 进行一轮 partition 操作        // 获得基准值的位置        int ind = partition(arr, l, r);        // 右侧正常调用递归函数         quick_sort(arr, ind + 1, r);        // 用本层处理左侧的排序        r = ind - 1;    &#125;    return ;&#125;
+ Optimization of benchmark value selection
+three-point middle method is to take the three values of the head, tail and middle elements of the sorting interval in each round, and then use the middle value after they are sorted as the base value for the current round.For example, suppose the three values of this round are 2, 9 and 7, and the middle value is 7, so the base value of this round is 7.
+ Partition Operation Optimization
+
+Let the head pointer look backward for red elements and the tail pointer look forward for green elements, then swap the elements pointed by the head and tail pointers and repeat the process until the head and tail pointers are interleaved and stop.
+ Heapsort
+经典问题：蚂蚁问题
+假设现在有一个水平面，上面有 8 只蚂蚁排成一排。方便起见，我们给所有的蚂蚁从左到右依次编号，编号为 1 到 8。从 0 秒开始，红色蚂蚁向左爬，蓝色蚂蚁向右爬，爬行的速度都是 1m/s。如果有 2 只蚂蚁迎面碰到以后，这 2 只蚂蚁不会做任何的感情交流，而会立刻掉头向相反方向继续爬行。而爬行到桌子边沿的蚂蚁，会从桌子上掉下去。问：有哪些蚂蚁会从左边掉下去，又有哪些蚂蚁会从右边掉下去？
+
+ 大顶堆
 
 ]]></content>
       <categories>
-        <category>歌词</category>
+        <category>算法</category>
       </categories>
       <tags>
-        <tag>RADWIMPS</tag>
+        <tag>手册</tag>
       </tags>
   </entry>
   <entry>
@@ -3164,6 +3133,37 @@ DIP，依赖反转，有的时候也叫依赖倒置（Dependency Inversion Princ
       <categories>
         <category>C++</category>
       </categories>
+  </entry>
+  <entry>
+    <title>なんでもないや-RADWIMPS</title>
+    <url>/2024/10/25/2024-10-24-%E6%B2%A1%E4%BB%80%E4%B9%88%E5%A4%A7%E4%B8%8D%E4%BA%86_Lyrics/</url>
+    <content><![CDATA[
+    なんでもないや
+	Album: 你的名字。
+    Lyricist & Composer : 野田洋次郎 (Yojiro Noda)
+
+
+
+    .line {
+      text-align: center; 
+      display: block;
+      width: 100%;
+      font-size: 1.4em;
+    }
+    rt {
+      color: blue;
+      font-size: 0.6em;
+    }
+
+二人(ふたり)の間(あいだ) 通(とお)り過(す)ぎた風(かぜ)はどこから寂(さび)しさを運(はこ)んできたの泣(な)いたりしたそのあとの空(そら)はやけに透(す)き通(とお)っていたりしたんだいつもは尖(とが)ってた父(ちち)の言葉(ことば)が今日(きょう)は暖(あたた)かく感(かん)じました優(やさ)しさも笑顔(えがお)も夢(ゆめ)の語(かた)り方(かた)も知(し)らなくて全部(ぜんぶ) 君(きみ)を真似(まね)たよもう少(すこ)しだけでいいあと少(すこ)しだけでいいもう少(すこ)しだけでいいからもう少(すこ)しだけでいいあと少(すこ)しだけでいいもう少(すこ)しだけくっついていようか僕(ぼく)らタイムフライヤー時(じ)を駆(か)け上(あ)がるクライマー時(じ)のかくれんぼはぐれっこはもういやなんだ嬉(うれ)しくて泣(な)くのは悲(かな)しくて笑(わら)うのは君(くん)の心(こころ)が 君(きみ)を追(お)い越(こ)したんだよ星(ほし)にまで願(ねが)って手(て)にいれたオモチャも部屋(べや)の隅(すみ)っこに今(いま) 転(ころ)がってる叶(かな)えたい夢(ゆめ)も今日(きょう)で１００個(こ)できたよたった一(ひと)つといつか交換(こうかん)こしよういつもは喋(しゃべ)らないあの子(こ)に今日(きょう)は放課(ほうか)後(ご)「また明日(あした)」と声(こえ)をかけた慣(な)れないこともたまにならいいね特(とく)にあなたが 隣(となり)にいたらもう少(すこ)しだけでいいあと少(すこ)しだけでいいもう少(すこ)しだけでいいからもう少(すこ)しだけでいいあと少(すこ)しだけでいいもう少(すこ)しだけくっついていようよ僕(ぼく)らタイムフライヤー君(くん)を知(し)っていたんだ僕(ぼく)が 僕(ぼく)の名前(なまえ)を覚(おぼ)えるよりずっと前(まえ)に君(くん)のいない 世界(せかい)にも何(なに)かの意味(いみ)はきっとあってでも君(きみ)のいない 世界(せかい)など夏休(なつやす)みのない 八月(がつ)のよう君(くん)のいない 世界(せかい)など笑(わら)うことない サンタのよう君(くん)のいない 世界(せかい)など僕(ぼく)らタイムフライヤー時(じ)を駆(か)け上(あ)がるクライマー時(じ)のかくれんぼはぐれっこはもういやなんだなんでもないややっぱりなんでもないや今(いま)から行(い)くよ僕(ぼく)らタイムフライヤー時(じ)を駆(か)け上(あ)がるクライマー時(じ)のかくれんぼはぐれっこ はもういいよ君(くん)は派手(はで)なクライヤーその涙(なみだ) 止(と)めてみたいなだけど 君(きみ)は拒(こば)んだ零(こぼ)れるままの涙(なみだ)を見(み)てわかった嬉(うれ)しくて泣(な)くのは悲(かな)しくて 笑(わら)うのは僕(ぼく)の心(こころ)が 僕(ぼく)を追(お)い越(こ)したんだよ
+
+]]></content>
+      <categories>
+        <category>歌词</category>
+      </categories>
+      <tags>
+        <tag>RADWIMPS</tag>
+      </tags>
   </entry>
   <entry>
     <title>スパークル-RADWIMPS</title>

@@ -105,6 +105,14 @@ function initTOCHighlight() {
 
   if (headings.length === 0 || tocLinks.length === 0) return;
 
+  // 初始化时设置所有子目录为折叠状态（使用CSS类控制）
+  function initTOCState() {
+    tocLis.forEach(li => {
+      li.classList.remove('active');
+      li.classList.remove('toc-open');
+    });
+  }
+
   function updateTOC() {
     let currentId = '';
     let minDiff = Infinity;
@@ -123,11 +131,6 @@ function initTOCHighlight() {
     tocLis.forEach(li => {
       li.classList.remove('active');
       li.classList.remove('toc-open');
-      const level = parseInt(li.className.match(/toc-level-(\d)/)?.[1]) || 1;
-
-      // 默认折叠所有标题
-      const subOl = li.querySelector('ol');
-      if (subOl) subOl.style.display = 'none';
     });
 
     // 展开当前链路的所有层级
@@ -141,11 +144,7 @@ function initTOCHighlight() {
       if (activeLink) {
         let li = activeLink.parentElement;
         while (li && li.matches('li')) {
-          const subOl = li.querySelector('ol');
-          if (subOl) {
-            subOl.style.display = 'block';
-            li.classList.add('toc-open');
-          }
+          li.classList.add('toc-open');
           li.classList.add('active');
           li = li.parentElement.closest('li');
         }
@@ -153,9 +152,15 @@ function initTOCHighlight() {
     }
   }
 
-  window.addEventListener('scroll', updateTOC, { passive: true });
-  updateTOC();
-  window.addEventListener('resize', updateTOC);
+  // 初始化目录状态
+  initTOCState();
+  
+  // 延迟执行第一次更新，确保页面完全加载
+  setTimeout(() => {
+    window.addEventListener('scroll', updateTOC, { passive: true });
+    updateTOC();
+    window.addEventListener('resize', updateTOC);
+  }, 50);
 }
 
 function initTOCShowHide() {
@@ -629,80 +634,29 @@ function initSearch() {
   const searchContainer = document.querySelector('.search-container');
   const searchClose = document.querySelector('.search-close');
   const searchInput = document.querySelector('.search-input');
-  const searchForm = document.querySelector('.search-form');
-  
-  if (!searchBtn || !searchContainer || !searchClose || !searchInput || !searchForm) return;
+  const searchResults = document.createElement('div');
+  searchResults.className = 'search-results';
 
-  // 创建搜索结果容器
-  let searchResults = document.querySelector('.search-results');
-  if (!searchResults) {
-    searchResults = document.createElement('div');
-    searchResults.className = 'search-results';
-    searchContainer.querySelector('.container').appendChild(searchResults);
-  }
+  if (!searchBtn || !searchContainer || !searchClose || !searchInput) return;
 
-  // 搜索状态管理
-  let isSearching = false;
-  let searchTimer = null;
-  let currentQuery = '';
+  // 添加搜索结果容器
+  searchContainer.querySelector('.container').appendChild(searchResults);
 
   // 搜索功能
   function performSearch(query) {
-    currentQuery = query.trim();
-    
-    if (!currentQuery) {
+    if (!query.trim()) {
       searchResults.innerHTML = '';
-      searchResults.style.display = 'none';
       return;
     }
 
-    // 显示搜索中状态
-    searchResults.style.display = 'block';
-    searchResults.innerHTML = '<div class="search-loading">搜索中...</div>';
-    isSearching = true;
-
     // 使用Hexo的搜索API
     if (window.searchJson) {
-      // 使用更智能的搜索算法
       const results = window.searchJson.filter(item => {
-        const title = item.title.toLowerCase();
-        const content = item.content.toLowerCase();
-        const queryLower = currentQuery.toLowerCase();
-        
-        // 权重计算：标题匹配权重更高
-        const titleScore = title.includes(queryLower) ? 2 : 0;
-        const contentScore = content.includes(queryLower) ? 1 : 0;
-        
-        // 支持多关键词搜索
-        const keywords = queryLower.split(/\s+/).filter(k => k.length > 1);
-        let keywordScore = 0;
-        
-        keywords.forEach(keyword => {
-          if (title.includes(keyword)) keywordScore += 1.5;
-          if (content.includes(keyword)) keywordScore += 0.5;
-        });
-        
-        return (titleScore + contentScore + keywordScore) > 0;
+        return item.title.toLowerCase().includes(query.toLowerCase()) ||
+          item.content.toLowerCase().includes(query.toLowerCase());
       });
 
-      // 按相关性排序
-      results.sort((a, b) => {
-        const aTitle = a.title.toLowerCase();
-        const bTitle = b.title.toLowerCase();
-        const queryLower = currentQuery.toLowerCase();
-        
-        const aTitleMatch = aTitle.includes(queryLower) ? 2 : 0;
-        const bTitleMatch = bTitle.includes(queryLower) ? 2 : 0;
-        
-        return bTitleMatch - aTitleMatch;
-      });
-
-      // 延迟显示结果，提供更好的用户体验
-      setTimeout(() => {
-        displayResults(results, currentQuery);
-        isSearching = false;
-      }, 300);
-      
+      displayResults(results, query);
     } else {
       // 如果没有预加载的搜索数据，使用fetch获取
       fetch('/search.xml')
@@ -715,19 +669,10 @@ function initSearch() {
             url: item.querySelector('url').textContent,
             content: item.querySelector('content').textContent
           }));
-          
-          const filteredResults = results.filter(item =>
-            item.title.toLowerCase().includes(currentQuery.toLowerCase()) ||
-            item.content.toLowerCase().includes(currentQuery.toLowerCase())
-          );
-          
-          displayResults(filteredResults, currentQuery);
-          isSearching = false;
-        })
-        .catch(error => {
-          console.error('搜索失败:', error);
-          searchResults.innerHTML = '<div class="no-results">搜索服务暂时不可用</div>';
-          isSearching = false;
+          displayResults(results.filter(item =>
+            item.title.toLowerCase().includes(query.toLowerCase()) ||
+            item.content.toLowerCase().includes(query.toLowerCase())
+          ), query);
         });
     }
   }
@@ -736,10 +681,12 @@ function initSearch() {
   function highlightText(text, query) {
     if (!query.trim()) return text;
     
-    const queryTerms = query.trim().toLowerCase().split(/\s+/).filter(term => term.length > 1);
+    const queryTerms = query.trim().toLowerCase().split(/\s+/);
     let highlightedText = text;
     
     queryTerms.forEach(term => {
+      if (term.length < 2) return; // 忽略过短的词
+      
       const regex = new RegExp(`(${escapeRegExp(term)})`, 'gi');
       highlightedText = highlightedText.replace(regex, '<span class="highlight-text">$1</span>');
     });
@@ -755,50 +702,29 @@ function initSearch() {
   // 显示搜索结果
   function displayResults(results, query) {
     if (results.length === 0) {
-      searchResults.innerHTML = `
-        <div class="no-results">
-          <i class="fas fa-search" style="font-size: 48px; margin-bottom: 16px; opacity: 0.5;"></i>
-          <div>没有找到与 "${query}" 相关的结果</div>
-          <div style="margin-top: 8px; font-size: 14px; opacity: 0.7;">尝试使用其他关键词或检查拼写</div>
-        </div>
-      `;
+      searchResults.innerHTML = '<div class="no-results">没有找到匹配的结果</div>';
       return;
     }
 
-    const resultsHTML = results.map((result, index) => {
-      // 智能提取匹配上下文
+    searchResults.innerHTML = results.map(result => {
+      // 提取匹配上下文
       let excerpt = result.content;
       const queryLower = query.toLowerCase();
       const contentLower = result.content.toLowerCase();
+      const index = contentLower.indexOf(queryLower);
       
-      // 查找最佳匹配位置
-      let bestIndex = -1;
-      let bestScore = 0;
-      
-      const keywords = queryLower.split(/\s+/).filter(k => k.length > 1);
-      keywords.forEach(keyword => {
-        const index = contentLower.indexOf(keyword);
-        if (index > -1) {
-          const score = keyword.length;
-          if (score > bestScore) {
-            bestScore = score;
-            bestIndex = index;
-          }
-        }
-      });
-      
-      if (bestIndex > -1) {
-        // 从最佳匹配位置前后各取文本
-        const start = Math.max(0, bestIndex - 80);
-        const end = Math.min(result.content.length, bestIndex + keywords[0].length + 80);
+      if (index > -1) {
+        // 从匹配位置前后各取一些文本
+        const start = Math.max(0, index - 60);
+        const end = Math.min(result.content.length, index + query.length + 60);
         excerpt = result.content.substring(start, end);
         
-        // 添加省略号
+        // 如果不是从头开始，添加省略号
         if (start > 0) excerpt = '...' + excerpt;
         if (end < result.content.length) excerpt += '...';
       } else {
-        // 如果没有匹配，取前180个字符
-        excerpt = result.content.substring(0, 180) + '...';
+        // 如果没有直接匹配，取前150个字符
+        excerpt = result.content.substring(0, 150) + '...';
       }
       
       // 高亮标题和摘要中的搜索词
@@ -806,145 +732,40 @@ function initSearch() {
       const highlightedExcerpt = highlightText(excerpt, query);
       
       return `
-        <div class="search-result-item" data-index="${index}">
+        <div class="search-result-item">
           <a href="${result.url}" class="search-result-title">${highlightedTitle}</a>
           <div class="search-result-excerpt">${highlightedExcerpt}</div>
         </div>
       `;
     }).join('');
-    
-    searchResults.innerHTML = resultsHTML;
-    
-    // 添加结果统计
-    const resultsCount = document.createElement('div');
-    resultsCount.className = 'search-results-count';
-    resultsCount.innerHTML = `找到 ${results.length} 个结果`;
-    searchResults.insertBefore(resultsCount, searchResults.firstChild);
   }
 
-  // 输入防抖和优化
+  // 输入防抖
+  let searchTimer;
   searchInput.addEventListener('input', (e) => {
-    const query = e.target.value.trim();
-    
-    // 清除之前的定时器
     clearTimeout(searchTimer);
-    
-    // 如果查询为空，立即清除结果
-    if (!query) {
-      searchResults.innerHTML = '';
-      searchResults.style.display = 'none';
-      return;
-    }
-    
-    // 如果查询太短，显示提示
-    if (query.length < 2) {
-      searchResults.style.display = 'block';
-      searchResults.innerHTML = '<div class="no-results">请输入至少2个字符进行搜索</div>';
-      return;
-    }
-    
-    // 设置新的定时器
     searchTimer = setTimeout(() => {
-      if (query === currentQuery && isSearching) return;
-      performSearch(query);
-    }, 400);
-  });
-  
-  // 表单提交处理
-  searchForm.addEventListener('submit', (e) => {
-    e.preventDefault();
-    const query = searchInput.value.trim();
-    if (query) {
-      performSearch(query);
-    }
-  });
-
-  // 增强交互逻辑
-  searchBtn.addEventListener('click', () => {
-    searchContainer.classList.add('active');
-    document.body.style.overflow = 'hidden'; // 防止背景滚动
-    
-    // 延迟聚焦，确保动画完成
-    setTimeout(() => {
-      searchInput.focus();
-      searchInput.select();
+      performSearch(e.target.value);
     }, 300);
   });
 
-  function closeSearch() {
+  // 原有交互逻辑保持不变
+  searchBtn.addEventListener('click', () => {
+    searchContainer.classList.add('active');
+    searchInput.focus();
+  });
+
+  searchClose.addEventListener('click', () => {
     searchContainer.classList.remove('active');
-    document.body.style.overflow = ''; // 恢复背景滚动
-    
-    // 延迟清除内容，确保动画完成
-    setTimeout(() => {
-      searchInput.value = '';
-      searchResults.innerHTML = '';
-      searchResults.style.display = 'none';
-      currentQuery = '';
-    }, 200);
-  }
-
-  searchClose.addEventListener('click', closeSearch);
-
-  // 点击背景关闭搜索
-  searchContainer.addEventListener('click', (e) => {
-    if (e.target === searchContainer) {
-      closeSearch();
-    }
+    searchInput.value = '';
+    searchResults.innerHTML = '';
   });
 
   document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape' && searchContainer.classList.contains('active')) {
-      closeSearch();
-    }
-    
-    // 支持Ctrl+K快速打开搜索
-    if ((e.ctrlKey || e.metaKey) && e.key === 'k') {
-      e.preventDefault();
-      if (!searchContainer.classList.contains('active')) {
-        searchBtn.click();
-      }
-    }
-  });
-  
-  // 添加键盘导航支持
-  searchInput.addEventListener('keydown', (e) => {
-    if (e.key === 'ArrowDown') {
-      e.preventDefault();
-      const firstResult = searchResults.querySelector('.search-result-item');
-      if (firstResult) {
-        firstResult.focus();
-      }
-    }
-  });
-  
-  // 搜索结果键盘导航
-  searchResults.addEventListener('keydown', (e) => {
-    const currentItem = e.target.closest('.search-result-item');
-    if (!currentItem) return;
-    
-    const items = Array.from(searchResults.querySelectorAll('.search-result-item'));
-    const currentIndex = items.indexOf(currentItem);
-    
-    switch (e.key) {
-      case 'ArrowDown':
-        e.preventDefault();
-        if (currentIndex < items.length - 1) {
-          items[currentIndex + 1].focus();
-        }
-        break;
-      case 'ArrowUp':
-        e.preventDefault();
-        if (currentIndex > 0) {
-          items[currentIndex - 1].focus();
-        } else {
-          searchInput.focus();
-        }
-        break;
-      case 'Enter':
-        e.preventDefault();
-        currentItem.querySelector('a').click();
-        break;
+    if (e.key === 'Escape') {
+      searchContainer.classList.remove('active');
+      searchInput.value = '';
+      searchResults.innerHTML = '';
     }
   });
 }
